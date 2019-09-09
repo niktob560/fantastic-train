@@ -1,0 +1,310 @@
+GAS LISTING /tmp/ccsIrfSa.s 			page 1
+
+
+   1              		.file	"main.cpp"
+   2              		.text
+   3              		.section	.rodata
+   6              	_ZStL19piecewise_construct:
+   7 0000 00       		.zero	1
+   8              		.local	_ZStL8__ioinit
+   9              		.comm	_ZStL8__ioinit,1,1
+  10              		.text
+  11              		.globl	_Z11renderScenev
+  13              	_Z11renderScenev:
+  14              	.LFB2218:
+  15              		.cfi_startproc
+  16 0000 55       		pushq	%rbp
+  17              		.cfi_def_cfa_offset 16
+  18              		.cfi_offset 6, -16
+  19 0001 4889E5   		movq	%rsp, %rbp
+  20              		.cfi_def_cfa_register 6
+  21 0004 BF004000 		movl	$16384, %edi
+  21      00
+  22 0009 E8000000 		call	glClear@PLT
+  22      00
+  23 000e BF040000 		movl	$4, %edi
+  23      00
+  24 0013 E8000000 		call	glBegin@PLT
+  24      00
+  25 0018 660FEFD2 		pxor	%xmm2, %xmm2
+  26 001c F30F100D 		movss	.LC1(%rip), %xmm1
+  26      00000000 
+  27 0024 F30F1005 		movss	.LC1(%rip), %xmm0
+  27      00000000 
+  28 002c E8000000 		call	glVertex3f@PLT
+  28      00
+  29 0031 660FEFD2 		pxor	%xmm2, %xmm2
+  30 0035 F30F100D 		movss	.LC2(%rip), %xmm1
+  30      00000000 
+  31 003d 660FEFC0 		pxor	%xmm0, %xmm0
+  32 0041 E8000000 		call	glVertex3f@PLT
+  32      00
+  33 0046 660FEFD2 		pxor	%xmm2, %xmm2
+  34 004a F30F100D 		movss	.LC1(%rip), %xmm1
+  34      00000000 
+  35 0052 F30F1005 		movss	.LC2(%rip), %xmm0
+  35      00000000 
+  36 005a E8000000 		call	glVertex3f@PLT
+  36      00
+  37 005f E8000000 		call	glEnd@PLT
+  37      00
+  38 0064 E8000000 		call	glutSwapBuffers@PLT
+  38      00
+  39 0069 90       		nop
+  40 006a 5D       		popq	%rbp
+  41              		.cfi_def_cfa 7, 8
+  42 006b C3       		ret
+  43              		.cfi_endproc
+  44              	.LFE2218:
+  46              		.section	.rodata
+  47              	.LC3:
+GAS LISTING /tmp/ccsIrfSa.s 			page 2
+
+
+  48 0001 50524553 		.string	"PRESSED\n"
+  48      5345440A 
+  48      00
+  49              		.text
+  50              		.globl	_Z14handleKeypresshii
+  52              	_Z14handleKeypresshii:
+  53              	.LFB2219:
+  54              		.cfi_startproc
+  55 006c 55       		pushq	%rbp
+  56              		.cfi_def_cfa_offset 16
+  57              		.cfi_offset 6, -16
+  58 006d 4889E5   		movq	%rsp, %rbp
+  59              		.cfi_def_cfa_register 6
+  60 0070 4883EC10 		subq	$16, %rsp
+  61 0074 89F8     		movl	%edi, %eax
+  62 0076 8975F8   		movl	%esi, -8(%rbp)
+  63 0079 8955F4   		movl	%edx, -12(%rbp)
+  64 007c 8845FC   		movb	%al, -4(%rbp)
+  65 007f 488D3500 		leaq	.LC3(%rip), %rsi
+  65      000000
+  66 0086 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+  66      000000
+  67 008d E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+  67      00
+  68 0092 837DF470 		cmpl	$112, -12(%rbp)
+  69 0096 750A     		jne	.L4
+  70 0098 BF000000 		movl	$0, %edi
+  70      00
+  71 009d E8000000 		call	exit@PLT
+  71      00
+  72              	.L4:
+  73 00a2 90       		nop
+  74 00a3 C9       		leave
+  75              		.cfi_def_cfa 7, 8
+  76 00a4 C3       		ret
+  77              		.cfi_endproc
+  78              	.LFE2219:
+  80              		.section	.rodata
+  81              	.LC4:
+  82 000a 676C7574 		.string	"glut init\n"
+  82      20696E69 
+  82      740A00
+  83              	.LC5:
+  84 0015 64697370 		.string	"dispmode\n"
+  84      6D6F6465 
+  84      0A00
+  85              	.LC6:
+  86 001f 666C6F61 		.string	"floating"
+  86      74696E67 
+  86      00
+  87              	.LC7:
+  88 0028 64697370 		.string	"dispfunc\n"
+  88      66756E63 
+  88      0A00
+  89              	.LC8:
+  90 0032 6B657966 		.string	"keyfunc\n"
+  90      756E630A 
+GAS LISTING /tmp/ccsIrfSa.s 			page 3
+
+
+  90      00
+  91              	.LC9:
+  92 003b 6D61696E 		.string	"mainloop\n"
+  92      6C6F6F70 
+  92      0A00
+  93              		.text
+  94              		.globl	main
+  96              	main:
+  97              	.LFB2220:
+  98              		.cfi_startproc
+  99 00a5 55       		pushq	%rbp
+ 100              		.cfi_def_cfa_offset 16
+ 101              		.cfi_offset 6, -16
+ 102 00a6 4889E5   		movq	%rsp, %rbp
+ 103              		.cfi_def_cfa_register 6
+ 104 00a9 4883EC10 		subq	$16, %rsp
+ 105 00ad 897DFC   		movl	%edi, -4(%rbp)
+ 106 00b0 488975F0 		movq	%rsi, -16(%rbp)
+ 107 00b4 488D3500 		leaq	.LC4(%rip), %rsi
+ 107      000000
+ 108 00bb 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 108      000000
+ 109 00c2 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 109      00
+ 110 00c7 488B55F0 		movq	-16(%rbp), %rdx
+ 111 00cb 488D45FC 		leaq	-4(%rbp), %rax
+ 112 00cf 4889D6   		movq	%rdx, %rsi
+ 113 00d2 4889C7   		movq	%rax, %rdi
+ 114 00d5 E8000000 		call	glutInit@PLT
+ 114      00
+ 115 00da 488D3500 		leaq	.LC5(%rip), %rsi
+ 115      000000
+ 116 00e1 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 116      000000
+ 117 00e8 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 117      00
+ 118 00ed BF020000 		movl	$2, %edi
+ 118      00
+ 119 00f2 E8000000 		call	glutInitDisplayMode@PLT
+ 119      00
+ 120 00f7 488D3D00 		leaq	.LC6(%rip), %rdi
+ 120      000000
+ 121 00fe E8000000 		call	glutCreateWindow@PLT
+ 121      00
+ 122 0103 488D3500 		leaq	.LC7(%rip), %rsi
+ 122      000000
+ 123 010a 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 123      000000
+ 124 0111 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 124      00
+ 125 0116 488D3D00 		leaq	_Z11renderScenev(%rip), %rdi
+ 125      000000
+ 126 011d E8000000 		call	glutDisplayFunc@PLT
+ 126      00
+ 127 0122 488D3500 		leaq	.LC8(%rip), %rsi
+ 127      000000
+ 128 0129 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+GAS LISTING /tmp/ccsIrfSa.s 			page 4
+
+
+ 128      000000
+ 129 0130 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 129      00
+ 130 0135 488D3D00 		leaq	_Z14handleKeypresshii(%rip), %rdi
+ 130      000000
+ 131 013c E8000000 		call	glutKeyboardFunc@PLT
+ 131      00
+ 132 0141 488D3500 		leaq	.LC9(%rip), %rsi
+ 132      000000
+ 133 0148 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 133      000000
+ 134 014f E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 134      00
+ 135 0154 E8000000 		call	glutMainLoop@PLT
+ 135      00
+ 136 0159 B8010000 		movl	$1, %eax
+ 136      00
+ 137 015e C9       		leave
+ 138              		.cfi_def_cfa 7, 8
+ 139 015f C3       		ret
+ 140              		.cfi_endproc
+ 141              	.LFE2220:
+ 144              	_Z41__static_initialization_and_destruction_0ii:
+ 145              	.LFB2766:
+ 146              		.cfi_startproc
+ 147 0160 55       		pushq	%rbp
+ 148              		.cfi_def_cfa_offset 16
+ 149              		.cfi_offset 6, -16
+ 150 0161 4889E5   		movq	%rsp, %rbp
+ 151              		.cfi_def_cfa_register 6
+ 152 0164 4883EC10 		subq	$16, %rsp
+ 153 0168 897DFC   		movl	%edi, -4(%rbp)
+ 154 016b 8975F8   		movl	%esi, -8(%rbp)
+ 155 016e 837DFC01 		cmpl	$1, -4(%rbp)
+ 156 0172 7532     		jne	.L9
+ 157 0174 817DF8FF 		cmpl	$65535, -8(%rbp)
+ 157      FF0000
+ 158 017b 7529     		jne	.L9
+ 159 017d 488D3D00 		leaq	_ZStL8__ioinit(%rip), %rdi
+ 159      000000
+ 160 0184 E8000000 		call	_ZNSt8ios_base4InitC1Ev@PLT
+ 160      00
+ 161 0189 488D1500 		leaq	__dso_handle(%rip), %rdx
+ 161      000000
+ 162 0190 488D3500 		leaq	_ZStL8__ioinit(%rip), %rsi
+ 162      000000
+ 163 0197 488B0500 		movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rax
+ 163      000000
+ 164 019e 4889C7   		movq	%rax, %rdi
+ 165 01a1 E8000000 		call	__cxa_atexit@PLT
+ 165      00
+ 166              	.L9:
+ 167 01a6 90       		nop
+ 168 01a7 C9       		leave
+ 169              		.cfi_def_cfa 7, 8
+ 170 01a8 C3       		ret
+ 171              		.cfi_endproc
+GAS LISTING /tmp/ccsIrfSa.s 			page 5
+
+
+ 172              	.LFE2766:
+ 175              	_GLOBAL__sub_I__Z11renderScenev:
+ 176              	.LFB2767:
+ 177              		.cfi_startproc
+ 178 01a9 55       		pushq	%rbp
+ 179              		.cfi_def_cfa_offset 16
+ 180              		.cfi_offset 6, -16
+ 181 01aa 4889E5   		movq	%rsp, %rbp
+ 182              		.cfi_def_cfa_register 6
+ 183 01ad BEFFFF00 		movl	$65535, %esi
+ 183      00
+ 184 01b2 BF010000 		movl	$1, %edi
+ 184      00
+ 185 01b7 E8A4FFFF 		call	_Z41__static_initialization_and_destruction_0ii
+ 185      FF
+ 186 01bc 5D       		popq	%rbp
+ 187              		.cfi_def_cfa 7, 8
+ 188 01bd C3       		ret
+ 189              		.cfi_endproc
+ 190              	.LFE2767:
+ 192              		.section	.init_array,"aw"
+ 193              		.align 8
+ 194 0000 00000000 		.quad	_GLOBAL__sub_I__Z11renderScenev
+ 194      00000000 
+ 195              		.section	.rodata
+ 196 0045 000000   		.align 4
+ 197              	.LC1:
+ 198 0048 000000BF 		.long	3204448256
+ 199              		.align 4
+ 200              	.LC2:
+ 201 004c 0000003F 		.long	1056964608
+ 202              		.hidden	__dso_handle
+ 203              		.ident	"GCC: (GNU) 9.1.0"
+ 204              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccsIrfSa.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.cpp
+     /tmp/ccsIrfSa.s:6      .rodata:0000000000000000 _ZStL19piecewise_construct
+                             .bss:0000000000000000 _ZStL8__ioinit
+     /tmp/ccsIrfSa.s:13     .text:0000000000000000 _Z11renderScenev
+     /tmp/ccsIrfSa.s:52     .text:000000000000006c _Z14handleKeypresshii
+     /tmp/ccsIrfSa.s:96     .text:00000000000000a5 main
+     /tmp/ccsIrfSa.s:144    .text:0000000000000160 _Z41__static_initialization_and_destruction_0ii
+     /tmp/ccsIrfSa.s:175    .text:00000000000001a9 _GLOBAL__sub_I__Z11renderScenev
+
+UNDEFINED SYMBOLS
+_GLOBAL_OFFSET_TABLE_
+glClear
+glBegin
+glVertex3f
+glEnd
+glutSwapBuffers
+_ZSt4cout
+_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+exit
+glutInit
+glutInitDisplayMode
+glutCreateWindow
+glutDisplayFunc
+glutKeyboardFunc
+glutMainLoop
+_ZNSt8ios_base4InitC1Ev
+__dso_handle
+_ZNSt8ios_base4InitD1Ev
+__cxa_atexit
