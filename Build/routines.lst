@@ -1,700 +1,586 @@
-GAS LISTING /tmp/ccYcsGAA.s 			page 1
+GAS LISTING /tmp/cceZA1fz.s 			page 1
 
 
    1              		.file	"routines.cpp"
    2              		.text
-   3              		.section	.text._ZSt3cosf,"axG",@progbits,_ZSt3cosf,comdat
-   4              		.weak	_ZSt3cosf
-   6              	_ZSt3cosf:
-   7              	.LFB48:
-   8              		.cfi_startproc
-   9 0000 55       		pushq	%rbp
-  10              		.cfi_def_cfa_offset 16
-  11              		.cfi_offset 6, -16
-  12 0001 4889E5   		movq	%rsp, %rbp
-  13              		.cfi_def_cfa_register 6
-  14 0004 4883EC10 		subq	$16, %rsp
-  15 0008 F30F1145 		movss	%xmm0, -4(%rbp)
-  15      FC
-  16 000d 8B45FC   		movl	-4(%rbp), %eax
-  17 0010 660F6EC0 		movd	%eax, %xmm0
-  18 0014 E8000000 		call	cosf@PLT
-  18      00
-  19 0019 C9       		leave
-  20              		.cfi_def_cfa 7, 8
-  21 001a C3       		ret
-  22              		.cfi_endproc
-  23              	.LFE48:
-  25              		.section	.text._ZSt3sinf,"axG",@progbits,_ZSt3sinf,comdat
-  26              		.weak	_ZSt3sinf
-  28              	_ZSt3sinf:
-  29              	.LFB83:
-  30              		.cfi_startproc
-  31 0000 55       		pushq	%rbp
-  32              		.cfi_def_cfa_offset 16
-  33              		.cfi_offset 6, -16
-  34 0001 4889E5   		movq	%rsp, %rbp
-  35              		.cfi_def_cfa_register 6
-  36 0004 4883EC10 		subq	$16, %rsp
-  37 0008 F30F1145 		movss	%xmm0, -4(%rbp)
-  37      FC
-  38 000d 8B45FC   		movl	-4(%rbp), %eax
-  39 0010 660F6EC0 		movd	%eax, %xmm0
-  40 0014 E8000000 		call	sinf@PLT
-  40      00
-  41 0019 C9       		leave
-  42              		.cfi_def_cfa 7, 8
-  43 001a C3       		ret
-  44              		.cfi_endproc
-  45              	.LFE83:
-  47              		.text
-  48              		.globl	_Z8drawLineffff
-  50              	_Z8drawLineffff:
-  51              	.LFB248:
-  52              		.cfi_startproc
-  53 0000 55       		pushq	%rbp
-  54              		.cfi_def_cfa_offset 16
-  55              		.cfi_offset 6, -16
-  56 0001 4889E5   		movq	%rsp, %rbp
-  57              		.cfi_def_cfa_register 6
-  58 0004 4883EC10 		subq	$16, %rsp
-GAS LISTING /tmp/ccYcsGAA.s 			page 2
+   3              		.globl	_Z10glSetColorj
+   5              	_Z10glSetColorj:
+   6              	.LFB253:
+   7              		.cfi_startproc
+   8 0000 4883EC08 		subq	$8, %rsp
+   9              		.cfi_def_cfa_offset 16
+  10 0004 89F8     		movl	%edi, %eax
+  11 0006 400FB6D7 		movzbl	%dil, %edx
+  12 000a 660FEFD2 		pxor	%xmm2, %xmm2
+  13 000e F3480F2A 		cvtsi2ssq	%rdx, %xmm2
+  13      D2
+  14 0013 0FB6D4   		movzbl	%ah, %edx
+  15 0016 660FEFC9 		pxor	%xmm1, %xmm1
+  16 001a F3480F2A 		cvtsi2ssq	%rdx, %xmm1
+  16      CA
+  17 001f C1E810   		shrl	$16, %eax
+  18 0022 0FB6C0   		movzbl	%al, %eax
+  19 0025 660FEFC0 		pxor	%xmm0, %xmm0
+  20 0029 F3480F2A 		cvtsi2ssq	%rax, %xmm0
+  20      C0
+  21 002e F30F101D 		movss	.LC0(%rip), %xmm3
+  21      00000000 
+  22 0036 F30F5EC3 		divss	%xmm3, %xmm0
+  23 003a F30F5ED3 		divss	%xmm3, %xmm2
+  24 003e F30F5ECB 		divss	%xmm3, %xmm1
+  25 0042 E8000000 		call	glColor3f@PLT
+  25      00
+  26 0047 4883C408 		addq	$8, %rsp
+  27              		.cfi_def_cfa_offset 8
+  28 004b C3       		ret
+  29              		.cfi_endproc
+  30              	.LFE253:
+  32              		.globl	_Z8drawLineffff
+  34              	_Z8drawLineffff:
+  35              	.LFB254:
+  36              		.cfi_startproc
+  37 004c 4883EC18 		subq	$24, %rsp
+  38              		.cfi_def_cfa_offset 32
+  39 0050 F30F1104 		movss	%xmm0, (%rsp)
+  39      24
+  40 0055 F30F114C 		movss	%xmm1, 4(%rsp)
+  40      2404
+  41 005b F30F1154 		movss	%xmm2, 8(%rsp)
+  41      2408
+  42 0061 F30F115C 		movss	%xmm3, 12(%rsp)
+  42      240C
+  43 0067 BF010000 		movl	$1, %edi
+  43      00
+  44 006c E8000000 		call	glBegin@PLT
+  44      00
+  45 0071 660FEFC0 		pxor	%xmm0, %xmm0
+  46 0075 F30F5A04 		cvtss2sd	(%rsp), %xmm0
+  46      24
+  47 007a 660FEFC9 		pxor	%xmm1, %xmm1
+  48 007e F30F5A4C 		cvtss2sd	4(%rsp), %xmm1
+GAS LISTING /tmp/cceZA1fz.s 			page 2
 
 
-  59 0008 F30F1145 		movss	%xmm0, -4(%rbp)
-  59      FC
-  60 000d F30F114D 		movss	%xmm1, -8(%rbp)
-  60      F8
-  61 0012 F30F1155 		movss	%xmm2, -12(%rbp)
-  61      F4
-  62 0017 F30F115D 		movss	%xmm3, -16(%rbp)
-  62      F0
-  63 001c BF010000 		movl	$1, %edi
-  63      00
-  64 0021 E8000000 		call	glBegin@PLT
-  64      00
-  65 0026 F30F5A4D 		cvtss2sd	-8(%rbp), %xmm1
-  65      F8
-  66 002b F30F5A45 		cvtss2sd	-4(%rbp), %xmm0
-  66      FC
-  67 0030 E8000000 		call	glVertex2d@PLT
-  67      00
-  68 0035 F30F5A4D 		cvtss2sd	-16(%rbp), %xmm1
-  68      F0
-  69 003a F30F5A45 		cvtss2sd	-12(%rbp), %xmm0
-  69      F4
-  70 003f E8000000 		call	glVertex2d@PLT
-  70      00
-  71 0044 E8000000 		call	glEnd@PLT
-  71      00
-  72 0049 90       		nop
-  73 004a C9       		leave
-  74              		.cfi_def_cfa 7, 8
-  75 004b C3       		ret
-  76              		.cfi_endproc
-  77              	.LFE248:
-  79              		.globl	_Z8drawRectffff
-  81              	_Z8drawRectffff:
-  82              	.LFB249:
-  83              		.cfi_startproc
-  84 004c 55       		pushq	%rbp
-  85              		.cfi_def_cfa_offset 16
-  86              		.cfi_offset 6, -16
-  87 004d 4889E5   		movq	%rsp, %rbp
-  88              		.cfi_def_cfa_register 6
-  89 0050 4883EC10 		subq	$16, %rsp
-  90 0054 F30F1145 		movss	%xmm0, -4(%rbp)
-  90      FC
-  91 0059 F30F114D 		movss	%xmm1, -8(%rbp)
-  91      F8
-  92 005e F30F1155 		movss	%xmm2, -12(%rbp)
-  92      F4
-  93 0063 F30F115D 		movss	%xmm3, -16(%rbp)
-  93      F0
-  94 0068 F30F1045 		movss	-12(%rbp), %xmm0
-  94      F4
-  95 006d F30F100D 		movss	.LC0(%rip), %xmm1
-  95      00000000 
-  96 0075 F30F5EC1 		divss	%xmm1, %xmm0
-  97 0079 0F28C8   		movaps	%xmm0, %xmm1
-  98 007c F30F1045 		movss	-4(%rbp), %xmm0
-GAS LISTING /tmp/ccYcsGAA.s 			page 3
+  48      2404
+  49 0084 E8000000 		call	glVertex2d@PLT
+  49      00
+  50 0089 660FEFC0 		pxor	%xmm0, %xmm0
+  51 008d F30F5A44 		cvtss2sd	8(%rsp), %xmm0
+  51      2408
+  52 0093 660FEFC9 		pxor	%xmm1, %xmm1
+  53 0097 F30F5A4C 		cvtss2sd	12(%rsp), %xmm1
+  53      240C
+  54 009d E8000000 		call	glVertex2d@PLT
+  54      00
+  55 00a2 E8000000 		call	glEnd@PLT
+  55      00
+  56 00a7 4883C418 		addq	$24, %rsp
+  57              		.cfi_def_cfa_offset 8
+  58 00ab C3       		ret
+  59              		.cfi_endproc
+  60              	.LFE254:
+  62              		.globl	_Z8drawRectffff
+  64              	_Z8drawRectffff:
+  65              	.LFB255:
+  66              		.cfi_startproc
+  67 00ac 4883EC38 		subq	$56, %rsp
+  68              		.cfi_def_cfa_offset 64
+  69 00b0 0F28E0   		movaps	%xmm0, %xmm4
+  70 00b3 F30F1005 		movss	.LC1(%rip), %xmm0
+  70      00000000 
+  71 00bb F30F1154 		movss	%xmm2, 40(%rsp)
+  71      2428
+  72 00c1 F30F59D0 		mulss	%xmm0, %xmm2
+  73 00c5 F30F5CE2 		subss	%xmm2, %xmm4
+  74 00c9 F30F1164 		movss	%xmm4, 8(%rsp)
+  74      2408
+  75 00cf F30F115C 		movss	%xmm3, 44(%rsp)
+  75      242C
+  76 00d5 F30F59C3 		mulss	%xmm3, %xmm0
+  77 00d9 F30F5CC8 		subss	%xmm0, %xmm1
+  78 00dd F30F114C 		movss	%xmm1, 16(%rsp)
+  78      2410
+  79 00e3 BF070000 		movl	$7, %edi
+  79      00
+  80 00e8 E8000000 		call	glBegin@PLT
+  80      00
+  81 00ed 660FEFF6 		pxor	%xmm6, %xmm6
+  82 00f1 F30F5A74 		cvtss2sd	16(%rsp), %xmm6
+  82      2410
+  83 00f7 660FEFFF 		pxor	%xmm7, %xmm7
+  84 00fb F30F5A7C 		cvtss2sd	8(%rsp), %xmm7
+  84      2408
+  85 0101 F20F1174 		movsd	%xmm6, 24(%rsp)
+  85      2418
+  86 0107 660F28CE 		movapd	%xmm6, %xmm1
+  87 010b F20F117C 		movsd	%xmm7, 32(%rsp)
+  87      2420
+  88 0111 660F28C7 		movapd	%xmm7, %xmm0
+  89 0115 E8000000 		call	glVertex2d@PLT
+  89      00
+GAS LISTING /tmp/cceZA1fz.s 			page 3
 
 
-  98      FC
-  99 0081 F30F5CC1 		subss	%xmm1, %xmm0
- 100 0085 F30F1145 		movss	%xmm0, -4(%rbp)
- 100      FC
- 101 008a F30F1045 		movss	-16(%rbp), %xmm0
- 101      F0
- 102 008f F30F100D 		movss	.LC0(%rip), %xmm1
- 102      00000000 
- 103 0097 F30F5EC1 		divss	%xmm1, %xmm0
- 104 009b 0F28C8   		movaps	%xmm0, %xmm1
- 105 009e F30F1045 		movss	-8(%rbp), %xmm0
- 105      F8
- 106 00a3 F30F5CC1 		subss	%xmm1, %xmm0
- 107 00a7 F30F1145 		movss	%xmm0, -8(%rbp)
- 107      F8
- 108 00ac BF070000 		movl	$7, %edi
+  90 011a F30F105C 		movss	44(%rsp), %xmm3
+  90      242C
+  91 0120 F30F585C 		addss	16(%rsp), %xmm3
+  91      2410
+  92 0126 660FEFED 		pxor	%xmm5, %xmm5
+  93 012a F30F5AEB 		cvtss2sd	%xmm3, %xmm5
+  94 012e F20F116C 		movsd	%xmm5, 16(%rsp)
+  94      2410
+  95 0134 660F28CD 		movapd	%xmm5, %xmm1
+  96 0138 F20F1044 		movsd	32(%rsp), %xmm0
+  96      2420
+  97 013e E8000000 		call	glVertex2d@PLT
+  97      00
+  98 0143 F30F1044 		movss	40(%rsp), %xmm0
+  98      2428
+  99 0149 F30F5844 		addss	8(%rsp), %xmm0
+  99      2408
+ 100 014f 660FEFFF 		pxor	%xmm7, %xmm7
+ 101 0153 F30F5AF8 		cvtss2sd	%xmm0, %xmm7
+ 102 0157 F20F104C 		movsd	16(%rsp), %xmm1
+ 102      2410
+ 103 015d F20F117C 		movsd	%xmm7, 8(%rsp)
+ 103      2408
+ 104 0163 660F28C7 		movapd	%xmm7, %xmm0
+ 105 0167 E8000000 		call	glVertex2d@PLT
+ 105      00
+ 106 016c F20F104C 		movsd	24(%rsp), %xmm1
+ 106      2418
+ 107 0172 F20F1044 		movsd	8(%rsp), %xmm0
+ 107      2408
+ 108 0178 E8000000 		call	glVertex2d@PLT
  108      00
- 109 00b1 E8000000 		call	glBegin@PLT
+ 109 017d E8000000 		call	glEnd@PLT
  109      00
- 110 00b6 F30F5A4D 		cvtss2sd	-8(%rbp), %xmm1
- 110      F8
- 111 00bb F30F5A45 		cvtss2sd	-4(%rbp), %xmm0
- 111      FC
- 112 00c0 E8000000 		call	glVertex2d@PLT
- 112      00
- 113 00c5 F30F1045 		movss	-8(%rbp), %xmm0
- 113      F8
- 114 00ca F30F5845 		addss	-16(%rbp), %xmm0
- 114      F0
- 115 00cf F30F5AC8 		cvtss2sd	%xmm0, %xmm1
- 116 00d3 F30F5A45 		cvtss2sd	-4(%rbp), %xmm0
- 116      FC
- 117 00d8 E8000000 		call	glVertex2d@PLT
- 117      00
- 118 00dd F30F1045 		movss	-8(%rbp), %xmm0
- 118      F8
- 119 00e2 F30F5845 		addss	-16(%rbp), %xmm0
- 119      F0
- 120 00e7 F30F5AC8 		cvtss2sd	%xmm0, %xmm1
- 121 00eb F30F1045 		movss	-4(%rbp), %xmm0
- 121      FC
- 122 00f0 F30F5845 		addss	-12(%rbp), %xmm0
- 122      F4
- 123 00f5 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 124 00f9 E8000000 		call	glVertex2d@PLT
- 124      00
- 125 00fe F30F5A4D 		cvtss2sd	-8(%rbp), %xmm1
- 125      F8
- 126 0103 F30F1045 		movss	-4(%rbp), %xmm0
- 126      FC
- 127 0108 F30F5845 		addss	-12(%rbp), %xmm0
- 127      F4
- 128 010d F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 129 0111 E8000000 		call	glVertex2d@PLT
- 129      00
- 130 0116 E8000000 		call	glEnd@PLT
- 130      00
-GAS LISTING /tmp/ccYcsGAA.s 			page 4
+ 110 0182 4883C438 		addq	$56, %rsp
+ 111              		.cfi_def_cfa_offset 8
+ 112 0186 C3       		ret
+ 113              		.cfi_endproc
+ 114              	.LFE255:
+ 116              		.globl	_Z12drawTrianglefff
+ 118              	_Z12drawTrianglefff:
+ 119              	.LFB256:
+ 120              		.cfi_startproc
+ 121 0187 4883EC28 		subq	$40, %rsp
+ 122              		.cfi_def_cfa_offset 48
+ 123 018b F30F1144 		movss	%xmm0, 12(%rsp)
+ 123      240C
+ 124 0191 F30F114C 		movss	%xmm1, 16(%rsp)
+ 124      2410
+ 125 0197 F30F1154 		movss	%xmm2, 20(%rsp)
+ 125      2414
+ 126 019d BF040000 		movl	$4, %edi
+ 126      00
+ 127 01a2 E8000000 		call	glBegin@PLT
+ 127      00
+ 128 01a7 660FEFED 		pxor	%xmm5, %xmm5
+ 129 01ab F30F5A6C 		cvtss2sd	16(%rsp), %xmm5
+GAS LISTING /tmp/cceZA1fz.s 			page 4
 
 
- 131 011b 90       		nop
- 132 011c C9       		leave
- 133              		.cfi_def_cfa 7, 8
- 134 011d C3       		ret
- 135              		.cfi_endproc
- 136              	.LFE249:
- 138              		.globl	_Z12drawTrianglefff
- 140              	_Z12drawTrianglefff:
- 141              	.LFB250:
- 142              		.cfi_startproc
- 143 011e 55       		pushq	%rbp
- 144              		.cfi_def_cfa_offset 16
- 145              		.cfi_offset 6, -16
- 146 011f 4889E5   		movq	%rsp, %rbp
- 147              		.cfi_def_cfa_register 6
- 148 0122 4883EC10 		subq	$16, %rsp
- 149 0126 F30F1145 		movss	%xmm0, -4(%rbp)
- 149      FC
- 150 012b F30F114D 		movss	%xmm1, -8(%rbp)
- 150      F8
- 151 0130 F30F1155 		movss	%xmm2, -12(%rbp)
- 151      F4
- 152 0135 BF040000 		movl	$4, %edi
- 152      00
- 153 013a E8000000 		call	glBegin@PLT
- 153      00
- 154 013f F30F5A4D 		cvtss2sd	-8(%rbp), %xmm1
- 154      F8
- 155 0144 F30F5A45 		cvtss2sd	-4(%rbp), %xmm0
- 155      FC
- 156 0149 E8000000 		call	glVertex2d@PLT
- 156      00
- 157 014e F30F5A4D 		cvtss2sd	-8(%rbp), %xmm1
- 157      F8
- 158 0153 F30F1045 		movss	-4(%rbp), %xmm0
- 158      FC
- 159 0158 F30F5845 		addss	-12(%rbp), %xmm0
- 159      F4
- 160 015d F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 161 0161 E8000000 		call	glVertex2d@PLT
- 161      00
- 162 0166 F30F1045 		movss	-8(%rbp), %xmm0
- 162      F8
- 163 016b F30F5845 		addss	-12(%rbp), %xmm0
- 163      F4
- 164 0170 F30F5AD0 		cvtss2sd	%xmm0, %xmm2
- 165 0174 F30F1045 		movss	-12(%rbp), %xmm0
- 165      F4
- 166 0179 F30F100D 		movss	.LC0(%rip), %xmm1
- 166      00000000 
- 167 0181 F30F5EC1 		divss	%xmm1, %xmm0
- 168 0185 F30F5845 		addss	-4(%rbp), %xmm0
- 168      FC
- 169 018a F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 170 018e 660F28CA 		movapd	%xmm2, %xmm1
- 171 0192 E8000000 		call	glVertex2d@PLT
- 171      00
-GAS LISTING /tmp/ccYcsGAA.s 			page 5
+ 129      2410
+ 130 01b1 660FEFC0 		pxor	%xmm0, %xmm0
+ 131 01b5 F30F5A44 		cvtss2sd	12(%rsp), %xmm0
+ 131      240C
+ 132 01bb F20F116C 		movsd	%xmm5, 24(%rsp)
+ 132      2418
+ 133 01c1 660F28CD 		movapd	%xmm5, %xmm1
+ 134 01c5 E8000000 		call	glVertex2d@PLT
+ 134      00
+ 135 01ca F30F1044 		movss	12(%rsp), %xmm0
+ 135      240C
+ 136 01d0 F30F5844 		addss	20(%rsp), %xmm0
+ 136      2414
+ 137 01d6 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
+ 138 01da F20F104C 		movsd	24(%rsp), %xmm1
+ 138      2418
+ 139 01e0 E8000000 		call	glVertex2d@PLT
+ 139      00
+ 140 01e5 F30F104C 		movss	16(%rsp), %xmm1
+ 140      2410
+ 141 01eb F30F1064 		movss	20(%rsp), %xmm4
+ 141      2414
+ 142 01f1 F30F58CC 		addss	%xmm4, %xmm1
+ 143 01f5 F30F5925 		mulss	.LC1(%rip), %xmm4
+ 143      00000000 
+ 144 01fd 0F28C4   		movaps	%xmm4, %xmm0
+ 145 0200 F30F5844 		addss	12(%rsp), %xmm0
+ 145      240C
+ 146 0206 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
+ 147 020a F30F5AC9 		cvtss2sd	%xmm1, %xmm1
+ 148 020e E8000000 		call	glVertex2d@PLT
+ 148      00
+ 149 0213 E8000000 		call	glEnd@PLT
+ 149      00
+ 150 0218 4883C428 		addq	$40, %rsp
+ 151              		.cfi_def_cfa_offset 8
+ 152 021c C3       		ret
+ 153              		.cfi_endproc
+ 154              	.LFE256:
+ 156              		.globl	_Z10drawCirclefffi
+ 158              	_Z10drawCirclefffi:
+ 159              	.LFB257:
+ 160              		.cfi_startproc
+ 161 021d 55       		pushq	%rbp
+ 162              		.cfi_def_cfa_offset 16
+ 163              		.cfi_offset 6, -16
+ 164 021e 53       		pushq	%rbx
+ 165              		.cfi_def_cfa_offset 24
+ 166              		.cfi_offset 3, -24
+ 167 021f 4883EC28 		subq	$40, %rsp
+ 168              		.cfi_def_cfa_offset 64
+ 169 0223 F30F1144 		movss	%xmm0, 24(%rsp)
+ 169      2418
+ 170 0229 F30F114C 		movss	%xmm1, 28(%rsp)
+ 170      241C
+ 171 022f F30F1154 		movss	%xmm2, 12(%rsp)
+ 171      240C
+GAS LISTING /tmp/cceZA1fz.s 			page 5
 
 
- 172 0197 E8000000 		call	glEnd@PLT
- 172      00
- 173 019c 90       		nop
- 174 019d C9       		leave
- 175              		.cfi_def_cfa 7, 8
- 176 019e C3       		ret
- 177              		.cfi_endproc
- 178              	.LFE250:
- 180              		.globl	_Z10drawCirclefffi
- 182              	_Z10drawCirclefffi:
- 183              	.LFB251:
- 184              		.cfi_startproc
- 185 019f 55       		pushq	%rbp
- 186              		.cfi_def_cfa_offset 16
- 187              		.cfi_offset 6, -16
- 188 01a0 4889E5   		movq	%rsp, %rbp
- 189              		.cfi_def_cfa_register 6
- 190 01a3 4883EC20 		subq	$32, %rsp
- 191 01a7 F30F1145 		movss	%xmm0, -20(%rbp)
- 191      EC
- 192 01ac F30F114D 		movss	%xmm1, -24(%rbp)
- 192      E8
- 193 01b1 F30F1155 		movss	%xmm2, -28(%rbp)
- 193      E4
- 194 01b6 897DE0   		movl	%edi, -32(%rbp)
- 195 01b9 BF020000 		movl	$2, %edi
- 195      00
- 196 01be E8000000 		call	glBegin@PLT
- 196      00
- 197 01c3 C745F000 		movl	$0, -16(%rbp)
- 197      000000
- 198              	.L10:
- 199 01ca 8B45F0   		movl	-16(%rbp), %eax
- 200 01cd 3B45E0   		cmpl	-32(%rbp), %eax
- 201 01d0 7D75     		jge	.L9
- 202 01d2 F30F2A4D 		cvtsi2ssl	-16(%rbp), %xmm1
- 202      F0
- 203 01d7 F30F1005 		movss	.LC1(%rip), %xmm0
- 203      00000000 
- 204 01df F30F59C1 		mulss	%xmm1, %xmm0
- 205 01e3 F30F2A4D 		cvtsi2ssl	-32(%rbp), %xmm1
- 205      E0
- 206 01e8 F30F5EC1 		divss	%xmm1, %xmm0
- 207 01ec F30F1145 		movss	%xmm0, -12(%rbp)
- 207      F4
- 208 01f1 8B45F4   		movl	-12(%rbp), %eax
- 209 01f4 660F6EC0 		movd	%eax, %xmm0
- 210 01f8 E8000000 		call	cosf@PLT
- 210      00
- 211 01fd F30F104D 		movss	-28(%rbp), %xmm1
- 211      E4
- 212 0202 F30F59C1 		mulss	%xmm1, %xmm0
- 213 0206 F30F1145 		movss	%xmm0, -8(%rbp)
- 213      F8
- 214 020b 8B45F4   		movl	-12(%rbp), %eax
- 215 020e 660F6EC0 		movd	%eax, %xmm0
- 216 0212 E8000000 		call	sinf@PLT
-GAS LISTING /tmp/ccYcsGAA.s 			page 6
+ 172 0235 89FD     		movl	%edi, %ebp
+ 173 0237 BF020000 		movl	$2, %edi
+ 173      00
+ 174 023c E8000000 		call	glBegin@PLT
+ 174      00
+ 175 0241 BB000000 		movl	$0, %ebx
+ 175      00
+ 176              	.L17:
+ 177 0246 39EB     		cmpl	%ebp, %ebx
+ 178 0248 7D66     		jge	.L16
+ 179 024a 660FEFC0 		pxor	%xmm0, %xmm0
+ 180 024e F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
+ 181 0252 F30F5905 		mulss	.LC2(%rip), %xmm0
+ 181      00000000 
+ 182 025a 660FEFC9 		pxor	%xmm1, %xmm1
+ 183 025e F30F2ACD 		cvtsi2ssl	%ebp, %xmm1
+ 184 0262 F30F5EC1 		divss	%xmm1, %xmm0
+ 185 0266 F30F1144 		movss	%xmm0, 16(%rsp)
+ 185      2410
+ 186 026c E8000000 		call	cosf@PLT
+ 186      00
+ 187 0271 0F28D8   		movaps	%xmm0, %xmm3
+ 188 0274 F30F595C 		mulss	12(%rsp), %xmm3
+ 188      240C
+ 189 027a F30F115C 		movss	%xmm3, 20(%rsp)
+ 189      2414
+ 190 0280 F30F1044 		movss	16(%rsp), %xmm0
+ 190      2410
+ 191 0286 E8000000 		call	sinf@PLT
+ 191      00
+ 192 028b 0F28C8   		movaps	%xmm0, %xmm1
+ 193 028e F30F594C 		mulss	12(%rsp), %xmm1
+ 193      240C
+ 194 0294 F30F1044 		movss	20(%rsp), %xmm0
+ 194      2414
+ 195 029a F30F5844 		addss	24(%rsp), %xmm0
+ 195      2418
+ 196 02a0 F30F584C 		addss	28(%rsp), %xmm1
+ 196      241C
+ 197 02a6 E8000000 		call	glVertex2f@PLT
+ 197      00
+ 198 02ab 83C301   		addl	$1, %ebx
+ 199 02ae EB96     		jmp	.L17
+ 200              	.L16:
+ 201 02b0 E8000000 		call	glEnd@PLT
+ 201      00
+ 202 02b5 4883C428 		addq	$40, %rsp
+ 203              		.cfi_def_cfa_offset 24
+ 204 02b9 5B       		popq	%rbx
+ 205              		.cfi_def_cfa_offset 16
+ 206 02ba 5D       		popq	%rbp
+ 207              		.cfi_def_cfa_offset 8
+ 208 02bb C3       		ret
+ 209              		.cfi_endproc
+ 210              	.LFE257:
+ 212              		.globl	_Z16drawCircleFilledfffi
+ 214              	_Z16drawCircleFilledfffi:
+GAS LISTING /tmp/cceZA1fz.s 			page 6
 
 
- 216      00
- 217 0217 F30F104D 		movss	-28(%rbp), %xmm1
- 217      E4
- 218 021c F30F59C1 		mulss	%xmm1, %xmm0
- 219 0220 F30F1145 		movss	%xmm0, -4(%rbp)
- 219      FC
- 220 0225 F30F1045 		movss	-4(%rbp), %xmm0
- 220      FC
- 221 022a 0F28C8   		movaps	%xmm0, %xmm1
- 222 022d F30F584D 		addss	-24(%rbp), %xmm1
- 222      E8
- 223 0232 F30F1045 		movss	-8(%rbp), %xmm0
- 223      F8
- 224 0237 F30F5845 		addss	-20(%rbp), %xmm0
- 224      EC
- 225 023c E8000000 		call	glVertex2f@PLT
- 225      00
- 226 0241 8345F001 		addl	$1, -16(%rbp)
- 227 0245 EB83     		jmp	.L10
- 228              	.L9:
- 229 0247 E8000000 		call	glEnd@PLT
+ 215              	.LFB258:
+ 216              		.cfi_startproc
+ 217 02bc 55       		pushq	%rbp
+ 218              		.cfi_def_cfa_offset 16
+ 219              		.cfi_offset 6, -16
+ 220 02bd 53       		pushq	%rbx
+ 221              		.cfi_def_cfa_offset 24
+ 222              		.cfi_offset 3, -24
+ 223 02be 4883EC28 		subq	$40, %rsp
+ 224              		.cfi_def_cfa_offset 64
+ 225 02c2 F30F1144 		movss	%xmm0, 24(%rsp)
+ 225      2418
+ 226 02c8 F30F114C 		movss	%xmm1, 28(%rsp)
+ 226      241C
+ 227 02ce F30F1154 		movss	%xmm2, 12(%rsp)
+ 227      240C
+ 228 02d4 89FD     		movl	%edi, %ebp
+ 229 02d6 BF090000 		movl	$9, %edi
  229      00
- 230 024c 90       		nop
- 231 024d C9       		leave
- 232              		.cfi_def_cfa 7, 8
- 233 024e C3       		ret
- 234              		.cfi_endproc
- 235              	.LFE251:
- 237              		.globl	_Z16drawCircleFilledfffi
- 239              	_Z16drawCircleFilledfffi:
- 240              	.LFB252:
- 241              		.cfi_startproc
- 242 024f 55       		pushq	%rbp
- 243              		.cfi_def_cfa_offset 16
- 244              		.cfi_offset 6, -16
- 245 0250 4889E5   		movq	%rsp, %rbp
- 246              		.cfi_def_cfa_register 6
- 247 0253 4883EC20 		subq	$32, %rsp
- 248 0257 F30F1145 		movss	%xmm0, -20(%rbp)
- 248      EC
- 249 025c F30F114D 		movss	%xmm1, -24(%rbp)
- 249      E8
- 250 0261 F30F1155 		movss	%xmm2, -28(%rbp)
- 250      E4
- 251 0266 897DE0   		movl	%edi, -32(%rbp)
- 252 0269 BF090000 		movl	$9, %edi
- 252      00
- 253 026e E8000000 		call	glBegin@PLT
+ 230 02db E8000000 		call	glBegin@PLT
+ 230      00
+ 231 02e0 BB000000 		movl	$0, %ebx
+ 231      00
+ 232              	.L21:
+ 233 02e5 39EB     		cmpl	%ebp, %ebx
+ 234 02e7 7D66     		jge	.L20
+ 235 02e9 660FEFC0 		pxor	%xmm0, %xmm0
+ 236 02ed F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
+ 237 02f1 F30F5905 		mulss	.LC2(%rip), %xmm0
+ 237      00000000 
+ 238 02f9 660FEFC9 		pxor	%xmm1, %xmm1
+ 239 02fd F30F2ACD 		cvtsi2ssl	%ebp, %xmm1
+ 240 0301 F30F5EC1 		divss	%xmm1, %xmm0
+ 241 0305 F30F1144 		movss	%xmm0, 16(%rsp)
+ 241      2410
+ 242 030b E8000000 		call	cosf@PLT
+ 242      00
+ 243 0310 0F28D8   		movaps	%xmm0, %xmm3
+ 244 0313 F30F595C 		mulss	12(%rsp), %xmm3
+ 244      240C
+ 245 0319 F30F115C 		movss	%xmm3, 20(%rsp)
+ 245      2414
+ 246 031f F30F1044 		movss	16(%rsp), %xmm0
+ 246      2410
+ 247 0325 E8000000 		call	sinf@PLT
+ 247      00
+ 248 032a 0F28C8   		movaps	%xmm0, %xmm1
+ 249 032d F30F594C 		mulss	12(%rsp), %xmm1
+ 249      240C
+ 250 0333 F30F1044 		movss	20(%rsp), %xmm0
+ 250      2414
+ 251 0339 F30F5844 		addss	24(%rsp), %xmm0
+ 251      2418
+ 252 033f F30F584C 		addss	28(%rsp), %xmm1
+ 252      241C
+ 253 0345 E8000000 		call	glVertex2f@PLT
  253      00
- 254 0273 C745F000 		movl	$0, -16(%rbp)
- 254      000000
- 255              	.L13:
- 256 027a 8B45F0   		movl	-16(%rbp), %eax
- 257 027d 3B45E0   		cmpl	-32(%rbp), %eax
- 258 0280 7D75     		jge	.L12
- 259 0282 F30F2A4D 		cvtsi2ssl	-16(%rbp), %xmm1
- 259      F0
-GAS LISTING /tmp/ccYcsGAA.s 			page 7
+GAS LISTING /tmp/cceZA1fz.s 			page 7
 
 
- 260 0287 F30F1005 		movss	.LC1(%rip), %xmm0
- 260      00000000 
- 261 028f F30F59C1 		mulss	%xmm1, %xmm0
- 262 0293 F30F2A4D 		cvtsi2ssl	-32(%rbp), %xmm1
- 262      E0
- 263 0298 F30F5EC1 		divss	%xmm1, %xmm0
- 264 029c F30F1145 		movss	%xmm0, -12(%rbp)
- 264      F4
- 265 02a1 8B45F4   		movl	-12(%rbp), %eax
- 266 02a4 660F6EC0 		movd	%eax, %xmm0
- 267 02a8 E8000000 		call	cosf@PLT
- 267      00
- 268 02ad F30F104D 		movss	-28(%rbp), %xmm1
- 268      E4
- 269 02b2 F30F59C1 		mulss	%xmm1, %xmm0
- 270 02b6 F30F1145 		movss	%xmm0, -8(%rbp)
- 270      F8
- 271 02bb 8B45F4   		movl	-12(%rbp), %eax
- 272 02be 660F6EC0 		movd	%eax, %xmm0
- 273 02c2 E8000000 		call	sinf@PLT
- 273      00
- 274 02c7 F30F104D 		movss	-28(%rbp), %xmm1
- 274      E4
- 275 02cc F30F59C1 		mulss	%xmm1, %xmm0
- 276 02d0 F30F1145 		movss	%xmm0, -4(%rbp)
- 276      FC
- 277 02d5 F30F1045 		movss	-4(%rbp), %xmm0
- 277      FC
- 278 02da 0F28C8   		movaps	%xmm0, %xmm1
- 279 02dd F30F584D 		addss	-24(%rbp), %xmm1
- 279      E8
- 280 02e2 F30F1045 		movss	-8(%rbp), %xmm0
- 280      F8
- 281 02e7 F30F5845 		addss	-20(%rbp), %xmm0
- 281      EC
- 282 02ec E8000000 		call	glVertex2f@PLT
- 282      00
- 283 02f1 8345F001 		addl	$1, -16(%rbp)
- 284 02f5 EB83     		jmp	.L13
- 285              	.L12:
- 286 02f7 E8000000 		call	glEnd@PLT
- 286      00
- 287 02fc 90       		nop
- 288 02fd C9       		leave
- 289              		.cfi_def_cfa 7, 8
- 290 02fe C3       		ret
- 291              		.cfi_endproc
- 292              	.LFE252:
- 294              		.globl	_Z7drawOctfff
- 296              	_Z7drawOctfff:
- 297              	.LFB253:
- 298              		.cfi_startproc
- 299 02ff 55       		pushq	%rbp
- 300              		.cfi_def_cfa_offset 16
- 301              		.cfi_offset 6, -16
- 302 0300 4889E5   		movq	%rsp, %rbp
- 303              		.cfi_def_cfa_register 6
-GAS LISTING /tmp/ccYcsGAA.s 			page 8
+ 254 034a 83C301   		addl	$1, %ebx
+ 255 034d EB96     		jmp	.L21
+ 256              	.L20:
+ 257 034f E8000000 		call	glEnd@PLT
+ 257      00
+ 258 0354 4883C428 		addq	$40, %rsp
+ 259              		.cfi_def_cfa_offset 24
+ 260 0358 5B       		popq	%rbx
+ 261              		.cfi_def_cfa_offset 16
+ 262 0359 5D       		popq	%rbp
+ 263              		.cfi_def_cfa_offset 8
+ 264 035a C3       		ret
+ 265              		.cfi_endproc
+ 266              	.LFE258:
+ 268              		.globl	_Z7drawOctfff
+ 270              	_Z7drawOctfff:
+ 271              	.LFB259:
+ 272              		.cfi_startproc
+ 273 035b 4883EC48 		subq	$72, %rsp
+ 274              		.cfi_def_cfa_offset 80
+ 275 035f F30F1104 		movss	%xmm0, (%rsp)
+ 275      24
+ 276 0364 F30F114C 		movss	%xmm1, 8(%rsp)
+ 276      2408
+ 277 036a F30F1154 		movss	%xmm2, 20(%rsp)
+ 277      2414
+ 278 0370 BF090000 		movl	$9, %edi
+ 278      00
+ 279 0375 E8000000 		call	glBegin@PLT
+ 279      00
+ 280 037a F30F105C 		movss	20(%rsp), %xmm3
+ 280      2414
+ 281 0380 0F28E3   		movaps	%xmm3, %xmm4
+ 282 0383 F30F5925 		mulss	.LC3(%rip), %xmm4
+ 282      00000000 
+ 283 038b F30F1164 		movss	%xmm4, 20(%rsp)
+ 283      2414
+ 284 0391 F30F5864 		addss	8(%rsp), %xmm4
+ 284      2408
+ 285 0397 660FEFF6 		pxor	%xmm6, %xmm6
+ 286 039b F30F5AF4 		cvtss2sd	%xmm4, %xmm6
+ 287 039f F30F591D 		mulss	.LC4(%rip), %xmm3
+ 287      00000000 
+ 288 03a7 F30F115C 		movss	%xmm3, 24(%rsp)
+ 288      2418
+ 289 03ad 0F28EB   		movaps	%xmm3, %xmm5
+ 290 03b0 F30F582C 		addss	(%rsp), %xmm5
+ 290      24
+ 291 03b5 660FEFC0 		pxor	%xmm0, %xmm0
+ 292 03b9 F30F5AC5 		cvtss2sd	%xmm5, %xmm0
+ 293 03bd F20F1174 		movsd	%xmm6, 32(%rsp)
+ 293      2420
+ 294 03c3 660F28CE 		movapd	%xmm6, %xmm1
+ 295 03c7 F20F1144 		movsd	%xmm0, 40(%rsp)
+ 295      2428
+ 296 03cd E8000000 		call	glVertex2d@PLT
+ 296      00
+GAS LISTING /tmp/cceZA1fz.s 			page 8
 
 
- 304 0303 4883EC30 		subq	$48, %rsp
- 305 0307 F30F1145 		movss	%xmm0, -20(%rbp)
- 305      EC
- 306 030c F30F114D 		movss	%xmm1, -24(%rbp)
- 306      E8
- 307 0311 F30F1155 		movss	%xmm2, -28(%rbp)
- 307      E4
- 308 0316 F30F1005 		movss	.LC2(%rip), %xmm0
- 308      00000000 
- 309 031e F30F1145 		movss	%xmm0, -4(%rbp)
- 309      FC
- 310 0323 BF090000 		movl	$9, %edi
- 310      00
- 311 0328 E8000000 		call	glBegin@PLT
- 311      00
- 312 032d 8B45FC   		movl	-4(%rbp), %eax
- 313 0330 660F6EC0 		movd	%eax, %xmm0
- 314 0334 E8000000 		call	_ZSt3cosf
- 314      00
- 315 0339 F30F5945 		mulss	-28(%rbp), %xmm0
- 315      E4
- 316 033e F30F5845 		addss	-24(%rbp), %xmm0
- 316      E8
- 317 0343 F30F5AD8 		cvtss2sd	%xmm0, %xmm3
- 318 0347 F20F115D 		movsd	%xmm3, -40(%rbp)
- 318      D8
- 319 034c 8B45FC   		movl	-4(%rbp), %eax
- 320 034f 660F6EC0 		movd	%eax, %xmm0
- 321 0353 E8000000 		call	_ZSt3sinf
- 321      00
- 322 0358 F30F5945 		mulss	-28(%rbp), %xmm0
- 322      E4
- 323 035d F30F5845 		addss	-20(%rbp), %xmm0
- 323      EC
- 324 0362 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 325 0366 F20F104D 		movsd	-40(%rbp), %xmm1
- 325      D8
- 326 036b E8000000 		call	glVertex2d@PLT
- 326      00
- 327 0370 8B45FC   		movl	-4(%rbp), %eax
- 328 0373 660F6EC0 		movd	%eax, %xmm0
- 329 0377 E8000000 		call	_ZSt3cosf
- 329      00
- 330 037c F30F5945 		mulss	-28(%rbp), %xmm0
- 330      E4
- 331 0381 F30F5845 		addss	-24(%rbp), %xmm0
- 331      E8
- 332 0386 F30F5AE0 		cvtss2sd	%xmm0, %xmm4
- 333 038a F20F1165 		movsd	%xmm4, -40(%rbp)
- 333      D8
- 334 038f 8B45FC   		movl	-4(%rbp), %eax
- 335 0392 660F6EC0 		movd	%eax, %xmm0
- 336 0396 E8000000 		call	_ZSt3sinf
+ 297 03d2 F30F1014 		movss	(%rsp), %xmm2
+ 297      24
+ 298 03d7 F30F5C54 		subss	24(%rsp), %xmm2
+ 298      2418
+ 299 03dd 66450FEF 		pxor	%xmm8, %xmm8
+ 299      C0
+ 300 03e2 F3440F5A 		cvtss2sd	%xmm2, %xmm8
+ 300      C2
+ 301 03e7 F20F104C 		movsd	32(%rsp), %xmm1
+ 301      2420
+ 302 03ed F2440F11 		movsd	%xmm8, 32(%rsp)
+ 302      442420
+ 303 03f4 66410F28 		movapd	%xmm8, %xmm0
+ 303      C0
+ 304 03f9 E8000000 		call	glVertex2d@PLT
+ 304      00
+ 305 03fe F30F1074 		movss	24(%rsp), %xmm6
+ 305      2418
+ 306 0404 F30F5874 		addss	8(%rsp), %xmm6
+ 306      2408
+ 307 040a 66450FEF 		pxor	%xmm9, %xmm9
+ 307      C9
+ 308 040f F3440F5A 		cvtss2sd	%xmm6, %xmm9
+ 308      CE
+ 309 0414 F30F100C 		movss	(%rsp), %xmm1
+ 309      24
+ 310 0419 F30F5C4C 		subss	20(%rsp), %xmm1
+ 310      2414
+ 311 041f 660FEFDB 		pxor	%xmm3, %xmm3
+ 312 0423 F30F5AD9 		cvtss2sd	%xmm1, %xmm3
+ 313 0427 F2440F11 		movsd	%xmm9, 48(%rsp)
+ 313      4C2430
+ 314 042e 66410F28 		movapd	%xmm9, %xmm1
+ 314      C9
+ 315 0433 F20F115C 		movsd	%xmm3, 56(%rsp)
+ 315      2438
+ 316 0439 660F28C3 		movapd	%xmm3, %xmm0
+ 317 043d E8000000 		call	glVertex2d@PLT
+ 317      00
+ 318 0442 F30F107C 		movss	8(%rsp), %xmm7
+ 318      2408
+ 319 0448 F30F5C7C 		subss	24(%rsp), %xmm7
+ 319      2418
+ 320 044e 660FEFED 		pxor	%xmm5, %xmm5
+ 321 0452 F30F5AEF 		cvtss2sd	%xmm7, %xmm5
+ 322 0456 F20F116C 		movsd	%xmm5, 24(%rsp)
+ 322      2418
+ 323 045c 660F28CD 		movapd	%xmm5, %xmm1
+ 324 0460 F20F1044 		movsd	56(%rsp), %xmm0
+ 324      2438
+ 325 0466 E8000000 		call	glVertex2d@PLT
+ 325      00
+ 326 046b F30F107C 		movss	8(%rsp), %xmm7
+ 326      2408
+ 327 0471 F30F5C7C 		subss	20(%rsp), %xmm7
+ 327      2414
+ 328 0477 660FEFF6 		pxor	%xmm6, %xmm6
+GAS LISTING /tmp/cceZA1fz.s 			page 9
+
+
+ 329 047b F30F5AF7 		cvtss2sd	%xmm7, %xmm6
+ 330 047f F20F1174 		movsd	%xmm6, 8(%rsp)
+ 330      2408
+ 331 0485 660F28CE 		movapd	%xmm6, %xmm1
+ 332 0489 F20F1044 		movsd	32(%rsp), %xmm0
+ 332      2420
+ 333 048f E8000000 		call	glVertex2d@PLT
+ 333      00
+ 334 0494 F20F104C 		movsd	8(%rsp), %xmm1
+ 334      2408
+ 335 049a F20F1044 		movsd	40(%rsp), %xmm0
+ 335      2428
+ 336 04a0 E8000000 		call	glVertex2d@PLT
  336      00
- 337 039b F30F5945 		mulss	-28(%rbp), %xmm0
- 337      E4
- 338 03a0 0F28C8   		movaps	%xmm0, %xmm1
-GAS LISTING /tmp/ccYcsGAA.s 			page 9
-
-
- 339 03a3 F30F1045 		movss	-20(%rbp), %xmm0
- 339      EC
- 340 03a8 F30F5CC1 		subss	%xmm1, %xmm0
- 341 03ac F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 342 03b0 F20F104D 		movsd	-40(%rbp), %xmm1
- 342      D8
- 343 03b5 E8000000 		call	glVertex2d@PLT
- 343      00
- 344 03ba 8B45FC   		movl	-4(%rbp), %eax
- 345 03bd 660F6EC0 		movd	%eax, %xmm0
- 346 03c1 E8000000 		call	_ZSt3sinf
- 346      00
- 347 03c6 F30F5945 		mulss	-28(%rbp), %xmm0
- 347      E4
- 348 03cb F30F5845 		addss	-24(%rbp), %xmm0
- 348      E8
- 349 03d0 F30F5AE8 		cvtss2sd	%xmm0, %xmm5
- 350 03d4 F20F116D 		movsd	%xmm5, -40(%rbp)
- 350      D8
- 351 03d9 8B45FC   		movl	-4(%rbp), %eax
- 352 03dc 660F6EC0 		movd	%eax, %xmm0
- 353 03e0 E8000000 		call	_ZSt3cosf
- 353      00
- 354 03e5 F30F5945 		mulss	-28(%rbp), %xmm0
- 354      E4
- 355 03ea 0F28C8   		movaps	%xmm0, %xmm1
- 356 03ed F30F1045 		movss	-20(%rbp), %xmm0
- 356      EC
- 357 03f2 F30F5CC1 		subss	%xmm1, %xmm0
- 358 03f6 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 359 03fa F20F104D 		movsd	-40(%rbp), %xmm1
- 359      D8
- 360 03ff E8000000 		call	glVertex2d@PLT
- 360      00
- 361 0404 8B45FC   		movl	-4(%rbp), %eax
- 362 0407 660F6EC0 		movd	%eax, %xmm0
- 363 040b E8000000 		call	_ZSt3sinf
+ 337 04a5 F30F1044 		movss	20(%rsp), %xmm0
+ 337      2414
+ 338 04ab F30F5804 		addss	(%rsp), %xmm0
+ 338      24
+ 339 04b0 660FEFD2 		pxor	%xmm2, %xmm2
+ 340 04b4 F30F5AD0 		cvtss2sd	%xmm0, %xmm2
+ 341 04b8 F20F104C 		movsd	24(%rsp), %xmm1
+ 341      2418
+ 342 04be F20F1114 		movsd	%xmm2, (%rsp)
+ 342      24
+ 343 04c3 660F28C2 		movapd	%xmm2, %xmm0
+ 344 04c7 E8000000 		call	glVertex2d@PLT
+ 344      00
+ 345 04cc F20F104C 		movsd	48(%rsp), %xmm1
+ 345      2430
+ 346 04d2 F20F1004 		movsd	(%rsp), %xmm0
+ 346      24
+ 347 04d7 E8000000 		call	glVertex2d@PLT
+ 347      00
+ 348 04dc E8000000 		call	glEnd@PLT
+ 348      00
+ 349 04e1 4883C448 		addq	$72, %rsp
+ 350              		.cfi_def_cfa_offset 8
+ 351 04e5 C3       		ret
+ 352              		.cfi_endproc
+ 353              	.LFE259:
+ 355              		.globl	_Z8drawQuadfff
+ 357              	_Z8drawQuadfff:
+ 358              	.LFB260:
+ 359              		.cfi_startproc
+ 360 04e6 4883EC08 		subq	$8, %rsp
+ 361              		.cfi_def_cfa_offset 16
+ 362 04ea 0F28DA   		movaps	%xmm2, %xmm3
+ 363 04ed E8000000 		call	_Z8drawRectffff
  363      00
- 364 0410 0F28C8   		movaps	%xmm0, %xmm1
- 365 0413 F30F594D 		mulss	-28(%rbp), %xmm1
- 365      E4
- 366 0418 F30F1045 		movss	-24(%rbp), %xmm0
- 366      E8
- 367 041d F30F5CC1 		subss	%xmm1, %xmm0
- 368 0421 F30F5AF0 		cvtss2sd	%xmm0, %xmm6
- 369 0425 F20F1175 		movsd	%xmm6, -40(%rbp)
- 369      D8
- 370 042a 8B45FC   		movl	-4(%rbp), %eax
- 371 042d 660F6EC0 		movd	%eax, %xmm0
- 372 0431 E8000000 		call	_ZSt3cosf
- 372      00
- 373 0436 F30F5945 		mulss	-28(%rbp), %xmm0
- 373      E4
- 374 043b 0F28C8   		movaps	%xmm0, %xmm1
- 375 043e F30F1045 		movss	-20(%rbp), %xmm0
- 375      EC
- 376 0443 F30F5CC1 		subss	%xmm1, %xmm0
-GAS LISTING /tmp/ccYcsGAA.s 			page 10
+ 364 04f2 4883C408 		addq	$8, %rsp
+ 365              		.cfi_def_cfa_offset 8
+ 366 04f6 C3       		ret
+ 367              		.cfi_endproc
+ 368              	.LFE260:
+ 370              		.section	.rodata.cst4,"aM",@progbits,4
+ 371              		.align 4
+ 372              	.LC0:
+GAS LISTING /tmp/cceZA1fz.s 			page 10
 
 
- 377 0447 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 378 044b F20F104D 		movsd	-40(%rbp), %xmm1
- 378      D8
- 379 0450 E8000000 		call	glVertex2d@PLT
- 379      00
- 380 0455 8B45FC   		movl	-4(%rbp), %eax
- 381 0458 660F6EC0 		movd	%eax, %xmm0
- 382 045c E8000000 		call	_ZSt3cosf
- 382      00
- 383 0461 0F28C8   		movaps	%xmm0, %xmm1
- 384 0464 F30F594D 		mulss	-28(%rbp), %xmm1
- 384      E4
- 385 0469 F30F1045 		movss	-24(%rbp), %xmm0
- 385      E8
- 386 046e F30F5CC1 		subss	%xmm1, %xmm0
- 387 0472 F30F5AF8 		cvtss2sd	%xmm0, %xmm7
- 388 0476 F20F117D 		movsd	%xmm7, -40(%rbp)
- 388      D8
- 389 047b 8B45FC   		movl	-4(%rbp), %eax
- 390 047e 660F6EC0 		movd	%eax, %xmm0
- 391 0482 E8000000 		call	_ZSt3sinf
- 391      00
- 392 0487 F30F5945 		mulss	-28(%rbp), %xmm0
- 392      E4
- 393 048c 0F28C8   		movaps	%xmm0, %xmm1
- 394 048f F30F1045 		movss	-20(%rbp), %xmm0
- 394      EC
- 395 0494 F30F5CC1 		subss	%xmm1, %xmm0
- 396 0498 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 397 049c F20F104D 		movsd	-40(%rbp), %xmm1
- 397      D8
- 398 04a1 E8000000 		call	glVertex2d@PLT
- 398      00
- 399 04a6 8B45FC   		movl	-4(%rbp), %eax
- 400 04a9 660F6EC0 		movd	%eax, %xmm0
- 401 04ad E8000000 		call	_ZSt3cosf
- 401      00
- 402 04b2 0F28C8   		movaps	%xmm0, %xmm1
- 403 04b5 F30F594D 		mulss	-28(%rbp), %xmm1
- 403      E4
- 404 04ba F30F1045 		movss	-24(%rbp), %xmm0
- 404      E8
- 405 04bf F30F5CC1 		subss	%xmm1, %xmm0
- 406 04c3 F30F5AD0 		cvtss2sd	%xmm0, %xmm2
- 407 04c7 F20F1155 		movsd	%xmm2, -40(%rbp)
- 407      D8
- 408 04cc 8B45FC   		movl	-4(%rbp), %eax
- 409 04cf 660F6EC0 		movd	%eax, %xmm0
- 410 04d3 E8000000 		call	_ZSt3sinf
- 410      00
- 411 04d8 F30F5945 		mulss	-28(%rbp), %xmm0
- 411      E4
- 412 04dd F30F5845 		addss	-20(%rbp), %xmm0
- 412      EC
- 413 04e2 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 414 04e6 F20F104D 		movsd	-40(%rbp), %xmm1
- 414      D8
-GAS LISTING /tmp/ccYcsGAA.s 			page 11
-
-
- 415 04eb E8000000 		call	glVertex2d@PLT
- 415      00
- 416 04f0 8B45FC   		movl	-4(%rbp), %eax
- 417 04f3 660F6EC0 		movd	%eax, %xmm0
- 418 04f7 E8000000 		call	_ZSt3sinf
- 418      00
- 419 04fc 0F28C8   		movaps	%xmm0, %xmm1
- 420 04ff F30F594D 		mulss	-28(%rbp), %xmm1
- 420      E4
- 421 0504 F30F1045 		movss	-24(%rbp), %xmm0
- 421      E8
- 422 0509 F30F5CC1 		subss	%xmm1, %xmm0
- 423 050d F30F5AD8 		cvtss2sd	%xmm0, %xmm3
- 424 0511 F20F115D 		movsd	%xmm3, -40(%rbp)
- 424      D8
- 425 0516 8B45FC   		movl	-4(%rbp), %eax
- 426 0519 660F6EC0 		movd	%eax, %xmm0
- 427 051d E8000000 		call	_ZSt3cosf
- 427      00
- 428 0522 F30F5945 		mulss	-28(%rbp), %xmm0
- 428      E4
- 429 0527 F30F5845 		addss	-20(%rbp), %xmm0
- 429      EC
- 430 052c F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 431 0530 F20F104D 		movsd	-40(%rbp), %xmm1
- 431      D8
- 432 0535 E8000000 		call	glVertex2d@PLT
- 432      00
- 433 053a 8B45FC   		movl	-4(%rbp), %eax
- 434 053d 660F6EC0 		movd	%eax, %xmm0
- 435 0541 E8000000 		call	_ZSt3sinf
- 435      00
- 436 0546 F30F5945 		mulss	-28(%rbp), %xmm0
- 436      E4
- 437 054b F30F5845 		addss	-24(%rbp), %xmm0
- 437      E8
- 438 0550 F30F5AE0 		cvtss2sd	%xmm0, %xmm4
- 439 0554 F20F1165 		movsd	%xmm4, -40(%rbp)
- 439      D8
- 440 0559 8B45FC   		movl	-4(%rbp), %eax
- 441 055c 660F6EC0 		movd	%eax, %xmm0
- 442 0560 E8000000 		call	_ZSt3cosf
- 442      00
- 443 0565 F30F5945 		mulss	-28(%rbp), %xmm0
- 443      E4
- 444 056a F30F5845 		addss	-20(%rbp), %xmm0
- 444      EC
- 445 056f F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 446 0573 F20F104D 		movsd	-40(%rbp), %xmm1
- 446      D8
- 447 0578 E8000000 		call	glVertex2d@PLT
- 447      00
- 448 057d E8000000 		call	glEnd@PLT
- 448      00
- 449 0582 90       		nop
- 450 0583 C9       		leave
- 451              		.cfi_def_cfa 7, 8
-GAS LISTING /tmp/ccYcsGAA.s 			page 12
-
-
- 452 0584 C3       		ret
- 453              		.cfi_endproc
- 454              	.LFE253:
- 456              		.section	.rodata
- 457              		.align 4
- 458              	.LC0:
- 459 0000 00000040 		.long	1073741824
- 460              		.align 4
- 461              	.LC1:
- 462 0004 DA0FC940 		.long	1086918618
- 463              		.align 4
- 464              	.LC2:
- 465 0008 CDCCB241 		.long	1102236877
- 466              		.ident	"GCC: (GNU) 9.1.0"
- 467              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccYcsGAA.s 			page 13
+ 373 0000 00007F43 		.long	1132396544
+ 374              		.align 4
+ 375              	.LC1:
+ 376 0004 0000003F 		.long	1056964608
+ 377              		.align 4
+ 378              	.LC2:
+ 379 0008 DA0FC940 		.long	1086918618
+ 380              		.align 4
+ 381              	.LC3:
+ 382 000c 67B16FBF 		.long	3211768167
+ 383              		.align 4
+ 384              	.LC4:
+ 385 0010 69D0B3BE 		.long	3199455337
+ 386              		.ident	"GCC: (GNU) 9.1.0"
+ 387              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/cceZA1fz.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 routines.cpp
-     /tmp/ccYcsGAA.s:6      .text._ZSt3cosf:0000000000000000 _ZSt3cosf
-     /tmp/ccYcsGAA.s:28     .text._ZSt3sinf:0000000000000000 _ZSt3sinf
-     /tmp/ccYcsGAA.s:50     .text:0000000000000000 _Z8drawLineffff
-     /tmp/ccYcsGAA.s:81     .text:000000000000004c _Z8drawRectffff
-     /tmp/ccYcsGAA.s:140    .text:000000000000011e _Z12drawTrianglefff
-     /tmp/ccYcsGAA.s:182    .text:000000000000019f _Z10drawCirclefffi
-     /tmp/ccYcsGAA.s:239    .text:000000000000024f _Z16drawCircleFilledfffi
-     /tmp/ccYcsGAA.s:296    .text:00000000000002ff _Z7drawOctfff
+     /tmp/cceZA1fz.s:5      .text:0000000000000000 _Z10glSetColorj
+     /tmp/cceZA1fz.s:34     .text:000000000000004c _Z8drawLineffff
+     /tmp/cceZA1fz.s:64     .text:00000000000000ac _Z8drawRectffff
+     /tmp/cceZA1fz.s:118    .text:0000000000000187 _Z12drawTrianglefff
+     /tmp/cceZA1fz.s:158    .text:000000000000021d _Z10drawCirclefffi
+     /tmp/cceZA1fz.s:214    .text:00000000000002bc _Z16drawCircleFilledfffi
+     /tmp/cceZA1fz.s:270    .text:000000000000035b _Z7drawOctfff
+     /tmp/cceZA1fz.s:357    .text:00000000000004e6 _Z8drawQuadfff
+     /tmp/cceZA1fz.s:372    .rodata.cst4:0000000000000000 .LC0
+     /tmp/cceZA1fz.s:375    .rodata.cst4:0000000000000004 .LC1
+     /tmp/cceZA1fz.s:378    .rodata.cst4:0000000000000008 .LC2
+     /tmp/cceZA1fz.s:381    .rodata.cst4:000000000000000c .LC3
+     /tmp/cceZA1fz.s:384    .rodata.cst4:0000000000000010 .LC4
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_
-cosf
-sinf
+glColor3f
 glBegin
 glVertex2d
 glEnd
+cosf
+sinf
 glVertex2f

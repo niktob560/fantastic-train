@@ -1,0 +1,256 @@
+GAS LISTING /tmp/cc99Ce8I.s 			page 1
+
+
+   1              		.file	"findwayBases.cpp"
+   2              		.text
+   4              	_Z41__static_initialization_and_destruction_0ii:
+   5              	.LFB2040:
+   6              		.cfi_startproc
+   7 0000 83FF01   		cmpl	$1, %edi
+   8 0003 7401     		je	.L7
+   9              	.L4:
+  10 0005 C3       		ret
+  11              	.L7:
+  12 0006 81FEFFFF 		cmpl	$65535, %esi
+  12      0000
+  13 000c 75F7     		jne	.L4
+  14 000e 4883EC08 		subq	$8, %rsp
+  15              		.cfi_def_cfa_offset 16
+  16 0012 488D3D00 		leaq	_ZStL8__ioinit(%rip), %rdi
+  16      000000
+  17 0019 E8000000 		call	_ZNSt8ios_base4InitC1Ev@PLT
+  17      00
+  18 001e 488D1500 		leaq	__dso_handle(%rip), %rdx
+  18      000000
+  19 0025 488D3500 		leaq	_ZStL8__ioinit(%rip), %rsi
+  19      000000
+  20 002c 488B3D00 		movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rdi
+  20      000000
+  21 0033 E8000000 		call	__cxa_atexit@PLT
+  21      00
+  22 0038 4883C408 		addq	$8, %rsp
+  23              		.cfi_def_cfa_offset 8
+  24 003c C3       		ret
+  25              		.cfi_endproc
+  26              	.LFE2040:
+  28              		.globl	_Z15hasIntersectionPK8baselineS1_
+  30              	_Z15hasIntersectionPK8baselineS1_:
+  31              	.LFB1718:
+  32              		.cfi_startproc
+  33 003d F30F1007 		movss	(%rdi), %xmm0
+  34 0041 0F2E06   		ucomiss	(%rsi), %xmm0
+  35 0044 0F9AC0   		setp	%al
+  36 0047 BA010000 		movl	$1, %edx
+  36      00
+  37 004c 0F45C2   		cmovne	%edx, %eax
+  38 004f C3       		ret
+  39              		.cfi_endproc
+  40              	.LFE1718:
+  42              		.globl	_Z15getIntersectionPK8baselineS1_
+  44              	_Z15getIntersectionPK8baselineS1_:
+  45              	.LFB1719:
+  46              		.cfi_startproc
+  47 0050 F30F105E 		movss	4(%rsi), %xmm3
+  47      04
+  48 0055 F30F1047 		movss	4(%rdi), %xmm0
+  48      04
+  49 005a 0F28CB   		movaps	%xmm3, %xmm1
+  50 005d F30F5CC8 		subss	%xmm0, %xmm1
+  51 0061 F30F1027 		movss	(%rdi), %xmm4
+  52 0065 F30F1016 		movss	(%rsi), %xmm2
+GAS LISTING /tmp/cc99Ce8I.s 			page 2
+
+
+  53 0069 0F28EC   		movaps	%xmm4, %xmm5
+  54 006c F30F5CEA 		subss	%xmm2, %xmm5
+  55 0070 F30F5ECD 		divss	%xmm5, %xmm1
+  56 0074 F30F59C2 		mulss	%xmm2, %xmm0
+  57 0078 F30F59DC 		mulss	%xmm4, %xmm3
+  58 007c F30F5CC3 		subss	%xmm3, %xmm0
+  59 0080 F30F5CD4 		subss	%xmm4, %xmm2
+  60 0084 F30F5EC2 		divss	%xmm2, %xmm0
+  61 0088 66480F7E 		movq	%xmm0, %rax
+  61      C0
+  62 008d 48C1E020 		salq	$32, %rax
+  63 0091 660F7ECA 		movd	%xmm1, %edx
+  64 0095 4809D0   		orq	%rdx, %rax
+  65 0098 66480F6E 		movq	%rax, %xmm0
+  65      C0
+  66 009d C3       		ret
+  67              		.cfi_endproc
+  68              	.LFE1719:
+  70              		.globl	_Z11isDotInsidePK6coordsPK8obstacle
+  72              	_Z11isDotInsidePK6coordsPK8obstacle:
+  73              	.LFB1720:
+  74              		.cfi_startproc
+  75 009e F30F100F 		movss	(%rdi), %xmm1
+  76 00a2 488B06   		movq	(%rsi), %rax
+  77 00a5 F30F1000 		movss	(%rax), %xmm0
+  78 00a9 0F2FC8   		comiss	%xmm0, %xmm1
+  79 00ac 722C     		jb	.L22
+  80 00ae F30F1056 		movss	8(%rsi), %xmm2
+  80      08
+  81 00b3 F30F58C2 		addss	%xmm2, %xmm0
+  82 00b7 0F2FC1   		comiss	%xmm1, %xmm0
+  83 00ba 7224     		jb	.L23
+  84 00bc F30F1047 		movss	4(%rdi), %xmm0
+  84      04
+  85 00c1 F30F1048 		movss	4(%rax), %xmm1
+  85      04
+  86 00c6 0F2FC1   		comiss	%xmm1, %xmm0
+  87 00c9 721B     		jb	.L24
+  88 00cb F30F58D1 		addss	%xmm1, %xmm2
+  89 00cf 0F2FD0   		comiss	%xmm0, %xmm2
+  90 00d2 7318     		jnb	.L18
+  91 00d4 B8000000 		movl	$0, %eax
+  91      00
+  92 00d9 C3       		ret
+  93              	.L22:
+  94 00da B8000000 		movl	$0, %eax
+  94      00
+  95 00df C3       		ret
+  96              	.L23:
+  97 00e0 B8000000 		movl	$0, %eax
+  97      00
+  98 00e5 C3       		ret
+  99              	.L24:
+ 100 00e6 B8000000 		movl	$0, %eax
+ 100      00
+ 101 00eb C3       		ret
+ 102              	.L18:
+GAS LISTING /tmp/cc99Ce8I.s 			page 3
+
+
+ 103 00ec B8010000 		movl	$1, %eax
+ 103      00
+ 104 00f1 C3       		ret
+ 105              		.cfi_endproc
+ 106              	.LFE1720:
+ 108              		.globl	_Z14vectToBaselinePK4vect
+ 110              	_Z14vectToBaselinePK4vect:
+ 111              	.LFB1721:
+ 112              		.cfi_startproc
+ 113 00f2 F30F1047 		movss	12(%rdi), %xmm0
+ 113      0C
+ 114 00f7 F30F5E47 		divss	8(%rdi), %xmm0
+ 114      08
+ 115 00fc 488B07   		movq	(%rdi), %rax
+ 116 00ff 8B4004   		movl	4(%rax), %eax
+ 117 0102 48C1E020 		salq	$32, %rax
+ 118 0106 4889C2   		movq	%rax, %rdx
+ 119 0109 660F7EC0 		movd	%xmm0, %eax
+ 120 010d 4809D0   		orq	%rdx, %rax
+ 121 0110 66480F6E 		movq	%rax, %xmm0
+ 121      C0
+ 122 0115 C3       		ret
+ 123              		.cfi_endproc
+ 124              	.LFE1721:
+ 126              		.globl	_Z6getLenPK6coordsS1_
+ 128              	_Z6getLenPK6coordsS1_:
+ 129              	.LFB1722:
+ 130              		.cfi_startproc
+ 131 0116 4883EC08 		subq	$8, %rsp
+ 132              		.cfi_def_cfa_offset 16
+ 133 011a F30F1007 		movss	(%rdi), %xmm0
+ 134 011e F30F100E 		movss	(%rsi), %xmm1
+ 135 0122 0F28D0   		movaps	%xmm0, %xmm2
+ 136 0125 F30F59D1 		mulss	%xmm1, %xmm2
+ 137 0129 F30F5CC2 		subss	%xmm2, %xmm0
+ 138 012d F30F5CC1 		subss	%xmm1, %xmm0
+ 139 0131 F30F104F 		movss	4(%rdi), %xmm1
+ 139      04
+ 140 0136 F30F1056 		movss	4(%rsi), %xmm2
+ 140      04
+ 141 013b 0F28D9   		movaps	%xmm1, %xmm3
+ 142 013e F30F59DA 		mulss	%xmm2, %xmm3
+ 143 0142 F30F5CCB 		subss	%xmm3, %xmm1
+ 144 0146 F30F5CCA 		subss	%xmm2, %xmm1
+ 145 014a F30F58C1 		addss	%xmm1, %xmm0
+ 146 014e E8000000 		call	sqrtf@PLT
+ 146      00
+ 147              		.cfi_endproc
+ 148              	.LFE1722:
+ 150              		.globl	_Z14createObstaclefff
+ 152              	_Z14createObstaclefff:
+ 153              	.LFB1723:
+ 154              		.cfi_startproc
+ 155 0153 55       		pushq	%rbp
+ 156              		.cfi_def_cfa_offset 16
+ 157              		.cfi_offset 6, -16
+ 158 0154 53       		pushq	%rbx
+GAS LISTING /tmp/cc99Ce8I.s 			page 4
+
+
+ 159              		.cfi_def_cfa_offset 24
+ 160              		.cfi_offset 3, -24
+ 161 0155 4883EC18 		subq	$24, %rsp
+ 162              		.cfi_def_cfa_offset 48
+ 163 0159 660F7EC5 		movd	%xmm0, %ebp
+ 164 015d 660F7ECB 		movd	%xmm1, %ebx
+ 165 0161 F30F1154 		movss	%xmm2, 12(%rsp)
+ 165      240C
+ 166 0167 BF080000 		movl	$8, %edi
+ 166      00
+ 167 016c E8000000 		call	malloc@PLT
+ 167      00
+ 168 0171 8928     		movl	%ebp, (%rax)
+ 169 0173 895804   		movl	%ebx, 4(%rax)
+ 170 0176 F30F1044 		movss	12(%rsp), %xmm0
+ 170      240C
+ 171 017c 4883C418 		addq	$24, %rsp
+ 172              		.cfi_def_cfa_offset 24
+ 173 0180 5B       		popq	%rbx
+ 174              		.cfi_def_cfa_offset 16
+ 175 0181 5D       		popq	%rbp
+ 176              		.cfi_def_cfa_offset 8
+ 177 0182 C3       		ret
+ 178              		.cfi_endproc
+ 179              	.LFE1723:
+ 182              	_GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_:
+ 183              	.LFB2041:
+ 184              		.cfi_startproc
+ 185 0183 4883EC08 		subq	$8, %rsp
+ 186              		.cfi_def_cfa_offset 16
+ 187 0187 BEFFFF00 		movl	$65535, %esi
+ 187      00
+ 188 018c BF010000 		movl	$1, %edi
+ 188      00
+ 189 0191 E86AFEFF 		call	_Z41__static_initialization_and_destruction_0ii
+ 189      FF
+ 190 0196 4883C408 		addq	$8, %rsp
+ 191              		.cfi_def_cfa_offset 8
+ 192 019a C3       		ret
+ 193              		.cfi_endproc
+ 194              	.LFE2041:
+ 196              		.section	.init_array,"aw"
+ 197              		.align 8
+ 198 0000 00000000 		.quad	_GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_
+ 198      00000000 
+ 199              		.local	_ZStL8__ioinit
+ 200              		.comm	_ZStL8__ioinit,1,1
+ 201              		.hidden	__dso_handle
+ 202              		.ident	"GCC: (GNU) 9.1.0"
+ 203              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/cc99Ce8I.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 findwayBases.cpp
+     /tmp/cc99Ce8I.s:4      .text:0000000000000000 _Z41__static_initialization_and_destruction_0ii
+                             .bss:0000000000000000 _ZStL8__ioinit
+     /tmp/cc99Ce8I.s:30     .text:000000000000003d _Z15hasIntersectionPK8baselineS1_
+     /tmp/cc99Ce8I.s:44     .text:0000000000000050 _Z15getIntersectionPK8baselineS1_
+     /tmp/cc99Ce8I.s:72     .text:000000000000009e _Z11isDotInsidePK6coordsPK8obstacle
+     /tmp/cc99Ce8I.s:110    .text:00000000000000f2 _Z14vectToBaselinePK4vect
+     /tmp/cc99Ce8I.s:128    .text:0000000000000116 _Z6getLenPK6coordsS1_
+     /tmp/cc99Ce8I.s:152    .text:0000000000000153 _Z14createObstaclefff
+     /tmp/cc99Ce8I.s:182    .text:0000000000000183 _GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_
+
+UNDEFINED SYMBOLS
+_GLOBAL_OFFSET_TABLE_
+_ZNSt8ios_base4InitC1Ev
+__dso_handle
+_ZNSt8ios_base4InitD1Ev
+__cxa_atexit
+sqrtf
+malloc

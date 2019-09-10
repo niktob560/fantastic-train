@@ -1,5 +1,12 @@
 #include "routines.hpp"
 
+
+void glSetColor(uint32_t color)
+{
+	glColor3f((float)((color >> 16) & 0xFF) / 255, (float)((color >> 8) & 0xFF) / 255, (float)(color & 0xFF) / 255);
+}
+
+
 void drawLine(float x1, float y1, float x2, float y2)
 {
 	glBegin(GL_LINES);
@@ -71,4 +78,9 @@ void drawOct(float x, float y, float a)
 	glVertex2d(x + a * cos(alpha), y - a * sin(alpha));
 	glVertex2d(x + a * cos(alpha), y + a * sin(alpha));
 	glEnd();
+}
+
+void drawQuad(float x, float y, float a)
+{
+	drawRect(x, y, a, a);
 }
