@@ -1,11 +1,11 @@
-GAS LISTING /tmp/ccjNsti9.s 			page 1
+GAS LISTING /tmp/ccVEegCs.s 			page 1
 
 
    1              		.file	"main.cpp"
    2              		.text
    3              		.globl	_Z7reshapeii
    5              	_Z7reshapeii:
-   6              	.LFB2473:
+   6              	.LFB2478:
    7              		.cfi_startproc
    8 0000 55       		pushq	%rbp
    9              		.cfi_def_cfa_offset 16
@@ -53,12 +53,12 @@ GAS LISTING /tmp/ccjNsti9.s 			page 1
   41              		.cfi_def_cfa_offset 8
   42 005e C3       		ret
   43              		.cfi_endproc
-  44              	.LFE2473:
+  44              	.LFE2478:
   46              		.globl	_Z4timfi
   48              	_Z4timfi:
-  49              	.LFB2474:
+  49              	.LFB2479:
   50              		.cfi_startproc
-GAS LISTING /tmp/ccjNsti9.s 			page 2
+GAS LISTING /tmp/ccVEegCs.s 			page 2
 
 
   51 005f 4883EC08 		subq	$8, %rsp
@@ -89,9 +89,9 @@ GAS LISTING /tmp/ccjNsti9.s 			page 1
   68 0098 E8000000 		call	exit@PLT
   68      00
   69              		.cfi_endproc
-  70              	.LFE2474:
+  70              	.LFE2479:
   73              	_Z41__static_initialization_and_destruction_0ii:
-  74              	.LFB2820:
+  74              	.LFB2825:
   75              		.cfi_startproc
   76 009d 83FF01   		cmpl	$1, %edi
   77 00a0 7401     		je	.L13
@@ -118,11 +118,11 @@ GAS LISTING /tmp/ccjNsti9.s 			page 1
   91 00d5 4883C408 		addq	$8, %rsp
   92              		.cfi_def_cfa_offset 8
   93 00d9 C3       		ret
-GAS LISTING /tmp/ccjNsti9.s 			page 3
+GAS LISTING /tmp/ccVEegCs.s 			page 3
 
 
   94              		.cfi_endproc
-  95              	.LFE2820:
+  95              	.LFE2825:
   97              		.section	.rodata.str1.1,"aMS",@progbits,1
   98              	.LC1:
   99 0000 50524553 		.string	"PRESSED\n"
@@ -134,7 +134,7 @@ GAS LISTING /tmp/ccjNsti9.s 			page 1
  102              		.text
  103              		.globl	_Z14handleKeypresshii
  105              	_Z14handleKeypresshii:
- 106              	.LFB2472:
+ 106              	.LFB2477:
  107              		.cfi_startproc
  108 00da 4154     		pushq	%r12
  109              		.cfi_def_cfa_offset 16
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccjNsti9.s 			page 1
  138 0136 E8000000 		call	_ZNSo3putEc@PLT
  138      00
  139 013b 4889C7   		movq	%rax, %rdi
-GAS LISTING /tmp/ccjNsti9.s 			page 4
+GAS LISTING /tmp/ccVEegCs.s 			page 4
 
 
  140 013e E8000000 		call	_ZNSo5flushEv@PLT
@@ -222,403 +222,823 @@ GAS LISTING /tmp/ccjNsti9.s 			page 1
  169      000001
  170 018d EBBA     		jmp	.L14
  171              		.cfi_endproc
- 172              	.LFE2472:
- 174              		.globl	_Z12drawObstaclePK8obstacle
- 176              	_Z12drawObstaclePK8obstacle:
+ 172              	.LFE2477:
+ 174              		.globl	_Z12calculateWayv
+ 176              	_Z12calculateWayv:
  177              	.LFB2470:
  178              		.cfi_startproc
- 179 018f 53       		pushq	%rbx
- 180              		.cfi_def_cfa_offset 16
- 181              		.cfi_offset 3, -16
- 182 0190 4889FB   		movq	%rdi, %rbx
- 183 0193 BF0000FF 		movl	$16711680, %edi
- 183      00
- 184 0198 E8000000 		call	_Z10glSetColorj@PLT
- 184      00
- 185 019d 488B03   		movq	(%rbx), %rax
- 186 01a0 F30F1053 		movss	8(%rbx), %xmm2
- 186      08
-GAS LISTING /tmp/ccjNsti9.s 			page 5
+ 179 018f C3       		ret
+ 180              		.cfi_endproc
+ 181              	.LFE2470:
+ 183              		.globl	_Z10createVectPK8obstaclehf
+ 185              	_Z10createVectPK8obstaclehf:
+ 186              	.LFB2471:
+ 187              		.cfi_startproc
+ 188 0190 55       		pushq	%rbp
+ 189              		.cfi_def_cfa_offset 16
+ 190              		.cfi_offset 6, -16
+ 191 0191 53       		pushq	%rbx
+GAS LISTING /tmp/ccVEegCs.s 			page 5
 
 
- 187 01a5 F30F1048 		movss	4(%rax), %xmm1
- 187      04
- 188 01aa F30F1000 		movss	(%rax), %xmm0
- 189 01ae E8000000 		call	_Z8drawQuadfff@PLT
- 189      00
- 190 01b3 5B       		popq	%rbx
- 191              		.cfi_def_cfa_offset 8
- 192 01b4 C3       		ret
- 193              		.cfi_endproc
- 194              	.LFE2470:
- 196              		.globl	_Z11renderScenev
- 198              	_Z11renderScenev:
- 199              	.LFB2471:
- 200              		.cfi_startproc
- 201 01b5 53       		pushq	%rbx
- 202              		.cfi_def_cfa_offset 16
- 203              		.cfi_offset 3, -16
- 204 01b6 BF004000 		movl	$16384, %edi
- 204      00
- 205 01bb E8000000 		call	glClear@PLT
- 205      00
- 206 01c0 BB000000 		movl	$0, %ebx
- 206      00
- 207              	.L26:
- 208 01c5 48391D00 		cmpq	%rbx, numOfObstacles(%rip)
- 208      000000
- 209 01cc 7619     		jbe	.L25
- 210 01ce 4889DF   		movq	%rbx, %rdi
- 211 01d1 48C1E704 		salq	$4, %rdi
- 212 01d5 48033D00 		addq	obstacles(%rip), %rdi
- 212      000000
- 213 01dc E8000000 		call	_Z12drawObstaclePK8obstacle
- 213      00
- 214 01e1 4883C301 		addq	$1, %rbx
- 215 01e5 EBDE     		jmp	.L26
- 216              	.L25:
- 217 01e7 BF00FF00 		movl	$65280, %edi
- 217      00
- 218 01ec E8000000 		call	_Z10glSetColorj@PLT
- 218      00
- 219 01f1 F30F101D 		movss	4+endway(%rip), %xmm3
- 219      00000000 
- 220 01f9 F30F1015 		movss	endway(%rip), %xmm2
- 220      00000000 
- 221 0201 F30F100D 		movss	4+startway(%rip), %xmm1
- 221      00000000 
- 222 0209 F30F1005 		movss	startway(%rip), %xmm0
- 222      00000000 
- 223 0211 E8000000 		call	_Z8drawLineffff@PLT
- 223      00
- 224 0216 E8000000 		call	glutSwapBuffers@PLT
- 224      00
- 225 021b 5B       		popq	%rbx
- 226              		.cfi_def_cfa_offset 8
- 227 021c C3       		ret
- 228              		.cfi_endproc
- 229              	.LFE2471:
-GAS LISTING /tmp/ccjNsti9.s 			page 6
+ 192              		.cfi_def_cfa_offset 24
+ 193              		.cfi_offset 3, -24
+ 194 0192 4883EC18 		subq	$24, %rsp
+ 195              		.cfi_def_cfa_offset 48
+ 196 0196 F30F1144 		movss	%xmm0, 12(%rsp)
+ 196      240C
+ 197 019c 400FB6F6 		movzbl	%sil, %esi
+ 198 01a0 E8000000 		call	_Z17getCoordsOfCornerPK8obstacleh@PLT
+ 198      00
+ 199 01a5 4889C5   		movq	%rax, %rbp
+ 200 01a8 488B0500 		movq	QUAD_CHECK_SIDE(%rip), %rax
+ 200      000000
+ 201 01af 4885C0   		testq	%rax, %rax
+ 202 01b2 7844     		js	.L24
+ 203 01b4 660FEFD2 		pxor	%xmm2, %xmm2
+ 204 01b8 F3480F2A 		cvtsi2ssq	%rax, %xmm2
+ 204      D0
+ 205 01bd F30F1154 		movss	%xmm2, 8(%rsp)
+ 205      2408
+ 206              	.L25:
+ 207 01c3 F30F1044 		movss	8(%rsp), %xmm0
+ 207      2408
+ 208 01c9 660F7EC3 		movd	%xmm0, %ebx
+ 209 01cd F30F1044 		movss	12(%rsp), %xmm0
+ 209      240C
+ 210 01d3 E8000000 		call	tanf@PLT
+ 210      00
+ 211 01d8 F30F5944 		mulss	8(%rsp), %xmm0
+ 211      2408
+ 212 01de 660F7EC0 		movd	%xmm0, %eax
+ 213 01e2 48C1E020 		salq	$32, %rax
+ 214 01e6 4809C3   		orq	%rax, %rbx
+ 215 01e9 4889E8   		movq	%rbp, %rax
+ 216 01ec 66480F6E 		movq	%rbx, %xmm0
+ 216      C3
+ 217 01f1 4883C418 		addq	$24, %rsp
+ 218              		.cfi_remember_state
+ 219              		.cfi_def_cfa_offset 24
+ 220 01f5 5B       		popq	%rbx
+ 221              		.cfi_def_cfa_offset 16
+ 222 01f6 5D       		popq	%rbp
+ 223              		.cfi_def_cfa_offset 8
+ 224 01f7 C3       		ret
+ 225              	.L24:
+ 226              		.cfi_restore_state
+ 227 01f8 4889C2   		movq	%rax, %rdx
+ 228 01fb 48D1EA   		shrq	%rdx
+ 229 01fe 83E001   		andl	$1, %eax
+ 230 0201 4809C2   		orq	%rax, %rdx
+ 231 0204 660FEFC0 		pxor	%xmm0, %xmm0
+ 232 0208 F3480F2A 		cvtsi2ssq	%rdx, %xmm0
+ 232      C2
+ 233 020d F30F58C0 		addss	%xmm0, %xmm0
+ 234 0211 F30F1144 		movss	%xmm0, 8(%rsp)
+ 234      2408
+ 235 0217 EBAA     		jmp	.L25
+ 236              		.cfi_endproc
+GAS LISTING /tmp/ccVEegCs.s 			page 6
 
 
- 231              		.section	.rodata.str1.1
- 232              	.LC9:
- 233 000e 676C7574 		.string	"glut init\n"
- 233      20696E69 
- 233      740A00
- 234              	.LC10:
- 235 0019 64697370 		.string	"dispmode\n"
- 235      6D6F6465 
- 235      0A00
- 236              	.LC11:
- 237 0023 666C6F61 		.string	"floating"
- 237      74696E67 
- 237      00
- 238              	.LC12:
- 239 002c 72657368 		.string	"reshape\n"
- 239      6170650A 
- 239      00
- 240              	.LC13:
- 241 0035 64697370 		.string	"dispfunc\n"
- 241      66756E63 
- 241      0A00
- 242              	.LC14:
- 243 003f 6B657966 		.string	"keyfunc\n"
- 243      756E630A 
- 243      00
- 244              	.LC15:
- 245 0048 74696D65 		.string	"timer\n"
- 245      720A00
- 246              	.LC16:
- 247 004f 6D61696E 		.string	"mainloop\n"
- 247      6C6F6F70 
- 247      0A00
- 248              		.text
- 249              		.globl	main
- 251              	main:
- 252              	.LFB2475:
- 253              		.cfi_startproc
- 254 021d 4154     		pushq	%r12
- 255              		.cfi_def_cfa_offset 16
- 256              		.cfi_offset 12, -16
- 257 021f 55       		pushq	%rbp
- 258              		.cfi_def_cfa_offset 24
- 259              		.cfi_offset 6, -24
- 260 0220 53       		pushq	%rbx
- 261              		.cfi_def_cfa_offset 32
- 262              		.cfi_offset 3, -32
- 263 0221 4883EC10 		subq	$16, %rsp
- 264              		.cfi_def_cfa_offset 48
- 265 0225 897C240C 		movl	%edi, 12(%rsp)
- 266 0229 4889F5   		movq	%rsi, %rbp
- 267 022c 488B3D00 		movq	numOfObstacles(%rip), %rdi
- 267      000000
- 268 0233 48C1E704 		salq	$4, %rdi
- 269 0237 E8000000 		call	malloc@PLT
+ 237              	.LFE2471:
+ 239              		.globl	_Z10getDataSetPK8obstacleh
+ 241              	_Z10getDataSetPK8obstacleh:
+ 242              	.LFB2472:
+ 243              		.cfi_startproc
+ 244 0219 4157     		pushq	%r15
+ 245              		.cfi_def_cfa_offset 16
+ 246              		.cfi_offset 15, -16
+ 247 021b 4156     		pushq	%r14
+ 248              		.cfi_def_cfa_offset 24
+ 249              		.cfi_offset 14, -24
+ 250 021d 4155     		pushq	%r13
+ 251              		.cfi_def_cfa_offset 32
+ 252              		.cfi_offset 13, -32
+ 253 021f 4154     		pushq	%r12
+ 254              		.cfi_def_cfa_offset 40
+ 255              		.cfi_offset 12, -40
+ 256 0221 55       		pushq	%rbp
+ 257              		.cfi_def_cfa_offset 48
+ 258              		.cfi_offset 6, -48
+ 259 0222 53       		pushq	%rbx
+ 260              		.cfi_def_cfa_offset 56
+ 261              		.cfi_offset 3, -56
+ 262 0223 4883EC08 		subq	$8, %rsp
+ 263              		.cfi_def_cfa_offset 64
+ 264 0227 4989FC   		movq	%rdi, %r12
+ 265 022a 400FB6EE 		movzbl	%sil, %ebp
+ 266 022e 89EE     		movl	%ebp, %esi
+ 267 0230 E8000000 		call	_Z8getPointPK8obstacleh@PLT
+ 267      00
+ 268 0235 41BD0000 		movl	$0, %r13d
+ 268      0000
+ 269 023b E9B50000 		jmp	.L28
  269      00
- 270 023c 4889C3   		movq	%rax, %rbx
- 271 023f 48890500 		movq	%rax, obstacles(%rip)
-GAS LISTING /tmp/ccjNsti9.s 			page 7
+ 270              	.L33:
+ 271 0240 4883C301 		addq	$1, %rbx
+ 272              	.L38:
+ 273 0244 48391D00 		cmpq	%rbx, numOfObstacles(%rip)
+ 273      000000
+ 274 024b 0F869700 		jbe	.L30
+ 274      0000
+ 275 0251 89EE     		movl	%ebp, %esi
+ 276 0253 4C89E7   		movq	%r12, %rdi
+ 277 0256 E8000000 		call	_Z17getCoordsOfCornerPK8obstacleh@PLT
+ 277      00
+ 278 025b 488D145B 		leaq	(%rbx,%rbx,2), %rdx
+ 279 025f 48C1E204 		salq	$4, %rdx
+ 280 0263 48031500 		addq	obstacles(%rip), %rdx
+ 280      000000
+ 281 026a 488B0A   		movq	(%rdx), %rcx
+ 282 026d F30F1019 		movss	(%rcx), %xmm3
+ 283 0271 F30F1052 		movss	40(%rdx), %xmm2
+ 283      28
+ 284 0276 0F28EB   		movaps	%xmm3, %xmm5
+ 285 0279 F30F58EA 		addss	%xmm2, %xmm5
+ 286 027d F30F1008 		movss	(%rax), %xmm1
+ 287 0281 488B1500 		movq	QUAD_CHECK_SIDE(%rip), %rdx
+GAS LISTING /tmp/ccVEegCs.s 			page 7
 
 
- 271      000000
- 272 0246 F30F1015 		movss	.LC3(%rip), %xmm2
- 272      00000000 
- 273 024e 0F28CA   		movaps	%xmm2, %xmm1
- 274 0251 0F28C2   		movaps	%xmm2, %xmm0
- 275 0254 E8000000 		call	_Z14createObstaclefff@PLT
- 275      00
- 276 0259 488903   		movq	%rax, (%rbx)
- 277 025c F30F1143 		movss	%xmm0, 8(%rbx)
- 277      08
- 278 0261 488B1D00 		movq	obstacles(%rip), %rbx
- 278      000000
- 279 0268 F30F1015 		movss	.LC3(%rip), %xmm2
- 279      00000000 
- 280 0270 F30F100D 		movss	.LC4(%rip), %xmm1
- 280      00000000 
- 281 0278 0F28C1   		movaps	%xmm1, %xmm0
- 282 027b E8000000 		call	_Z14createObstaclefff@PLT
- 282      00
- 283 0280 48894310 		movq	%rax, 16(%rbx)
- 284 0284 F30F1143 		movss	%xmm0, 24(%rbx)
- 284      18
- 285 0289 488B1D00 		movq	obstacles(%rip), %rbx
- 285      000000
- 286 0290 F30F1015 		movss	.LC3(%rip), %xmm2
- 286      00000000 
- 287 0298 F30F100D 		movss	.LC5(%rip), %xmm1
- 287      00000000 
- 288 02a0 0F28C1   		movaps	%xmm1, %xmm0
- 289 02a3 E8000000 		call	_Z14createObstaclefff@PLT
- 289      00
- 290 02a8 48894320 		movq	%rax, 32(%rbx)
- 291 02ac F30F1143 		movss	%xmm0, 40(%rbx)
- 291      28
- 292 02b1 488B1D00 		movq	obstacles(%rip), %rbx
- 292      000000
- 293 02b8 F30F1015 		movss	.LC3(%rip), %xmm2
- 293      00000000 
- 294 02c0 F30F100D 		movss	.LC6(%rip), %xmm1
- 294      00000000 
- 295 02c8 0F28C1   		movaps	%xmm1, %xmm0
- 296 02cb E8000000 		call	_Z14createObstaclefff@PLT
- 296      00
- 297 02d0 48894330 		movq	%rax, 48(%rbx)
- 298 02d4 F30F1143 		movss	%xmm0, 56(%rbx)
- 298      38
- 299 02d9 C7050000 		movl	$0x00000000, startway(%rip)
- 299      00000000 
- 299      0000
- 300 02e3 C7050000 		movl	$0x00000000, 4+startway(%rip)
- 300      00000000 
- 300      0000
- 301 02ed F30F1005 		movss	.LC8(%rip), %xmm0
- 301      00000000 
- 302 02f5 F30F1105 		movss	%xmm0, endway(%rip)
- 302      00000000 
- 303 02fd F30F1105 		movss	%xmm0, 4+endway(%rip)
-GAS LISTING /tmp/ccjNsti9.s 			page 8
-
-
- 303      00000000 
- 304 0305 488D3500 		leaq	.LC9(%rip), %rsi
- 304      000000
- 305 030c 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 305      000000
- 306 0313 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
- 306      00
- 307 0318 488D7C24 		leaq	12(%rsp), %rdi
- 307      0C
- 308 031d 4889EE   		movq	%rbp, %rsi
- 309 0320 E8000000 		call	glutInit@PLT
- 309      00
- 310 0325 488D3500 		leaq	.LC10(%rip), %rsi
- 310      000000
- 311 032c 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 311      000000
- 312 0333 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
- 312      00
- 313 0338 BF020000 		movl	$2, %edi
- 313      00
- 314 033d E8000000 		call	glutInitDisplayMode@PLT
- 314      00
- 315 0342 488D3D00 		leaq	.LC11(%rip), %rdi
- 315      000000
- 316 0349 E8000000 		call	glutCreateWindow@PLT
- 316      00
- 317 034e 488D3500 		leaq	.LC12(%rip), %rsi
- 317      000000
- 318 0355 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 318      000000
- 319 035c E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
- 319      00
- 320 0361 488D3D00 		leaq	_Z7reshapeii(%rip), %rdi
- 320      000000
- 321 0368 E8000000 		call	glutReshapeFunc@PLT
- 321      00
- 322 036d 488D3500 		leaq	.LC13(%rip), %rsi
- 322      000000
- 323 0374 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 323      000000
- 324 037b E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 287      000000
+ 288 0288 48D1EA   		shrq	%rdx
+ 289 028b 660FEFC0 		pxor	%xmm0, %xmm0
+ 290 028f F3480F2A 		cvtsi2ssq	%rdx, %xmm0
+ 290      C2
+ 291 0294 0F28E1   		movaps	%xmm1, %xmm4
+ 292 0297 F30F5CE0 		subss	%xmm0, %xmm4
+ 293 029b 0F2FEC   		comiss	%xmm4, %xmm5
+ 294 029e 72A0     		jb	.L33
+ 295 02a0 F30F58CA 		addss	%xmm2, %xmm1
+ 296 02a4 F30F58C8 		addss	%xmm0, %xmm1
+ 297 02a8 0F2FCB   		comiss	%xmm3, %xmm1
+ 298 02ab 7293     		jb	.L33
+ 299 02ad F30F1049 		movss	4(%rcx), %xmm1
+ 299      04
+ 300 02b2 0F28EA   		movaps	%xmm2, %xmm5
+ 301 02b5 F30F58E9 		addss	%xmm1, %xmm5
+ 302 02b9 F30F1058 		movss	4(%rax), %xmm3
+ 302      04
+ 303 02be 0F28E3   		movaps	%xmm3, %xmm4
+ 304 02c1 F30F5CE0 		subss	%xmm0, %xmm4
+ 305 02c5 0F2FEC   		comiss	%xmm4, %xmm5
+ 306 02c8 0F8272FF 		jb	.L33
+ 306      FFFF
+ 307 02ce F30F58D3 		addss	%xmm3, %xmm2
+ 308 02d2 F30F58C2 		addss	%xmm2, %xmm0
+ 309 02d6 0F2FC1   		comiss	%xmm1, %xmm0
+ 310 02d9 0F8261FF 		jb	.L33
+ 310      FFFF
+ 311 02df 4983C501 		addq	$1, %r13
+ 312 02e3 E958FFFF 		jmp	.L33
+ 312      FF
+ 313              	.L30:
+ 314 02e8 4D85ED   		testq	%r13, %r13
+ 315 02eb 7508     		jne	.L28
+ 316 02ed 48830500 		addq	$10, QUAD_CHECK_SIDE(%rip)
+ 316      0000000A 
+ 317              	.L28:
+ 318 02f5 4D85ED   		testq	%r13, %r13
+ 319 02f8 7508     		jne	.L29
+ 320 02fa 4C89EB   		movq	%r13, %rbx
+ 321 02fd E942FFFF 		jmp	.L38
+ 321      FF
+ 322              	.L29:
+ 323 0302 4A8D3CED 		leaq	0(,%r13,8), %rdi
+ 323      00000000 
+ 324 030a E8000000 		call	malloc@PLT
  324      00
- 325 0380 488D3D00 		leaq	_Z11renderScenev(%rip), %rdi
- 325      000000
- 326 0387 E8000000 		call	glutDisplayFunc@PLT
+ 325 030f 4989C6   		movq	%rax, %r14
+ 326 0312 BB000000 		movl	$0, %ebx
  326      00
- 327 038c 488D3500 		leaq	.LC14(%rip), %rsi
- 327      000000
- 328 0393 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 328      000000
- 329 039a E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
- 329      00
- 330 039f 488D3D00 		leaq	_Z14handleKeypresshii(%rip), %rdi
- 330      000000
- 331 03a6 E8000000 		call	glutKeyboardFunc@PLT
- 331      00
- 332 03ab 488D3500 		leaq	.LC15(%rip), %rsi
-GAS LISTING /tmp/ccjNsti9.s 			page 9
+ 327 0317 41BF0000 		movl	$0, %r15d
+ 327      0000
+ 328 031d EB04     		jmp	.L48
+ 329              	.L43:
+ 330 031f 4883C301 		addq	$1, %rbx
+ 331              	.L48:
+GAS LISTING /tmp/ccVEegCs.s 			page 8
 
 
+ 332 0323 48391D00 		cmpq	%rbx, numOfObstacles(%rip)
  332      000000
- 333 03b2 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 333      000000
- 334 03b9 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
- 334      00
- 335 03be BA000000 		movl	$0, %edx
- 335      00
- 336 03c3 488D3500 		leaq	_Z4timfi(%rip), %rsi
- 336      000000
- 337 03ca BF280000 		movl	$40, %edi
- 337      00
- 338 03cf E8000000 		call	glutTimerFunc@PLT
- 338      00
- 339 03d4 488D3500 		leaq	.LC16(%rip), %rsi
+ 333 032a 0F869B00 		jbe	.L40
+ 333      0000
+ 334 0330 89EE     		movl	%ebp, %esi
+ 335 0332 4C89E7   		movq	%r12, %rdi
+ 336 0335 E8000000 		call	_Z17getCoordsOfCornerPK8obstacleh@PLT
+ 336      00
+ 337 033a 488D0C5B 		leaq	(%rbx,%rbx,2), %rcx
+ 338 033e 48C1E104 		salq	$4, %rcx
+ 339 0342 48030D00 		addq	obstacles(%rip), %rcx
  339      000000
- 340 03db 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
- 340      000000
- 341 03e2 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
- 341      00
- 342 03e7 E8000000 		call	glutMainLoop@PLT
- 342      00
- 343 03ec B8010000 		movl	$1, %eax
- 343      00
- 344 03f1 4883C410 		addq	$16, %rsp
- 345              		.cfi_def_cfa_offset 32
- 346 03f5 5B       		popq	%rbx
- 347              		.cfi_def_cfa_offset 24
- 348 03f6 5D       		popq	%rbp
- 349              		.cfi_def_cfa_offset 16
- 350 03f7 415C     		popq	%r12
- 351              		.cfi_def_cfa_offset 8
- 352 03f9 C3       		ret
- 353              		.cfi_endproc
- 354              	.LFE2475:
- 357              	_GLOBAL__sub_I_terminated:
- 358              	.LFB2821:
- 359              		.cfi_startproc
- 360 03fa 4883EC08 		subq	$8, %rsp
- 361              		.cfi_def_cfa_offset 16
- 362 03fe BEFFFF00 		movl	$65535, %esi
- 362      00
- 363 0403 BF010000 		movl	$1, %edi
- 363      00
- 364 0408 E890FCFF 		call	_Z41__static_initialization_and_destruction_0ii
- 364      FF
- 365 040d 4883C408 		addq	$8, %rsp
- 366              		.cfi_def_cfa_offset 8
- 367 0411 C3       		ret
- 368              		.cfi_endproc
- 369              	.LFE2821:
- 371              		.section	.init_array,"aw"
- 372              		.align 8
- 373 0000 00000000 		.quad	_GLOBAL__sub_I_terminated
- 373      00000000 
- 374              		.globl	endway
- 375              		.bss
- 376              		.align 8
-GAS LISTING /tmp/ccjNsti9.s 			page 10
+ 340 0349 488B31   		movq	(%rcx), %rsi
+ 341 034c F30F101E 		movss	(%rsi), %xmm3
+ 342 0350 F30F1051 		movss	40(%rcx), %xmm2
+ 342      28
+ 343 0355 0F28EB   		movaps	%xmm3, %xmm5
+ 344 0358 F30F58EA 		addss	%xmm2, %xmm5
+ 345 035c F30F1008 		movss	(%rax), %xmm1
+ 346 0360 488B1500 		movq	QUAD_CHECK_SIDE(%rip), %rdx
+ 346      000000
+ 347 0367 48D1EA   		shrq	%rdx
+ 348 036a 660FEFC0 		pxor	%xmm0, %xmm0
+ 349 036e F3480F2A 		cvtsi2ssq	%rdx, %xmm0
+ 349      C2
+ 350 0373 0F28E1   		movaps	%xmm1, %xmm4
+ 351 0376 F30F5CE0 		subss	%xmm0, %xmm4
+ 352 037a 0F2FEC   		comiss	%xmm4, %xmm5
+ 353 037d 72A0     		jb	.L43
+ 354 037f F30F58CA 		addss	%xmm2, %xmm1
+ 355 0383 F30F58C8 		addss	%xmm0, %xmm1
+ 356 0387 0F2FCB   		comiss	%xmm3, %xmm1
+ 357 038a 7293     		jb	.L43
+ 358 038c F30F104E 		movss	4(%rsi), %xmm1
+ 358      04
+ 359 0391 0F28EA   		movaps	%xmm2, %xmm5
+ 360 0394 F30F58E9 		addss	%xmm1, %xmm5
+ 361 0398 F30F1058 		movss	4(%rax), %xmm3
+ 361      04
+ 362 039d 0F28E3   		movaps	%xmm3, %xmm4
+ 363 03a0 F30F5CE0 		subss	%xmm0, %xmm4
+ 364 03a4 0F2FEC   		comiss	%xmm4, %xmm5
+ 365 03a7 0F8272FF 		jb	.L43
+ 365      FFFF
+ 366 03ad F30F58D3 		addss	%xmm3, %xmm2
+ 367 03b1 F30F58C2 		addss	%xmm2, %xmm0
+ 368 03b5 0F2FC1   		comiss	%xmm1, %xmm0
+ 369 03b8 0F8261FF 		jb	.L43
+ 369      FFFF
+ 370 03be 4B890CFE 		movq	%rcx, (%r14,%r15,8)
+ 371 03c2 4D8D7F01 		leaq	1(%r15), %r15
+ 372 03c6 E954FFFF 		jmp	.L43
+ 372      FF
+ 373              	.L40:
+ 374 03cb BF100000 		movl	$16, %edi
+ 374      00
+ 375 03d0 E8000000 		call	malloc@PLT
+GAS LISTING /tmp/ccVEegCs.s 			page 9
 
 
- 379              	endway:
- 380 0000 00000000 		.zero	8
- 380      00000000 
- 381              		.globl	startway
- 382              		.align 8
- 385              	startway:
- 386 0008 00000000 		.zero	8
- 386      00000000 
- 387              		.globl	obstacles
- 388              		.align 8
- 391              	obstacles:
- 392 0010 00000000 		.zero	8
- 392      00000000 
- 393              		.globl	numOfObstacles
- 394              		.data
- 395              		.align 8
- 398              	numOfObstacles:
- 399 0000 04000000 		.quad	4
- 399      00000000 
- 400              		.globl	terminated
- 401              		.bss
- 404              	terminated:
- 405 0018 00       		.zero	1
- 406              		.local	_ZStL8__ioinit
- 407              		.comm	_ZStL8__ioinit,1,1
- 408              		.section	.rodata.cst4,"aM",@progbits,4
- 409              		.align 4
- 410              	.LC3:
- 411 0000 0000A041 		.long	1101004800
- 412              		.align 4
- 413              	.LC4:
- 414 0004 00004842 		.long	1112014848
- 415              		.align 4
- 416              	.LC5:
- 417 0008 0000A042 		.long	1117782016
- 418              		.align 4
- 419              	.LC6:
- 420 000c 0000DC42 		.long	1121714176
- 421              		.align 4
- 422              	.LC8:
- 423 0010 00001643 		.long	1125515264
- 424              		.hidden	__dso_handle
- 425              		.ident	"GCC: (GNU) 9.1.0"
- 426              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccjNsti9.s 			page 11
+ 375      00
+ 376 03d5 4C8930   		movq	%r14, (%rax)
+ 377 03d8 4C896808 		movq	%r13, 8(%rax)
+ 378 03dc 4883C408 		addq	$8, %rsp
+ 379              		.cfi_def_cfa_offset 56
+ 380 03e0 5B       		popq	%rbx
+ 381              		.cfi_def_cfa_offset 48
+ 382 03e1 5D       		popq	%rbp
+ 383              		.cfi_def_cfa_offset 40
+ 384 03e2 415C     		popq	%r12
+ 385              		.cfi_def_cfa_offset 32
+ 386 03e4 415D     		popq	%r13
+ 387              		.cfi_def_cfa_offset 24
+ 388 03e6 415E     		popq	%r14
+ 389              		.cfi_def_cfa_offset 16
+ 390 03e8 415F     		popq	%r15
+ 391              		.cfi_def_cfa_offset 8
+ 392 03ea C3       		ret
+ 393              		.cfi_endproc
+ 394              	.LFE2472:
+ 396              		.globl	_Z16hasIntersectionsPK4vect
+ 398              	_Z16hasIntersectionsPK4vect:
+ 399              	.LFB2473:
+ 400              		.cfi_startproc
+ 401              	.L59:
+ 402 03eb EBFE     		jmp	.L59
+ 403              		.cfi_endproc
+ 404              	.LFE2473:
+ 406              		.globl	_Z8initObstPK8obstacle
+ 408              	_Z8initObstPK8obstacle:
+ 409              	.LFB2474:
+ 410              		.cfi_startproc
+ 411 03ed 55       		pushq	%rbp
+ 412              		.cfi_def_cfa_offset 16
+ 413              		.cfi_offset 6, -16
+ 414 03ee 53       		pushq	%rbx
+ 415              		.cfi_def_cfa_offset 24
+ 416              		.cfi_offset 3, -24
+ 417 03ef 4883EC08 		subq	$8, %rsp
+ 418              		.cfi_def_cfa_offset 32
+ 419 03f3 4889FD   		movq	%rdi, %rbp
+ 420 03f6 BE000000 		movl	$0, %esi
+ 420      00
+ 421 03fb E8000000 		call	_Z8getPointPK8obstacleh@PLT
+ 421      00
+ 422 0400 BE000000 		movl	$0, %esi
+ 422      00
+ 423 0405 4889EF   		movq	%rbp, %rdi
+ 424 0408 E8000000 		call	_Z10getDataSetPK8obstacleh
+ 424      00
+ 425 040d BB000000 		movl	$0, %ebx
+ 425      00
+ 426              	.L62:
+ 427 0412 80FB09   		cmpb	$9, %bl
+ 428 0415 7723     		ja	.L60
+ 429 0417 0FB6C3   		movzbl	%bl, %eax
+ 430 041a 8D04C0   		leal	(%rax,%rax,8), %eax
+GAS LISTING /tmp/ccVEegCs.s 			page 10
+
+
+ 431 041d C1E002   		sall	$2, %eax
+ 432 0420 660FEFC0 		pxor	%xmm0, %xmm0
+ 433 0424 F30F2AC0 		cvtsi2ssl	%eax, %xmm0
+ 434 0428 BE000000 		movl	$0, %esi
+ 434      00
+ 435 042d 4889EF   		movq	%rbp, %rdi
+ 436 0430 E8000000 		call	_Z10createVectPK8obstaclehf
+ 436      00
+ 437 0435 83C301   		addl	$1, %ebx
+ 438 0438 EBD8     		jmp	.L62
+ 439              	.L60:
+ 440 043a 4883C408 		addq	$8, %rsp
+ 441              		.cfi_def_cfa_offset 24
+ 442 043e 5B       		popq	%rbx
+ 443              		.cfi_def_cfa_offset 16
+ 444 043f 5D       		popq	%rbp
+ 445              		.cfi_def_cfa_offset 8
+ 446 0440 C3       		ret
+ 447              		.cfi_endproc
+ 448              	.LFE2474:
+ 450              		.globl	_Z12drawObstaclePK8obstacle
+ 452              	_Z12drawObstaclePK8obstacle:
+ 453              	.LFB2475:
+ 454              		.cfi_startproc
+ 455 0441 53       		pushq	%rbx
+ 456              		.cfi_def_cfa_offset 16
+ 457              		.cfi_offset 3, -16
+ 458 0442 4889FB   		movq	%rdi, %rbx
+ 459 0445 BF0000FF 		movl	$16711680, %edi
+ 459      00
+ 460 044a E8000000 		call	_Z10glSetColorj@PLT
+ 460      00
+ 461 044f 488B03   		movq	(%rbx), %rax
+ 462 0452 F30F1053 		movss	40(%rbx), %xmm2
+ 462      28
+ 463 0457 F30F1048 		movss	4(%rax), %xmm1
+ 463      04
+ 464 045c F30F1000 		movss	(%rax), %xmm0
+ 465 0460 E8000000 		call	_Z8drawQuadfff@PLT
+ 465      00
+ 466 0465 5B       		popq	%rbx
+ 467              		.cfi_def_cfa_offset 8
+ 468 0466 C3       		ret
+ 469              		.cfi_endproc
+ 470              	.LFE2475:
+ 472              		.globl	_Z11renderScenev
+ 474              	_Z11renderScenev:
+ 475              	.LFB2476:
+ 476              		.cfi_startproc
+ 477 0467 53       		pushq	%rbx
+ 478              		.cfi_def_cfa_offset 16
+ 479              		.cfi_offset 3, -16
+ 480 0468 BF004000 		movl	$16384, %edi
+ 480      00
+ 481 046d E8000000 		call	glClear@PLT
+ 481      00
+ 482 0472 BB000000 		movl	$0, %ebx
+GAS LISTING /tmp/ccVEegCs.s 			page 11
+
+
+ 482      00
+ 483              	.L68:
+ 484 0477 48391D00 		cmpq	%rbx, numOfObstacles(%rip)
+ 484      000000
+ 485 047e 761D     		jbe	.L67
+ 486 0480 488D045B 		leaq	(%rbx,%rbx,2), %rax
+ 487 0484 48C1E004 		salq	$4, %rax
+ 488 0488 4889C7   		movq	%rax, %rdi
+ 489 048b 48033D00 		addq	obstacles(%rip), %rdi
+ 489      000000
+ 490 0492 E8000000 		call	_Z12drawObstaclePK8obstacle
+ 490      00
+ 491 0497 4883C301 		addq	$1, %rbx
+ 492 049b EBDA     		jmp	.L68
+ 493              	.L67:
+ 494 049d BF00FF00 		movl	$65280, %edi
+ 494      00
+ 495 04a2 E8000000 		call	_Z10glSetColorj@PLT
+ 495      00
+ 496 04a7 F30F101D 		movss	4+endway(%rip), %xmm3
+ 496      00000000 
+ 497 04af F30F1015 		movss	endway(%rip), %xmm2
+ 497      00000000 
+ 498 04b7 F30F100D 		movss	4+startway(%rip), %xmm1
+ 498      00000000 
+ 499 04bf F30F1005 		movss	startway(%rip), %xmm0
+ 499      00000000 
+ 500 04c7 E8000000 		call	_Z8drawLineffff@PLT
+ 500      00
+ 501 04cc E8000000 		call	glutSwapBuffers@PLT
+ 501      00
+ 502 04d1 5B       		popq	%rbx
+ 503              		.cfi_def_cfa_offset 8
+ 504 04d2 C3       		ret
+ 505              		.cfi_endproc
+ 506              	.LFE2476:
+ 508              		.section	.rodata.str1.1
+ 509              	.LC9:
+ 510 000e 676C7574 		.string	"glut init\n"
+ 510      20696E69 
+ 510      740A00
+ 511              	.LC10:
+ 512 0019 64697370 		.string	"dispmode\n"
+ 512      6D6F6465 
+ 512      0A00
+ 513              	.LC11:
+ 514 0023 666C6F61 		.string	"floating"
+ 514      74696E67 
+ 514      00
+ 515              	.LC12:
+ 516 002c 72657368 		.string	"reshape\n"
+ 516      6170650A 
+ 516      00
+ 517              	.LC13:
+ 518 0035 64697370 		.string	"dispfunc\n"
+ 518      66756E63 
+ 518      0A00
+GAS LISTING /tmp/ccVEegCs.s 			page 12
+
+
+ 519              	.LC14:
+ 520 003f 6B657966 		.string	"keyfunc\n"
+ 520      756E630A 
+ 520      00
+ 521              	.LC15:
+ 522 0048 74696D65 		.string	"timer\n"
+ 522      720A00
+ 523              	.LC16:
+ 524 004f 6D61696E 		.string	"mainloop\n"
+ 524      6C6F6F70 
+ 524      0A00
+ 525              		.text
+ 526              		.globl	main
+ 528              	main:
+ 529              	.LFB2480:
+ 530              		.cfi_startproc
+ 531 04d3 4156     		pushq	%r14
+ 532              		.cfi_def_cfa_offset 16
+ 533              		.cfi_offset 14, -16
+ 534 04d5 4155     		pushq	%r13
+ 535              		.cfi_def_cfa_offset 24
+ 536              		.cfi_offset 13, -24
+ 537 04d7 4154     		pushq	%r12
+ 538              		.cfi_def_cfa_offset 32
+ 539              		.cfi_offset 12, -32
+ 540 04d9 55       		pushq	%rbp
+ 541              		.cfi_def_cfa_offset 40
+ 542              		.cfi_offset 6, -40
+ 543 04da 53       		pushq	%rbx
+ 544              		.cfi_def_cfa_offset 48
+ 545              		.cfi_offset 3, -48
+ 546 04db 4883EC50 		subq	$80, %rsp
+ 547              		.cfi_def_cfa_offset 128
+ 548 04df 897C243C 		movl	%edi, 60(%rsp)
+ 549 04e3 4989F4   		movq	%rsi, %r12
+ 550 04e6 41BD2800 		movl	$40, %r13d
+ 550      0000
+ 551 04ec 64498B45 		movq	%fs:0(%r13), %rax
+ 551      00
+ 552 04f1 48894424 		movq	%rax, 72(%rsp)
+ 552      48
+ 553 04f6 31C0     		xorl	%eax, %eax
+ 554 04f8 488B0500 		movq	numOfObstacles(%rip), %rax
+ 554      000000
+ 555 04ff 488D3C40 		leaq	(%rax,%rax,2), %rdi
+ 556 0503 48C1E704 		salq	$4, %rdi
+ 557 0507 E8000000 		call	malloc@PLT
+ 557      00
+ 558 050c 4889C3   		movq	%rax, %rbx
+ 559 050f 48890500 		movq	%rax, obstacles(%rip)
+ 559      000000
+ 560 0516 4889E5   		movq	%rsp, %rbp
+ 561 0519 F30F1015 		movss	.LC3(%rip), %xmm2
+ 561      00000000 
+ 562 0521 0F28CA   		movaps	%xmm2, %xmm1
+ 563 0524 0F28C2   		movaps	%xmm2, %xmm0
+ 564 0527 4889EF   		movq	%rbp, %rdi
+GAS LISTING /tmp/ccVEegCs.s 			page 13
+
+
+ 565 052a E8000000 		call	_Z14createObstaclefff@PLT
+ 565      00
+ 566 052f F30F6F1C 		movdqu	(%rsp), %xmm3
+ 566      24
+ 567 0534 0F111B   		movups	%xmm3, (%rbx)
+ 568 0537 F30F6F64 		movdqu	16(%rsp), %xmm4
+ 568      2410
+ 569 053d 0F116310 		movups	%xmm4, 16(%rbx)
+ 570 0541 F30F6F6C 		movdqu	32(%rsp), %xmm5
+ 570      2420
+ 571 0547 0F116B20 		movups	%xmm5, 32(%rbx)
+ 572 054b 4C8B3500 		movq	obstacles(%rip), %r14
+ 572      000000
+ 573 0552 F30F1015 		movss	.LC3(%rip), %xmm2
+ 573      00000000 
+ 574 055a F30F100D 		movss	.LC4(%rip), %xmm1
+ 574      00000000 
+ 575 0562 0F28C1   		movaps	%xmm1, %xmm0
+ 576 0565 4889EF   		movq	%rbp, %rdi
+ 577 0568 E8000000 		call	_Z14createObstaclefff@PLT
+ 577      00
+ 578 056d F30F6F34 		movdqu	(%rsp), %xmm6
+ 578      24
+ 579 0572 410F1176 		movups	%xmm6, 48(%r14)
+ 579      30
+ 580 0577 F30F6F7C 		movdqu	16(%rsp), %xmm7
+ 580      2410
+ 581 057d 410F117E 		movups	%xmm7, 64(%r14)
+ 581      40
+ 582 0582 F30F6F5C 		movdqu	32(%rsp), %xmm3
+ 582      2420
+ 583 0588 410F115E 		movups	%xmm3, 80(%r14)
+ 583      50
+ 584 058d 4C8B3500 		movq	obstacles(%rip), %r14
+ 584      000000
+ 585 0594 F30F1015 		movss	.LC3(%rip), %xmm2
+ 585      00000000 
+ 586 059c F30F100D 		movss	.LC5(%rip), %xmm1
+ 586      00000000 
+ 587 05a4 0F28C1   		movaps	%xmm1, %xmm0
+ 588 05a7 4889EF   		movq	%rbp, %rdi
+ 589 05aa E8000000 		call	_Z14createObstaclefff@PLT
+ 589      00
+ 590 05af F30F6F24 		movdqu	(%rsp), %xmm4
+ 590      24
+ 591 05b4 410F1166 		movups	%xmm4, 96(%r14)
+ 591      60
+ 592 05b9 F30F6F6C 		movdqu	16(%rsp), %xmm5
+ 592      2410
+ 593 05bf 410F116E 		movups	%xmm5, 112(%r14)
+ 593      70
+ 594 05c4 F30F6F74 		movdqu	32(%rsp), %xmm6
+ 594      2420
+ 595 05ca 410F11B6 		movups	%xmm6, 128(%r14)
+ 595      80000000 
+ 596 05d2 4C8B3500 		movq	obstacles(%rip), %r14
+ 596      000000
+GAS LISTING /tmp/ccVEegCs.s 			page 14
+
+
+ 597 05d9 F30F1015 		movss	.LC3(%rip), %xmm2
+ 597      00000000 
+ 598 05e1 F30F100D 		movss	.LC6(%rip), %xmm1
+ 598      00000000 
+ 599 05e9 0F28C1   		movaps	%xmm1, %xmm0
+ 600 05ec 4889EF   		movq	%rbp, %rdi
+ 601 05ef E8000000 		call	_Z14createObstaclefff@PLT
+ 601      00
+ 602 05f4 F30F6F3C 		movdqu	(%rsp), %xmm7
+ 602      24
+ 603 05f9 410F11BE 		movups	%xmm7, 144(%r14)
+ 603      90000000 
+ 604 0601 F30F6F4C 		movdqu	16(%rsp), %xmm1
+ 604      2410
+ 605 0607 410F118E 		movups	%xmm1, 160(%r14)
+ 605      A0000000 
+ 606 060f F30F6F54 		movdqu	32(%rsp), %xmm2
+ 606      2420
+ 607 0615 410F1196 		movups	%xmm2, 176(%r14)
+ 607      B0000000 
+ 608 061d C7050000 		movl	$0x00000000, startway(%rip)
+ 608      00000000 
+ 608      0000
+ 609 0627 C7050000 		movl	$0x00000000, 4+startway(%rip)
+ 609      00000000 
+ 609      0000
+ 610 0631 F30F1005 		movss	.LC8(%rip), %xmm0
+ 610      00000000 
+ 611 0639 F30F1105 		movss	%xmm0, endway(%rip)
+ 611      00000000 
+ 612 0641 F30F1105 		movss	%xmm0, 4+endway(%rip)
+ 612      00000000 
+ 613 0649 488D3500 		leaq	.LC9(%rip), %rsi
+ 613      000000
+ 614 0650 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 614      000000
+ 615 0657 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 615      00
+ 616 065c 488D7C24 		leaq	60(%rsp), %rdi
+ 616      3C
+ 617 0661 4C89E6   		movq	%r12, %rsi
+ 618 0664 E8000000 		call	glutInit@PLT
+ 618      00
+ 619 0669 488D3500 		leaq	.LC10(%rip), %rsi
+ 619      000000
+ 620 0670 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 620      000000
+ 621 0677 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 621      00
+ 622 067c BF020000 		movl	$2, %edi
+ 622      00
+ 623 0681 E8000000 		call	glutInitDisplayMode@PLT
+ 623      00
+ 624 0686 488D3D00 		leaq	.LC11(%rip), %rdi
+ 624      000000
+ 625 068d E8000000 		call	glutCreateWindow@PLT
+ 625      00
+GAS LISTING /tmp/ccVEegCs.s 			page 15
+
+
+ 626 0692 488D3500 		leaq	.LC12(%rip), %rsi
+ 626      000000
+ 627 0699 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 627      000000
+ 628 06a0 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 628      00
+ 629 06a5 488D3D00 		leaq	_Z7reshapeii(%rip), %rdi
+ 629      000000
+ 630 06ac E8000000 		call	glutReshapeFunc@PLT
+ 630      00
+ 631 06b1 488D3500 		leaq	.LC13(%rip), %rsi
+ 631      000000
+ 632 06b8 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 632      000000
+ 633 06bf E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 633      00
+ 634 06c4 488D3D00 		leaq	_Z11renderScenev(%rip), %rdi
+ 634      000000
+ 635 06cb E8000000 		call	glutDisplayFunc@PLT
+ 635      00
+ 636 06d0 488D3500 		leaq	.LC14(%rip), %rsi
+ 636      000000
+ 637 06d7 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 637      000000
+ 638 06de E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 638      00
+ 639 06e3 488D3D00 		leaq	_Z14handleKeypresshii(%rip), %rdi
+ 639      000000
+ 640 06ea E8000000 		call	glutKeyboardFunc@PLT
+ 640      00
+ 641 06ef 488D3500 		leaq	.LC15(%rip), %rsi
+ 641      000000
+ 642 06f6 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 642      000000
+ 643 06fd E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 643      00
+ 644 0702 BA000000 		movl	$0, %edx
+ 644      00
+ 645 0707 488D3500 		leaq	_Z4timfi(%rip), %rsi
+ 645      000000
+ 646 070e BF280000 		movl	$40, %edi
+ 646      00
+ 647 0713 E8000000 		call	glutTimerFunc@PLT
+ 647      00
+ 648 0718 488D3500 		leaq	.LC16(%rip), %rsi
+ 648      000000
+ 649 071f 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
+ 649      000000
+ 650 0726 E8000000 		call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+ 650      00
+ 651 072b E8000000 		call	glutMainLoop@PLT
+ 651      00
+ 652 0730 488B4424 		movq	72(%rsp), %rax
+ 652      48
+ 653 0735 64493345 		xorq	%fs:0(%r13), %rax
+ 653      00
+ 654 073a 7512     		jne	.L73
+GAS LISTING /tmp/ccVEegCs.s 			page 16
+
+
+ 655 073c B8010000 		movl	$1, %eax
+ 655      00
+ 656 0741 4883C450 		addq	$80, %rsp
+ 657              		.cfi_remember_state
+ 658              		.cfi_def_cfa_offset 48
+ 659 0745 5B       		popq	%rbx
+ 660              		.cfi_def_cfa_offset 40
+ 661 0746 5D       		popq	%rbp
+ 662              		.cfi_def_cfa_offset 32
+ 663 0747 415C     		popq	%r12
+ 664              		.cfi_def_cfa_offset 24
+ 665 0749 415D     		popq	%r13
+ 666              		.cfi_def_cfa_offset 16
+ 667 074b 415E     		popq	%r14
+ 668              		.cfi_def_cfa_offset 8
+ 669 074d C3       		ret
+ 670              	.L73:
+ 671              		.cfi_restore_state
+ 672 074e E8000000 		call	__stack_chk_fail@PLT
+ 672      00
+ 673              		.cfi_endproc
+ 674              	.LFE2480:
+ 677              	_GLOBAL__sub_I_QUAD_CHECK_SIDE:
+ 678              	.LFB2826:
+ 679              		.cfi_startproc
+ 680 0753 4883EC08 		subq	$8, %rsp
+ 681              		.cfi_def_cfa_offset 16
+ 682 0757 BEFFFF00 		movl	$65535, %esi
+ 682      00
+ 683 075c BF010000 		movl	$1, %edi
+ 683      00
+ 684 0761 E837F9FF 		call	_Z41__static_initialization_and_destruction_0ii
+ 684      FF
+ 685 0766 4883C408 		addq	$8, %rsp
+ 686              		.cfi_def_cfa_offset 8
+ 687 076a C3       		ret
+ 688              		.cfi_endproc
+ 689              	.LFE2826:
+ 691              		.section	.init_array,"aw"
+ 692              		.align 8
+ 693 0000 00000000 		.quad	_GLOBAL__sub_I_QUAD_CHECK_SIDE
+ 693      00000000 
+ 694              		.globl	endway
+ 695              		.bss
+ 696              		.align 8
+ 699              	endway:
+ 700 0000 00000000 		.zero	8
+ 700      00000000 
+ 701              		.globl	startway
+ 702              		.align 8
+ 705              	startway:
+ 706 0008 00000000 		.zero	8
+ 706      00000000 
+ 707              		.globl	obstacles
+ 708              		.align 8
+ 711              	obstacles:
+ 712 0010 00000000 		.zero	8
+GAS LISTING /tmp/ccVEegCs.s 			page 17
+
+
+ 712      00000000 
+ 713              		.globl	numOfObstacles
+ 714              		.data
+ 715              		.align 8
+ 718              	numOfObstacles:
+ 719 0000 04000000 		.quad	4
+ 719      00000000 
+ 720              		.globl	terminated
+ 721              		.bss
+ 724              	terminated:
+ 725 0018 00       		.zero	1
+ 726              		.globl	QUAD_CHECK_SIDE
+ 727              		.data
+ 728              		.align 8
+ 731              	QUAD_CHECK_SIDE:
+ 732 0008 14000000 		.quad	20
+ 732      00000000 
+ 733              		.local	_ZStL8__ioinit
+ 734              		.comm	_ZStL8__ioinit,1,1
+ 735              		.section	.rodata.cst4,"aM",@progbits,4
+ 736              		.align 4
+ 737              	.LC3:
+ 738 0000 0000A041 		.long	1101004800
+ 739              		.align 4
+ 740              	.LC4:
+ 741 0004 00004842 		.long	1112014848
+ 742              		.align 4
+ 743              	.LC5:
+ 744 0008 0000A042 		.long	1117782016
+ 745              		.align 4
+ 746              	.LC6:
+ 747 000c 0000DC42 		.long	1121714176
+ 748              		.align 4
+ 749              	.LC8:
+ 750 0010 00001643 		.long	1125515264
+ 751              		.hidden	__dso_handle
+ 752              		.ident	"GCC: (GNU) 9.1.0"
+ 753              		.section	.note.GNU-stack,"",@progbits
+GAS LISTING /tmp/ccVEegCs.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.cpp
-     /tmp/ccjNsti9.s:5      .text:0000000000000000 _Z7reshapeii
-     /tmp/ccjNsti9.s:48     .text:000000000000005f _Z4timfi
-     /tmp/ccjNsti9.s:404    .bss:0000000000000018 terminated
-     /tmp/ccjNsti9.s:73     .text:000000000000009d _Z41__static_initialization_and_destruction_0ii
+     /tmp/ccVEegCs.s:5      .text:0000000000000000 _Z7reshapeii
+     /tmp/ccVEegCs.s:48     .text:000000000000005f _Z4timfi
+     /tmp/ccVEegCs.s:724    .bss:0000000000000018 terminated
+     /tmp/ccVEegCs.s:73     .text:000000000000009d _Z41__static_initialization_and_destruction_0ii
                              .bss:0000000000000019 _ZStL8__ioinit
-     /tmp/ccjNsti9.s:105    .text:00000000000000da _Z14handleKeypresshii
-     /tmp/ccjNsti9.s:176    .text:000000000000018f _Z12drawObstaclePK8obstacle
-     /tmp/ccjNsti9.s:198    .text:00000000000001b5 _Z11renderScenev
-     /tmp/ccjNsti9.s:398    .data:0000000000000000 numOfObstacles
-     /tmp/ccjNsti9.s:391    .bss:0000000000000010 obstacles
-     /tmp/ccjNsti9.s:379    .bss:0000000000000000 endway
-     /tmp/ccjNsti9.s:385    .bss:0000000000000008 startway
-     /tmp/ccjNsti9.s:251    .text:000000000000021d main
-     /tmp/ccjNsti9.s:357    .text:00000000000003fa _GLOBAL__sub_I_terminated
-     /tmp/ccjNsti9.s:98     .rodata.str1.1:0000000000000000 .LC1
-     /tmp/ccjNsti9.s:100    .rodata.str1.1:0000000000000009 .LC2
-     /tmp/ccjNsti9.s:410    .rodata.cst4:0000000000000000 .LC3
-     /tmp/ccjNsti9.s:413    .rodata.cst4:0000000000000004 .LC4
-     /tmp/ccjNsti9.s:416    .rodata.cst4:0000000000000008 .LC5
-     /tmp/ccjNsti9.s:419    .rodata.cst4:000000000000000c .LC6
-     /tmp/ccjNsti9.s:422    .rodata.cst4:0000000000000010 .LC8
-     /tmp/ccjNsti9.s:232    .rodata.str1.1:000000000000000e .LC9
-     /tmp/ccjNsti9.s:234    .rodata.str1.1:0000000000000019 .LC10
-     /tmp/ccjNsti9.s:236    .rodata.str1.1:0000000000000023 .LC11
-     /tmp/ccjNsti9.s:238    .rodata.str1.1:000000000000002c .LC12
-     /tmp/ccjNsti9.s:240    .rodata.str1.1:0000000000000035 .LC13
-     /tmp/ccjNsti9.s:242    .rodata.str1.1:000000000000003f .LC14
-     /tmp/ccjNsti9.s:244    .rodata.str1.1:0000000000000048 .LC15
-     /tmp/ccjNsti9.s:246    .rodata.str1.1:000000000000004f .LC16
+     /tmp/ccVEegCs.s:105    .text:00000000000000da _Z14handleKeypresshii
+     /tmp/ccVEegCs.s:176    .text:000000000000018f _Z12calculateWayv
+     /tmp/ccVEegCs.s:185    .text:0000000000000190 _Z10createVectPK8obstaclehf
+     /tmp/ccVEegCs.s:731    .data:0000000000000008 QUAD_CHECK_SIDE
+     /tmp/ccVEegCs.s:241    .text:0000000000000219 _Z10getDataSetPK8obstacleh
+     /tmp/ccVEegCs.s:718    .data:0000000000000000 numOfObstacles
+     /tmp/ccVEegCs.s:711    .bss:0000000000000010 obstacles
+     /tmp/ccVEegCs.s:398    .text:00000000000003eb _Z16hasIntersectionsPK4vect
+     /tmp/ccVEegCs.s:408    .text:00000000000003ed _Z8initObstPK8obstacle
+     /tmp/ccVEegCs.s:452    .text:0000000000000441 _Z12drawObstaclePK8obstacle
+     /tmp/ccVEegCs.s:474    .text:0000000000000467 _Z11renderScenev
+     /tmp/ccVEegCs.s:699    .bss:0000000000000000 endway
+     /tmp/ccVEegCs.s:705    .bss:0000000000000008 startway
+     /tmp/ccVEegCs.s:528    .text:00000000000004d3 main
+     /tmp/ccVEegCs.s:677    .text:0000000000000753 _GLOBAL__sub_I_QUAD_CHECK_SIDE
+     /tmp/ccVEegCs.s:98     .rodata.str1.1:0000000000000000 .LC1
+     /tmp/ccVEegCs.s:100    .rodata.str1.1:0000000000000009 .LC2
+     /tmp/ccVEegCs.s:737    .rodata.cst4:0000000000000000 .LC3
+     /tmp/ccVEegCs.s:740    .rodata.cst4:0000000000000004 .LC4
+     /tmp/ccVEegCs.s:743    .rodata.cst4:0000000000000008 .LC5
+     /tmp/ccVEegCs.s:746    .rodata.cst4:000000000000000c .LC6
+     /tmp/ccVEegCs.s:749    .rodata.cst4:0000000000000010 .LC8
+     /tmp/ccVEegCs.s:509    .rodata.str1.1:000000000000000e .LC9
+     /tmp/ccVEegCs.s:511    .rodata.str1.1:0000000000000019 .LC10
+     /tmp/ccVEegCs.s:513    .rodata.str1.1:0000000000000023 .LC11
+     /tmp/ccVEegCs.s:515    .rodata.str1.1:000000000000002c .LC12
+     /tmp/ccVEegCs.s:517    .rodata.str1.1:0000000000000035 .LC13
+     /tmp/ccVEegCs.s:519    .rodata.str1.1:000000000000003f .LC14
+     /tmp/ccVEegCs.s:521    .rodata.str1.1:0000000000000048 .LC15
+     /tmp/ccVEegCs.s:523    .rodata.str1.1:000000000000004f .LC16
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_
@@ -639,16 +1059,19 @@ _ZNSolsEi
 _ZNSo3putEc
 _ZNSo5flushEv
 _ZSt16__throw_bad_castv
+GAS LISTING /tmp/ccVEegCs.s 			page 19
+
+
 _ZNKSt5ctypeIcE13_M_widen_initEv
+_Z17getCoordsOfCornerPK8obstacleh
+tanf
+_Z8getPointPK8obstacleh
+malloc
 _Z10glSetColorj
 _Z8drawQuadfff
 glClear
 _Z8drawLineffff
 glutSwapBuffers
-GAS LISTING /tmp/ccjNsti9.s 			page 12
-
-
-malloc
 _Z14createObstaclefff
 _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
 glutInit
@@ -658,3 +1081,4 @@ glutReshapeFunc
 glutDisplayFunc
 glutKeyboardFunc
 glutMainLoop
+__stack_chk_fail

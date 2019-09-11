@@ -1,4 +1,4 @@
-GAS LISTING /tmp/cceZA1fz.s 			page 1
+GAS LISTING /tmp/ccd29r7S.s 			page 1
 
 
    1              		.file	"routines.cpp"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
   46      24
   47 007a 660FEFC9 		pxor	%xmm1, %xmm1
   48 007e F30F5A4C 		cvtss2sd	4(%rsp), %xmm1
-GAS LISTING /tmp/cceZA1fz.s 			page 2
+GAS LISTING /tmp/ccd29r7S.s 			page 2
 
 
   48      2404
@@ -118,7 +118,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
   88 0111 660F28C7 		movapd	%xmm7, %xmm0
   89 0115 E8000000 		call	glVertex2d@PLT
   89      00
-GAS LISTING /tmp/cceZA1fz.s 			page 3
+GAS LISTING /tmp/ccd29r7S.s 			page 3
 
 
   90 011a F30F105C 		movss	44(%rsp), %xmm3
@@ -178,7 +178,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  127      00
  128 01a7 660FEFED 		pxor	%xmm5, %xmm5
  129 01ab F30F5A6C 		cvtss2sd	16(%rsp), %xmm5
-GAS LISTING /tmp/cceZA1fz.s 			page 4
+GAS LISTING /tmp/ccd29r7S.s 			page 4
 
 
  129      2410
@@ -238,7 +238,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  170      241C
  171 022f F30F1154 		movss	%xmm2, 12(%rsp)
  171      240C
-GAS LISTING /tmp/cceZA1fz.s 			page 5
+GAS LISTING /tmp/ccd29r7S.s 			page 5
 
 
  172 0235 89FD     		movl	%edi, %ebp
@@ -298,7 +298,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  210              	.LFE257:
  212              		.globl	_Z16drawCircleFilledfffi
  214              	_Z16drawCircleFilledfffi:
-GAS LISTING /tmp/cceZA1fz.s 			page 6
+GAS LISTING /tmp/ccd29r7S.s 			page 6
 
 
  215              	.LFB258:
@@ -358,7 +358,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  252      241C
  253 0345 E8000000 		call	glVertex2f@PLT
  253      00
-GAS LISTING /tmp/cceZA1fz.s 			page 7
+GAS LISTING /tmp/ccd29r7S.s 			page 7
 
 
  254 034a 83C301   		addl	$1, %ebx
@@ -418,7 +418,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  295      2428
  296 03cd E8000000 		call	glVertex2d@PLT
  296      00
-GAS LISTING /tmp/cceZA1fz.s 			page 8
+GAS LISTING /tmp/ccd29r7S.s 			page 8
 
 
  297 03d2 F30F1014 		movss	(%rsp), %xmm2
@@ -478,7 +478,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  327 0471 F30F5C7C 		subss	20(%rsp), %xmm7
  327      2414
  328 0477 660FEFF6 		pxor	%xmm6, %xmm6
-GAS LISTING /tmp/cceZA1fz.s 			page 9
+GAS LISTING /tmp/ccd29r7S.s 			page 9
 
 
  329 047b F30F5AF7 		cvtss2sd	%xmm7, %xmm6
@@ -538,7 +538,7 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  370              		.section	.rodata.cst4,"aM",@progbits,4
  371              		.align 4
  372              	.LC0:
-GAS LISTING /tmp/cceZA1fz.s 			page 10
+GAS LISTING /tmp/ccd29r7S.s 			page 10
 
 
  373 0000 00007F43 		.long	1132396544
@@ -556,24 +556,24 @@ GAS LISTING /tmp/cceZA1fz.s 			page 1
  385 0010 69D0B3BE 		.long	3199455337
  386              		.ident	"GCC: (GNU) 9.1.0"
  387              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/cceZA1fz.s 			page 11
+GAS LISTING /tmp/ccd29r7S.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 routines.cpp
-     /tmp/cceZA1fz.s:5      .text:0000000000000000 _Z10glSetColorj
-     /tmp/cceZA1fz.s:34     .text:000000000000004c _Z8drawLineffff
-     /tmp/cceZA1fz.s:64     .text:00000000000000ac _Z8drawRectffff
-     /tmp/cceZA1fz.s:118    .text:0000000000000187 _Z12drawTrianglefff
-     /tmp/cceZA1fz.s:158    .text:000000000000021d _Z10drawCirclefffi
-     /tmp/cceZA1fz.s:214    .text:00000000000002bc _Z16drawCircleFilledfffi
-     /tmp/cceZA1fz.s:270    .text:000000000000035b _Z7drawOctfff
-     /tmp/cceZA1fz.s:357    .text:00000000000004e6 _Z8drawQuadfff
-     /tmp/cceZA1fz.s:372    .rodata.cst4:0000000000000000 .LC0
-     /tmp/cceZA1fz.s:375    .rodata.cst4:0000000000000004 .LC1
-     /tmp/cceZA1fz.s:378    .rodata.cst4:0000000000000008 .LC2
-     /tmp/cceZA1fz.s:381    .rodata.cst4:000000000000000c .LC3
-     /tmp/cceZA1fz.s:384    .rodata.cst4:0000000000000010 .LC4
+     /tmp/ccd29r7S.s:5      .text:0000000000000000 _Z10glSetColorj
+     /tmp/ccd29r7S.s:34     .text:000000000000004c _Z8drawLineffff
+     /tmp/ccd29r7S.s:64     .text:00000000000000ac _Z8drawRectffff
+     /tmp/ccd29r7S.s:118    .text:0000000000000187 _Z12drawTrianglefff
+     /tmp/ccd29r7S.s:158    .text:000000000000021d _Z10drawCirclefffi
+     /tmp/ccd29r7S.s:214    .text:00000000000002bc _Z16drawCircleFilledfffi
+     /tmp/ccd29r7S.s:270    .text:000000000000035b _Z7drawOctfff
+     /tmp/ccd29r7S.s:357    .text:00000000000004e6 _Z8drawQuadfff
+     /tmp/ccd29r7S.s:372    .rodata.cst4:0000000000000000 .LC0
+     /tmp/ccd29r7S.s:375    .rodata.cst4:0000000000000004 .LC1
+     /tmp/ccd29r7S.s:378    .rodata.cst4:0000000000000008 .LC2
+     /tmp/ccd29r7S.s:381    .rodata.cst4:000000000000000c .LC3
+     /tmp/ccd29r7S.s:384    .rodata.cst4:0000000000000010 .LC4
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

@@ -2,15 +2,35 @@
 
 #define COORDS_DATATYPE float
 
+#define CORNER_LEFT_BOT     0
+#define CORNER_LEFT_TOP     1
+#define CORNER_RIGHT_TOP    2
+#define CORNER_RIGHT_BOT    3
+
+
+struct graphPoint
+{
+    struct graphPoint **targets;
+};
+
 struct coords
 {
     COORDS_DATATYPE     x,
                         y;
 };
 
+/*
+ *  1-------2
+ *  |       |
+ *  |       |
+ *  |       |
+ *  0-------3
+ */
+
 struct obstacle
 {
     struct coords      *c;
+    struct graphPoint  *corners[4];
     COORDS_DATATYPE     a;
 };
 
@@ -41,6 +61,10 @@ struct baseline vectToBaseline(const struct vect *v);
 
 COORDS_DATATYPE getLen(const struct coords *c1, const struct coords *c2);
 
-struct obstacle createObstacle(COORDS_DATATYPE x, COORDS_DATATYPE y, COORDS_DATATYPE a);
+struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a);
 
-struct coords   createCoords(COORDS_DATATYPE x, COORDS_DATATYPE y);
+struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y);
+
+struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t corner);
+
+struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner);

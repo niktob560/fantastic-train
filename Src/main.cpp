@@ -21,6 +21,10 @@
 #define RETURN_CODE_OK 0
 #define OBST_COLOR 0xFF0000
 
+#define VECTORS_PER_CHECK	10
+
+size_t QUAD_CHECK_SIDE = 20;
+
 using namespace std;
 
 
@@ -34,6 +38,11 @@ struct coords	startway,
 
 
 
+struct array
+{
+	void *items;
+	size_t size;
+};
 
 
 
@@ -41,15 +50,83 @@ struct coords	startway,
 
 
 
+void calculateWay()
+{
+
+}
 
 
 
+/*
+ *	-------+----->	0
+ *	<------+------	180
+ *		  /|\
+ *         |		90
+ *		   +
+ */
+struct vect createVect(const struct obstacle *obst, const uint8_t corner, const COORDS_DATATYPE angle)
+{
+	struct vect ret;
+	ret.c  = (getCoordsOfCorner(obst, corner));
+	ret.dx = QUAD_CHECK_SIDE;
+	ret.dy = ret.dx * tan(angle);
+	return ret;
+}
+
+struct array* getDataSet(const struct obstacle *obst, const uint8_t corner)
+{
+	struct graphPoint *p = getPoint(obst, corner);
+	size_t size = 0;
+	while (size == 0) {
+		for(size_t i = 0; i < numOfObstacles; i++)
+		{
+			struct coords *c = getCoordsOfCorner(obst, corner);
+			if(obstacles[i].c->x + obstacles[i].a >= c->x - QUAD_CHECK_SIDE / 2
+			&& obstacles[i].c->x <= c->x + obstacles[i].a + QUAD_CHECK_SIDE / 2
+			&& obstacles[i].c->y + obstacles[i].a >= c->y - QUAD_CHECK_SIDE / 2
+			&& obstacles[i].c->y <= c->y + obstacles[i].a + QUAD_CHECK_SIDE / 2)
+				size++;
+		}
+		if(size == 0)
+			QUAD_CHECK_SIDE += 10;
+	}
+	size_t iter = 0;
+	struct obstacle **obsts = (struct obstacle**)malloc(sizeof(struct obstacle*) * size);
+	for(size_t i = 0; i < numOfObstacles; i++)
+	{
+		struct coords *c = getCoordsOfCorner(obst, corner);
+		if(obstacles[i].c->x + obstacles[i].a >= c->x - QUAD_CHECK_SIDE / 2
+		&& obstacles[i].c->x <= c->x + obstacles[i].a + QUAD_CHECK_SIDE / 2
+		&& obstacles[i].c->y + obstacles[i].a >= c->y - QUAD_CHECK_SIDE / 2
+		&& obstacles[i].c->y <= c->y + obstacles[i].a + QUAD_CHECK_SIDE / 2)
+			obsts[iter++] = &obstacles[i];
+	}
+	struct array *ret = (struct array*)malloc(sizeof(struct array));
+	ret->items = obsts;
+	ret->size = size;
+	return ret;
+}
+
+
+bool hasIntersections(const struct vect *v)
+{
+	for(size_t i = 0; i < numOfObstacles; i++)
+	{
+
+	}
+}
 
 
 
-
-
-
+void initObst(const struct obstacle *obst)
+{
+	struct graphPoint *point = getPoint(obst, CORNER_LEFT_BOT);
+	struct array *obsts = getDataSet(obst, CORNER_LEFT_BOT);
+	for(uint8_t i = 0; i < VECTORS_PER_CHECK; i++)
+	{
+		createVect(obst, CORNER_LEFT_BOT, ((360 / VECTORS_PER_CHECK) * i));
+	}
+}
 
 
 

@@ -23,16 +23,18 @@ struct coords   getIntersection(const struct vect *v, const struct obstacle *obs
                     c2,
                     c3;
 
-    struct baseline b;
+    struct baseline b,
+                    b2;
 
     b.k = INF;
-    b.c = obst->c->x;
-    c1 = getIntersection(&b, &vectToBaseline(v));
+    b.b = obst->c->x;
+    b2 = vectToBaseline(v);
+    c1 = getIntersection(&b, &b2);
 
 
     b.k = INF;
-    b.c = obst->c->x + obst->a;
-    c2 = getIntersection(*b, &vectToBaseline(v));
+    b.b = obst->c->x + obst->a;
+    c2 = getIntersection(&b, &b2);
 
 
     if(!isDotInside(&c1, obst) && isDotInside(&c2, obst))
@@ -40,20 +42,20 @@ struct coords   getIntersection(const struct vect *v, const struct obstacle *obs
     //have one intersection in c1 at here
 
     b.k = 0;
-    b.c = obst->c->y;
-    c2 = getIntersection(&b, &vectToBaseline(v));
+    b.b = obst->c->y;
+    c2 = getIntersection(&b, &b2);
 
 
     b.k = 0;
-    b.c = obst->c->y + obst->a;
-    c3 = getIntersection(&b, &vectToBaseline(v));
+    b.b = obst->c->y + obst->a;
+    c3 = getIntersection(&b, &b2);
 
-    if(!isDotInside(&c3, obst) && isDotInside(&c4, obst))
+    if(!isDotInside(&c2, obst) && isDotInside(&c3, obst))
         c2 = c3;
 
     if(!isDotInside(&c1, obst))
         if(!isDotInside(&c2, obst))
-            return NULL;        //no intersections
+            return {-1, -1};        //no intersections
         else
             return c2;          //intersection only in c2
     else
@@ -61,9 +63,10 @@ struct coords   getIntersection(const struct vect *v, const struct obstacle *obs
             return c1;          //intersection only in c1
 
 
+    c3 = createCoords(v->c->x, v->c->y);
 
-    COORDS_DATATYPE l1 = getLen(&createCoords(v->x, v->y), &c1),
-                    l2 = getLen(&createCoords(v->x, v->y), &c3);
+    COORDS_DATATYPE l1 = getLen(&c3, &c1),
+                    l2 = getLen(&c3, &c2);
 
     if(l1 > l2)
         return c1;
@@ -98,7 +101,7 @@ COORDS_DATATYPE getLen(const struct coords *c1, const struct coords *c2)
     return l;
 }
 
-struct coords   createCoords(COORDS_DATATYPE x, COORDS_DATATYPE y)
+struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
 {
     struct coords ret;
     ret.x = x;
@@ -106,7 +109,7 @@ struct coords   createCoords(COORDS_DATATYPE x, COORDS_DATATYPE y)
     return ret;
 }
 
-struct obstacle createObstacle(COORDS_DATATYPE x, COORDS_DATATYPE y, COORDS_DATATYPE a)
+struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a)
 {
     struct obstacle ret;
     ret.c = (struct coords*)malloc(sizeof(struct coords));
@@ -114,4 +117,43 @@ struct obstacle createObstacle(COORDS_DATATYPE x, COORDS_DATATYPE y, COORDS_DATA
     ret.c->y = y;
     ret.a    = a;
     return ret;
+}
+
+
+struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t corner)
+{
+    struct coords *ret = (struct coords*)malloc(sizeof(struct coords));
+    switch (corner) {
+        case CORNER_LEFT_BOT:
+        {
+            ret->x = obst->c->x;
+            ret->y = obst->c->y;
+            break;
+        }
+        case CORNER_LEFT_TOP:
+        {
+            ret->x = obst->c->x;
+            ret->y = obst->c->y + obst->a;
+            break;
+        }
+        case CORNER_RIGHT_BOT:
+        {
+            ret->x = obst->c->x + obst->a;
+            ret->y = obst->c->y;
+            break;
+        }
+        case CORNER_RIGHT_TOP:
+        {
+            ret->x = obst->c->x + obst->a;
+            ret->y = obst->c->y + obst->a;
+            break;
+        }
+    }
+    return ret;
+}
+
+
+struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner)
+{
+    return obst->corners[corner];
 }
