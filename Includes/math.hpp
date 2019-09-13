@@ -9,3 +9,7 @@
 #ifndef NULL
     #define NULL 0x00
 #endif //ifndef NULL
+
+#ifndef PI
+    #define PI 3.14159
+#endif //ifndef PI

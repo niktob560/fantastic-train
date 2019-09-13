@@ -10,15 +10,31 @@ struct coords   getIntersection(const struct baseline *b1, const struct baseline
 {
     struct coords ret;
 
-    ret.x = (b2->b - b1->b) / (b1->k - b2->k);
-    ret.y = (b2->k * b1->b - b1->k * b2->b) / (b2->k - b1->k);
+    if(b1->k != INF && b2->k != INF)
+    {
+        ret.x = (b2->b - b1->b) / (b1->k - b2->k);
+        ret.y = (b2->k * b1->b - b1->k * b2->b) / (b2->k - b1->k);
+    }
+    else if(b1->k == INF)
+    {
+        ret.x = b1->b;
+        ret.y = b2->k * ret.x + b2->b;
+    }
+    else
+    {
+        ret.x = b2->b;
+        ret.y = b1->k * ret.x + b1->b;
+    }
 
     return ret;
 }
 
 //will return NULL if there is no intersections
-struct coords   getIntersection(const struct vect *v, const struct obstacle *obst)
+struct coords   getIntersection(const struct obstacle *obst, const struct vect *v)
 {
+    if((obst->c->x - v->c->x) / v->dx < 0 || (obst->c->y - v->c->y) / v->dy < 0)
+        return {-1, -1};
+
     struct coords   c1,
                     c2,
                     c3;
@@ -31,14 +47,19 @@ struct coords   getIntersection(const struct vect *v, const struct obstacle *obs
     b2 = vectToBaseline(v);
     c1 = getIntersection(&b, &b2);
 
+    std::cout << "found c1\n";
 
     b.k = INF;
     b.b = obst->c->x + obst->a;
     c2 = getIntersection(&b, &b2);
 
+    std::cout << "found c1 and c2\n";
 
     if(!isDotInside(&c1, obst) && isDotInside(&c2, obst))
+    {
+        std::cout << "C1 isn't in obstacle\n";
         c1 = c2;
+    }
     //have one intersection in c1 at here
 
     b.k = 0;
@@ -50,8 +71,12 @@ struct coords   getIntersection(const struct vect *v, const struct obstacle *obs
     b.b = obst->c->y + obst->a;
     c3 = getIntersection(&b, &b2);
 
+    std::cout << "found c2 and c3\n";
     if(!isDotInside(&c2, obst) && isDotInside(&c3, obst))
+    {
+        std::cout << "C2 isn't in obstacle\n";
         c2 = c3;
+    }
 
     if(!isDotInside(&c1, obst))
         if(!isDotInside(&c2, obst))
@@ -66,12 +91,15 @@ struct coords   getIntersection(const struct vect *v, const struct obstacle *obs
     c3 = createCoords(v->c->x, v->c->y);
 
     COORDS_DATATYPE l1 = getLen(&c3, &c1),
-                    l2 = getLen(&c3, &c2);
+                    l2 = getLen(&c3, &c2),
+                    l3 = getLen(v);
 
-    if(l1 > l2)
+    if(l1 > l2 && l3 >= l1)
         return c1;
-    else
+    else if(l3 >= l2)
         return c2;
+    else
+        return {-1, -1};
 }
 
 
@@ -90,14 +118,23 @@ struct baseline vectToBaseline(const struct vect *v)
     struct baseline ret;
 
     ret.k = v->dy / v->dx;
-    ret.b = v->c->y;
+    ret.b = v->c->y - v->c->x * ret.k;
 
     return ret;
 }
 
 COORDS_DATATYPE getLen(const struct coords *c1, const struct coords *c2)
 {
-    COORDS_DATATYPE l = sqrt(sqr(c1->x - c2->x) + sqr(c1->y - c2->y));
+    COORDS_DATATYPE lx = c1->x - c2->x,
+                    ly = c1->y - c2->y,
+                    l  = sqrt(sqr(lx) + sqr(ly));
+
+    return l;
+}
+
+COORDS_DATATYPE getLen(const struct vect *v)
+{
+    COORDS_DATATYPE l = sqrt(sqr(v->dx) + sqr(v->dy));
     return l;
 }
 
@@ -116,9 +153,16 @@ struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y,
     ret.c->x = x;
     ret.c->y = y;
     ret.a    = a;
+    for(uint8_t i = 0; i < 4; i++)
+    {
+        ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+        ret.corners[i]->c = *getCoordsOfCorner(&ret, i);
+    }
     return ret;
 }
 
+
+#define CONST 0.4
 
 struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t corner)
 {
@@ -126,26 +170,26 @@ struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t cor
     switch (corner) {
         case CORNER_LEFT_BOT:
         {
-            ret->x = obst->c->x;
-            ret->y = obst->c->y;
+            ret->x = obst->c->x - CONST;
+            ret->y = obst->c->y - CONST;
             break;
         }
         case CORNER_LEFT_TOP:
         {
-            ret->x = obst->c->x;
-            ret->y = obst->c->y + obst->a;
+            ret->x = obst->c->x - CONST;
+            ret->y = obst->c->y + obst->a + CONST;
             break;
         }
         case CORNER_RIGHT_BOT:
         {
-            ret->x = obst->c->x + obst->a;
-            ret->y = obst->c->y;
+            ret->x = obst->c->x + obst->a + CONST;
+            ret->y = obst->c->y - CONST;
             break;
         }
         case CORNER_RIGHT_TOP:
         {
-            ret->x = obst->c->x + obst->a;
-            ret->y = obst->c->y + obst->a;
+            ret->x = obst->c->x + obst->a + CONST;
+            ret->y = obst->c->y + obst->a + CONST;
             break;
         }
     }
@@ -156,4 +200,80 @@ struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t cor
 struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner)
 {
     return obst->corners[corner];
+}
+
+
+
+bool            hasIntersection(const struct obstacle *obst, const struct vect *v)
+{
+    // if((obst->c->x - v->c->x) / v->dx < 0 || (obst->c->y - v->c->y) / v->dy < 0)
+    //     return false;
+    //
+    // struct coords   c1,
+    //                 c2,
+    //                 c3;
+    //
+    // struct baseline b,
+    //                 b2;
+    //
+    // b.k = INF;
+    // b.b = obst->c->x;
+    // b2 = vectToBaseline(v);
+    // c1 = getIntersection(&b, &b2);
+    //
+    //
+    // b.k = INF;
+    // b.b = obst->c->x + obst->a;
+    // c2 = getIntersection(&b, &b2);
+    //
+    //
+    // if(!isDotInside(&c1, obst) && isDotInside(&c2, obst))
+    // {
+    //     std::cout << "c1 not inside\n";
+    //     c1 = c2;
+    // }
+    // //have one intersection in c1 at here
+    //
+    // b.k = 0;
+    // b.b = obst->c->y;
+    // c2 = getIntersection(&b, &b2);
+    //
+    //
+    // b.k = 0;
+    // b.b = obst->c->y + obst->a;
+    // c3 = getIntersection(&b, &b2);
+    //
+    // if(!isDotInside(&c2, obst) && isDotInside(&c3, obst))
+    // {
+    //     std::cout << "c2 not inside\n";
+    //     c2 = c3;
+    // }
+    //
+    // if(!isDotInside(&c1, obst)
+    // && !isDotInside(&c2, obst))
+    //     return false;
+    //
+    // return true;
+    struct coords c = getIntersection(obst, v);
+    std::cout << "obst: " << obst->c->x << ":" << obst->c->y << "; vect: " << v->c->x << ":" << v->c->y;
+    if(c.x == -1 && c.y == -1)
+    {
+        std::cout << "have no intersection" << std::endl;
+        return false;
+    }
+    else
+    {
+        std::cout << "have intersection" << std::endl;
+        return true;
+    }
+}
+
+
+void            addTarget(struct graphPoint *start, struct graphPoint *end)
+{
+    start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphPoint*));
+    start->targets[start->numOfTargets - 1] = end;
+
+    end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(struct graphPoint*));
+    end->targets[end->numOfTargets - 1] = start;
 }

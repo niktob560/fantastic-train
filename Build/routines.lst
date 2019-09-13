@@ -1,579 +1,1422 @@
-GAS LISTING /tmp/ccd29r7S.s 			page 1
+GAS LISTING /tmp/ccH45HTj.s 			page 1
 
 
    1              		.file	"routines.cpp"
    2              		.text
-   3              		.globl	_Z10glSetColorj
-   5              	_Z10glSetColorj:
-   6              	.LFB253:
-   7              		.cfi_startproc
-   8 0000 4883EC08 		subq	$8, %rsp
-   9              		.cfi_def_cfa_offset 16
-  10 0004 89F8     		movl	%edi, %eax
-  11 0006 400FB6D7 		movzbl	%dil, %edx
-  12 000a 660FEFD2 		pxor	%xmm2, %xmm2
-  13 000e F3480F2A 		cvtsi2ssq	%rdx, %xmm2
-  13      D2
-  14 0013 0FB6D4   		movzbl	%ah, %edx
-  15 0016 660FEFC9 		pxor	%xmm1, %xmm1
-  16 001a F3480F2A 		cvtsi2ssq	%rdx, %xmm1
-  16      CA
-  17 001f C1E810   		shrl	$16, %eax
-  18 0022 0FB6C0   		movzbl	%al, %eax
-  19 0025 660FEFC0 		pxor	%xmm0, %xmm0
-  20 0029 F3480F2A 		cvtsi2ssq	%rax, %xmm0
-  20      C0
-  21 002e F30F101D 		movss	.LC0(%rip), %xmm3
-  21      00000000 
-  22 0036 F30F5EC3 		divss	%xmm3, %xmm0
-  23 003a F30F5ED3 		divss	%xmm3, %xmm2
-  24 003e F30F5ECB 		divss	%xmm3, %xmm1
-  25 0042 E8000000 		call	glColor3f@PLT
-  25      00
-  26 0047 4883C408 		addq	$8, %rsp
-  27              		.cfi_def_cfa_offset 8
-  28 004b C3       		ret
-  29              		.cfi_endproc
-  30              	.LFE253:
-  32              		.globl	_Z8drawLineffff
-  34              	_Z8drawLineffff:
-  35              	.LFB254:
-  36              		.cfi_startproc
-  37 004c 4883EC18 		subq	$24, %rsp
-  38              		.cfi_def_cfa_offset 32
-  39 0050 F30F1104 		movss	%xmm0, (%rsp)
-  39      24
-  40 0055 F30F114C 		movss	%xmm1, 4(%rsp)
-  40      2404
-  41 005b F30F1154 		movss	%xmm2, 8(%rsp)
-  41      2408
-  42 0061 F30F115C 		movss	%xmm3, 12(%rsp)
-  42      240C
-  43 0067 BF010000 		movl	$1, %edi
-  43      00
-  44 006c E8000000 		call	glBegin@PLT
-  44      00
-  45 0071 660FEFC0 		pxor	%xmm0, %xmm0
-  46 0075 F30F5A04 		cvtss2sd	(%rsp), %xmm0
-  46      24
-  47 007a 660FEFC9 		pxor	%xmm1, %xmm1
-  48 007e F30F5A4C 		cvtss2sd	4(%rsp), %xmm1
-GAS LISTING /tmp/ccd29r7S.s 			page 2
+   3              	.Ltext0:
+   4              		.globl	_Z10glSetColorj
+   6              	_Z10glSetColorj:
+   7              	.LVL0:
+   8              	.LFB253:
+   9              		.file 1 "Src/routines.cpp"
+   1:Src/routines.cpp **** #include "routines.hpp"
+   2:Src/routines.cpp **** 
+   3:Src/routines.cpp **** 
+   4:Src/routines.cpp **** void glSetColor(uint32_t color)
+   5:Src/routines.cpp **** {
+  10              		.loc 1 5 1 view -0
+  11              		.cfi_startproc
+  12              		.loc 1 5 1 is_stmt 0 view .LVU1
+  13 0000 4883EC08 		subq	$8, %rsp
+  14              		.cfi_def_cfa_offset 16
+  15 0004 89F8     		movl	%edi, %eax
+   6:Src/routines.cpp **** 	glColor3f((float)((color >> 16) & 0xFF) / 255, (float)((color >> 8) & 0xFF) / 255, (float)(color &
+  16              		.loc 1 6 2 is_stmt 1 view .LVU2
+  17              		.loc 1 6 85 is_stmt 0 view .LVU3
+  18 0006 400FB6D7 		movzbl	%dil, %edx
+  19 000a 660FEFD2 		pxor	%xmm2, %xmm2
+  20 000e F3480F2A 		cvtsi2ssq	%rdx, %xmm2
+  20      D2
+  21              		.loc 1 6 49 view .LVU4
+  22 0013 0FB6D4   		movzbl	%ah, %edx
+  23 0016 660FEFC9 		pxor	%xmm1, %xmm1
+  24 001a F3480F2A 		cvtsi2ssq	%rdx, %xmm1
+  24      CA
+  25              		.loc 1 6 27 view .LVU5
+  26 001f C1E810   		shrl	$16, %eax
+  27              		.loc 1 6 12 view .LVU6
+  28 0022 0FB6C0   		movzbl	%al, %eax
+  29 0025 660FEFC0 		pxor	%xmm0, %xmm0
+  30 0029 F3480F2A 		cvtsi2ssq	%rax, %xmm0
+  30      C0
+  31              		.loc 1 6 11 view .LVU7
+  32 002e F30F101D 		movss	.LC0(%rip), %xmm3
+  32      00000000 
+  33 0036 F30F5EC3 		divss	%xmm3, %xmm0
+  34 003a F30F5ED3 		divss	%xmm3, %xmm2
+  35 003e F30F5ECB 		divss	%xmm3, %xmm1
+  36 0042 E8000000 		call	glColor3f@PLT
+  36      00
+  37              	.LVL1:
+   7:Src/routines.cpp **** }
+  38              		.loc 1 7 1 view .LVU8
+  39 0047 4883C408 		addq	$8, %rsp
+  40              		.cfi_def_cfa_offset 8
+  41 004b C3       		ret
+  42              		.cfi_endproc
+  43              	.LFE253:
+  45              		.globl	_Z8drawLineffff
+  47              	_Z8drawLineffff:
+  48              	.LVL2:
+GAS LISTING /tmp/ccH45HTj.s 			page 2
 
 
-  48      2404
-  49 0084 E8000000 		call	glVertex2d@PLT
-  49      00
-  50 0089 660FEFC0 		pxor	%xmm0, %xmm0
-  51 008d F30F5A44 		cvtss2sd	8(%rsp), %xmm0
-  51      2408
-  52 0093 660FEFC9 		pxor	%xmm1, %xmm1
-  53 0097 F30F5A4C 		cvtss2sd	12(%rsp), %xmm1
-  53      240C
-  54 009d E8000000 		call	glVertex2d@PLT
-  54      00
-  55 00a2 E8000000 		call	glEnd@PLT
-  55      00
-  56 00a7 4883C418 		addq	$24, %rsp
-  57              		.cfi_def_cfa_offset 8
-  58 00ab C3       		ret
-  59              		.cfi_endproc
-  60              	.LFE254:
-  62              		.globl	_Z8drawRectffff
-  64              	_Z8drawRectffff:
-  65              	.LFB255:
-  66              		.cfi_startproc
-  67 00ac 4883EC38 		subq	$56, %rsp
-  68              		.cfi_def_cfa_offset 64
-  69 00b0 0F28E0   		movaps	%xmm0, %xmm4
-  70 00b3 F30F1005 		movss	.LC1(%rip), %xmm0
-  70      00000000 
-  71 00bb F30F1154 		movss	%xmm2, 40(%rsp)
-  71      2428
-  72 00c1 F30F59D0 		mulss	%xmm0, %xmm2
-  73 00c5 F30F5CE2 		subss	%xmm2, %xmm4
-  74 00c9 F30F1164 		movss	%xmm4, 8(%rsp)
-  74      2408
-  75 00cf F30F115C 		movss	%xmm3, 44(%rsp)
-  75      242C
-  76 00d5 F30F59C3 		mulss	%xmm3, %xmm0
-  77 00d9 F30F5CC8 		subss	%xmm0, %xmm1
-  78 00dd F30F114C 		movss	%xmm1, 16(%rsp)
-  78      2410
-  79 00e3 BF070000 		movl	$7, %edi
-  79      00
-  80 00e8 E8000000 		call	glBegin@PLT
-  80      00
-  81 00ed 660FEFF6 		pxor	%xmm6, %xmm6
-  82 00f1 F30F5A74 		cvtss2sd	16(%rsp), %xmm6
-  82      2410
-  83 00f7 660FEFFF 		pxor	%xmm7, %xmm7
-  84 00fb F30F5A7C 		cvtss2sd	8(%rsp), %xmm7
-  84      2408
-  85 0101 F20F1174 		movsd	%xmm6, 24(%rsp)
-  85      2418
-  86 0107 660F28CE 		movapd	%xmm6, %xmm1
-  87 010b F20F117C 		movsd	%xmm7, 32(%rsp)
-  87      2420
-  88 0111 660F28C7 		movapd	%xmm7, %xmm0
-  89 0115 E8000000 		call	glVertex2d@PLT
-  89      00
-GAS LISTING /tmp/ccd29r7S.s 			page 3
+  49              	.LFB254:
+   8:Src/routines.cpp **** 
+   9:Src/routines.cpp **** 
+  10:Src/routines.cpp **** void drawLine(float x1, float y1, float x2, float y2)
+  11:Src/routines.cpp **** {
+  50              		.loc 1 11 1 is_stmt 1 view -0
+  51              		.cfi_startproc
+  52              		.loc 1 11 1 is_stmt 0 view .LVU10
+  53 004c 4883EC18 		subq	$24, %rsp
+  54              		.cfi_def_cfa_offset 32
+  55 0050 F30F1104 		movss	%xmm0, (%rsp)
+  55      24
+  56 0055 F30F114C 		movss	%xmm1, 4(%rsp)
+  56      2404
+  57 005b F30F1154 		movss	%xmm2, 8(%rsp)
+  57      2408
+  58 0061 F30F115C 		movss	%xmm3, 12(%rsp)
+  58      240C
+  12:Src/routines.cpp **** 	glBegin(GL_LINES);
+  59              		.loc 1 12 2 is_stmt 1 view .LVU11
+  60              		.loc 1 12 9 is_stmt 0 view .LVU12
+  61 0067 BF010000 		movl	$1, %edi
+  61      00
+  62 006c E8000000 		call	glBegin@PLT
+  62      00
+  63              	.LVL3:
+  13:Src/routines.cpp **** 	glVertex2d(x1, y1);
+  64              		.loc 1 13 2 is_stmt 1 view .LVU13
+  65              		.loc 1 13 12 is_stmt 0 view .LVU14
+  66 0071 660FEFC0 		pxor	%xmm0, %xmm0
+  67 0075 F30F5A04 		cvtss2sd	(%rsp), %xmm0
+  67      24
+  68 007a 660FEFC9 		pxor	%xmm1, %xmm1
+  69 007e F30F5A4C 		cvtss2sd	4(%rsp), %xmm1
+  69      2404
+  70 0084 E8000000 		call	glVertex2d@PLT
+  70      00
+  71              	.LVL4:
+  14:Src/routines.cpp **** 	glVertex2d(x2, y2);
+  72              		.loc 1 14 2 is_stmt 1 view .LVU15
+  73              		.loc 1 14 12 is_stmt 0 view .LVU16
+  74 0089 660FEFC0 		pxor	%xmm0, %xmm0
+  75 008d F30F5A44 		cvtss2sd	8(%rsp), %xmm0
+  75      2408
+  76 0093 660FEFC9 		pxor	%xmm1, %xmm1
+  77 0097 F30F5A4C 		cvtss2sd	12(%rsp), %xmm1
+  77      240C
+  78 009d E8000000 		call	glVertex2d@PLT
+  78      00
+  79              	.LVL5:
+  15:Src/routines.cpp **** 	glEnd();
+  80              		.loc 1 15 2 is_stmt 1 view .LVU17
+  81              		.loc 1 15 7 is_stmt 0 view .LVU18
+  82 00a2 E8000000 		call	glEnd@PLT
+  82      00
+  83              	.LVL6:
+  16:Src/routines.cpp **** }
+GAS LISTING /tmp/ccH45HTj.s 			page 3
 
 
-  90 011a F30F105C 		movss	44(%rsp), %xmm3
-  90      242C
-  91 0120 F30F585C 		addss	16(%rsp), %xmm3
-  91      2410
-  92 0126 660FEFED 		pxor	%xmm5, %xmm5
-  93 012a F30F5AEB 		cvtss2sd	%xmm3, %xmm5
-  94 012e F20F116C 		movsd	%xmm5, 16(%rsp)
-  94      2410
-  95 0134 660F28CD 		movapd	%xmm5, %xmm1
-  96 0138 F20F1044 		movsd	32(%rsp), %xmm0
-  96      2420
-  97 013e E8000000 		call	glVertex2d@PLT
-  97      00
-  98 0143 F30F1044 		movss	40(%rsp), %xmm0
-  98      2428
-  99 0149 F30F5844 		addss	8(%rsp), %xmm0
-  99      2408
- 100 014f 660FEFFF 		pxor	%xmm7, %xmm7
- 101 0153 F30F5AF8 		cvtss2sd	%xmm0, %xmm7
- 102 0157 F20F104C 		movsd	16(%rsp), %xmm1
- 102      2410
- 103 015d F20F117C 		movsd	%xmm7, 8(%rsp)
+  84              		.loc 1 16 1 view .LVU19
+  85 00a7 4883C418 		addq	$24, %rsp
+  86              		.cfi_def_cfa_offset 8
+  87              	.LVL7:
+  88              		.loc 1 16 1 view .LVU20
+  89 00ab C3       		ret
+  90              		.cfi_endproc
+  91              	.LFE254:
+  93              		.globl	_Z8drawRectffff
+  95              	_Z8drawRectffff:
+  96              	.LVL8:
+  97              	.LFB255:
+  17:Src/routines.cpp **** 
+  18:Src/routines.cpp **** void drawRect(float x, float y, float a, float b)
+  19:Src/routines.cpp **** {
+  98              		.loc 1 19 1 is_stmt 1 view -0
+  99              		.cfi_startproc
+ 100              		.loc 1 19 1 is_stmt 0 view .LVU22
+ 101 00ac 4883EC38 		subq	$56, %rsp
+ 102              		.cfi_def_cfa_offset 64
+ 103 00b0 F30F1144 		movss	%xmm0, 8(%rsp)
  103      2408
- 104 0163 660F28C7 		movapd	%xmm7, %xmm0
- 105 0167 E8000000 		call	glVertex2d@PLT
- 105      00
- 106 016c F20F104C 		movsd	24(%rsp), %xmm1
- 106      2418
- 107 0172 F20F1044 		movsd	8(%rsp), %xmm0
- 107      2408
- 108 0178 E8000000 		call	glVertex2d@PLT
- 108      00
- 109 017d E8000000 		call	glEnd@PLT
+ 104 00b6 F30F114C 		movss	%xmm1, 16(%rsp)
+ 104      2410
+ 105 00bc F30F1154 		movss	%xmm2, 40(%rsp)
+ 105      2428
+ 106 00c2 F30F115C 		movss	%xmm3, 44(%rsp)
+ 106      242C
+  20:Src/routines.cpp **** 	// x -= a / 2;
+  21:Src/routines.cpp **** 	// y -= b / 2;
+  22:Src/routines.cpp **** 	glBegin(GL_QUADS);
+ 107              		.loc 1 22 2 is_stmt 1 view .LVU23
+ 108              		.loc 1 22 9 is_stmt 0 view .LVU24
+ 109 00c8 BF070000 		movl	$7, %edi
  109      00
- 110 0182 4883C438 		addq	$56, %rsp
- 111              		.cfi_def_cfa_offset 8
- 112 0186 C3       		ret
- 113              		.cfi_endproc
- 114              	.LFE255:
- 116              		.globl	_Z12drawTrianglefff
- 118              	_Z12drawTrianglefff:
- 119              	.LFB256:
- 120              		.cfi_startproc
- 121 0187 4883EC28 		subq	$40, %rsp
- 122              		.cfi_def_cfa_offset 48
- 123 018b F30F1144 		movss	%xmm0, 12(%rsp)
- 123      240C
- 124 0191 F30F114C 		movss	%xmm1, 16(%rsp)
- 124      2410
- 125 0197 F30F1154 		movss	%xmm2, 20(%rsp)
- 125      2414
- 126 019d BF040000 		movl	$4, %edi
- 126      00
- 127 01a2 E8000000 		call	glBegin@PLT
- 127      00
- 128 01a7 660FEFED 		pxor	%xmm5, %xmm5
- 129 01ab F30F5A6C 		cvtss2sd	16(%rsp), %xmm5
-GAS LISTING /tmp/ccd29r7S.s 			page 4
+ 110 00cd E8000000 		call	glBegin@PLT
+ 110      00
+ 111              	.LVL9:
+  23:Src/routines.cpp **** 	glVertex2d(x, y);
+ 112              		.loc 1 23 2 is_stmt 1 view .LVU25
+ 113              		.loc 1 23 12 is_stmt 0 view .LVU26
+ 114 00d2 660FEFED 		pxor	%xmm5, %xmm5
+ 115 00d6 F30F5A6C 		cvtss2sd	16(%rsp), %xmm5
+ 115      2410
+ 116 00dc 660FEFF6 		pxor	%xmm6, %xmm6
+ 117 00e0 F30F5A74 		cvtss2sd	8(%rsp), %xmm6
+ 117      2408
+ 118 00e6 F20F116C 		movsd	%xmm5, 24(%rsp)
+ 118      2418
+ 119 00ec 660F28CD 		movapd	%xmm5, %xmm1
+ 120 00f0 F20F1174 		movsd	%xmm6, 32(%rsp)
+ 120      2420
+ 121 00f6 660F28C6 		movapd	%xmm6, %xmm0
+ 122 00fa E8000000 		call	glVertex2d@PLT
+ 122      00
+ 123              	.LVL10:
+  24:Src/routines.cpp **** 	glVertex2d(x, y + b);
+GAS LISTING /tmp/ccH45HTj.s 			page 4
 
 
- 129      2410
- 130 01b1 660FEFC0 		pxor	%xmm0, %xmm0
- 131 01b5 F30F5A44 		cvtss2sd	12(%rsp), %xmm0
- 131      240C
- 132 01bb F20F116C 		movsd	%xmm5, 24(%rsp)
- 132      2418
- 133 01c1 660F28CD 		movapd	%xmm5, %xmm1
- 134 01c5 E8000000 		call	glVertex2d@PLT
- 134      00
- 135 01ca F30F1044 		movss	12(%rsp), %xmm0
- 135      240C
- 136 01d0 F30F5844 		addss	20(%rsp), %xmm0
- 136      2414
- 137 01d6 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 138 01da F20F104C 		movsd	24(%rsp), %xmm1
- 138      2418
- 139 01e0 E8000000 		call	glVertex2d@PLT
- 139      00
- 140 01e5 F30F104C 		movss	16(%rsp), %xmm1
- 140      2410
- 141 01eb F30F1064 		movss	20(%rsp), %xmm4
- 141      2414
- 142 01f1 F30F58CC 		addss	%xmm4, %xmm1
- 143 01f5 F30F5925 		mulss	.LC1(%rip), %xmm4
- 143      00000000 
- 144 01fd 0F28C4   		movaps	%xmm4, %xmm0
- 145 0200 F30F5844 		addss	12(%rsp), %xmm0
- 145      240C
- 146 0206 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
- 147 020a F30F5AC9 		cvtss2sd	%xmm1, %xmm1
- 148 020e E8000000 		call	glVertex2d@PLT
- 148      00
- 149 0213 E8000000 		call	glEnd@PLT
- 149      00
- 150 0218 4883C428 		addq	$40, %rsp
- 151              		.cfi_def_cfa_offset 8
- 152 021c C3       		ret
- 153              		.cfi_endproc
- 154              	.LFE256:
- 156              		.globl	_Z10drawCirclefffi
- 158              	_Z10drawCirclefffi:
- 159              	.LFB257:
- 160              		.cfi_startproc
- 161 021d 55       		pushq	%rbp
- 162              		.cfi_def_cfa_offset 16
- 163              		.cfi_offset 6, -16
- 164 021e 53       		pushq	%rbx
- 165              		.cfi_def_cfa_offset 24
- 166              		.cfi_offset 3, -24
- 167 021f 4883EC28 		subq	$40, %rsp
- 168              		.cfi_def_cfa_offset 64
- 169 0223 F30F1144 		movss	%xmm0, 24(%rsp)
- 169      2418
- 170 0229 F30F114C 		movss	%xmm1, 28(%rsp)
- 170      241C
- 171 022f F30F1154 		movss	%xmm2, 12(%rsp)
- 171      240C
-GAS LISTING /tmp/ccd29r7S.s 			page 5
+ 124              		.loc 1 24 2 is_stmt 1 view .LVU27
+ 125              		.loc 1 24 18 is_stmt 0 view .LVU28
+ 126 00ff F30F1064 		movss	16(%rsp), %xmm4
+ 126      2410
+ 127 0105 F30F5864 		addss	44(%rsp), %xmm4
+ 127      242C
+ 128              		.loc 1 24 12 view .LVU29
+ 129 010b 660FEFFF 		pxor	%xmm7, %xmm7
+ 130 010f F30F5AFC 		cvtss2sd	%xmm4, %xmm7
+ 131 0113 F20F117C 		movsd	%xmm7, 16(%rsp)
+ 131      2410
+ 132              	.LVL11:
+ 133              		.loc 1 24 12 view .LVU30
+ 134 0119 660F28CF 		movapd	%xmm7, %xmm1
+ 135 011d F20F1044 		movsd	32(%rsp), %xmm0
+ 135      2420
+ 136 0123 E8000000 		call	glVertex2d@PLT
+ 136      00
+ 137              	.LVL12:
+  25:Src/routines.cpp **** 	glVertex2d(x + a, y + b);
+ 138              		.loc 1 25 2 is_stmt 1 view .LVU31
+ 139              		.loc 1 25 15 is_stmt 0 view .LVU32
+ 140 0128 F30F1044 		movss	8(%rsp), %xmm0
+ 140      2408
+ 141 012e F30F5844 		addss	40(%rsp), %xmm0
+ 141      2428
+ 142              		.loc 1 25 12 view .LVU33
+ 143 0134 660FEFD2 		pxor	%xmm2, %xmm2
+ 144 0138 F30F5AD0 		cvtss2sd	%xmm0, %xmm2
+ 145 013c F20F104C 		movsd	16(%rsp), %xmm1
+ 145      2410
+ 146 0142 F20F1154 		movsd	%xmm2, 8(%rsp)
+ 146      2408
+ 147              	.LVL13:
+ 148              		.loc 1 25 12 view .LVU34
+ 149 0148 660F28C2 		movapd	%xmm2, %xmm0
+ 150 014c E8000000 		call	glVertex2d@PLT
+ 150      00
+ 151              	.LVL14:
+  26:Src/routines.cpp **** 	glVertex2d(x + a, y);
+ 152              		.loc 1 26 2 is_stmt 1 view .LVU35
+ 153              		.loc 1 26 12 is_stmt 0 view .LVU36
+ 154 0151 F20F104C 		movsd	24(%rsp), %xmm1
+ 154      2418
+ 155 0157 F20F1044 		movsd	8(%rsp), %xmm0
+ 155      2408
+ 156 015d E8000000 		call	glVertex2d@PLT
+ 156      00
+ 157              	.LVL15:
+  27:Src/routines.cpp **** 	glEnd();
+ 158              		.loc 1 27 2 is_stmt 1 view .LVU37
+ 159              		.loc 1 27 7 is_stmt 0 view .LVU38
+ 160 0162 E8000000 		call	glEnd@PLT
+ 160      00
+ 161              	.LVL16:
+  28:Src/routines.cpp **** }
+ 162              		.loc 1 28 1 view .LVU39
+GAS LISTING /tmp/ccH45HTj.s 			page 5
 
 
- 172 0235 89FD     		movl	%edi, %ebp
- 173 0237 BF020000 		movl	$2, %edi
- 173      00
- 174 023c E8000000 		call	glBegin@PLT
- 174      00
- 175 0241 BB000000 		movl	$0, %ebx
- 175      00
- 176              	.L17:
- 177 0246 39EB     		cmpl	%ebp, %ebx
- 178 0248 7D66     		jge	.L16
- 179 024a 660FEFC0 		pxor	%xmm0, %xmm0
- 180 024e F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
- 181 0252 F30F5905 		mulss	.LC2(%rip), %xmm0
- 181      00000000 
- 182 025a 660FEFC9 		pxor	%xmm1, %xmm1
- 183 025e F30F2ACD 		cvtsi2ssl	%ebp, %xmm1
- 184 0262 F30F5EC1 		divss	%xmm1, %xmm0
- 185 0266 F30F1144 		movss	%xmm0, 16(%rsp)
- 185      2410
- 186 026c E8000000 		call	cosf@PLT
- 186      00
- 187 0271 0F28D8   		movaps	%xmm0, %xmm3
- 188 0274 F30F595C 		mulss	12(%rsp), %xmm3
- 188      240C
- 189 027a F30F115C 		movss	%xmm3, 20(%rsp)
- 189      2414
- 190 0280 F30F1044 		movss	16(%rsp), %xmm0
+ 163 0167 4883C438 		addq	$56, %rsp
+ 164              		.cfi_def_cfa_offset 8
+ 165 016b C3       		ret
+ 166              		.cfi_endproc
+ 167              	.LFE255:
+ 169              		.globl	_Z12drawTrianglefff
+ 171              	_Z12drawTrianglefff:
+ 172              	.LVL17:
+ 173              	.LFB256:
+  29:Src/routines.cpp **** 
+  30:Src/routines.cpp **** void drawTriangle(float x, float y, float a)
+  31:Src/routines.cpp **** {
+ 174              		.loc 1 31 1 is_stmt 1 view -0
+ 175              		.cfi_startproc
+ 176              		.loc 1 31 1 is_stmt 0 view .LVU41
+ 177 016c 4883EC28 		subq	$40, %rsp
+ 178              		.cfi_def_cfa_offset 48
+ 179 0170 F30F1144 		movss	%xmm0, 12(%rsp)
+ 179      240C
+ 180 0176 F30F114C 		movss	%xmm1, 16(%rsp)
+ 180      2410
+ 181 017c F30F1154 		movss	%xmm2, 20(%rsp)
+ 181      2414
+  32:Src/routines.cpp **** 	glBegin(GL_TRIANGLES);
+ 182              		.loc 1 32 2 is_stmt 1 view .LVU42
+ 183              		.loc 1 32 9 is_stmt 0 view .LVU43
+ 184 0182 BF040000 		movl	$4, %edi
+ 184      00
+ 185 0187 E8000000 		call	glBegin@PLT
+ 185      00
+ 186              	.LVL18:
+  33:Src/routines.cpp **** 	glVertex2d(x, y);
+ 187              		.loc 1 33 2 is_stmt 1 view .LVU44
+ 188              		.loc 1 33 12 is_stmt 0 view .LVU45
+ 189 018c 660FEFED 		pxor	%xmm5, %xmm5
+ 190 0190 F30F5A6C 		cvtss2sd	16(%rsp), %xmm5
  190      2410
- 191 0286 E8000000 		call	sinf@PLT
- 191      00
- 192 028b 0F28C8   		movaps	%xmm0, %xmm1
- 193 028e F30F594C 		mulss	12(%rsp), %xmm1
- 193      240C
- 194 0294 F30F1044 		movss	20(%rsp), %xmm0
- 194      2414
- 195 029a F30F5844 		addss	24(%rsp), %xmm0
- 195      2418
- 196 02a0 F30F584C 		addss	28(%rsp), %xmm1
- 196      241C
- 197 02a6 E8000000 		call	glVertex2f@PLT
- 197      00
- 198 02ab 83C301   		addl	$1, %ebx
- 199 02ae EB96     		jmp	.L17
- 200              	.L16:
- 201 02b0 E8000000 		call	glEnd@PLT
- 201      00
- 202 02b5 4883C428 		addq	$40, %rsp
- 203              		.cfi_def_cfa_offset 24
- 204 02b9 5B       		popq	%rbx
- 205              		.cfi_def_cfa_offset 16
- 206 02ba 5D       		popq	%rbp
- 207              		.cfi_def_cfa_offset 8
- 208 02bb C3       		ret
- 209              		.cfi_endproc
- 210              	.LFE257:
- 212              		.globl	_Z16drawCircleFilledfffi
- 214              	_Z16drawCircleFilledfffi:
-GAS LISTING /tmp/ccd29r7S.s 			page 6
+ 191 0196 660FEFC0 		pxor	%xmm0, %xmm0
+ 192 019a F30F5A44 		cvtss2sd	12(%rsp), %xmm0
+ 192      240C
+ 193 01a0 F20F116C 		movsd	%xmm5, 24(%rsp)
+ 193      2418
+ 194 01a6 660F28CD 		movapd	%xmm5, %xmm1
+ 195 01aa E8000000 		call	glVertex2d@PLT
+ 195      00
+ 196              	.LVL19:
+  34:Src/routines.cpp **** 	glVertex2d(x + a, y);
+ 197              		.loc 1 34 2 is_stmt 1 view .LVU46
+ 198              		.loc 1 34 15 is_stmt 0 view .LVU47
+ 199 01af F30F1044 		movss	12(%rsp), %xmm0
+ 199      240C
+ 200 01b5 F30F5844 		addss	20(%rsp), %xmm0
+ 200      2414
+ 201              		.loc 1 34 12 view .LVU48
+ 202 01bb F30F5AC0 		cvtss2sd	%xmm0, %xmm0
+ 203 01bf F20F104C 		movsd	24(%rsp), %xmm1
+ 203      2418
+GAS LISTING /tmp/ccH45HTj.s 			page 6
 
 
- 215              	.LFB258:
- 216              		.cfi_startproc
- 217 02bc 55       		pushq	%rbp
- 218              		.cfi_def_cfa_offset 16
- 219              		.cfi_offset 6, -16
- 220 02bd 53       		pushq	%rbx
- 221              		.cfi_def_cfa_offset 24
- 222              		.cfi_offset 3, -24
- 223 02be 4883EC28 		subq	$40, %rsp
- 224              		.cfi_def_cfa_offset 64
- 225 02c2 F30F1144 		movss	%xmm0, 24(%rsp)
- 225      2418
- 226 02c8 F30F114C 		movss	%xmm1, 28(%rsp)
- 226      241C
- 227 02ce F30F1154 		movss	%xmm2, 12(%rsp)
- 227      240C
- 228 02d4 89FD     		movl	%edi, %ebp
- 229 02d6 BF090000 		movl	$9, %edi
- 229      00
- 230 02db E8000000 		call	glBegin@PLT
- 230      00
- 231 02e0 BB000000 		movl	$0, %ebx
- 231      00
- 232              	.L21:
- 233 02e5 39EB     		cmpl	%ebp, %ebx
- 234 02e7 7D66     		jge	.L20
- 235 02e9 660FEFC0 		pxor	%xmm0, %xmm0
- 236 02ed F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
- 237 02f1 F30F5905 		mulss	.LC2(%rip), %xmm0
- 237      00000000 
- 238 02f9 660FEFC9 		pxor	%xmm1, %xmm1
- 239 02fd F30F2ACD 		cvtsi2ssl	%ebp, %xmm1
- 240 0301 F30F5EC1 		divss	%xmm1, %xmm0
- 241 0305 F30F1144 		movss	%xmm0, 16(%rsp)
- 241      2410
- 242 030b E8000000 		call	cosf@PLT
- 242      00
- 243 0310 0F28D8   		movaps	%xmm0, %xmm3
- 244 0313 F30F595C 		mulss	12(%rsp), %xmm3
- 244      240C
- 245 0319 F30F115C 		movss	%xmm3, 20(%rsp)
- 245      2414
- 246 031f F30F1044 		movss	16(%rsp), %xmm0
- 246      2410
- 247 0325 E8000000 		call	sinf@PLT
- 247      00
- 248 032a 0F28C8   		movaps	%xmm0, %xmm1
- 249 032d F30F594C 		mulss	12(%rsp), %xmm1
- 249      240C
- 250 0333 F30F1044 		movss	20(%rsp), %xmm0
- 250      2414
- 251 0339 F30F5844 		addss	24(%rsp), %xmm0
- 251      2418
- 252 033f F30F584C 		addss	28(%rsp), %xmm1
- 252      241C
- 253 0345 E8000000 		call	glVertex2f@PLT
- 253      00
-GAS LISTING /tmp/ccd29r7S.s 			page 7
+ 204 01c5 E8000000 		call	glVertex2d@PLT
+ 204      00
+ 205              	.LVL20:
+  35:Src/routines.cpp **** 	glVertex2d(x + (a / 2), y + a);
+ 206              		.loc 1 35 2 is_stmt 1 view .LVU49
+ 207              		.loc 1 35 28 is_stmt 0 view .LVU50
+ 208 01ca F30F104C 		movss	16(%rsp), %xmm1
+ 208      2410
+ 209 01d0 F30F1064 		movss	20(%rsp), %xmm4
+ 209      2414
+ 210 01d6 F30F58CC 		addss	%xmm4, %xmm1
+ 211              		.loc 1 35 20 view .LVU51
+ 212 01da F30F5925 		mulss	.LC1(%rip), %xmm4
+ 212      00000000 
+ 213 01e2 0F28C4   		movaps	%xmm4, %xmm0
+ 214              		.loc 1 35 15 view .LVU52
+ 215 01e5 F30F5844 		addss	12(%rsp), %xmm0
+ 215      240C
+ 216              		.loc 1 35 12 view .LVU53
+ 217 01eb F30F5AC0 		cvtss2sd	%xmm0, %xmm0
+ 218 01ef F30F5AC9 		cvtss2sd	%xmm1, %xmm1
+ 219 01f3 E8000000 		call	glVertex2d@PLT
+ 219      00
+ 220              	.LVL21:
+  36:Src/routines.cpp **** 	glEnd();
+ 221              		.loc 1 36 2 is_stmt 1 view .LVU54
+ 222              		.loc 1 36 7 is_stmt 0 view .LVU55
+ 223 01f8 E8000000 		call	glEnd@PLT
+ 223      00
+ 224              	.LVL22:
+  37:Src/routines.cpp **** }
+ 225              		.loc 1 37 1 view .LVU56
+ 226 01fd 4883C428 		addq	$40, %rsp
+ 227              		.cfi_def_cfa_offset 8
+ 228 0201 C3       		ret
+ 229              		.cfi_endproc
+ 230              	.LFE256:
+ 232              		.globl	_Z10drawCirclefffi
+ 234              	_Z10drawCirclefffi:
+ 235              	.LVL23:
+ 236              	.LFB257:
+  38:Src/routines.cpp **** 
+  39:Src/routines.cpp **** void drawCircle(float cx, float cy, float r, int num_segments)
+  40:Src/routines.cpp **** {
+ 237              		.loc 1 40 1 is_stmt 1 view -0
+ 238              		.cfi_startproc
+ 239              		.loc 1 40 1 is_stmt 0 view .LVU58
+ 240 0202 55       		pushq	%rbp
+ 241              		.cfi_def_cfa_offset 16
+ 242              		.cfi_offset 6, -16
+ 243 0203 53       		pushq	%rbx
+ 244              		.cfi_def_cfa_offset 24
+ 245              		.cfi_offset 3, -24
+ 246 0204 4883EC28 		subq	$40, %rsp
+ 247              		.cfi_def_cfa_offset 64
+ 248 0208 F30F1144 		movss	%xmm0, 24(%rsp)
+ 248      2418
+GAS LISTING /tmp/ccH45HTj.s 			page 7
 
 
- 254 034a 83C301   		addl	$1, %ebx
- 255 034d EB96     		jmp	.L21
- 256              	.L20:
- 257 034f E8000000 		call	glEnd@PLT
+ 249 020e F30F114C 		movss	%xmm1, 28(%rsp)
+ 249      241C
+ 250 0214 F30F1154 		movss	%xmm2, 12(%rsp)
+ 250      240C
+ 251 021a 89FD     		movl	%edi, %ebp
+  41:Src/routines.cpp ****     glBegin(GL_LINE_LOOP);
+ 252              		.loc 1 41 5 is_stmt 1 view .LVU59
+ 253              		.loc 1 41 12 is_stmt 0 view .LVU60
+ 254 021c BF020000 		movl	$2, %edi
+ 254      00
+ 255              	.LVL24:
+ 256              		.loc 1 41 12 view .LVU61
+ 257 0221 E8000000 		call	glBegin@PLT
  257      00
- 258 0354 4883C428 		addq	$40, %rsp
- 259              		.cfi_def_cfa_offset 24
- 260 0358 5B       		popq	%rbx
- 261              		.cfi_def_cfa_offset 16
- 262 0359 5D       		popq	%rbp
- 263              		.cfi_def_cfa_offset 8
- 264 035a C3       		ret
- 265              		.cfi_endproc
- 266              	.LFE258:
- 268              		.globl	_Z7drawOctfff
- 270              	_Z7drawOctfff:
- 271              	.LFB259:
- 272              		.cfi_startproc
- 273 035b 4883EC48 		subq	$72, %rsp
- 274              		.cfi_def_cfa_offset 80
- 275 035f F30F1104 		movss	%xmm0, (%rsp)
- 275      24
- 276 0364 F30F114C 		movss	%xmm1, 8(%rsp)
- 276      2408
- 277 036a F30F1154 		movss	%xmm2, 20(%rsp)
- 277      2414
- 278 0370 BF090000 		movl	$9, %edi
- 278      00
- 279 0375 E8000000 		call	glBegin@PLT
- 279      00
- 280 037a F30F105C 		movss	20(%rsp), %xmm3
- 280      2414
- 281 0380 0F28E3   		movaps	%xmm3, %xmm4
- 282 0383 F30F5925 		mulss	.LC3(%rip), %xmm4
- 282      00000000 
- 283 038b F30F1164 		movss	%xmm4, 20(%rsp)
- 283      2414
- 284 0391 F30F5864 		addss	8(%rsp), %xmm4
- 284      2408
- 285 0397 660FEFF6 		pxor	%xmm6, %xmm6
- 286 039b F30F5AF4 		cvtss2sd	%xmm4, %xmm6
- 287 039f F30F591D 		mulss	.LC4(%rip), %xmm3
- 287      00000000 
- 288 03a7 F30F115C 		movss	%xmm3, 24(%rsp)
- 288      2418
- 289 03ad 0F28EB   		movaps	%xmm3, %xmm5
- 290 03b0 F30F582C 		addss	(%rsp), %xmm5
- 290      24
- 291 03b5 660FEFC0 		pxor	%xmm0, %xmm0
- 292 03b9 F30F5AC5 		cvtss2sd	%xmm5, %xmm0
- 293 03bd F20F1174 		movsd	%xmm6, 32(%rsp)
- 293      2420
- 294 03c3 660F28CE 		movapd	%xmm6, %xmm1
- 295 03c7 F20F1144 		movsd	%xmm0, 40(%rsp)
- 295      2428
- 296 03cd E8000000 		call	glVertex2d@PLT
- 296      00
-GAS LISTING /tmp/ccd29r7S.s 			page 8
+ 258              	.LVL25:
+  42:Src/routines.cpp ****     for(int ii = 0; ii < num_segments; ii++)
+ 259              		.loc 1 42 5 is_stmt 1 view .LVU62
+ 260              	.LBB34:
+ 261              		.loc 1 42 13 is_stmt 0 view .LVU63
+ 262 0226 BB000000 		movl	$0, %ebx
+ 262      00
+ 263              	.LVL26:
+ 264              	.L17:
+ 265              		.loc 1 42 24 discriminator 3 view .LVU64
+ 266 022b 39EB     		cmpl	%ebp, %ebx
+ 267 022d 7D66     		jge	.L16
+ 268              	.LBB35:
+  43:Src/routines.cpp ****     {
+  44:Src/routines.cpp ****         float theta = 2.0f * 3.1415926f * float(ii) / float(num_segments);//get the current angle
+ 269              		.loc 1 44 9 is_stmt 1 discriminator 2 view .LVU65
+ 270              		.loc 1 44 43 is_stmt 0 discriminator 2 view .LVU66
+ 271 022f 660FEFC0 		pxor	%xmm0, %xmm0
+ 272 0233 F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
+ 273              		.loc 1 44 41 discriminator 2 view .LVU67
+ 274 0237 F30F5905 		mulss	.LC2(%rip), %xmm0
+ 274      00000000 
+ 275              		.loc 1 44 55 discriminator 2 view .LVU68
+ 276 023f 660FEFC9 		pxor	%xmm1, %xmm1
+ 277 0243 F30F2ACD 		cvtsi2ssl	%ebp, %xmm1
+ 278              		.loc 1 44 15 discriminator 2 view .LVU69
+ 279 0247 F30F5EC1 		divss	%xmm1, %xmm0
+ 280              	.LVL27:
+  45:Src/routines.cpp ****         float x = r * cosf(theta);//calculate the x component
+ 281              		.loc 1 45 9 is_stmt 1 discriminator 2 view .LVU70
+ 282              		.loc 1 45 27 is_stmt 0 discriminator 2 view .LVU71
+ 283 024b F30F1144 		movss	%xmm0, 16(%rsp)
+ 283      2410
+ 284 0251 E8000000 		call	cosf@PLT
+ 284      00
+ 285              	.LVL28:
+ 286              		.loc 1 45 15 discriminator 2 view .LVU72
+ 287 0256 0F28D8   		movaps	%xmm0, %xmm3
+ 288 0259 F30F595C 		mulss	12(%rsp), %xmm3
+ 288      240C
+ 289 025f F30F115C 		movss	%xmm3, 20(%rsp)
+ 289      2414
+ 290              	.LVL29:
+GAS LISTING /tmp/ccH45HTj.s 			page 8
 
 
- 297 03d2 F30F1014 		movss	(%rsp), %xmm2
- 297      24
- 298 03d7 F30F5C54 		subss	24(%rsp), %xmm2
- 298      2418
- 299 03dd 66450FEF 		pxor	%xmm8, %xmm8
- 299      C0
- 300 03e2 F3440F5A 		cvtss2sd	%xmm2, %xmm8
- 300      C2
- 301 03e7 F20F104C 		movsd	32(%rsp), %xmm1
- 301      2420
- 302 03ed F2440F11 		movsd	%xmm8, 32(%rsp)
- 302      442420
- 303 03f4 66410F28 		movapd	%xmm8, %xmm0
- 303      C0
- 304 03f9 E8000000 		call	glVertex2d@PLT
- 304      00
- 305 03fe F30F1074 		movss	24(%rsp), %xmm6
- 305      2418
- 306 0404 F30F5874 		addss	8(%rsp), %xmm6
- 306      2408
- 307 040a 66450FEF 		pxor	%xmm9, %xmm9
- 307      C9
- 308 040f F3440F5A 		cvtss2sd	%xmm6, %xmm9
- 308      CE
- 309 0414 F30F100C 		movss	(%rsp), %xmm1
- 309      24
- 310 0419 F30F5C4C 		subss	20(%rsp), %xmm1
- 310      2414
- 311 041f 660FEFDB 		pxor	%xmm3, %xmm3
- 312 0423 F30F5AD9 		cvtss2sd	%xmm1, %xmm3
- 313 0427 F2440F11 		movsd	%xmm9, 48(%rsp)
- 313      4C2430
- 314 042e 66410F28 		movapd	%xmm9, %xmm1
- 314      C9
- 315 0433 F20F115C 		movsd	%xmm3, 56(%rsp)
- 315      2438
- 316 0439 660F28C3 		movapd	%xmm3, %xmm0
- 317 043d E8000000 		call	glVertex2d@PLT
- 317      00
- 318 0442 F30F107C 		movss	8(%rsp), %xmm7
- 318      2408
- 319 0448 F30F5C7C 		subss	24(%rsp), %xmm7
- 319      2418
- 320 044e 660FEFED 		pxor	%xmm5, %xmm5
- 321 0452 F30F5AEF 		cvtss2sd	%xmm7, %xmm5
- 322 0456 F20F116C 		movsd	%xmm5, 24(%rsp)
- 322      2418
- 323 045c 660F28CD 		movapd	%xmm5, %xmm1
- 324 0460 F20F1044 		movsd	56(%rsp), %xmm0
- 324      2438
- 325 0466 E8000000 		call	glVertex2d@PLT
- 325      00
- 326 046b F30F107C 		movss	8(%rsp), %xmm7
- 326      2408
- 327 0471 F30F5C7C 		subss	20(%rsp), %xmm7
- 327      2414
- 328 0477 660FEFF6 		pxor	%xmm6, %xmm6
-GAS LISTING /tmp/ccd29r7S.s 			page 9
+  46:Src/routines.cpp ****         float y = r * sinf(theta);//calculate the y component
+ 291              		.loc 1 46 9 is_stmt 1 discriminator 2 view .LVU73
+ 292              		.loc 1 46 27 is_stmt 0 discriminator 2 view .LVU74
+ 293 0265 F30F1044 		movss	16(%rsp), %xmm0
+ 293      2410
+ 294 026b E8000000 		call	sinf@PLT
+ 294      00
+ 295              	.LVL30:
+ 296              		.loc 1 46 15 discriminator 2 view .LVU75
+ 297 0270 0F28C8   		movaps	%xmm0, %xmm1
+ 298 0273 F30F594C 		mulss	12(%rsp), %xmm1
+ 298      240C
+ 299              	.LVL31:
+  47:Src/routines.cpp ****         glVertex2f(x + cx, y + cy);//output vertex
+ 300              		.loc 1 47 9 is_stmt 1 discriminator 2 view .LVU76
+ 301              		.loc 1 47 19 is_stmt 0 discriminator 2 view .LVU77
+ 302 0279 F30F1044 		movss	20(%rsp), %xmm0
+ 302      2414
+ 303 027f F30F5844 		addss	24(%rsp), %xmm0
+ 303      2418
+ 304 0285 F30F584C 		addss	28(%rsp), %xmm1
+ 304      241C
+ 305              	.LVL32:
+ 306              		.loc 1 47 19 discriminator 2 view .LVU78
+ 307 028b E8000000 		call	glVertex2f@PLT
+ 307      00
+ 308              	.LVL33:
+ 309              	.LBE35:
+  42:Src/routines.cpp ****     {
+ 310              		.loc 1 42 5 discriminator 2 view .LVU79
+ 311 0290 83C301   		addl	$1, %ebx
+ 312              	.LVL34:
+  42:Src/routines.cpp ****     {
+ 313              		.loc 1 42 5 discriminator 2 view .LVU80
+ 314 0293 EB96     		jmp	.L17
+ 315              	.LVL35:
+ 316              	.L16:
+  42:Src/routines.cpp ****     {
+ 317              		.loc 1 42 5 discriminator 2 view .LVU81
+ 318              	.LBE34:
+  48:Src/routines.cpp ****     }
+  49:Src/routines.cpp ****     glEnd();
+ 319              		.loc 1 49 5 is_stmt 1 view .LVU82
+ 320              		.loc 1 49 10 is_stmt 0 view .LVU83
+ 321 0295 E8000000 		call	glEnd@PLT
+ 321      00
+ 322              	.LVL36:
+  50:Src/routines.cpp **** }
+ 323              		.loc 1 50 1 view .LVU84
+ 324 029a 4883C428 		addq	$40, %rsp
+ 325              		.cfi_def_cfa_offset 24
+ 326 029e 5B       		popq	%rbx
+ 327              		.cfi_def_cfa_offset 16
+ 328              	.LVL37:
+ 329              		.loc 1 50 1 view .LVU85
+ 330 029f 5D       		popq	%rbp
+ 331              		.cfi_def_cfa_offset 8
+GAS LISTING /tmp/ccH45HTj.s 			page 9
 
 
- 329 047b F30F5AF7 		cvtss2sd	%xmm7, %xmm6
- 330 047f F20F1174 		movsd	%xmm6, 8(%rsp)
- 330      2408
- 331 0485 660F28CE 		movapd	%xmm6, %xmm1
- 332 0489 F20F1044 		movsd	32(%rsp), %xmm0
- 332      2420
- 333 048f E8000000 		call	glVertex2d@PLT
- 333      00
- 334 0494 F20F104C 		movsd	8(%rsp), %xmm1
- 334      2408
- 335 049a F20F1044 		movsd	40(%rsp), %xmm0
- 335      2428
- 336 04a0 E8000000 		call	glVertex2d@PLT
- 336      00
- 337 04a5 F30F1044 		movss	20(%rsp), %xmm0
- 337      2414
- 338 04ab F30F5804 		addss	(%rsp), %xmm0
- 338      24
- 339 04b0 660FEFD2 		pxor	%xmm2, %xmm2
- 340 04b4 F30F5AD0 		cvtss2sd	%xmm0, %xmm2
- 341 04b8 F20F104C 		movsd	24(%rsp), %xmm1
- 341      2418
- 342 04be F20F1114 		movsd	%xmm2, (%rsp)
- 342      24
- 343 04c3 660F28C2 		movapd	%xmm2, %xmm0
- 344 04c7 E8000000 		call	glVertex2d@PLT
- 344      00
- 345 04cc F20F104C 		movsd	48(%rsp), %xmm1
- 345      2430
- 346 04d2 F20F1004 		movsd	(%rsp), %xmm0
- 346      24
- 347 04d7 E8000000 		call	glVertex2d@PLT
- 347      00
- 348 04dc E8000000 		call	glEnd@PLT
- 348      00
- 349 04e1 4883C448 		addq	$72, %rsp
- 350              		.cfi_def_cfa_offset 8
- 351 04e5 C3       		ret
- 352              		.cfi_endproc
- 353              	.LFE259:
- 355              		.globl	_Z8drawQuadfff
- 357              	_Z8drawQuadfff:
- 358              	.LFB260:
- 359              		.cfi_startproc
- 360 04e6 4883EC08 		subq	$8, %rsp
- 361              		.cfi_def_cfa_offset 16
- 362 04ea 0F28DA   		movaps	%xmm2, %xmm3
- 363 04ed E8000000 		call	_Z8drawRectffff
+ 332              	.LVL38:
+ 333              		.loc 1 50 1 view .LVU86
+ 334 02a0 C3       		ret
+ 335              		.cfi_endproc
+ 336              	.LFE257:
+ 338              		.globl	_Z16drawCircleFilledfffi
+ 340              	_Z16drawCircleFilledfffi:
+ 341              	.LVL39:
+ 342              	.LFB258:
+  51:Src/routines.cpp **** 
+  52:Src/routines.cpp **** void drawCircleFilled(float cx, float cy, float r, int numSegments)
+  53:Src/routines.cpp **** {
+ 343              		.loc 1 53 1 is_stmt 1 view -0
+ 344              		.cfi_startproc
+ 345              		.loc 1 53 1 is_stmt 0 view .LVU88
+ 346 02a1 55       		pushq	%rbp
+ 347              		.cfi_def_cfa_offset 16
+ 348              		.cfi_offset 6, -16
+ 349 02a2 53       		pushq	%rbx
+ 350              		.cfi_def_cfa_offset 24
+ 351              		.cfi_offset 3, -24
+ 352 02a3 4883EC28 		subq	$40, %rsp
+ 353              		.cfi_def_cfa_offset 64
+ 354 02a7 F30F1144 		movss	%xmm0, 24(%rsp)
+ 354      2418
+ 355 02ad F30F114C 		movss	%xmm1, 28(%rsp)
+ 355      241C
+ 356 02b3 F30F1154 		movss	%xmm2, 12(%rsp)
+ 356      240C
+ 357 02b9 89FD     		movl	%edi, %ebp
+  54:Src/routines.cpp **** 	glBegin(GL_POLYGON);
+ 358              		.loc 1 54 2 is_stmt 1 view .LVU89
+ 359              		.loc 1 54 9 is_stmt 0 view .LVU90
+ 360 02bb BF090000 		movl	$9, %edi
+ 360      00
+ 361              	.LVL40:
+ 362              		.loc 1 54 9 view .LVU91
+ 363 02c0 E8000000 		call	glBegin@PLT
  363      00
- 364 04f2 4883C408 		addq	$8, %rsp
- 365              		.cfi_def_cfa_offset 8
- 366 04f6 C3       		ret
- 367              		.cfi_endproc
- 368              	.LFE260:
- 370              		.section	.rodata.cst4,"aM",@progbits,4
- 371              		.align 4
- 372              	.LC0:
-GAS LISTING /tmp/ccd29r7S.s 			page 10
+ 364              	.LVL41:
+  55:Src/routines.cpp ****     for(int ii = 0; ii < numSegments; ii++)
+ 365              		.loc 1 55 5 is_stmt 1 view .LVU92
+ 366              	.LBB36:
+ 367              		.loc 1 55 13 is_stmt 0 view .LVU93
+ 368 02c5 BB000000 		movl	$0, %ebx
+ 368      00
+ 369              	.LVL42:
+ 370              	.L21:
+ 371              		.loc 1 55 24 discriminator 3 view .LVU94
+ 372 02ca 39EB     		cmpl	%ebp, %ebx
+ 373 02cc 7D66     		jge	.L20
+ 374              	.LBB37:
+  56:Src/routines.cpp ****     {
+  57:Src/routines.cpp ****         float theta = 2.0f * 3.1415926f * float(ii) / float(numSegments);//get the current angle
+ 375              		.loc 1 57 9 is_stmt 1 discriminator 2 view .LVU95
+ 376              		.loc 1 57 43 is_stmt 0 discriminator 2 view .LVU96
+ 377 02ce 660FEFC0 		pxor	%xmm0, %xmm0
+GAS LISTING /tmp/ccH45HTj.s 			page 10
 
 
- 373 0000 00007F43 		.long	1132396544
- 374              		.align 4
- 375              	.LC1:
- 376 0004 0000003F 		.long	1056964608
- 377              		.align 4
- 378              	.LC2:
- 379 0008 DA0FC940 		.long	1086918618
- 380              		.align 4
- 381              	.LC3:
- 382 000c 67B16FBF 		.long	3211768167
- 383              		.align 4
- 384              	.LC4:
- 385 0010 69D0B3BE 		.long	3199455337
- 386              		.ident	"GCC: (GNU) 9.1.0"
- 387              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccd29r7S.s 			page 11
+ 378 02d2 F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
+ 379              		.loc 1 57 41 discriminator 2 view .LVU97
+ 380 02d6 F30F5905 		mulss	.LC2(%rip), %xmm0
+ 380      00000000 
+ 381              		.loc 1 57 55 discriminator 2 view .LVU98
+ 382 02de 660FEFC9 		pxor	%xmm1, %xmm1
+ 383 02e2 F30F2ACD 		cvtsi2ssl	%ebp, %xmm1
+ 384              		.loc 1 57 15 discriminator 2 view .LVU99
+ 385 02e6 F30F5EC1 		divss	%xmm1, %xmm0
+ 386              	.LVL43:
+  58:Src/routines.cpp **** 
+  59:Src/routines.cpp ****         float x = r * cosf(theta);//calculate the x component
+ 387              		.loc 1 59 9 is_stmt 1 discriminator 2 view .LVU100
+ 388              		.loc 1 59 27 is_stmt 0 discriminator 2 view .LVU101
+ 389 02ea F30F1144 		movss	%xmm0, 16(%rsp)
+ 389      2410
+ 390 02f0 E8000000 		call	cosf@PLT
+ 390      00
+ 391              	.LVL44:
+ 392              		.loc 1 59 15 discriminator 2 view .LVU102
+ 393 02f5 0F28D8   		movaps	%xmm0, %xmm3
+ 394 02f8 F30F595C 		mulss	12(%rsp), %xmm3
+ 394      240C
+ 395 02fe F30F115C 		movss	%xmm3, 20(%rsp)
+ 395      2414
+ 396              	.LVL45:
+  60:Src/routines.cpp ****         float y = r * sinf(theta);//calculate the y component
+ 397              		.loc 1 60 9 is_stmt 1 discriminator 2 view .LVU103
+ 398              		.loc 1 60 27 is_stmt 0 discriminator 2 view .LVU104
+ 399 0304 F30F1044 		movss	16(%rsp), %xmm0
+ 399      2410
+ 400 030a E8000000 		call	sinf@PLT
+ 400      00
+ 401              	.LVL46:
+ 402              		.loc 1 60 15 discriminator 2 view .LVU105
+ 403 030f 0F28C8   		movaps	%xmm0, %xmm1
+ 404 0312 F30F594C 		mulss	12(%rsp), %xmm1
+ 404      240C
+ 405              	.LVL47:
+  61:Src/routines.cpp **** 
+  62:Src/routines.cpp ****         glVertex2f(x + cx, y + cy);//output vertex
+ 406              		.loc 1 62 9 is_stmt 1 discriminator 2 view .LVU106
+ 407              		.loc 1 62 19 is_stmt 0 discriminator 2 view .LVU107
+ 408 0318 F30F1044 		movss	20(%rsp), %xmm0
+ 408      2414
+ 409 031e F30F5844 		addss	24(%rsp), %xmm0
+ 409      2418
+ 410 0324 F30F584C 		addss	28(%rsp), %xmm1
+ 410      241C
+ 411              	.LVL48:
+ 412              		.loc 1 62 19 discriminator 2 view .LVU108
+ 413 032a E8000000 		call	glVertex2f@PLT
+ 413      00
+ 414              	.LVL49:
+ 415              	.LBE37:
+  55:Src/routines.cpp ****     {
+ 416              		.loc 1 55 5 discriminator 2 view .LVU109
+GAS LISTING /tmp/ccH45HTj.s 			page 11
+
+
+ 417 032f 83C301   		addl	$1, %ebx
+ 418              	.LVL50:
+  55:Src/routines.cpp ****     {
+ 419              		.loc 1 55 5 discriminator 2 view .LVU110
+ 420 0332 EB96     		jmp	.L21
+ 421              	.LVL51:
+ 422              	.L20:
+  55:Src/routines.cpp ****     {
+ 423              		.loc 1 55 5 discriminator 2 view .LVU111
+ 424              	.LBE36:
+  63:Src/routines.cpp ****     }
+  64:Src/routines.cpp ****     glEnd();
+ 425              		.loc 1 64 5 is_stmt 1 view .LVU112
+ 426              		.loc 1 64 10 is_stmt 0 view .LVU113
+ 427 0334 E8000000 		call	glEnd@PLT
+ 427      00
+ 428              	.LVL52:
+  65:Src/routines.cpp **** }
+ 429              		.loc 1 65 1 view .LVU114
+ 430 0339 4883C428 		addq	$40, %rsp
+ 431              		.cfi_def_cfa_offset 24
+ 432 033d 5B       		popq	%rbx
+ 433              		.cfi_def_cfa_offset 16
+ 434              	.LVL53:
+ 435              		.loc 1 65 1 view .LVU115
+ 436 033e 5D       		popq	%rbp
+ 437              		.cfi_def_cfa_offset 8
+ 438              	.LVL54:
+ 439              		.loc 1 65 1 view .LVU116
+ 440 033f C3       		ret
+ 441              		.cfi_endproc
+ 442              	.LFE258:
+ 444              		.globl	_Z7drawOctfff
+ 446              	_Z7drawOctfff:
+ 447              	.LVL55:
+ 448              	.LFB259:
+  66:Src/routines.cpp **** 
+  67:Src/routines.cpp **** void drawOct(float x, float y, float a)
+  68:Src/routines.cpp **** {
+ 449              		.loc 1 68 1 is_stmt 1 view -0
+ 450              		.cfi_startproc
+ 451              		.loc 1 68 1 is_stmt 0 view .LVU118
+ 452 0340 4883EC48 		subq	$72, %rsp
+ 453              		.cfi_def_cfa_offset 80
+ 454 0344 F30F1104 		movss	%xmm0, (%rsp)
+ 454      24
+ 455 0349 F30F114C 		movss	%xmm1, 8(%rsp)
+ 455      2408
+ 456 034f F30F1154 		movss	%xmm2, 20(%rsp)
+ 456      2414
+  69:Src/routines.cpp **** 	float alpha = 22.35;
+ 457              		.loc 1 69 2 is_stmt 1 view .LVU119
+ 458              	.LVL56:
+  70:Src/routines.cpp **** 
+  71:Src/routines.cpp **** 	glBegin(GL_POLYGON);
+ 459              		.loc 1 71 2 view .LVU120
+ 460              		.loc 1 71 9 is_stmt 0 view .LVU121
+GAS LISTING /tmp/ccH45HTj.s 			page 12
+
+
+ 461 0355 BF090000 		movl	$9, %edi
+ 461      00
+ 462 035a E8000000 		call	glBegin@PLT
+ 462      00
+ 463              	.LVL57:
+  72:Src/routines.cpp **** 	glVertex2d(x + a * sin(alpha), y + a * cos(alpha));
+ 464              		.loc 1 72 2 is_stmt 1 view .LVU122
+ 465              		.file 2 "/usr/include/c++/9.1.0/cmath"
+   1:/usr/include/c++/9.1.0/cmath **** // -*- C++ -*- C forwarding header.
+   2:/usr/include/c++/9.1.0/cmath **** 
+   3:/usr/include/c++/9.1.0/cmath **** // Copyright (C) 1997-2019 Free Software Foundation, Inc.
+   4:/usr/include/c++/9.1.0/cmath **** //
+   5:/usr/include/c++/9.1.0/cmath **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:/usr/include/c++/9.1.0/cmath **** // software; you can redistribute it and/or modify it under the
+   7:/usr/include/c++/9.1.0/cmath **** // terms of the GNU General Public License as published by the
+   8:/usr/include/c++/9.1.0/cmath **** // Free Software Foundation; either version 3, or (at your option)
+   9:/usr/include/c++/9.1.0/cmath **** // any later version.
+  10:/usr/include/c++/9.1.0/cmath **** 
+  11:/usr/include/c++/9.1.0/cmath **** // This library is distributed in the hope that it will be useful,
+  12:/usr/include/c++/9.1.0/cmath **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:/usr/include/c++/9.1.0/cmath **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:/usr/include/c++/9.1.0/cmath **** // GNU General Public License for more details.
+  15:/usr/include/c++/9.1.0/cmath **** 
+  16:/usr/include/c++/9.1.0/cmath **** // Under Section 7 of GPL version 3, you are granted additional
+  17:/usr/include/c++/9.1.0/cmath **** // permissions described in the GCC Runtime Library Exception, version
+  18:/usr/include/c++/9.1.0/cmath **** // 3.1, as published by the Free Software Foundation.
+  19:/usr/include/c++/9.1.0/cmath **** 
+  20:/usr/include/c++/9.1.0/cmath **** // You should have received a copy of the GNU General Public License and
+  21:/usr/include/c++/9.1.0/cmath **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:/usr/include/c++/9.1.0/cmath **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:/usr/include/c++/9.1.0/cmath **** // <http://www.gnu.org/licenses/>.
+  24:/usr/include/c++/9.1.0/cmath **** 
+  25:/usr/include/c++/9.1.0/cmath **** /** @file include/cmath
+  26:/usr/include/c++/9.1.0/cmath ****  *  This is a Standard C++ Library file.  You should @c \#include this file
+  27:/usr/include/c++/9.1.0/cmath ****  *  in your programs, rather than any of the @a *.h implementation files.
+  28:/usr/include/c++/9.1.0/cmath ****  *
+  29:/usr/include/c++/9.1.0/cmath ****  *  This is the C++ version of the Standard C Library header @c math.h,
+  30:/usr/include/c++/9.1.0/cmath ****  *  and its contents are (mostly) the same as that header, but are all
+  31:/usr/include/c++/9.1.0/cmath ****  *  contained in the namespace @c std (except for names which are defined
+  32:/usr/include/c++/9.1.0/cmath ****  *  as macros in C).
+  33:/usr/include/c++/9.1.0/cmath ****  */
+  34:/usr/include/c++/9.1.0/cmath **** 
+  35:/usr/include/c++/9.1.0/cmath **** //
+  36:/usr/include/c++/9.1.0/cmath **** // ISO C++ 14882: 26.5  C library
+  37:/usr/include/c++/9.1.0/cmath **** //
+  38:/usr/include/c++/9.1.0/cmath **** 
+  39:/usr/include/c++/9.1.0/cmath **** #pragma GCC system_header
+  40:/usr/include/c++/9.1.0/cmath **** 
+  41:/usr/include/c++/9.1.0/cmath **** #include <bits/c++config.h>
+  42:/usr/include/c++/9.1.0/cmath **** #include <bits/cpp_type_traits.h>
+  43:/usr/include/c++/9.1.0/cmath **** #include <ext/type_traits.h>
+  44:/usr/include/c++/9.1.0/cmath **** #define _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  45:/usr/include/c++/9.1.0/cmath **** #include_next <math.h>
+  46:/usr/include/c++/9.1.0/cmath **** #undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  47:/usr/include/c++/9.1.0/cmath **** #include <bits/std_abs.h>
+  48:/usr/include/c++/9.1.0/cmath **** 
+  49:/usr/include/c++/9.1.0/cmath **** #ifndef _GLIBCXX_CMATH
+GAS LISTING /tmp/ccH45HTj.s 			page 13
+
+
+  50:/usr/include/c++/9.1.0/cmath **** #define _GLIBCXX_CMATH 1
+  51:/usr/include/c++/9.1.0/cmath **** 
+  52:/usr/include/c++/9.1.0/cmath **** // Get rid of those macros defined in <math.h> in lieu of real functions.
+  53:/usr/include/c++/9.1.0/cmath **** #undef div
+  54:/usr/include/c++/9.1.0/cmath **** #undef acos
+  55:/usr/include/c++/9.1.0/cmath **** #undef asin
+  56:/usr/include/c++/9.1.0/cmath **** #undef atan
+  57:/usr/include/c++/9.1.0/cmath **** #undef atan2
+  58:/usr/include/c++/9.1.0/cmath **** #undef ceil
+  59:/usr/include/c++/9.1.0/cmath **** #undef cos
+  60:/usr/include/c++/9.1.0/cmath **** #undef cosh
+  61:/usr/include/c++/9.1.0/cmath **** #undef exp
+  62:/usr/include/c++/9.1.0/cmath **** #undef fabs
+  63:/usr/include/c++/9.1.0/cmath **** #undef floor
+  64:/usr/include/c++/9.1.0/cmath **** #undef fmod
+  65:/usr/include/c++/9.1.0/cmath **** #undef frexp
+  66:/usr/include/c++/9.1.0/cmath **** #undef ldexp
+  67:/usr/include/c++/9.1.0/cmath **** #undef log
+  68:/usr/include/c++/9.1.0/cmath **** #undef log10
+  69:/usr/include/c++/9.1.0/cmath **** #undef modf
+  70:/usr/include/c++/9.1.0/cmath **** #undef pow
+  71:/usr/include/c++/9.1.0/cmath **** #undef sin
+  72:/usr/include/c++/9.1.0/cmath **** #undef sinh
+  73:/usr/include/c++/9.1.0/cmath **** #undef sqrt
+  74:/usr/include/c++/9.1.0/cmath **** #undef tan
+  75:/usr/include/c++/9.1.0/cmath **** #undef tanh
+  76:/usr/include/c++/9.1.0/cmath **** 
+  77:/usr/include/c++/9.1.0/cmath **** extern "C++"
+  78:/usr/include/c++/9.1.0/cmath **** {
+  79:/usr/include/c++/9.1.0/cmath **** namespace std _GLIBCXX_VISIBILITY(default)
+  80:/usr/include/c++/9.1.0/cmath **** {
+  81:/usr/include/c++/9.1.0/cmath **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  82:/usr/include/c++/9.1.0/cmath **** 
+  83:/usr/include/c++/9.1.0/cmath ****   using ::acos;
+  84:/usr/include/c++/9.1.0/cmath **** 
+  85:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+  86:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+  87:/usr/include/c++/9.1.0/cmath ****   acos(float __x)
+  88:/usr/include/c++/9.1.0/cmath ****   { return __builtin_acosf(__x); }
+  89:/usr/include/c++/9.1.0/cmath **** 
+  90:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+  91:/usr/include/c++/9.1.0/cmath ****   acos(long double __x)
+  92:/usr/include/c++/9.1.0/cmath ****   { return __builtin_acosl(__x); }
+  93:/usr/include/c++/9.1.0/cmath **** #endif
+  94:/usr/include/c++/9.1.0/cmath **** 
+  95:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+  96:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+  97:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+  98:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+  99:/usr/include/c++/9.1.0/cmath ****     acos(_Tp __x)
+ 100:/usr/include/c++/9.1.0/cmath ****     { return __builtin_acos(__x); }
+ 101:/usr/include/c++/9.1.0/cmath **** 
+ 102:/usr/include/c++/9.1.0/cmath ****   using ::asin;
+ 103:/usr/include/c++/9.1.0/cmath **** 
+ 104:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 105:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 106:/usr/include/c++/9.1.0/cmath ****   asin(float __x)
+GAS LISTING /tmp/ccH45HTj.s 			page 14
+
+
+ 107:/usr/include/c++/9.1.0/cmath ****   { return __builtin_asinf(__x); }
+ 108:/usr/include/c++/9.1.0/cmath **** 
+ 109:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 110:/usr/include/c++/9.1.0/cmath ****   asin(long double __x)
+ 111:/usr/include/c++/9.1.0/cmath ****   { return __builtin_asinl(__x); }
+ 112:/usr/include/c++/9.1.0/cmath **** #endif
+ 113:/usr/include/c++/9.1.0/cmath **** 
+ 114:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 115:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 116:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 117:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 118:/usr/include/c++/9.1.0/cmath ****     asin(_Tp __x)
+ 119:/usr/include/c++/9.1.0/cmath ****     { return __builtin_asin(__x); }
+ 120:/usr/include/c++/9.1.0/cmath **** 
+ 121:/usr/include/c++/9.1.0/cmath ****   using ::atan;
+ 122:/usr/include/c++/9.1.0/cmath **** 
+ 123:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 124:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 125:/usr/include/c++/9.1.0/cmath ****   atan(float __x)
+ 126:/usr/include/c++/9.1.0/cmath ****   { return __builtin_atanf(__x); }
+ 127:/usr/include/c++/9.1.0/cmath **** 
+ 128:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 129:/usr/include/c++/9.1.0/cmath ****   atan(long double __x)
+ 130:/usr/include/c++/9.1.0/cmath ****   { return __builtin_atanl(__x); }
+ 131:/usr/include/c++/9.1.0/cmath **** #endif
+ 132:/usr/include/c++/9.1.0/cmath **** 
+ 133:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 134:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 135:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 136:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 137:/usr/include/c++/9.1.0/cmath ****     atan(_Tp __x)
+ 138:/usr/include/c++/9.1.0/cmath ****     { return __builtin_atan(__x); }
+ 139:/usr/include/c++/9.1.0/cmath **** 
+ 140:/usr/include/c++/9.1.0/cmath ****   using ::atan2;
+ 141:/usr/include/c++/9.1.0/cmath **** 
+ 142:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 143:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 144:/usr/include/c++/9.1.0/cmath ****   atan2(float __y, float __x)
+ 145:/usr/include/c++/9.1.0/cmath ****   { return __builtin_atan2f(__y, __x); }
+ 146:/usr/include/c++/9.1.0/cmath **** 
+ 147:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 148:/usr/include/c++/9.1.0/cmath ****   atan2(long double __y, long double __x)
+ 149:/usr/include/c++/9.1.0/cmath ****   { return __builtin_atan2l(__y, __x); }
+ 150:/usr/include/c++/9.1.0/cmath **** #endif
+ 151:/usr/include/c++/9.1.0/cmath **** 
+ 152:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp, typename _Up>
+ 153:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 154:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 155:/usr/include/c++/9.1.0/cmath ****     atan2(_Tp __y, _Up __x)
+ 156:/usr/include/c++/9.1.0/cmath ****     {
+ 157:/usr/include/c++/9.1.0/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 158:/usr/include/c++/9.1.0/cmath ****       return atan2(__type(__y), __type(__x));
+ 159:/usr/include/c++/9.1.0/cmath ****     }
+ 160:/usr/include/c++/9.1.0/cmath **** 
+ 161:/usr/include/c++/9.1.0/cmath ****   using ::ceil;
+ 162:/usr/include/c++/9.1.0/cmath **** 
+ 163:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+GAS LISTING /tmp/ccH45HTj.s 			page 15
+
+
+ 164:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 165:/usr/include/c++/9.1.0/cmath ****   ceil(float __x)
+ 166:/usr/include/c++/9.1.0/cmath ****   { return __builtin_ceilf(__x); }
+ 167:/usr/include/c++/9.1.0/cmath **** 
+ 168:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 169:/usr/include/c++/9.1.0/cmath ****   ceil(long double __x)
+ 170:/usr/include/c++/9.1.0/cmath ****   { return __builtin_ceill(__x); }
+ 171:/usr/include/c++/9.1.0/cmath **** #endif
+ 172:/usr/include/c++/9.1.0/cmath **** 
+ 173:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 174:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 175:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 176:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 177:/usr/include/c++/9.1.0/cmath ****     ceil(_Tp __x)
+ 178:/usr/include/c++/9.1.0/cmath ****     { return __builtin_ceil(__x); }
+ 179:/usr/include/c++/9.1.0/cmath **** 
+ 180:/usr/include/c++/9.1.0/cmath ****   using ::cos;
+ 181:/usr/include/c++/9.1.0/cmath **** 
+ 182:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 183:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 184:/usr/include/c++/9.1.0/cmath ****   cos(float __x)
+ 185:/usr/include/c++/9.1.0/cmath ****   { return __builtin_cosf(__x); }
+ 466              		.loc 2 185 5 view .LVU123
+ 467              		.loc 1 72 39 is_stmt 0 view .LVU124
+ 468 035f F30F105C 		movss	20(%rsp), %xmm3
+ 468      2414
+ 469 0365 0F28E3   		movaps	%xmm3, %xmm4
+ 470 0368 F30F5925 		mulss	.LC3(%rip), %xmm4
+ 470      00000000 
+ 471              		.loc 1 72 35 view .LVU125
+ 472 0370 F30F1164 		movss	%xmm4, 20(%rsp)
+ 472      2414
+ 473              	.LVL58:
+ 474              		.loc 1 72 35 view .LVU126
+ 475 0376 F30F5864 		addss	8(%rsp), %xmm4
+ 475      2408
+ 476              		.loc 1 72 12 view .LVU127
+ 477 037c 660FEFF6 		pxor	%xmm6, %xmm6
+ 478 0380 F30F5AF4 		cvtss2sd	%xmm4, %xmm6
+ 479              	.LVL59:
+ 186:/usr/include/c++/9.1.0/cmath **** 
+ 187:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 188:/usr/include/c++/9.1.0/cmath ****   cos(long double __x)
+ 189:/usr/include/c++/9.1.0/cmath ****   { return __builtin_cosl(__x); }
+ 190:/usr/include/c++/9.1.0/cmath **** #endif
+ 191:/usr/include/c++/9.1.0/cmath **** 
+ 192:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 193:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 194:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 195:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 196:/usr/include/c++/9.1.0/cmath ****     cos(_Tp __x)
+ 197:/usr/include/c++/9.1.0/cmath ****     { return __builtin_cos(__x); }
+ 198:/usr/include/c++/9.1.0/cmath **** 
+ 199:/usr/include/c++/9.1.0/cmath ****   using ::cosh;
+ 200:/usr/include/c++/9.1.0/cmath **** 
+ 201:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 202:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+GAS LISTING /tmp/ccH45HTj.s 			page 16
+
+
+ 203:/usr/include/c++/9.1.0/cmath ****   cosh(float __x)
+ 204:/usr/include/c++/9.1.0/cmath ****   { return __builtin_coshf(__x); }
+ 205:/usr/include/c++/9.1.0/cmath **** 
+ 206:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 207:/usr/include/c++/9.1.0/cmath ****   cosh(long double __x)
+ 208:/usr/include/c++/9.1.0/cmath ****   { return __builtin_coshl(__x); }
+ 209:/usr/include/c++/9.1.0/cmath **** #endif
+ 210:/usr/include/c++/9.1.0/cmath **** 
+ 211:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 212:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 213:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 214:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 215:/usr/include/c++/9.1.0/cmath ****     cosh(_Tp __x)
+ 216:/usr/include/c++/9.1.0/cmath ****     { return __builtin_cosh(__x); }
+ 217:/usr/include/c++/9.1.0/cmath **** 
+ 218:/usr/include/c++/9.1.0/cmath ****   using ::exp;
+ 219:/usr/include/c++/9.1.0/cmath **** 
+ 220:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 221:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 222:/usr/include/c++/9.1.0/cmath ****   exp(float __x)
+ 223:/usr/include/c++/9.1.0/cmath ****   { return __builtin_expf(__x); }
+ 224:/usr/include/c++/9.1.0/cmath **** 
+ 225:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 226:/usr/include/c++/9.1.0/cmath ****   exp(long double __x)
+ 227:/usr/include/c++/9.1.0/cmath ****   { return __builtin_expl(__x); }
+ 228:/usr/include/c++/9.1.0/cmath **** #endif
+ 229:/usr/include/c++/9.1.0/cmath **** 
+ 230:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 231:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 232:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 233:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 234:/usr/include/c++/9.1.0/cmath ****     exp(_Tp __x)
+ 235:/usr/include/c++/9.1.0/cmath ****     { return __builtin_exp(__x); }
+ 236:/usr/include/c++/9.1.0/cmath **** 
+ 237:/usr/include/c++/9.1.0/cmath ****   using ::fabs;
+ 238:/usr/include/c++/9.1.0/cmath **** 
+ 239:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 240:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 241:/usr/include/c++/9.1.0/cmath ****   fabs(float __x)
+ 242:/usr/include/c++/9.1.0/cmath ****   { return __builtin_fabsf(__x); }
+ 243:/usr/include/c++/9.1.0/cmath **** 
+ 244:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 245:/usr/include/c++/9.1.0/cmath ****   fabs(long double __x)
+ 246:/usr/include/c++/9.1.0/cmath ****   { return __builtin_fabsl(__x); }
+ 247:/usr/include/c++/9.1.0/cmath **** #endif
+ 248:/usr/include/c++/9.1.0/cmath **** 
+ 249:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 250:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 251:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 252:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 253:/usr/include/c++/9.1.0/cmath ****     fabs(_Tp __x)
+ 254:/usr/include/c++/9.1.0/cmath ****     { return __builtin_fabs(__x); }
+ 255:/usr/include/c++/9.1.0/cmath **** 
+ 256:/usr/include/c++/9.1.0/cmath ****   using ::floor;
+ 257:/usr/include/c++/9.1.0/cmath **** 
+ 258:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 259:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+GAS LISTING /tmp/ccH45HTj.s 			page 17
+
+
+ 260:/usr/include/c++/9.1.0/cmath ****   floor(float __x)
+ 261:/usr/include/c++/9.1.0/cmath ****   { return __builtin_floorf(__x); }
+ 262:/usr/include/c++/9.1.0/cmath **** 
+ 263:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 264:/usr/include/c++/9.1.0/cmath ****   floor(long double __x)
+ 265:/usr/include/c++/9.1.0/cmath ****   { return __builtin_floorl(__x); }
+ 266:/usr/include/c++/9.1.0/cmath **** #endif
+ 267:/usr/include/c++/9.1.0/cmath **** 
+ 268:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 269:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 270:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 271:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 272:/usr/include/c++/9.1.0/cmath ****     floor(_Tp __x)
+ 273:/usr/include/c++/9.1.0/cmath ****     { return __builtin_floor(__x); }
+ 274:/usr/include/c++/9.1.0/cmath **** 
+ 275:/usr/include/c++/9.1.0/cmath ****   using ::fmod;
+ 276:/usr/include/c++/9.1.0/cmath **** 
+ 277:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 278:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 279:/usr/include/c++/9.1.0/cmath ****   fmod(float __x, float __y)
+ 280:/usr/include/c++/9.1.0/cmath ****   { return __builtin_fmodf(__x, __y); }
+ 281:/usr/include/c++/9.1.0/cmath **** 
+ 282:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 283:/usr/include/c++/9.1.0/cmath ****   fmod(long double __x, long double __y)
+ 284:/usr/include/c++/9.1.0/cmath ****   { return __builtin_fmodl(__x, __y); }
+ 285:/usr/include/c++/9.1.0/cmath **** #endif
+ 286:/usr/include/c++/9.1.0/cmath **** 
+ 287:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp, typename _Up>
+ 288:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 289:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 290:/usr/include/c++/9.1.0/cmath ****     fmod(_Tp __x, _Up __y)
+ 291:/usr/include/c++/9.1.0/cmath ****     {
+ 292:/usr/include/c++/9.1.0/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 293:/usr/include/c++/9.1.0/cmath ****       return fmod(__type(__x), __type(__y));
+ 294:/usr/include/c++/9.1.0/cmath ****     }
+ 295:/usr/include/c++/9.1.0/cmath **** 
+ 296:/usr/include/c++/9.1.0/cmath ****   using ::frexp;
+ 297:/usr/include/c++/9.1.0/cmath **** 
+ 298:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 299:/usr/include/c++/9.1.0/cmath ****   inline float
+ 300:/usr/include/c++/9.1.0/cmath ****   frexp(float __x, int* __exp)
+ 301:/usr/include/c++/9.1.0/cmath ****   { return __builtin_frexpf(__x, __exp); }
+ 302:/usr/include/c++/9.1.0/cmath **** 
+ 303:/usr/include/c++/9.1.0/cmath ****   inline long double
+ 304:/usr/include/c++/9.1.0/cmath ****   frexp(long double __x, int* __exp)
+ 305:/usr/include/c++/9.1.0/cmath ****   { return __builtin_frexpl(__x, __exp); }
+ 306:/usr/include/c++/9.1.0/cmath **** #endif
+ 307:/usr/include/c++/9.1.0/cmath **** 
+ 308:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 309:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 310:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 311:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 312:/usr/include/c++/9.1.0/cmath ****     frexp(_Tp __x, int* __exp)
+ 313:/usr/include/c++/9.1.0/cmath ****     { return __builtin_frexp(__x, __exp); }
+ 314:/usr/include/c++/9.1.0/cmath **** 
+ 315:/usr/include/c++/9.1.0/cmath ****   using ::ldexp;
+ 316:/usr/include/c++/9.1.0/cmath **** 
+GAS LISTING /tmp/ccH45HTj.s 			page 18
+
+
+ 317:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 318:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 319:/usr/include/c++/9.1.0/cmath ****   ldexp(float __x, int __exp)
+ 320:/usr/include/c++/9.1.0/cmath ****   { return __builtin_ldexpf(__x, __exp); }
+ 321:/usr/include/c++/9.1.0/cmath **** 
+ 322:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 323:/usr/include/c++/9.1.0/cmath ****   ldexp(long double __x, int __exp)
+ 324:/usr/include/c++/9.1.0/cmath ****   { return __builtin_ldexpl(__x, __exp); }
+ 325:/usr/include/c++/9.1.0/cmath **** #endif
+ 326:/usr/include/c++/9.1.0/cmath **** 
+ 327:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 328:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 329:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 330:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 331:/usr/include/c++/9.1.0/cmath ****     ldexp(_Tp __x, int __exp)
+ 332:/usr/include/c++/9.1.0/cmath ****     { return __builtin_ldexp(__x, __exp); }
+ 333:/usr/include/c++/9.1.0/cmath **** 
+ 334:/usr/include/c++/9.1.0/cmath ****   using ::log;
+ 335:/usr/include/c++/9.1.0/cmath **** 
+ 336:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 337:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 338:/usr/include/c++/9.1.0/cmath ****   log(float __x)
+ 339:/usr/include/c++/9.1.0/cmath ****   { return __builtin_logf(__x); }
+ 340:/usr/include/c++/9.1.0/cmath **** 
+ 341:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 342:/usr/include/c++/9.1.0/cmath ****   log(long double __x)
+ 343:/usr/include/c++/9.1.0/cmath ****   { return __builtin_logl(__x); }
+ 344:/usr/include/c++/9.1.0/cmath **** #endif
+ 345:/usr/include/c++/9.1.0/cmath **** 
+ 346:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 347:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 348:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 349:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 350:/usr/include/c++/9.1.0/cmath ****     log(_Tp __x)
+ 351:/usr/include/c++/9.1.0/cmath ****     { return __builtin_log(__x); }
+ 352:/usr/include/c++/9.1.0/cmath **** 
+ 353:/usr/include/c++/9.1.0/cmath ****   using ::log10;
+ 354:/usr/include/c++/9.1.0/cmath **** 
+ 355:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 356:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 357:/usr/include/c++/9.1.0/cmath ****   log10(float __x)
+ 358:/usr/include/c++/9.1.0/cmath ****   { return __builtin_log10f(__x); }
+ 359:/usr/include/c++/9.1.0/cmath **** 
+ 360:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 361:/usr/include/c++/9.1.0/cmath ****   log10(long double __x)
+ 362:/usr/include/c++/9.1.0/cmath ****   { return __builtin_log10l(__x); }
+ 363:/usr/include/c++/9.1.0/cmath **** #endif
+ 364:/usr/include/c++/9.1.0/cmath **** 
+ 365:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
+ 366:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 367:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 368:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
+ 369:/usr/include/c++/9.1.0/cmath ****     log10(_Tp __x)
+ 370:/usr/include/c++/9.1.0/cmath ****     { return __builtin_log10(__x); }
+ 371:/usr/include/c++/9.1.0/cmath **** 
+ 372:/usr/include/c++/9.1.0/cmath ****   using ::modf;
+ 373:/usr/include/c++/9.1.0/cmath **** 
+GAS LISTING /tmp/ccH45HTj.s 			page 19
+
+
+ 374:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 375:/usr/include/c++/9.1.0/cmath ****   inline float
+ 376:/usr/include/c++/9.1.0/cmath ****   modf(float __x, float* __iptr)
+ 377:/usr/include/c++/9.1.0/cmath ****   { return __builtin_modff(__x, __iptr); }
+ 378:/usr/include/c++/9.1.0/cmath **** 
+ 379:/usr/include/c++/9.1.0/cmath ****   inline long double
+ 380:/usr/include/c++/9.1.0/cmath ****   modf(long double __x, long double* __iptr)
+ 381:/usr/include/c++/9.1.0/cmath ****   { return __builtin_modfl(__x, __iptr); }
+ 382:/usr/include/c++/9.1.0/cmath **** #endif
+ 383:/usr/include/c++/9.1.0/cmath **** 
+ 384:/usr/include/c++/9.1.0/cmath ****   using ::pow;
+ 385:/usr/include/c++/9.1.0/cmath **** 
+ 386:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 387:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 388:/usr/include/c++/9.1.0/cmath ****   pow(float __x, float __y)
+ 389:/usr/include/c++/9.1.0/cmath ****   { return __builtin_powf(__x, __y); }
+ 390:/usr/include/c++/9.1.0/cmath **** 
+ 391:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 392:/usr/include/c++/9.1.0/cmath ****   pow(long double __x, long double __y)
+ 393:/usr/include/c++/9.1.0/cmath ****   { return __builtin_powl(__x, __y); }
+ 394:/usr/include/c++/9.1.0/cmath **** 
+ 395:/usr/include/c++/9.1.0/cmath **** #if __cplusplus < 201103L
+ 396:/usr/include/c++/9.1.0/cmath ****   // _GLIBCXX_RESOLVE_LIB_DEFECTS
+ 397:/usr/include/c++/9.1.0/cmath ****   // DR 550. What should the return type of pow(float,int) be?
+ 398:/usr/include/c++/9.1.0/cmath ****   inline double
+ 399:/usr/include/c++/9.1.0/cmath ****   pow(double __x, int __i)
+ 400:/usr/include/c++/9.1.0/cmath ****   { return __builtin_powi(__x, __i); }
+ 401:/usr/include/c++/9.1.0/cmath **** 
+ 402:/usr/include/c++/9.1.0/cmath ****   inline float
+ 403:/usr/include/c++/9.1.0/cmath ****   pow(float __x, int __n)
+ 404:/usr/include/c++/9.1.0/cmath ****   { return __builtin_powif(__x, __n); }
+ 405:/usr/include/c++/9.1.0/cmath **** 
+ 406:/usr/include/c++/9.1.0/cmath ****   inline long double
+ 407:/usr/include/c++/9.1.0/cmath ****   pow(long double __x, int __n)
+ 408:/usr/include/c++/9.1.0/cmath ****   { return __builtin_powil(__x, __n); }
+ 409:/usr/include/c++/9.1.0/cmath **** #endif
+ 410:/usr/include/c++/9.1.0/cmath **** #endif
+ 411:/usr/include/c++/9.1.0/cmath **** 
+ 412:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp, typename _Up>
+ 413:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 414:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 415:/usr/include/c++/9.1.0/cmath ****     pow(_Tp __x, _Up __y)
+ 416:/usr/include/c++/9.1.0/cmath ****     {
+ 417:/usr/include/c++/9.1.0/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 418:/usr/include/c++/9.1.0/cmath ****       return pow(__type(__x), __type(__y));
+ 419:/usr/include/c++/9.1.0/cmath ****     }
+ 420:/usr/include/c++/9.1.0/cmath **** 
+ 421:/usr/include/c++/9.1.0/cmath ****   using ::sin;
+ 422:/usr/include/c++/9.1.0/cmath **** 
+ 423:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 424:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 425:/usr/include/c++/9.1.0/cmath ****   sin(float __x)
+ 426:/usr/include/c++/9.1.0/cmath ****   { return __builtin_sinf(__x); }
+ 480              		.loc 2 426 5 is_stmt 1 view .LVU128
+ 481              		.loc 1 72 19 is_stmt 0 view .LVU129
+ 482 0384 F30F591D 		mulss	.LC4(%rip), %xmm3
+ 482      00000000 
+GAS LISTING /tmp/ccH45HTj.s 			page 20
+
+
+ 483              		.loc 1 72 15 view .LVU130
+ 484 038c F30F115C 		movss	%xmm3, 24(%rsp)
+ 484      2418
+ 485 0392 0F28EB   		movaps	%xmm3, %xmm5
+ 486 0395 F30F582C 		addss	(%rsp), %xmm5
+ 486      24
+ 487              		.loc 1 72 12 view .LVU131
+ 488 039a 660FEFC0 		pxor	%xmm0, %xmm0
+ 489 039e F30F5AC5 		cvtss2sd	%xmm5, %xmm0
+ 490 03a2 F20F1174 		movsd	%xmm6, 32(%rsp)
+ 490      2420
+ 491 03a8 660F28CE 		movapd	%xmm6, %xmm1
+ 492 03ac F20F1144 		movsd	%xmm0, 40(%rsp)
+ 492      2428
+ 493 03b2 E8000000 		call	glVertex2d@PLT
+ 493      00
+ 494              	.LVL60:
+  73:Src/routines.cpp **** 	glVertex2d(x - a * sin(alpha), y + a * cos(alpha));
+ 495              		.loc 1 73 2 is_stmt 1 view .LVU132
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 496              		.loc 2 185 5 view .LVU133
+ 497              		.loc 2 426 5 view .LVU134
+ 498              		.loc 1 73 15 is_stmt 0 view .LVU135
+ 499 03b7 F30F1014 		movss	(%rsp), %xmm2
+ 499      24
+ 500 03bc F30F5C54 		subss	24(%rsp), %xmm2
+ 500      2418
+ 501              		.loc 1 73 12 view .LVU136
+ 502 03c2 66450FEF 		pxor	%xmm8, %xmm8
+ 502      C0
+ 503 03c7 F3440F5A 		cvtss2sd	%xmm2, %xmm8
+ 503      C2
+ 504 03cc F20F104C 		movsd	32(%rsp), %xmm1
+ 504      2420
+ 505 03d2 F2440F11 		movsd	%xmm8, 32(%rsp)
+ 505      442420
+ 506 03d9 66410F28 		movapd	%xmm8, %xmm0
+ 506      C0
+ 507 03de E8000000 		call	glVertex2d@PLT
+ 507      00
+ 508              	.LVL61:
+  74:Src/routines.cpp **** 	glVertex2d(x - a * cos(alpha), y + a * sin(alpha));
+ 509              		.loc 1 74 2 is_stmt 1 view .LVU137
+ 510              		.loc 2 426 5 view .LVU138
+ 511              		.loc 1 74 35 is_stmt 0 view .LVU139
+ 512 03e3 F30F1074 		movss	24(%rsp), %xmm6
+ 512      2418
+ 513 03e9 F30F5874 		addss	8(%rsp), %xmm6
+ 513      2408
+ 514              		.loc 1 74 12 view .LVU140
+ 515 03ef 66450FEF 		pxor	%xmm9, %xmm9
+ 515      C9
+ 516 03f4 F3440F5A 		cvtss2sd	%xmm6, %xmm9
+ 516      CE
+ 517              	.LVL62:
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 518              		.loc 2 185 5 is_stmt 1 view .LVU141
+GAS LISTING /tmp/ccH45HTj.s 			page 21
+
+
+ 519              		.loc 1 74 15 is_stmt 0 view .LVU142
+ 520 03f9 F30F100C 		movss	(%rsp), %xmm1
+ 520      24
+ 521 03fe F30F5C4C 		subss	20(%rsp), %xmm1
+ 521      2414
+ 522              		.loc 1 74 12 view .LVU143
+ 523 0404 660FEFDB 		pxor	%xmm3, %xmm3
+ 524 0408 F30F5AD9 		cvtss2sd	%xmm1, %xmm3
+ 525 040c F2440F11 		movsd	%xmm9, 48(%rsp)
+ 525      4C2430
+ 526 0413 66410F28 		movapd	%xmm9, %xmm1
+ 526      C9
+ 527 0418 F20F115C 		movsd	%xmm3, 56(%rsp)
+ 527      2438
+ 528 041e 660F28C3 		movapd	%xmm3, %xmm0
+ 529 0422 E8000000 		call	glVertex2d@PLT
+ 529      00
+ 530              	.LVL63:
+  75:Src/routines.cpp **** 	glVertex2d(x - a * cos(alpha), y - a * sin(alpha));
+ 531              		.loc 1 75 2 is_stmt 1 view .LVU144
+ 532              		.loc 2 426 5 view .LVU145
+ 533              		.loc 1 75 35 is_stmt 0 view .LVU146
+ 534 0427 F30F107C 		movss	8(%rsp), %xmm7
+ 534      2408
+ 535 042d F30F5C7C 		subss	24(%rsp), %xmm7
+ 535      2418
+ 536              		.loc 1 75 12 view .LVU147
+ 537 0433 660FEFED 		pxor	%xmm5, %xmm5
+ 538 0437 F30F5AEF 		cvtss2sd	%xmm7, %xmm5
+ 539              	.LVL64:
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 540              		.loc 2 185 5 is_stmt 1 view .LVU148
+ 541              		.loc 1 75 12 is_stmt 0 view .LVU149
+ 542 043b F20F116C 		movsd	%xmm5, 24(%rsp)
+ 542      2418
+ 543 0441 660F28CD 		movapd	%xmm5, %xmm1
+ 544 0445 F20F1044 		movsd	56(%rsp), %xmm0
+ 544      2438
+ 545 044b E8000000 		call	glVertex2d@PLT
+ 545      00
+ 546              	.LVL65:
+  76:Src/routines.cpp **** 	glVertex2d(x - a * sin(alpha), y - a * cos(alpha));
+ 547              		.loc 1 76 2 is_stmt 1 view .LVU150
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 548              		.loc 2 185 5 view .LVU151
+ 549              		.loc 1 76 35 is_stmt 0 view .LVU152
+ 550 0450 F30F107C 		movss	8(%rsp), %xmm7
+ 550      2408
+ 551 0456 F30F5C7C 		subss	20(%rsp), %xmm7
+ 551      2414
+ 552              		.loc 1 76 12 view .LVU153
+ 553 045c 660FEFF6 		pxor	%xmm6, %xmm6
+ 554 0460 F30F5AF7 		cvtss2sd	%xmm7, %xmm6
+ 555              	.LVL66:
+ 556              		.loc 2 426 5 is_stmt 1 view .LVU154
+ 557              		.loc 1 76 12 is_stmt 0 view .LVU155
+ 558 0464 F20F1174 		movsd	%xmm6, 8(%rsp)
+GAS LISTING /tmp/ccH45HTj.s 			page 22
+
+
+ 558      2408
+ 559              	.LVL67:
+ 560              		.loc 1 76 12 view .LVU156
+ 561 046a 660F28CE 		movapd	%xmm6, %xmm1
+ 562 046e F20F1044 		movsd	32(%rsp), %xmm0
+ 562      2420
+ 563 0474 E8000000 		call	glVertex2d@PLT
+ 563      00
+ 564              	.LVL68:
+  77:Src/routines.cpp **** 	glVertex2d(x + a * sin(alpha), y - a * cos(alpha));
+ 565              		.loc 1 77 2 is_stmt 1 view .LVU157
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 566              		.loc 2 185 5 view .LVU158
+ 567              		.loc 2 426 5 view .LVU159
+ 568              		.loc 1 77 12 is_stmt 0 view .LVU160
+ 569 0479 F20F104C 		movsd	8(%rsp), %xmm1
+ 569      2408
+ 570 047f F20F1044 		movsd	40(%rsp), %xmm0
+ 570      2428
+ 571 0485 E8000000 		call	glVertex2d@PLT
+ 571      00
+ 572              	.LVL69:
+  78:Src/routines.cpp **** 	glVertex2d(x + a * cos(alpha), y - a * sin(alpha));
+ 573              		.loc 1 78 2 is_stmt 1 view .LVU161
+ 574              		.loc 2 426 5 view .LVU162
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 575              		.loc 2 185 5 view .LVU163
+ 576              		.loc 1 78 15 is_stmt 0 view .LVU164
+ 577 048a F30F1044 		movss	20(%rsp), %xmm0
+ 577      2414
+ 578 0490 F30F5804 		addss	(%rsp), %xmm0
+ 578      24
+ 579              		.loc 1 78 12 view .LVU165
+ 580 0495 660FEFD2 		pxor	%xmm2, %xmm2
+ 581 0499 F30F5AD0 		cvtss2sd	%xmm0, %xmm2
+ 582 049d F20F104C 		movsd	24(%rsp), %xmm1
+ 582      2418
+ 583 04a3 F20F1114 		movsd	%xmm2, (%rsp)
+ 583      24
+ 584              	.LVL70:
+ 585              		.loc 1 78 12 view .LVU166
+ 586 04a8 660F28C2 		movapd	%xmm2, %xmm0
+ 587 04ac E8000000 		call	glVertex2d@PLT
+ 587      00
+ 588              	.LVL71:
+  79:Src/routines.cpp **** 	glVertex2d(x + a * cos(alpha), y + a * sin(alpha));
+ 589              		.loc 1 79 2 is_stmt 1 view .LVU167
+ 590              		.loc 2 426 5 view .LVU168
+ 185:/usr/include/c++/9.1.0/cmath **** 
+ 591              		.loc 2 185 5 view .LVU169
+ 592              		.loc 1 79 12 is_stmt 0 view .LVU170
+ 593 04b1 F20F104C 		movsd	48(%rsp), %xmm1
+ 593      2430
+ 594 04b7 F20F1004 		movsd	(%rsp), %xmm0
+ 594      24
+ 595 04bc E8000000 		call	glVertex2d@PLT
+ 595      00
+GAS LISTING /tmp/ccH45HTj.s 			page 23
+
+
+ 596              	.LVL72:
+  80:Src/routines.cpp **** 	glEnd();
+ 597              		.loc 1 80 2 is_stmt 1 view .LVU171
+ 598              		.loc 1 80 7 is_stmt 0 view .LVU172
+ 599 04c1 E8000000 		call	glEnd@PLT
+ 599      00
+ 600              	.LVL73:
+  81:Src/routines.cpp **** }
+ 601              		.loc 1 81 1 view .LVU173
+ 602 04c6 4883C448 		addq	$72, %rsp
+ 603              		.cfi_def_cfa_offset 8
+ 604 04ca C3       		ret
+ 605              		.cfi_endproc
+ 606              	.LFE259:
+ 608              		.globl	_Z8drawQuadfff
+ 610              	_Z8drawQuadfff:
+ 611              	.LVL74:
+ 612              	.LFB260:
+  82:Src/routines.cpp **** 
+  83:Src/routines.cpp **** void drawQuad(float x, float y, float a)
+  84:Src/routines.cpp **** {
+ 613              		.loc 1 84 1 is_stmt 1 view -0
+ 614              		.cfi_startproc
+ 615              		.loc 1 84 1 is_stmt 0 view .LVU175
+ 616 04cb 4883EC08 		subq	$8, %rsp
+ 617              		.cfi_def_cfa_offset 16
+  85:Src/routines.cpp **** 	drawRect(x, y, a, a);
+ 618              		.loc 1 85 2 is_stmt 1 view .LVU176
+ 619              		.loc 1 85 10 is_stmt 0 view .LVU177
+ 620 04cf 0F28DA   		movaps	%xmm2, %xmm3
+ 621 04d2 E8000000 		call	_Z8drawRectffff
+ 621      00
+ 622              	.LVL75:
+  86:Src/routines.cpp **** }
+ 623              		.loc 1 86 1 view .LVU178
+ 624 04d7 4883C408 		addq	$8, %rsp
+ 625              		.cfi_def_cfa_offset 8
+ 626 04db C3       		ret
+ 627              		.cfi_endproc
+ 628              	.LFE260:
+ 630              		.section	.rodata.cst4,"aM",@progbits,4
+ 631              		.align 4
+ 632              	.LC0:
+ 633 0000 00007F43 		.long	1132396544
+ 634              		.align 4
+ 635              	.LC1:
+ 636 0004 0000003F 		.long	1056964608
+ 637              		.align 4
+ 638              	.LC2:
+ 639 0008 DA0FC940 		.long	1086918618
+ 640              		.align 4
+ 641              	.LC3:
+ 642 000c 67B16FBF 		.long	3211768167
+ 643              		.align 4
+ 644              	.LC4:
+ 645 0010 69D0B3BE 		.long	3199455337
+ 646              		.text
+GAS LISTING /tmp/ccH45HTj.s 			page 24
+
+
+ 647              	.Letext0:
+ 648              		.file 3 "/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include/stddef.h"
+ 649              		.file 4 "/usr/include/bits/types.h"
+ 650              		.file 5 "/usr/include/bits/stdint-intn.h"
+ 651              		.file 6 "/usr/include/bits/stdint-uintn.h"
+ 652              		.file 7 "/usr/include/GL/glew.h"
+ 653              		.file 8 "/usr/include/GL/freeglut_std.h"
+ 654              		.file 9 "/usr/include/c++/9.1.0/cstdlib"
+ 655              		.file 10 "/usr/include/c++/9.1.0/bits/std_abs.h"
+ 656              		.file 11 "/usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/c++config.h"
+ 657              		.file 12 "/usr/include/stdlib.h"
+ 658              		.file 13 "/usr/include/bits/stdlib-float.h"
+ 659              		.file 14 "/usr/include/bits/stdlib-bsearch.h"
+ 660              		.file 15 "/usr/include/c++/9.1.0/stdlib.h"
+ 661              		.file 16 "/usr/include/math.h"
+ 662              		.file 17 "/usr/include/c++/9.1.0/math.h"
+ 663              		.file 18 "/usr/include/bits/mathcalls.h"
+ 664              		.file 19 "<built-in>"
+GAS LISTING /tmp/ccH45HTj.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 routines.cpp
-     /tmp/ccd29r7S.s:5      .text:0000000000000000 _Z10glSetColorj
-     /tmp/ccd29r7S.s:34     .text:000000000000004c _Z8drawLineffff
-     /tmp/ccd29r7S.s:64     .text:00000000000000ac _Z8drawRectffff
-     /tmp/ccd29r7S.s:118    .text:0000000000000187 _Z12drawTrianglefff
-     /tmp/ccd29r7S.s:158    .text:000000000000021d _Z10drawCirclefffi
-     /tmp/ccd29r7S.s:214    .text:00000000000002bc _Z16drawCircleFilledfffi
-     /tmp/ccd29r7S.s:270    .text:000000000000035b _Z7drawOctfff
-     /tmp/ccd29r7S.s:357    .text:00000000000004e6 _Z8drawQuadfff
-     /tmp/ccd29r7S.s:372    .rodata.cst4:0000000000000000 .LC0
-     /tmp/ccd29r7S.s:375    .rodata.cst4:0000000000000004 .LC1
-     /tmp/ccd29r7S.s:378    .rodata.cst4:0000000000000008 .LC2
-     /tmp/ccd29r7S.s:381    .rodata.cst4:000000000000000c .LC3
-     /tmp/ccd29r7S.s:384    .rodata.cst4:0000000000000010 .LC4
+     /tmp/ccH45HTj.s:6      .text:0000000000000000 _Z10glSetColorj
+     /tmp/ccH45HTj.s:47     .text:000000000000004c _Z8drawLineffff
+     /tmp/ccH45HTj.s:95     .text:00000000000000ac _Z8drawRectffff
+     /tmp/ccH45HTj.s:171    .text:000000000000016c _Z12drawTrianglefff
+     /tmp/ccH45HTj.s:234    .text:0000000000000202 _Z10drawCirclefffi
+     /tmp/ccH45HTj.s:340    .text:00000000000002a1 _Z16drawCircleFilledfffi
+     /tmp/ccH45HTj.s:446    .text:0000000000000340 _Z7drawOctfff
+     /tmp/ccH45HTj.s:610    .text:00000000000004cb _Z8drawQuadfff
+     /tmp/ccH45HTj.s:632    .rodata.cst4:0000000000000000 .LC0
+     /tmp/ccH45HTj.s:635    .rodata.cst4:0000000000000004 .LC1
+     /tmp/ccH45HTj.s:638    .rodata.cst4:0000000000000008 .LC2
+     /tmp/ccH45HTj.s:641    .rodata.cst4:000000000000000c .LC3
+     /tmp/ccH45HTj.s:644    .rodata.cst4:0000000000000010 .LC4
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

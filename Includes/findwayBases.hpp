@@ -8,15 +8,17 @@
 #define CORNER_RIGHT_BOT    3
 
 
-struct graphPoint
-{
-    struct graphPoint **targets;
-};
-
 struct coords
 {
     COORDS_DATATYPE     x,
                         y;
+};
+
+struct graphPoint
+{
+    struct graphPoint **targets = NULL;
+    size_t numOfTargets = 0;
+    struct coords c;
 };
 
 /*
@@ -29,31 +31,33 @@ struct coords
 
 struct obstacle
 {
-    struct coords      *c;
-    struct graphPoint  *corners[4];
-    COORDS_DATATYPE     a;
+    struct coords      *c = NULL;
+    struct graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
+    COORDS_DATATYPE     a = 0;
 };
 
 struct baseline
 {
-    COORDS_DATATYPE     k,
-                        b;
+    COORDS_DATATYPE     k = 0,
+                        b = 0;
 };
 
 struct vect
 {
-    struct coords      *c;
-    COORDS_DATATYPE     dx,
-                        dy;
+    struct coords      *c = NULL;
+    COORDS_DATATYPE     dx = 0,
+                        dy = 0;
 };
 
 
-bool            hasIntersection( const struct baseline *b1,  const struct baseline *b2);
+bool            hasIntersection(const struct baseline *b1,  const struct baseline *b2);
+
+bool            hasIntersection(const struct obstacle *o, const struct vect *v);
 
 struct coords   getIntersection(const struct baseline *b1, const struct baseline *b2);
 
 //will return NULL if there is no intersections
-struct coords   getIntersection(const struct vect *v, const struct obstacle *obst);
+struct coords   getIntersection(const struct obstacle *obst, const struct vect *v);
 
 bool            isDotInside(const struct coords *dot, const struct obstacle *obstacle);
 
@@ -68,3 +72,7 @@ struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y);
 struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t corner);
 
 struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner);
+
+void            addTarget(struct graphPoint *start, struct graphPoint *end);
+
+COORDS_DATATYPE getLen(const struct vect *v);

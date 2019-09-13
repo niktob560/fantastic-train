@@ -17,8 +17,8 @@ void drawLine(float x1, float y1, float x2, float y2)
 
 void drawRect(float x, float y, float a, float b)
 {
-	x -= a / 2;
-	y -= b / 2;
+	// x -= a / 2;
+	// y -= b / 2;
 	glBegin(GL_QUADS);
 	glVertex2d(x, y);
 	glVertex2d(x, y + b);

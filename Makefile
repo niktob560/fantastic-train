@@ -23,7 +23,7 @@ vpath %.cpp $(sort $(dir $(CPP_SOURCES)))
 
 
 
-CFLAGS=$(CPP_DEFS) $(CPP_INCLUDES) $(OPTIMIZE) -Wall -Wextra -std=gnu++11
+CFLAGS=$(CPP_DEFS) $(CPP_INCLUDES) $(OPTIMIZE) -Wall -Wextra -std=gnu++11 -g
 
 
 all: $(BIN_DIR)/$(TARGET)
