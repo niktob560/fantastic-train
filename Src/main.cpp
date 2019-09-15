@@ -32,6 +32,7 @@ using namespace std;
 bool terminated = false;
 size_t numOfObstacles = 0;
 size_t graphSize = 0;
+size_t calculatedPoints = 0;
 
 
 struct obstacle *obstacles;
@@ -48,6 +49,10 @@ struct array
 };
 
 
+uint8_t getMinDatasetSize()
+{
+
+}
 
 
 
@@ -57,6 +62,10 @@ void calculateWay()
 {
 
 }
+
+
+void initObst(const struct obstacle *obst);
+void initPoint(struct graphPoint *p, const struct coords *c);
 
 
 
@@ -89,7 +98,17 @@ struct vect createVect(const struct coords *c, const COORDS_DATATYPE angle)
 	// 	 << "\tx:  " << ret.c->x << endl
 	// 	 << "\ty:  " << ret.c->y << endl;
 	return ret;
+}
 
+struct vect createVect(const struct coords *start, const struct coords *end)
+{
+	struct vect ret;
+	ret.c = (struct coords*)malloc(sizeof(struct coords));
+	ret.c->x = start->x;
+	ret.c->y = start->y;
+	ret.dx = end->x - start->x;
+	ret.dy = end->y - start->y;
+	return ret;
 }
 
 
@@ -213,36 +232,64 @@ struct obstacle*	getIntersected(const struct array *dataset, const struct vect *
 	return o;
 }
 
+void initPoint(struct graphPoint *p, const struct coords *c, const struct array *obsts)
+{
+	struct vect v;
+	// for(uint8_t i = 0; i < VECTORS_PER_CHECK; i++)
+	// {
+	// 	v = createVect(c, ((360.0 / VECTORS_PER_CHECK) * i));
+	// 	struct obstacle *o = getIntersected(obsts, &v);
+	// 	if(o != NULL)
+	// 	{
+	// 		struct coords *c;
+	// 		for(uint8_t h = 0; h < 4; h++)
+	// 		{
+	// 			cout << "->Found intersection" << endl;
+	// 			c = getCoordsOfCorner(o, h);
+	// 			v.dx = (c->x - v.c->x);
+	// 			v.dy = (c->y - v.c->y);
+	// 			if((v.dx != 0 || v.dy != 0) && getIntersected(obsts, &v) == NULL)
+	// 			{
+	// 				addTarget(p, o->corners[h]);
+	// 			}
+	// 			free(c);
+	// 		}
+	// 	}
+	// }
+
+
+
+	struct coords *tgt;
+	for(size_t i = 0; i < obsts->size; i++)
+	{
+		for(uint8_t j = 0; j < 4; j++)
+		{
+			tgt = getCoordsOfCorner(&((struct obstacle*)obsts->items)[i], j);
+			v = createVect(c, tgt);
+			if((v.dx != 0 || v.dy != 0) && !hasIntersections(&v))
+			{
+				cout << "Creating tgt\n";
+				if(p->numOfTargets == 0)
+					calculatedPoints++;
+				if(((struct obstacle*)obsts->items)[i].corners[j]->numOfTargets == 0)
+					calculatedPoints++;
+				addTarget(p, ((struct obstacle*)obsts->items)[i].corners[j]);
+				for(uint8_t h = 0; h < 4; h++)
+					if(((struct obstacle*)obsts->items)[i].corners[h]->numOfTargets == 0)
+						initPoint(((struct obstacle*)obsts->items)[i].corners[h], getCoordsOfCorner(&((struct obstacle*)obsts->items)[i], h));
+				// initObst(&((struct obstacle*)obsts->items)[i]);
+			}
+			free(tgt);
+		}
+	}
+}
+
+
 
 void initPoint(struct graphPoint *p, const struct coords *c)
 {
 	struct array *obsts = getDataSet(c);
-	struct vect v;
-	for(uint8_t i = 0; i < VECTORS_PER_CHECK; i++)
-	{
-		// cout << "Creating vector " << (int)i << endl;
-		v = createVect(c, ((360.0 / VECTORS_PER_CHECK) * i));
-		// cout << "Watching vector " << (int)i << endl;
-		struct obstacle *o = getIntersected(obsts, &v);
-		if(o != NULL)
-		{
-			struct coords *c;
-			for(uint8_t h = 0; h < 4; h++)
-			{
-				cout << "->Found intersection" << endl;
-				c = getCoordsOfCorner(o, h);
-				v.dx = (c->x - v.c->x);
-				v.dy = (c->y - v.c->y);
-				if((v.dx != 0 || v.dy != 0) && getIntersected(obsts, &v) == NULL)
-				{
-					// cout << "--->Adding edge from o_" << obst->c->x << ":" << obst->c->y << " to o_" << o->c->x << ":" << o->c->y << "\t\t\t\t<---" << endl
-					// 	 << "With coords: " << v.c->x << ":" << v.c->y << " -> " << c->x << ":" << c->y << endl;
-					addTarget(p, o->corners[h]);
-				}
-				free(c);
-			}
-		}
-	}
+	initPoint(p, c, obsts);
 	free(obsts);
 }
 
@@ -265,7 +312,11 @@ void initObst(const struct obstacle *obst)
 
 
 
-
+void initGraph(struct graphPoint *startp, const struct coords *startc)
+{
+	struct array *ar = getDataSet(startc);
+	initPoint(startp, startc, ar);
+}
 
 
 
@@ -403,25 +454,38 @@ void timf(int value)				// Timer function
 
 int main(int argc, char **argv)
 {
-	numOfObstacles = 3;
+	numOfObstacles = 10;
+	size_t iter = 0;
 	obstacles = (struct obstacle*)malloc(sizeof(struct obstacle) * numOfObstacles);
-	obstacles[0] = createObstacle(200, 200, 20);
-	obstacles[1] = createObstacle(45, 55, 20);
-	// obstacles[2] = createObstacle(70, 20, 20);
-	obstacles[2] = createObstacle(5, 55, 20);
+	obstacles[iter++] = createObstacle(200, 200, 20);
+	obstacles[iter++] = createObstacle(45, 55, 20);
+	// obstacles[iter++] = createObstacle(70, 20, 20);
+	// obstacles[iter++] = createObstacle(5, 55, 20);
+	// obstacles[iter++] = createObstacle(5, 100, 20);
+	// obstacles[iter++] = createObstacle(500, 55, 20);
+	// obstacles[iter++] = createObstacle(300, 240, 20);
+	// obstacles[iter++] = createObstacle(100, 90, 20);
+	obstacles[iter++] = createObstacle(20, 280, 20);
+	numOfObstacles = iter;
 
-	graphSize = numOfObstacles * 4 + 1;
+	graphSize = numOfObstacles * 4 + 2;
 
 	struct graphPoint *p = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
-	// struct coords *c = (struct coords*)malloc(sizeof(struct coords));
 	struct coords c;
-	c.x = 100;
-	c.y = 10;
+	c.x = 200;
+	c.y = 0;
 	p->c = c;
+	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+
+	struct coords c2;
+	c2.x = 0;
+	c2.y = 200;
+	p2->c = c2;
 
 	graph = (struct graphPoint**)malloc(graphSize * sizeof(struct graphPoint*));
 	graph[numOfObstacles * 4] = p;
+	graph[numOfObstacles * 4 + 1] = p2;
 	for(size_t i = 0; i < numOfObstacles * 4; i++)
 	{
 		graph[i] = obstacles[i / 4].corners[i % 4];
@@ -432,13 +496,13 @@ int main(int argc, char **argv)
 	endway.x	= 150;
 	endway.y	= 150;
 
-//20:40->25:75
 
 	// cout << "AAAAAAAAAAAAAAAA" << endl;
 
 
 	// initObst(&obstacles[0]);
-	initPoint(graph[graphSize - 1], &c);
+	// initPoint(graph[graphSize - 1], &c);
+	initGraph(graph[numOfObstacles * 4], &c);
 
 	// for(int i = 0; i < 4; i++)
 	// {
@@ -474,6 +538,7 @@ int main(int argc, char **argv)
 // 	// cout << ob << endl;
 // 	// struct coords dot = {20, 10};
 // 	// cout << isDotInside(&dot, &obstacles[0]);
+// cout << "points: " << graphSize << "; calculated: " << calculatedPoints << endl;
 // return 0;
  	cout << "glut init\n";
 	glutInit(&argc, argv);

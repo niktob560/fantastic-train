@@ -1,4 +1,4 @@
-GAS LISTING /tmp/cc21GyWh.s 			page 1
+GAS LISTING /tmp/ccCg8J2U.s 			page 1
 
 
    1              		.file	"findwayBases.cpp"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   48:Src/findwayBases.cpp ****     //              && obst->c->x + obst->a >= v->c->x + v->dx
   49:Src/findwayBases.cpp ****     //             )
   50:Src/findwayBases.cpp ****     //         )
-GAS LISTING /tmp/cc21GyWh.s 			page 2
+GAS LISTING /tmp/ccCg8J2U.s 			page 2
 
 
   51:Src/findwayBases.cpp ****     //         &&
@@ -118,7 +118,7 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  105:Src/findwayBases.cpp ****                     c3;
  106:Src/findwayBases.cpp **** 
  107:Src/findwayBases.cpp ****     struct baseline b,
-GAS LISTING /tmp/cc21GyWh.s 			page 3
+GAS LISTING /tmp/ccCg8J2U.s 			page 3
 
 
  108:Src/findwayBases.cpp ****                     b2;
@@ -178,7 +178,7 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  162:Src/findwayBases.cpp **** 
  163:Src/findwayBases.cpp **** 
  164:Src/findwayBases.cpp ****     if(l1 > l2 && l3 >= l1)
-GAS LISTING /tmp/cc21GyWh.s 			page 4
+GAS LISTING /tmp/ccCg8J2U.s 			page 4
 
 
  165:Src/findwayBases.cpp ****         return c1;
@@ -238,7 +238,7 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  219:Src/findwayBases.cpp ****     ret.c = (struct coords*)malloc(sizeof(struct coords));
  220:Src/findwayBases.cpp ****     ret.c->x = x;
  221:Src/findwayBases.cpp ****     ret.c->y = y;
-GAS LISTING /tmp/cc21GyWh.s 			page 5
+GAS LISTING /tmp/ccCg8J2U.s 			page 5
 
 
  222:Src/findwayBases.cpp ****     ret.a    = a;
@@ -298,7 +298,7 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  276:Src/findwayBases.cpp ****     // if((obst->c->x - v->c->x) / v->dx < 0 || (obst->c->y - v->c->y) / v->dy < 0)
  277:Src/findwayBases.cpp ****     //     return false;
  278:Src/findwayBases.cpp ****     //
-GAS LISTING /tmp/cc21GyWh.s 			page 6
+GAS LISTING /tmp/ccCg8J2U.s 			page 6
 
 
  279:Src/findwayBases.cpp ****     // struct coords   c1,
@@ -358,7 +358,7 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  333:Src/findwayBases.cpp ****         std::cout << "have intersection" << std::endl;
  334:Src/findwayBases.cpp ****         return true;
  335:Src/findwayBases.cpp ****     }
-GAS LISTING /tmp/cc21GyWh.s 			page 7
+GAS LISTING /tmp/ccCg8J2U.s 			page 7
 
 
  336:Src/findwayBases.cpp **** }
@@ -366,25 +366,34 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  338:Src/findwayBases.cpp **** 
  339:Src/findwayBases.cpp **** void            addTarget(struct graphPoint *start, struct graphPoint *end)
  340:Src/findwayBases.cpp **** {
- 341:Src/findwayBases.cpp ****     start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeo
- 342:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 343:Src/findwayBases.cpp **** 
- 344:Src/findwayBases.cpp ****     end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(stru
- 345:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 346:Src/findwayBases.cpp **** }
-   9              		.loc 1 346 1 view -0
+ 341:Src/findwayBases.cpp ****     if(start == end)
+ 342:Src/findwayBases.cpp ****         return;
+ 343:Src/findwayBases.cpp ****     for(size_t i = 0; i < start->numOfTargets; i++)
+ 344:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 345:Src/findwayBases.cpp ****             return;
+ 346:Src/findwayBases.cpp ****     for(size_t i = 0; i < end->numOfTargets; i++)
+ 347:Src/findwayBases.cpp ****         if(end->targets[i] == start)
+ 348:Src/findwayBases.cpp ****             return;
+ 349:Src/findwayBases.cpp **** 
+ 350:Src/findwayBases.cpp ****     start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeo
+ 351:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 352:Src/findwayBases.cpp **** 
+ 353:Src/findwayBases.cpp ****     end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(stru
+ 354:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 355:Src/findwayBases.cpp **** }
+   9              		.loc 1 355 1 view -0
   10              		.cfi_startproc
-  11              		.loc 1 346 1 is_stmt 0 view .LVU1
+  11              		.loc 1 355 1 is_stmt 0 view .LVU1
   12 0000 83FF01   		cmpl	$1, %edi
   13 0003 7401     		je	.L7
   14              	.L4:
   15 0005 C3       		ret
   16              	.L7:
-  17              		.loc 1 346 1 discriminator 1 view .LVU2
+  17              		.loc 1 355 1 discriminator 1 view .LVU2
   18 0006 81FEFFFF 		cmpl	$65535, %esi
   18      0000
   19 000c 75F7     		jne	.L4
-  20              		.loc 1 346 1 view .LVU3
+  20              		.loc 1 355 1 view .LVU3
   21 000e 4883EC08 		subq	$8, %rsp
   22              		.cfi_def_cfa_offset 16
   23              		.file 2 "/usr/include/c++/9.1.0/iostream"
@@ -409,6 +418,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   19:/usr/include/c++/9.1.0/iostream **** 
   20:/usr/include/c++/9.1.0/iostream **** // You should have received a copy of the GNU General Public License and
   21:/usr/include/c++/9.1.0/iostream **** // a copy of the GCC Runtime Library Exception along with this program;
+GAS LISTING /tmp/ccCg8J2U.s 			page 8
+
+
   22:/usr/include/c++/9.1.0/iostream **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
   23:/usr/include/c++/9.1.0/iostream **** // <http://www.gnu.org/licenses/>.
   24:/usr/include/c++/9.1.0/iostream **** 
@@ -418,9 +430,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   28:/usr/include/c++/9.1.0/iostream **** 
   29:/usr/include/c++/9.1.0/iostream **** //
   30:/usr/include/c++/9.1.0/iostream **** // ISO C++ 14882: 27.3  Standard iostream objects
-GAS LISTING /tmp/cc21GyWh.s 			page 8
-
-
   31:/usr/include/c++/9.1.0/iostream **** //
   32:/usr/include/c++/9.1.0/iostream **** 
   33:/usr/include/c++/9.1.0/iostream **** #ifndef _GLIBCXX_IOSTREAM
@@ -469,6 +478,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   25 0012 488D3D00 		leaq	_ZStL8__ioinit(%rip), %rdi
   25      000000
   26              	.LVL1:
+GAS LISTING /tmp/ccCg8J2U.s 			page 9
+
+
   27              		.loc 2 74 25 view .LVU5
   28 0019 E8000000 		call	_ZNSt8ios_base4InitC1Ev@PLT
   28      00
@@ -478,15 +490,12 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   31      000000
   32 0025 488D3500 		leaq	_ZStL8__ioinit(%rip), %rsi
   32      000000
-GAS LISTING /tmp/cc21GyWh.s 			page 9
-
-
   33 002c 488B3D00 		movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rdi
   33      000000
   34 0033 E8000000 		call	__cxa_atexit@PLT
   34      00
   35              	.LVL3:
-  36              		.loc 1 346 1 view .LVU7
+  36              		.loc 1 355 1 view .LVU7
   37 0038 4883C408 		addq	$8, %rsp
   38              		.cfi_def_cfa_offset 8
   39 003c C3       		ret
@@ -529,6 +538,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   71              		.loc 1 13 5 view .LVU15
   13:Src/findwayBases.cpp ****     {
   72              		.loc 1 13 12 is_stmt 0 view .LVU16
+GAS LISTING /tmp/ccCg8J2U.s 			page 10
+
+
   73 0050 F30F100F 		movss	(%rdi), %xmm1
   74 0054 660FEFD2 		pxor	%xmm2, %xmm2
   75 0058 F30F5AD1 		cvtss2sd	%xmm1, %xmm2
@@ -538,9 +550,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   77      00000000 
   78 0064 F20F5E05 		divsd	.LC1(%rip), %xmm0
   78      00000000 
-GAS LISTING /tmp/cc21GyWh.s 			page 10
-
-
   13:Src/findwayBases.cpp ****     {
   79              		.loc 1 13 5 view .LVU18
   80 006c 660F2ED0 		ucomisd	%xmm0, %xmm2
@@ -589,6 +598,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  109 00a2 C3       		ret
  110              	.LVL8:
  111              	.L16:
+GAS LISTING /tmp/ccCg8J2U.s 			page 11
+
+
   13:Src/findwayBases.cpp ****     {
  112              		.loc 1 13 28 discriminator 1 view .LVU29
  113 00a3 F30F101E 		movss	(%rsi), %xmm3
@@ -598,9 +610,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  116              		.loc 1 13 21 discriminator 1 view .LVU30
  117 00af 660F2EC4 		ucomisd	%xmm4, %xmm0
  118 00b3 7A02     		jp	.L17
-GAS LISTING /tmp/cc21GyWh.s 			page 11
-
-
  119 00b5 74BD     		je	.L10
  120              	.L17:
   15:Src/findwayBases.cpp ****         ret.y = (b2->k * b1->b - b1->k * b2->b) / (b2->k - b1->k);
@@ -649,6 +658,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   16:Src/findwayBases.cpp ****     }
  149              		.loc 1 16 15 view .LVU43
  150 00f4 4809D0   		orq	%rdx, %rax
+GAS LISTING /tmp/ccCg8J2U.s 			page 12
+
+
  151              	.LVL10:
   16:Src/findwayBases.cpp ****     }
  152              		.loc 1 16 15 view .LVU44
@@ -658,9 +670,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  155              		.loc 1 25 9 is_stmt 1 view .LVU45
   25:Src/findwayBases.cpp ****         ret.y = b1->k * ret.x + b1->b;
  156              		.loc 1 25 21 is_stmt 0 view .LVU46
-GAS LISTING /tmp/cc21GyWh.s 			page 12
-
-
  157 00f9 F30F1056 		movss	4(%rsi), %xmm2
  157      04
   26:Src/findwayBases.cpp ****     }
@@ -709,6 +718,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  190 0124 0F2FC8   		comiss	%xmm0, %xmm1
  191 0127 722C     		jb	.L31
  178:Src/findwayBases.cpp ****             &&  (dot->y >= obstacle->c->y)
+GAS LISTING /tmp/ccCg8J2U.s 			page 13
+
+
  192              		.loc 1 178 55 view .LVU58
  193 0129 F30F1056 		movss	40(%rsi), %xmm2
  193      28
@@ -718,9 +730,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  178:Src/findwayBases.cpp ****             &&  (dot->y >= obstacle->c->y)
  196              		.loc 1 178 13 view .LVU60
  197 0132 0F2FC1   		comiss	%xmm1, %xmm0
-GAS LISTING /tmp/cc21GyWh.s 			page 13
-
-
  198 0135 7224     		jb	.L32
  179:Src/findwayBases.cpp ****             &&  (dot->y <= obstacle->c->y + obstacle->a);
  199              		.loc 1 179 23 view .LVU61
@@ -769,6 +778,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  230              		.globl	_Z14vectToBaselinePK4vect
  232              	_Z14vectToBaselinePK4vect:
  233              	.LVL14:
+GAS LISTING /tmp/ccCg8J2U.s 			page 14
+
+
  234              	.LFB1725:
  184:Src/findwayBases.cpp ****     struct baseline ret;
  235              		.loc 1 184 1 is_stmt 1 view -0
@@ -778,9 +790,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  187:Src/findwayBases.cpp ****     ret.b = v->c->y - v->c->x * ret.k;
  238              		.loc 1 187 5 view .LVU70
  187:Src/findwayBases.cpp ****     ret.b = v->c->y - v->c->x * ret.k;
-GAS LISTING /tmp/cc21GyWh.s 			page 14
-
-
  239              		.loc 1 187 16 is_stmt 0 view .LVU71
  240 016d F30F1047 		movss	12(%rdi), %xmm0
  240      0C
@@ -829,6 +838,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  272              	.LVL17:
  273              	.LFB1726:
  194:Src/findwayBases.cpp ****     COORDS_DATATYPE lx = c1->x - c2->x,
+GAS LISTING /tmp/ccCg8J2U.s 			page 15
+
+
  274              		.loc 1 194 1 is_stmt 1 view -0
  275              		.cfi_startproc
  194:Src/findwayBases.cpp ****     COORDS_DATATYPE lx = c1->x - c2->x,
@@ -838,9 +850,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  195:Src/findwayBases.cpp ****                     ly = c1->y - c2->y,
  279              		.loc 1 195 5 is_stmt 1 view .LVU84
  195:Src/findwayBases.cpp ****                     ly = c1->y - c2->y,
-GAS LISTING /tmp/cc21GyWh.s 			page 15
-
-
  280              		.loc 1 195 30 is_stmt 0 view .LVU85
  281 01a6 F30F1007 		movss	(%rdi), %xmm0
  195:Src/findwayBases.cpp ****                     ly = c1->y - c2->y,
@@ -889,6 +898,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   16:/usr/include/c++/9.1.0/cmath **** // Under Section 7 of GPL version 3, you are granted additional
   17:/usr/include/c++/9.1.0/cmath **** // permissions described in the GCC Runtime Library Exception, version
   18:/usr/include/c++/9.1.0/cmath **** // 3.1, as published by the Free Software Foundation.
+GAS LISTING /tmp/ccCg8J2U.s 			page 16
+
+
   19:/usr/include/c++/9.1.0/cmath **** 
   20:/usr/include/c++/9.1.0/cmath **** // You should have received a copy of the GNU General Public License and
   21:/usr/include/c++/9.1.0/cmath **** // a copy of the GCC Runtime Library Exception along with this program;
@@ -898,9 +910,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   25:/usr/include/c++/9.1.0/cmath **** /** @file include/cmath
   26:/usr/include/c++/9.1.0/cmath ****  *  This is a Standard C++ Library file.  You should @c \#include this file
   27:/usr/include/c++/9.1.0/cmath ****  *  in your programs, rather than any of the @a *.h implementation files.
-GAS LISTING /tmp/cc21GyWh.s 			page 16
-
-
   28:/usr/include/c++/9.1.0/cmath ****  *
   29:/usr/include/c++/9.1.0/cmath ****  *  This is the C++ version of the Standard C Library header @c math.h,
   30:/usr/include/c++/9.1.0/cmath ****  *  and its contents are (mostly) the same as that header, but are all
@@ -949,6 +958,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   73:/usr/include/c++/9.1.0/cmath **** #undef sqrt
   74:/usr/include/c++/9.1.0/cmath **** #undef tan
   75:/usr/include/c++/9.1.0/cmath **** #undef tanh
+GAS LISTING /tmp/ccCg8J2U.s 			page 17
+
+
   76:/usr/include/c++/9.1.0/cmath **** 
   77:/usr/include/c++/9.1.0/cmath **** extern "C++"
   78:/usr/include/c++/9.1.0/cmath **** {
@@ -958,9 +970,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   82:/usr/include/c++/9.1.0/cmath **** 
   83:/usr/include/c++/9.1.0/cmath ****   using ::acos;
   84:/usr/include/c++/9.1.0/cmath **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 17
-
-
   85:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
   86:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
   87:/usr/include/c++/9.1.0/cmath ****   acos(float __x)
@@ -1009,6 +1018,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  130:/usr/include/c++/9.1.0/cmath ****   { return __builtin_atanl(__x); }
  131:/usr/include/c++/9.1.0/cmath **** #endif
  132:/usr/include/c++/9.1.0/cmath **** 
+GAS LISTING /tmp/ccCg8J2U.s 			page 18
+
+
  133:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
  134:/usr/include/c++/9.1.0/cmath ****     inline _GLIBCXX_CONSTEXPR
  135:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
@@ -1018,9 +1030,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  139:/usr/include/c++/9.1.0/cmath **** 
  140:/usr/include/c++/9.1.0/cmath ****   using ::atan2;
  141:/usr/include/c++/9.1.0/cmath **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 18
-
-
  142:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
  143:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
  144:/usr/include/c++/9.1.0/cmath ****   atan2(float __y, float __x)
@@ -1069,6 +1078,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  187:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
  188:/usr/include/c++/9.1.0/cmath ****   cos(long double __x)
  189:/usr/include/c++/9.1.0/cmath ****   { return __builtin_cosl(__x); }
+GAS LISTING /tmp/ccCg8J2U.s 			page 19
+
+
  190:/usr/include/c++/9.1.0/cmath **** #endif
  191:/usr/include/c++/9.1.0/cmath **** 
  192:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
@@ -1078,9 +1090,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  196:/usr/include/c++/9.1.0/cmath ****     cos(_Tp __x)
  197:/usr/include/c++/9.1.0/cmath ****     { return __builtin_cos(__x); }
  198:/usr/include/c++/9.1.0/cmath **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 19
-
-
  199:/usr/include/c++/9.1.0/cmath ****   using ::cosh;
  200:/usr/include/c++/9.1.0/cmath **** 
  201:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
@@ -1129,6 +1138,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  244:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
  245:/usr/include/c++/9.1.0/cmath ****   fabs(long double __x)
  246:/usr/include/c++/9.1.0/cmath ****   { return __builtin_fabsl(__x); }
+GAS LISTING /tmp/ccCg8J2U.s 			page 20
+
+
  247:/usr/include/c++/9.1.0/cmath **** #endif
  248:/usr/include/c++/9.1.0/cmath **** 
  249:/usr/include/c++/9.1.0/cmath ****   template<typename _Tp>
@@ -1138,9 +1150,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  253:/usr/include/c++/9.1.0/cmath ****     fabs(_Tp __x)
  254:/usr/include/c++/9.1.0/cmath ****     { return __builtin_fabs(__x); }
  255:/usr/include/c++/9.1.0/cmath **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 20
-
-
  256:/usr/include/c++/9.1.0/cmath ****   using ::floor;
  257:/usr/include/c++/9.1.0/cmath **** 
  258:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
@@ -1189,6 +1198,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  301:/usr/include/c++/9.1.0/cmath ****   { return __builtin_frexpf(__x, __exp); }
  302:/usr/include/c++/9.1.0/cmath **** 
  303:/usr/include/c++/9.1.0/cmath ****   inline long double
+GAS LISTING /tmp/ccCg8J2U.s 			page 21
+
+
  304:/usr/include/c++/9.1.0/cmath ****   frexp(long double __x, int* __exp)
  305:/usr/include/c++/9.1.0/cmath ****   { return __builtin_frexpl(__x, __exp); }
  306:/usr/include/c++/9.1.0/cmath **** #endif
@@ -1198,9 +1210,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  310:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
  311:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
  312:/usr/include/c++/9.1.0/cmath ****     frexp(_Tp __x, int* __exp)
-GAS LISTING /tmp/cc21GyWh.s 			page 21
-
-
  313:/usr/include/c++/9.1.0/cmath ****     { return __builtin_frexp(__x, __exp); }
  314:/usr/include/c++/9.1.0/cmath **** 
  315:/usr/include/c++/9.1.0/cmath ****   using ::ldexp;
@@ -1249,6 +1258,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  358:/usr/include/c++/9.1.0/cmath ****   { return __builtin_log10f(__x); }
  359:/usr/include/c++/9.1.0/cmath **** 
  360:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+GAS LISTING /tmp/ccCg8J2U.s 			page 22
+
+
  361:/usr/include/c++/9.1.0/cmath ****   log10(long double __x)
  362:/usr/include/c++/9.1.0/cmath ****   { return __builtin_log10l(__x); }
  363:/usr/include/c++/9.1.0/cmath **** #endif
@@ -1258,9 +1270,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  367:/usr/include/c++/9.1.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
  368:/usr/include/c++/9.1.0/cmath ****                                     double>::__type
  369:/usr/include/c++/9.1.0/cmath ****     log10(_Tp __x)
-GAS LISTING /tmp/cc21GyWh.s 			page 22
-
-
  370:/usr/include/c++/9.1.0/cmath ****     { return __builtin_log10(__x); }
  371:/usr/include/c++/9.1.0/cmath **** 
  372:/usr/include/c++/9.1.0/cmath ****   using ::modf;
@@ -1309,6 +1318,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  415:/usr/include/c++/9.1.0/cmath ****     pow(_Tp __x, _Up __y)
  416:/usr/include/c++/9.1.0/cmath ****     {
  417:/usr/include/c++/9.1.0/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+GAS LISTING /tmp/ccCg8J2U.s 			page 23
+
+
  418:/usr/include/c++/9.1.0/cmath ****       return pow(__type(__x), __type(__y));
  419:/usr/include/c++/9.1.0/cmath ****     }
  420:/usr/include/c++/9.1.0/cmath **** 
@@ -1318,9 +1330,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  424:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
  425:/usr/include/c++/9.1.0/cmath ****   sin(float __x)
  426:/usr/include/c++/9.1.0/cmath ****   { return __builtin_sinf(__x); }
-GAS LISTING /tmp/cc21GyWh.s 			page 23
-
-
  427:/usr/include/c++/9.1.0/cmath **** 
  428:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR long double
  429:/usr/include/c++/9.1.0/cmath ****   sin(long double __x)
@@ -1369,6 +1378,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  308              		.loc 3 464 27 view .LVU95
  309              	.LBE137:
  310              	.LBE136:
+GAS LISTING /tmp/ccCg8J2U.s 			page 24
+
+
  199:Src/findwayBases.cpp **** }
  311              		.loc 1 199 5 is_stmt 1 view .LVU96
  200:Src/findwayBases.cpp **** 
@@ -1378,9 +1390,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  315 01cd C3       		ret
  316              		.cfi_endproc
  317              	.LFE1726:
-GAS LISTING /tmp/cc21GyWh.s 			page 24
-
-
  319              		.globl	_Z6getLenPK4vect
  321              	_Z6getLenPK4vect:
  322              	.LVL24:
@@ -1429,6 +1438,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  353              		.cfi_def_cfa_offset 8
  354 01f1 C3       		ret
  355              		.cfi_endproc
+GAS LISTING /tmp/ccCg8J2U.s 			page 25
+
+
  356              	.LFE1727:
  358              		.globl	_Z12createCoordsff
  360              	_Z12createCoordsff:
@@ -1438,9 +1450,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  363              		.loc 1 209 1 is_stmt 1 view -0
  364              		.cfi_startproc
  210:Src/findwayBases.cpp ****     ret.x = x;
-GAS LISTING /tmp/cc21GyWh.s 			page 25
-
-
  365              		.loc 1 210 5 view .LVU111
  211:Src/findwayBases.cpp ****     ret.y = y;
  366              		.loc 1 211 5 view .LVU112
@@ -1489,6 +1498,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  400              		.cfi_startproc
   34:Src/findwayBases.cpp ****     // if((obst->c->x - v->c->x) / v->dx < 0 || (obst->c->y - v->c->y) / v->dy < 0)
  401              		.loc 1 34 1 is_stmt 0 view .LVU120
+GAS LISTING /tmp/ccCg8J2U.s 			page 26
+
+
  402 020a 4156     		pushq	%r14
  403              		.cfi_def_cfa_offset 16
  404              		.cfi_offset 14, -16
@@ -1498,9 +1510,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  408 020e 4154     		pushq	%r12
  409              		.cfi_def_cfa_offset 32
  410              		.cfi_offset 12, -32
-GAS LISTING /tmp/cc21GyWh.s 			page 26
-
-
  411 0210 55       		pushq	%rbp
  412              		.cfi_def_cfa_offset 40
  413              		.cfi_offset 6, -40
@@ -1549,6 +1558,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  441      28
   73:Src/findwayBases.cpp ****                     && obst->c->x <= v->c->x + v->dx
  442              		.loc 1 73 21 view .LVU130
+GAS LISTING /tmp/ccCg8J2U.s 			page 27
+
+
  443 0250 0F2FD9   		comiss	%xmm1, %xmm3
  444 0253 7209     		jb	.L41
   74:Src/findwayBases.cpp ****                 )
@@ -1558,9 +1570,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  447              		.loc 1 74 21 view .LVU132
  448 0259 0F2FCA   		comiss	%xmm2, %xmm1
  449 025c 735E     		jnb	.L44
-GAS LISTING /tmp/cc21GyWh.s 			page 27
-
-
  450              	.L41:
   76:Src/findwayBases.cpp ****                 (
  451              		.loc 1 76 17 view .LVU133
@@ -1609,6 +1618,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  482              		.cfi_def_cfa_offset 8
  483 029e C3       		ret
  484              	.LVL34:
+GAS LISTING /tmp/ccCg8J2U.s 			page 28
+
+
  485              	.L88:
  486              		.cfi_restore_state
   79:Src/findwayBases.cpp ****                     && obst->c->x >= v->c->x + v->dx
@@ -1618,9 +1630,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  489              		.loc 1 79 30 view .LVU139
  490 02a2 F30F1010 		movss	(%rax), %xmm2
   79:Src/findwayBases.cpp ****                     && obst->c->x >= v->c->x + v->dx
-GAS LISTING /tmp/cc21GyWh.s 			page 28
-
-
  491              		.loc 1 79 41 view .LVU140
  492 02a6 488B4500 		movq	0(%rbp), %rax
   79:Src/findwayBases.cpp ****                     && obst->c->x >= v->c->x + v->dx
@@ -1669,6 +1678,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   87:Src/findwayBases.cpp ****                     && obst->c->y <= v->c->y + v->dy
  520              		.loc 1 87 21 view .LVU152
  521 02e3 0F2FD9   		comiss	%xmm1, %xmm3
+GAS LISTING /tmp/ccCg8J2U.s 			page 29
+
+
  522 02e6 7209     		jb	.L49
   88:Src/findwayBases.cpp ****                 )
  523              		.loc 1 88 46 view .LVU153
@@ -1678,9 +1690,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  526 02ec 0F2FCA   		comiss	%xmm2, %xmm1
  527 02ef 7334     		jnb	.L52
  528              	.L49:
-GAS LISTING /tmp/cc21GyWh.s 			page 29
-
-
   90:Src/findwayBases.cpp ****                 (
  529              		.loc 1 90 17 view .LVU155
  530 02f1 660FEFC9 		pxor	%xmm1, %xmm1
@@ -1729,6 +1738,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  555      00000000 
  556 0335 C7442434 		movl	$0x00000000, 52(%rsp)
  556      00000000 
+GAS LISTING /tmp/ccCg8J2U.s 			page 30
+
+
  110:Src/findwayBases.cpp ****     b.b = obst->c->x;
  557              		.loc 1 110 5 is_stmt 1 view .LVU167
  110:Src/findwayBases.cpp ****     b.b = obst->c->x;
@@ -1738,9 +1750,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  560 0345 F30F5E05 		divss	.LC2(%rip), %xmm0
  560      00000000 
  561 034d F30F1144 		movss	%xmm0, 40(%rsp)
-GAS LISTING /tmp/cc21GyWh.s 			page 30
-
-
  561      2428
  111:Src/findwayBases.cpp ****     b2 = vectToBaseline(v);
  562              		.loc 1 111 5 is_stmt 1 view .LVU169
@@ -1789,6 +1798,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  587              		.loc 1 117 5 view .LVU179
  117:Src/findwayBases.cpp ****     c2 = getIntersection(&b, &b2);
  588              		.loc 1 117 30 is_stmt 0 view .LVU180
+GAS LISTING /tmp/ccCg8J2U.s 			page 31
+
+
  589 038b F30F1045 		movss	40(%rbp), %xmm0
  589      28
  117:Src/findwayBases.cpp ****     c2 = getIntersection(&b, &b2);
@@ -1798,9 +1810,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  117:Src/findwayBases.cpp ****     c2 = getIntersection(&b, &b2);
  592              		.loc 1 117 9 view .LVU182
  593 0395 F30F1144 		movss	%xmm0, 44(%rsp)
-GAS LISTING /tmp/cc21GyWh.s 			page 31
-
-
  593      242C
  118:Src/findwayBases.cpp **** 
  594              		.loc 1 118 5 is_stmt 1 view .LVU183
@@ -1849,6 +1858,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  621      10
  622              	.L56:
  127:Src/findwayBases.cpp ****     b.b = obst->c->y;
+GAS LISTING /tmp/ccCg8J2U.s 			page 32
+
+
  623              		.loc 1 127 5 is_stmt 1 view .LVU192
  127:Src/findwayBases.cpp ****     b.b = obst->c->y;
  624              		.loc 1 127 9 is_stmt 0 view .LVU193
@@ -1858,9 +1870,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  626              		.loc 1 128 5 is_stmt 1 view .LVU194
  128:Src/findwayBases.cpp ****     c2 = getIntersection(&b, &b2);
  627              		.loc 1 128 17 is_stmt 0 view .LVU195
-GAS LISTING /tmp/cc21GyWh.s 			page 32
-
-
  628 03e0 4C8B7500 		movq	0(%rbp), %r14
  128:Src/findwayBases.cpp ****     c2 = getIntersection(&b, &b2);
  629              		.loc 1 128 20 view .LVU196
@@ -1909,6 +1918,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  653 041f 4C89E7   		movq	%r12, %rdi
  654 0422 E8000000 		call	_Z15getIntersectionPK8baselineS1_
  654      00
+GAS LISTING /tmp/ccCg8J2U.s 			page 33
+
+
  655              	.LVL42:
  656 0427 660FD644 		movq	%xmm0, 32(%rsp)
  656      2420
@@ -1918,9 +1930,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  658              		.loc 1 136 20 is_stmt 0 view .LVU208
  659 042d 488D7C24 		leaq	24(%rsp), %rdi
  659      18
-GAS LISTING /tmp/cc21GyWh.s 			page 33
-
-
  660 0432 4889EE   		movq	%rbp, %rsi
  661 0435 E8000000 		call	_Z11isDotInsidePK6coordsPK8obstacle
  661      00
@@ -1969,6 +1978,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  688              		.loc 1 145 5 is_stmt 1 view .LVU217
  145:Src/findwayBases.cpp ****                     l2 = getLen(&c3, &c2),
  689              		.loc 1 145 32 is_stmt 0 view .LVU218
+GAS LISTING /tmp/ccCg8J2U.s 			page 34
+
+
  690 0470 488D7424 		leaq	16(%rsp), %rsi
  690      10
  691 0475 4C8D6424 		leaq	32(%rsp), %r12
@@ -1978,9 +1990,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  693      00
  694              	.LVL46:
  695 0482 F30F1144 		movss	%xmm0, 12(%rsp)
-GAS LISTING /tmp/cc21GyWh.s 			page 34
-
-
  695      240C
  696              	.LVL47:
  146:Src/findwayBases.cpp ****                     l3 = getLen(v);
@@ -2029,6 +2038,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   15:/usr/include/c++/9.1.0/ostream **** 
   16:/usr/include/c++/9.1.0/ostream **** // Under Section 7 of GPL version 3, you are granted additional
   17:/usr/include/c++/9.1.0/ostream **** // permissions described in the GCC Runtime Library Exception, version
+GAS LISTING /tmp/ccCg8J2U.s 			page 35
+
+
   18:/usr/include/c++/9.1.0/ostream **** // 3.1, as published by the Free Software Foundation.
   19:/usr/include/c++/9.1.0/ostream **** 
   20:/usr/include/c++/9.1.0/ostream **** // You should have received a copy of the GNU General Public License and
@@ -2038,9 +2050,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   24:/usr/include/c++/9.1.0/ostream **** 
   25:/usr/include/c++/9.1.0/ostream **** /** @file include/ostream
   26:/usr/include/c++/9.1.0/ostream ****  *  This is a Standard C++ Library header.
-GAS LISTING /tmp/cc21GyWh.s 			page 35
-
-
   27:/usr/include/c++/9.1.0/ostream ****  */
   28:/usr/include/c++/9.1.0/ostream **** 
   29:/usr/include/c++/9.1.0/ostream **** //
@@ -2089,6 +2098,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   72:/usr/include/c++/9.1.0/ostream ****       typedef num_put<_CharT, ostreambuf_iterator<_CharT, _Traits> >
   73:/usr/include/c++/9.1.0/ostream ****       							__num_put_type;
   74:/usr/include/c++/9.1.0/ostream ****       typedef ctype<_CharT>	      			__ctype_type;
+GAS LISTING /tmp/ccCg8J2U.s 			page 36
+
+
   75:/usr/include/c++/9.1.0/ostream **** 
   76:/usr/include/c++/9.1.0/ostream ****       /**
   77:/usr/include/c++/9.1.0/ostream ****        *  @brief  Base constructor.
@@ -2098,9 +2110,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   81:/usr/include/c++/9.1.0/ostream ****        *  their own stream buffer.
   82:/usr/include/c++/9.1.0/ostream ****       */
   83:/usr/include/c++/9.1.0/ostream ****       explicit
-GAS LISTING /tmp/cc21GyWh.s 			page 36
-
-
   84:/usr/include/c++/9.1.0/ostream ****       basic_ostream(__streambuf_type* __sb)
   85:/usr/include/c++/9.1.0/ostream ****       { this->init(__sb); }
   86:/usr/include/c++/9.1.0/ostream **** 
@@ -2149,6 +2158,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  129:/usr/include/c++/9.1.0/ostream **** 	// _GLIBCXX_RESOLVE_LIB_DEFECTS
  130:/usr/include/c++/9.1.0/ostream **** 	// DR 60. What is a formatted input function?
  131:/usr/include/c++/9.1.0/ostream **** 	// The inserters for manipulators are *not* formatted output functions.
+GAS LISTING /tmp/ccCg8J2U.s 			page 37
+
+
  132:/usr/include/c++/9.1.0/ostream **** 	__pf(*this);
  133:/usr/include/c++/9.1.0/ostream **** 	return *this;
  134:/usr/include/c++/9.1.0/ostream ****       }
@@ -2158,9 +2170,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  138:/usr/include/c++/9.1.0/ostream ****       /**
  139:/usr/include/c++/9.1.0/ostream ****        *  @name Inserters
  140:/usr/include/c++/9.1.0/ostream ****        *
-GAS LISTING /tmp/cc21GyWh.s 			page 37
-
-
  141:/usr/include/c++/9.1.0/ostream ****        *  All the @c operator<< functions (aka <em>formatted output
  142:/usr/include/c++/9.1.0/ostream ****        *  functions</em>) have some common behavior.  Each starts by
  143:/usr/include/c++/9.1.0/ostream ****        *  constructing a temporary object of type std::basic_ostream::sentry.
@@ -2209,6 +2218,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  186:/usr/include/c++/9.1.0/ostream ****       }
  187:/usr/include/c++/9.1.0/ostream **** 
  188:/usr/include/c++/9.1.0/ostream ****       __ostream_type&
+GAS LISTING /tmp/ccCg8J2U.s 			page 38
+
+
  189:/usr/include/c++/9.1.0/ostream ****       operator<<(int __n);
  190:/usr/include/c++/9.1.0/ostream **** 
  191:/usr/include/c++/9.1.0/ostream ****       __ostream_type&
@@ -2218,9 +2230,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  195:/usr/include/c++/9.1.0/ostream **** 	// 117. basic_ostream uses nonexistent num_put member functions.
  196:/usr/include/c++/9.1.0/ostream **** 	return _M_insert(static_cast<unsigned long>(__n));
  197:/usr/include/c++/9.1.0/ostream ****       }
-GAS LISTING /tmp/cc21GyWh.s 			page 38
-
-
  198:/usr/include/c++/9.1.0/ostream **** 
  199:/usr/include/c++/9.1.0/ostream **** #ifdef _GLIBCXX_USE_LONG_LONG
  200:/usr/include/c++/9.1.0/ostream ****       __ostream_type&
@@ -2269,6 +2278,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  243:/usr/include/c++/9.1.0/ostream ****       */
  244:/usr/include/c++/9.1.0/ostream ****       __ostream_type&
  245:/usr/include/c++/9.1.0/ostream ****       operator<<(const void* __p)
+GAS LISTING /tmp/ccCg8J2U.s 			page 39
+
+
  246:/usr/include/c++/9.1.0/ostream ****       { return _M_insert(__p); }
  247:/usr/include/c++/9.1.0/ostream **** 
  248:/usr/include/c++/9.1.0/ostream **** #if __cplusplus >= 201703L
@@ -2278,9 +2290,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  252:/usr/include/c++/9.1.0/ostream **** #endif
  253:/usr/include/c++/9.1.0/ostream **** 
  254:/usr/include/c++/9.1.0/ostream ****       /**
-GAS LISTING /tmp/cc21GyWh.s 			page 39
-
-
  255:/usr/include/c++/9.1.0/ostream ****        *  @brief  Extracting from another streambuf.
  256:/usr/include/c++/9.1.0/ostream ****        *  @param  __sb  A pointer to a streambuf
  257:/usr/include/c++/9.1.0/ostream ****        *
@@ -2329,6 +2338,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  300:/usr/include/c++/9.1.0/ostream ****        *  @param  __c  The character to insert.
  301:/usr/include/c++/9.1.0/ostream ****        *  @return  *this
  302:/usr/include/c++/9.1.0/ostream ****        *
+GAS LISTING /tmp/ccCg8J2U.s 			page 40
+
+
  303:/usr/include/c++/9.1.0/ostream ****        *  Tries to insert @p __c.
  304:/usr/include/c++/9.1.0/ostream ****        *
  305:/usr/include/c++/9.1.0/ostream ****        *  @note  This function is not overloaded on signed char and
@@ -2338,9 +2350,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  309:/usr/include/c++/9.1.0/ostream ****       put(char_type __c);
  310:/usr/include/c++/9.1.0/ostream **** 
  311:/usr/include/c++/9.1.0/ostream ****       /**
-GAS LISTING /tmp/cc21GyWh.s 			page 40
-
-
  312:/usr/include/c++/9.1.0/ostream ****        *  @brief  Core write functionality, without sentry.
  313:/usr/include/c++/9.1.0/ostream ****        *  @param  __s  The array to insert.
  314:/usr/include/c++/9.1.0/ostream ****        *  @param  __n  Maximum number of characters to insert.
@@ -2389,6 +2398,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  357:/usr/include/c++/9.1.0/ostream ****        *  @brief  Getting the current write position.
  358:/usr/include/c++/9.1.0/ostream ****        *  @return  A file position object.
  359:/usr/include/c++/9.1.0/ostream ****        *
+GAS LISTING /tmp/ccCg8J2U.s 			page 41
+
+
  360:/usr/include/c++/9.1.0/ostream ****        *  If @c fail() is not false, returns @c pos_type(-1) to indicate
  361:/usr/include/c++/9.1.0/ostream ****        *  failure.  Otherwise returns @c rdbuf()->pubseekoff(0,cur,out).
  362:/usr/include/c++/9.1.0/ostream ****       */
@@ -2398,9 +2410,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  366:/usr/include/c++/9.1.0/ostream ****       /**
  367:/usr/include/c++/9.1.0/ostream ****        *  @brief  Changing the current write position.
  368:/usr/include/c++/9.1.0/ostream ****        *  @param  __pos  A file position object.
-GAS LISTING /tmp/cc21GyWh.s 			page 41
-
-
  369:/usr/include/c++/9.1.0/ostream ****        *  @return  *this
  370:/usr/include/c++/9.1.0/ostream ****        *
  371:/usr/include/c++/9.1.0/ostream ****        *  If @c fail() is not true, calls @c rdbuf()->pubseekpos(pos).  If
@@ -2449,6 +2458,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  414:/usr/include/c++/9.1.0/ostream ****       void
  415:/usr/include/c++/9.1.0/ostream ****       swap(basic_ostream& __rhs)
  416:/usr/include/c++/9.1.0/ostream ****       { __ios_type::swap(__rhs); }
+GAS LISTING /tmp/ccCg8J2U.s 			page 42
+
+
  417:/usr/include/c++/9.1.0/ostream **** #endif
  418:/usr/include/c++/9.1.0/ostream **** 
  419:/usr/include/c++/9.1.0/ostream ****       template<typename _ValueT>
@@ -2458,9 +2470,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  423:/usr/include/c++/9.1.0/ostream **** 
  424:/usr/include/c++/9.1.0/ostream ****   /**
  425:/usr/include/c++/9.1.0/ostream ****    *  @brief  Performs setup work for output streams.
-GAS LISTING /tmp/cc21GyWh.s 			page 42
-
-
  426:/usr/include/c++/9.1.0/ostream ****    *
  427:/usr/include/c++/9.1.0/ostream ****    *  Objects of this class are created before all of the standard
  428:/usr/include/c++/9.1.0/ostream ****    *  inserters are run.  It is responsible for <em>exception-safe prefix and
@@ -2509,6 +2518,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  471:/usr/include/c++/9.1.0/ostream ****       }
  472:/usr/include/c++/9.1.0/ostream **** #pragma GCC diagnostic pop
  473:/usr/include/c++/9.1.0/ostream **** 
+GAS LISTING /tmp/ccCg8J2U.s 			page 43
+
+
  474:/usr/include/c++/9.1.0/ostream ****       /**
  475:/usr/include/c++/9.1.0/ostream ****        *  @brief  Quick status checking.
  476:/usr/include/c++/9.1.0/ostream ****        *  @return  The sentry state.
@@ -2518,9 +2530,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  480:/usr/include/c++/9.1.0/ostream ****       */
  481:/usr/include/c++/9.1.0/ostream **** #if __cplusplus >= 201103L
  482:/usr/include/c++/9.1.0/ostream ****       explicit
-GAS LISTING /tmp/cc21GyWh.s 			page 43
-
-
  483:/usr/include/c++/9.1.0/ostream **** #endif
  484:/usr/include/c++/9.1.0/ostream ****       operator bool() const
  485:/usr/include/c++/9.1.0/ostream ****       { return _M_ok; }
@@ -2569,6 +2578,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  528:/usr/include/c++/9.1.0/ostream ****     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
  529:/usr/include/c++/9.1.0/ostream ****     { return (__out << static_cast<char>(__c)); }
  530:/usr/include/c++/9.1.0/ostream ****   //@}
+GAS LISTING /tmp/ccCg8J2U.s 			page 44
+
+
  531:/usr/include/c++/9.1.0/ostream **** 
  532:/usr/include/c++/9.1.0/ostream ****   //@{
  533:/usr/include/c++/9.1.0/ostream ****   /**
@@ -2578,9 +2590,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  537:/usr/include/c++/9.1.0/ostream ****    *  @return  out
  538:/usr/include/c++/9.1.0/ostream ****    *  @pre  @p __s must be a non-NULL pointer
  539:/usr/include/c++/9.1.0/ostream ****    *
-GAS LISTING /tmp/cc21GyWh.s 			page 44
-
-
  540:/usr/include/c++/9.1.0/ostream ****    *  Behaves like one of the formatted arithmetic inserters described in
  541:/usr/include/c++/9.1.0/ostream ****    *  std::basic_ostream.  After constructing a sentry object with good
  542:/usr/include/c++/9.1.0/ostream ****    *  status, this function inserts @c traits::length(__s) characters starting
@@ -2629,6 +2638,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   16:/usr/include/c++/9.1.0/bits/char_traits.h **** // Under Section 7 of GPL version 3, you are granted additional
   17:/usr/include/c++/9.1.0/bits/char_traits.h **** // permissions described in the GCC Runtime Library Exception, version
   18:/usr/include/c++/9.1.0/bits/char_traits.h **** // 3.1, as published by the Free Software Foundation.
+GAS LISTING /tmp/ccCg8J2U.s 			page 45
+
+
   19:/usr/include/c++/9.1.0/bits/char_traits.h **** 
   20:/usr/include/c++/9.1.0/bits/char_traits.h **** // You should have received a copy of the GNU General Public License and
   21:/usr/include/c++/9.1.0/bits/char_traits.h **** // a copy of the GCC Runtime Library Exception along with this program;
@@ -2638,9 +2650,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   25:/usr/include/c++/9.1.0/bits/char_traits.h **** /** @file bits/char_traits.h
   26:/usr/include/c++/9.1.0/bits/char_traits.h ****  *  This is an internal header file, included by other library headers.
   27:/usr/include/c++/9.1.0/bits/char_traits.h ****  *  Do not attempt to use it directly. @headername{string}
-GAS LISTING /tmp/cc21GyWh.s 			page 45
-
-
   28:/usr/include/c++/9.1.0/bits/char_traits.h ****  */
   29:/usr/include/c++/9.1.0/bits/char_traits.h **** 
   30:/usr/include/c++/9.1.0/bits/char_traits.h **** //
@@ -2689,6 +2698,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   73:/usr/include/c++/9.1.0/bits/char_traits.h ****    *
   74:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  @note For any given actual character type, this definition is
   75:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  probably wrong.  (Most of the member functions are likely to be
+GAS LISTING /tmp/ccCg8J2U.s 			page 46
+
+
   76:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  right, but the int_type and state_type typedefs, and the eof()
   77:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  member function, are likely to be wrong.)  The reason this class
   78:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  exists is so users can specialize it.  Classes in namespace std
@@ -2698,9 +2710,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   82:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  See https://gcc.gnu.org/onlinedocs/libstdc++/manual/strings.html#strings.string.character_typ
   83:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  for advice on how to make use of this class for @a unusual character
   84:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  types. Also, check out include/ext/pod_char_traits.h.  
-GAS LISTING /tmp/cc21GyWh.s 			page 46
-
-
   85:/usr/include/c++/9.1.0/bits/char_traits.h ****    */
   86:/usr/include/c++/9.1.0/bits/char_traits.h ****   template<typename _CharT>
   87:/usr/include/c++/9.1.0/bits/char_traits.h ****     struct char_traits
@@ -2749,6 +2758,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  130:/usr/include/c++/9.1.0/bits/char_traits.h ****       to_int_type(const char_type& __c)
  131:/usr/include/c++/9.1.0/bits/char_traits.h ****       { return static_cast<int_type>(__c); }
  132:/usr/include/c++/9.1.0/bits/char_traits.h **** 
+GAS LISTING /tmp/ccCg8J2U.s 			page 47
+
+
  133:/usr/include/c++/9.1.0/bits/char_traits.h ****       static _GLIBCXX_CONSTEXPR bool
  134:/usr/include/c++/9.1.0/bits/char_traits.h ****       eq_int_type(const int_type& __c1, const int_type& __c2)
  135:/usr/include/c++/9.1.0/bits/char_traits.h ****       { return __c1 == __c2; }
@@ -2758,9 +2770,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  139:/usr/include/c++/9.1.0/bits/char_traits.h ****       { return static_cast<int_type>(_GLIBCXX_STDIO_EOF); }
  140:/usr/include/c++/9.1.0/bits/char_traits.h **** 
  141:/usr/include/c++/9.1.0/bits/char_traits.h ****       static _GLIBCXX_CONSTEXPR int_type
-GAS LISTING /tmp/cc21GyWh.s 			page 47
-
-
  142:/usr/include/c++/9.1.0/bits/char_traits.h ****       not_eof(const int_type& __c)
  143:/usr/include/c++/9.1.0/bits/char_traits.h ****       { return !eq_int_type(__c, eof()) ? __c : to_int_type(char_type()); }
  144:/usr/include/c++/9.1.0/bits/char_traits.h ****     };
@@ -2809,6 +2818,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  187:/usr/include/c++/9.1.0/bits/char_traits.h **** 	return __s1;
  188:/usr/include/c++/9.1.0/bits/char_traits.h ****       return static_cast<_CharT*>(__builtin_memmove(__s1, __s2,
  189:/usr/include/c++/9.1.0/bits/char_traits.h **** 						    __n * sizeof(char_type)));
+GAS LISTING /tmp/ccCg8J2U.s 			page 48
+
+
  190:/usr/include/c++/9.1.0/bits/char_traits.h ****     }
  191:/usr/include/c++/9.1.0/bits/char_traits.h **** 
  192:/usr/include/c++/9.1.0/bits/char_traits.h ****   template<typename _CharT>
@@ -2818,9 +2830,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  196:/usr/include/c++/9.1.0/bits/char_traits.h ****     {
  197:/usr/include/c++/9.1.0/bits/char_traits.h ****       // NB: Inline std::copy so no recursive dependencies.
  198:/usr/include/c++/9.1.0/bits/char_traits.h ****       std::copy(__s2, __s2 + __n, __s1);
-GAS LISTING /tmp/cc21GyWh.s 			page 48
-
-
  199:/usr/include/c++/9.1.0/bits/char_traits.h ****       return __s1;
  200:/usr/include/c++/9.1.0/bits/char_traits.h ****     }
  201:/usr/include/c++/9.1.0/bits/char_traits.h **** 
@@ -2869,6 +2878,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  244:/usr/include/c++/9.1.0/bits/char_traits.h ****   /**
  245:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  @brief Determine whether the characters of a character array are
  246:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  known at compile time.
+GAS LISTING /tmp/ccCg8J2U.s 			page 49
+
+
  247:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  @param  __a  The character array.
  248:/usr/include/c++/9.1.0/bits/char_traits.h ****    *  @param  __n  Number of characters.
  249:/usr/include/c++/9.1.0/bits/char_traits.h ****    *
@@ -2878,9 +2890,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  253:/usr/include/c++/9.1.0/bits/char_traits.h ****     static _GLIBCXX_ALWAYS_INLINE constexpr bool
  254:/usr/include/c++/9.1.0/bits/char_traits.h ****     __constant_char_array_p(const _CharT* __a, size_t __n)
  255:/usr/include/c++/9.1.0/bits/char_traits.h ****     {
-GAS LISTING /tmp/cc21GyWh.s 			page 49
-
-
  256:/usr/include/c++/9.1.0/bits/char_traits.h **** #ifdef _GLIBCXX_HAVE_BUILTIN_IS_CONSTANT_EVALUATED
  257:/usr/include/c++/9.1.0/bits/char_traits.h ****       (void) __a;
  258:/usr/include/c++/9.1.0/bits/char_traits.h ****       (void) __n;
@@ -2929,6 +2938,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  301:/usr/include/c++/9.1.0/bits/char_traits.h **** 
  302:/usr/include/c++/9.1.0/bits/char_traits.h ****       static _GLIBCXX_CONSTEXPR bool
  303:/usr/include/c++/9.1.0/bits/char_traits.h ****       eq(const char_type& __c1, const char_type& __c2) _GLIBCXX_NOEXCEPT
+GAS LISTING /tmp/ccCg8J2U.s 			page 50
+
+
  304:/usr/include/c++/9.1.0/bits/char_traits.h ****       { return __c1 == __c2; }
  305:/usr/include/c++/9.1.0/bits/char_traits.h **** 
  306:/usr/include/c++/9.1.0/bits/char_traits.h ****       static _GLIBCXX_CONSTEXPR bool
@@ -2938,9 +2950,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  310:/usr/include/c++/9.1.0/bits/char_traits.h **** 	return (static_cast<unsigned char>(__c1)
  311:/usr/include/c++/9.1.0/bits/char_traits.h **** 		< static_cast<unsigned char>(__c2));
  312:/usr/include/c++/9.1.0/bits/char_traits.h ****       }
-GAS LISTING /tmp/cc21GyWh.s 			page 50
-
-
  313:/usr/include/c++/9.1.0/bits/char_traits.h **** 
  314:/usr/include/c++/9.1.0/bits/char_traits.h ****       static _GLIBCXX17_CONSTEXPR int
  315:/usr/include/c++/9.1.0/bits/char_traits.h ****       compare(const char_type* __s1, const char_type* __s2, size_t __n)
@@ -2989,6 +2998,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  733              	.LBI167:
  224:/usr/include/c++/9.1.0/ostream ****       {
  734              		.loc 4 224 7 is_stmt 1 view .LVU229
+GAS LISTING /tmp/ccCg8J2U.s 			page 51
+
+
  735              	.LBB168:
  228:/usr/include/c++/9.1.0/ostream ****       }
  736              		.loc 4 228 43 is_stmt 0 view .LVU230
@@ -2998,9 +3010,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  739 04cb 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
  739      000000
  740 04d2 E8000000 		call	_ZNSo9_M_insertIdEERSoT_@PLT
-GAS LISTING /tmp/cc21GyWh.s 			page 51
-
-
  740      00
  741              	.LVL53:
  742 04d7 4889C3   		movq	%rax, %rbx
@@ -3049,6 +3058,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  775              	.LVL57:
  228:/usr/include/c++/9.1.0/ostream ****       }
  776              		.loc 4 228 43 view .LVU239
+GAS LISTING /tmp/ccCg8J2U.s 			page 52
+
+
  777              	.LBE173:
  778              	.LBE172:
  779              	.LBB174:
@@ -3058,9 +3070,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  565:/usr/include/c++/9.1.0/ostream ****     {
  782              		.loc 4 565 5 is_stmt 0 view .LVU241
  783              	.LBE174:
-GAS LISTING /tmp/cc21GyWh.s 			page 52
-
-
  784              		.loc 5 335 2 is_stmt 1 view .LVU242
  785              	.LBB176:
  786              	.LBB175:
@@ -3109,6 +3118,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  575:/usr/include/c++/9.1.0/ostream ****   // Signed and unsigned
  576:/usr/include/c++/9.1.0/ostream ****   template<class _Traits>
  577:/usr/include/c++/9.1.0/ostream ****     inline basic_ostream<char, _Traits>&
+GAS LISTING /tmp/ccCg8J2U.s 			page 53
+
+
  578:/usr/include/c++/9.1.0/ostream ****     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
  579:/usr/include/c++/9.1.0/ostream ****     { return (__out << reinterpret_cast<const char*>(__s)); }
  580:/usr/include/c++/9.1.0/ostream **** 
@@ -3118,9 +3130,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  584:/usr/include/c++/9.1.0/ostream ****     { return (__out << reinterpret_cast<const char*>(__s)); }
  585:/usr/include/c++/9.1.0/ostream ****   //@}
  586:/usr/include/c++/9.1.0/ostream **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 53
-
-
  587:/usr/include/c++/9.1.0/ostream ****   // Standard basic_ostream manipulators
  588:/usr/include/c++/9.1.0/ostream **** 
  589:/usr/include/c++/9.1.0/ostream ****   /**
@@ -3169,6 +3178,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   20:/usr/include/c++/9.1.0/bits/basic_ios.h **** // You should have received a copy of the GNU General Public License and
   21:/usr/include/c++/9.1.0/bits/basic_ios.h **** // a copy of the GCC Runtime Library Exception along with this program;
   22:/usr/include/c++/9.1.0/bits/basic_ios.h **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+GAS LISTING /tmp/ccCg8J2U.s 			page 54
+
+
   23:/usr/include/c++/9.1.0/bits/basic_ios.h **** // <http://www.gnu.org/licenses/>.
   24:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
   25:/usr/include/c++/9.1.0/bits/basic_ios.h **** /** @file bits/basic_ios.h
@@ -3178,9 +3190,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   29:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
   30:/usr/include/c++/9.1.0/bits/basic_ios.h **** #ifndef _BASIC_IOS_H
   31:/usr/include/c++/9.1.0/bits/basic_ios.h **** #define _BASIC_IOS_H 1
-GAS LISTING /tmp/cc21GyWh.s 			page 54
-
-
   32:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
   33:/usr/include/c++/9.1.0/bits/basic_ios.h **** #pragma GCC system_header
   34:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
@@ -3229,6 +3238,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   77:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef typename _Traits::int_type             int_type;
   78:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef typename _Traits::pos_type             pos_type;
   79:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef typename _Traits::off_type             off_type;
+GAS LISTING /tmp/ccCg8J2U.s 			page 55
+
+
   80:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef _Traits                                traits_type;
   81:/usr/include/c++/9.1.0/bits/basic_ios.h ****       //@}
   82:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
@@ -3238,9 +3250,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   86:/usr/include/c++/9.1.0/bits/basic_ios.h ****       */
   87:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef ctype<_CharT>                          __ctype_type;
   88:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef num_put<_CharT, ostreambuf_iterator<_CharT, _Traits> >
-GAS LISTING /tmp/cc21GyWh.s 			page 55
-
-
   89:/usr/include/c++/9.1.0/bits/basic_ios.h **** 						     __num_put_type;
   90:/usr/include/c++/9.1.0/bits/basic_ios.h ****       typedef num_get<_CharT, istreambuf_iterator<_CharT, _Traits> >
   91:/usr/include/c++/9.1.0/bits/basic_ios.h **** 						     __num_get_type;
@@ -3289,6 +3298,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  134:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  users will call one of the interpreting wrappers, e.g., good().
  135:/usr/include/c++/9.1.0/bits/basic_ios.h ****       */
  136:/usr/include/c++/9.1.0/bits/basic_ios.h ****       iostate
+GAS LISTING /tmp/ccCg8J2U.s 			page 56
+
+
  137:/usr/include/c++/9.1.0/bits/basic_ios.h ****       rdstate() const
  138:/usr/include/c++/9.1.0/bits/basic_ios.h ****       { return _M_streambuf_state; }
  139:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
@@ -3298,9 +3310,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  143:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *
  144:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  See std::ios_base::iostate for the possible bit values.  Most
  145:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  users will not need to pass an argument.
-GAS LISTING /tmp/cc21GyWh.s 			page 56
-
-
  146:/usr/include/c++/9.1.0/bits/basic_ios.h ****       */
  147:/usr/include/c++/9.1.0/bits/basic_ios.h ****       void
  148:/usr/include/c++/9.1.0/bits/basic_ios.h ****       clear(iostate __state = goodbit);
@@ -3349,6 +3358,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  191:/usr/include/c++/9.1.0/bits/basic_ios.h ****       { return (this->rdstate() & eofbit) != 0; }
  192:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
  193:/usr/include/c++/9.1.0/bits/basic_ios.h ****       /**
+GAS LISTING /tmp/ccCg8J2U.s 			page 57
+
+
  194:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @brief  Fast error checking.
  195:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @return  True if either the badbit or the failbit is set.
  196:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *
@@ -3358,9 +3370,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  200:/usr/include/c++/9.1.0/bits/basic_ios.h ****       bool
  201:/usr/include/c++/9.1.0/bits/basic_ios.h ****       fail() const
  202:/usr/include/c++/9.1.0/bits/basic_ios.h ****       { return (this->rdstate() & (badbit | failbit)) != 0; }
-GAS LISTING /tmp/cc21GyWh.s 			page 57
-
-
  203:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
  204:/usr/include/c++/9.1.0/bits/basic_ios.h ****       /**
  205:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @brief  Fast error checking.
@@ -3409,6 +3418,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  248:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *      std::cerr << "Setting badbit\n";
  249:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *      f.setstate (std::ios_base::badbit);
  250:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *
+GAS LISTING /tmp/ccCg8J2U.s 			page 58
+
+
  251:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *      std::cerr << "Setting exception mask\n";
  252:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *      f.exceptions (std::ios_base::badbit);
  253:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  }
@@ -3418,9 +3430,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  257:/usr/include/c++/9.1.0/bits/basic_ios.h ****       exceptions(iostate __except)
  258:/usr/include/c++/9.1.0/bits/basic_ios.h ****       {
  259:/usr/include/c++/9.1.0/bits/basic_ios.h ****         _M_exception = __except;
-GAS LISTING /tmp/cc21GyWh.s 			page 58
-
-
  260:/usr/include/c++/9.1.0/bits/basic_ios.h ****         this->clear(_M_streambuf_state);
  261:/usr/include/c++/9.1.0/bits/basic_ios.h ****       }
  262:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
@@ -3469,6 +3478,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  305:/usr/include/c++/9.1.0/bits/basic_ios.h ****       */
  306:/usr/include/c++/9.1.0/bits/basic_ios.h ****       basic_ostream<_CharT, _Traits>*
  307:/usr/include/c++/9.1.0/bits/basic_ios.h ****       tie(basic_ostream<_CharT, _Traits>* __tiestr)
+GAS LISTING /tmp/ccCg8J2U.s 			page 59
+
+
  308:/usr/include/c++/9.1.0/bits/basic_ios.h ****       {
  309:/usr/include/c++/9.1.0/bits/basic_ios.h ****         basic_ostream<_CharT, _Traits>* __old = _M_tie;
  310:/usr/include/c++/9.1.0/bits/basic_ios.h ****         _M_tie = __tiestr;
@@ -3478,9 +3490,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  314:/usr/include/c++/9.1.0/bits/basic_ios.h ****       /**
  315:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @brief  Accessing the underlying buffer.
  316:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @return  The current stream buffer.
-GAS LISTING /tmp/cc21GyWh.s 			page 59
-
-
  317:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *
  318:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  This does not change the state of the stream.
  319:/usr/include/c++/9.1.0/bits/basic_ios.h ****       */
@@ -3529,6 +3538,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  362:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
  363:/usr/include/c++/9.1.0/bits/basic_ios.h ****       /**
  364:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @brief  Retrieves the @a empty character.
+GAS LISTING /tmp/ccCg8J2U.s 			page 60
+
+
  365:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @return  The current fill character.
  366:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *
  367:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  It defaults to a space (' ') in the current locale.
@@ -3538,9 +3550,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  371:/usr/include/c++/9.1.0/bits/basic_ios.h ****       {
  372:/usr/include/c++/9.1.0/bits/basic_ios.h **** 	if (!_M_fill_init)
  373:/usr/include/c++/9.1.0/bits/basic_ios.h **** 	  {
-GAS LISTING /tmp/cc21GyWh.s 			page 60
-
-
  374:/usr/include/c++/9.1.0/bits/basic_ios.h **** 	    _M_fill = this->widen(' ');
  375:/usr/include/c++/9.1.0/bits/basic_ios.h **** 	    _M_fill_init = true;
  376:/usr/include/c++/9.1.0/bits/basic_ios.h **** 	  }
@@ -3589,6 +3598,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  419:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  if possible.
  420:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *
  421:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  Returns the result of
+GAS LISTING /tmp/ccCg8J2U.s 			page 61
+
+
  422:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @code
  423:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *    std::use_facet<ctype<char_type> >(getloc()).narrow(c,dfault)
  424:/usr/include/c++/9.1.0/bits/basic_ios.h ****        *  @endcode
@@ -3598,9 +3610,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  428:/usr/include/c++/9.1.0/bits/basic_ios.h ****       */
  429:/usr/include/c++/9.1.0/bits/basic_ios.h ****       char
  430:/usr/include/c++/9.1.0/bits/basic_ios.h ****       narrow(char_type __c, char __dfault) const
-GAS LISTING /tmp/cc21GyWh.s 			page 61
-
-
  431:/usr/include/c++/9.1.0/bits/basic_ios.h ****       { return __check_facet(_M_ctype).narrow(__c, __dfault); }
  432:/usr/include/c++/9.1.0/bits/basic_ios.h **** 
  433:/usr/include/c++/9.1.0/bits/basic_ios.h ****       /**
@@ -3649,6 +3658,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
    3:/usr/include/c++/9.1.0/bits/locale_facets.h **** // Copyright (C) 1997-2019 Free Software Foundation, Inc.
    4:/usr/include/c++/9.1.0/bits/locale_facets.h **** //
    5:/usr/include/c++/9.1.0/bits/locale_facets.h **** // This file is part of the GNU ISO C++ Library.  This library is free
+GAS LISTING /tmp/ccCg8J2U.s 			page 62
+
+
    6:/usr/include/c++/9.1.0/bits/locale_facets.h **** // software; you can redistribute it and/or modify it under the
    7:/usr/include/c++/9.1.0/bits/locale_facets.h **** // terms of the GNU General Public License as published by the
    8:/usr/include/c++/9.1.0/bits/locale_facets.h **** // Free Software Foundation; either version 3, or (at your option)
@@ -3658,9 +3670,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   12:/usr/include/c++/9.1.0/bits/locale_facets.h **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
   13:/usr/include/c++/9.1.0/bits/locale_facets.h **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   14:/usr/include/c++/9.1.0/bits/locale_facets.h **** // GNU General Public License for more details.
-GAS LISTING /tmp/cc21GyWh.s 			page 62
-
-
   15:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
   16:/usr/include/c++/9.1.0/bits/locale_facets.h **** // Under Section 7 of GPL version 3, you are granted additional
   17:/usr/include/c++/9.1.0/bits/locale_facets.h **** // permissions described in the GCC Runtime Library Exception, version
@@ -3709,6 +3718,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   60:/usr/include/c++/9.1.0/bits/locale_facets.h **** # define  _GLIBCXX_NUM_CXX11_FACETS 8
   61:/usr/include/c++/9.1.0/bits/locale_facets.h **** #endif
   62:/usr/include/c++/9.1.0/bits/locale_facets.h **** #ifdef _GLIBCXX_USE_CHAR8_T
+GAS LISTING /tmp/ccCg8J2U.s 			page 63
+
+
   63:/usr/include/c++/9.1.0/bits/locale_facets.h **** # define _GLIBCXX_NUM_UNICODE_FACETS 4
   64:/usr/include/c++/9.1.0/bits/locale_facets.h **** #else
   65:/usr/include/c++/9.1.0/bits/locale_facets.h **** # define _GLIBCXX_NUM_UNICODE_FACETS 2
@@ -3718,9 +3730,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   69:/usr/include/c++/9.1.0/bits/locale_facets.h ****   // NB: This is specialized for all required types, there is no
   70:/usr/include/c++/9.1.0/bits/locale_facets.h ****   // generic definition.
   71:/usr/include/c++/9.1.0/bits/locale_facets.h ****   template<typename _Tp>
-GAS LISTING /tmp/cc21GyWh.s 			page 63
-
-
   72:/usr/include/c++/9.1.0/bits/locale_facets.h ****     void
   73:/usr/include/c++/9.1.0/bits/locale_facets.h ****     __convert_to_v(const char*, _Tp&, ios_base::iostate&,
   74:/usr/include/c++/9.1.0/bits/locale_facets.h **** 		   const __c_locale&) throw();
@@ -3769,6 +3778,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  117:/usr/include/c++/9.1.0/bits/locale_facets.h ****     inline
  118:/usr/include/c++/9.1.0/bits/locale_facets.h ****     ostreambuf_iterator<_CharT>
  119:/usr/include/c++/9.1.0/bits/locale_facets.h ****     __write(ostreambuf_iterator<_CharT> __s, const _CharT* __ws, int __len)
+GAS LISTING /tmp/ccCg8J2U.s 			page 64
+
+
  120:/usr/include/c++/9.1.0/bits/locale_facets.h ****     {
  121:/usr/include/c++/9.1.0/bits/locale_facets.h ****       __s._M_put(__ws, __len);
  122:/usr/include/c++/9.1.0/bits/locale_facets.h ****       return __s;
@@ -3778,9 +3790,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  126:/usr/include/c++/9.1.0/bits/locale_facets.h ****   template<typename _CharT, typename _OutIter>
  127:/usr/include/c++/9.1.0/bits/locale_facets.h ****     inline
  128:/usr/include/c++/9.1.0/bits/locale_facets.h ****     _OutIter
-GAS LISTING /tmp/cc21GyWh.s 			page 64
-
-
  129:/usr/include/c++/9.1.0/bits/locale_facets.h ****     __write(_OutIter __s, const _CharT* __ws, int __len)
  130:/usr/include/c++/9.1.0/bits/locale_facets.h ****     {
  131:/usr/include/c++/9.1.0/bits/locale_facets.h ****       for (int __j = 0; __j < __len; __j++, ++__s)
@@ -3829,6 +3838,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  174:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  175:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function finds the mask for each char_type in the range [lo,hi)
  176:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  and successively writes it to vec.  vec must have as many elements
+GAS LISTING /tmp/ccCg8J2U.s 			page 65
+
+
  177:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  as the char array.  It does so by returning the value of
  178:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  ctype<char_type>::do_is().
  179:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
@@ -3838,9 +3850,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  183:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  @a __hi.
  184:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  185:/usr/include/c++/9.1.0/bits/locale_facets.h ****       const char_type*
-GAS LISTING /tmp/cc21GyWh.s 			page 65
-
-
  186:/usr/include/c++/9.1.0/bits/locale_facets.h ****       is(const char_type *__lo, const char_type *__hi, mask *__vec) const
  187:/usr/include/c++/9.1.0/bits/locale_facets.h ****       { return this->do_is(__lo, __hi, __vec); }
  188:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
@@ -3889,6 +3898,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  231:/usr/include/c++/9.1.0/bits/locale_facets.h ****       char_type
  232:/usr/include/c++/9.1.0/bits/locale_facets.h ****       toupper(char_type __c) const
  233:/usr/include/c++/9.1.0/bits/locale_facets.h ****       { return this->do_toupper(__c); }
+GAS LISTING /tmp/ccCg8J2U.s 			page 66
+
+
  234:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  235:/usr/include/c++/9.1.0/bits/locale_facets.h ****       /**
  236:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @brief  Convert array to uppercase.
@@ -3898,9 +3910,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  240:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  by returning ctype<char_type>:: do_toupper(lo, hi).
  241:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  242:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __lo  Pointer to start of range.
-GAS LISTING /tmp/cc21GyWh.s 			page 66
-
-
  243:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __hi  Pointer to end of range.
  244:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  @a __hi.
  245:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
@@ -3949,6 +3958,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  288:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  289:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __c  The char to convert.
  290:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  The converted char_type.
+GAS LISTING /tmp/ccCg8J2U.s 			page 67
+
+
  291:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  292:/usr/include/c++/9.1.0/bits/locale_facets.h ****       char_type
  293:/usr/include/c++/9.1.0/bits/locale_facets.h ****       widen(char __c) const
@@ -3958,9 +3970,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  297:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @brief  Widen array to char_type
  298:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  299:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function converts each char in the input to char_type using the
-GAS LISTING /tmp/cc21GyWh.s 			page 67
-
-
  300:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  simplest reasonable transformation.  It does so by returning
  301:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  ctype<char_type>::do_widen(c).
  302:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
@@ -4009,6 +4018,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  345:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  346:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __lo  Pointer to start of range.
  347:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __hi  Pointer to end of range.
+GAS LISTING /tmp/ccCg8J2U.s 			page 68
+
+
  348:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __dfault  Char to use if conversion fails.
  349:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __to  Pointer to the destination array.
  350:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  @a __hi.
@@ -4018,9 +4030,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  354:/usr/include/c++/9.1.0/bits/locale_facets.h **** 	      char __dfault, char* __to) const
  355:/usr/include/c++/9.1.0/bits/locale_facets.h ****       { return this->do_narrow(__lo, __hi, __dfault, __to); }
  356:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 68
-
-
  357:/usr/include/c++/9.1.0/bits/locale_facets.h ****     protected:
  358:/usr/include/c++/9.1.0/bits/locale_facets.h ****       explicit
  359:/usr/include/c++/9.1.0/bits/locale_facets.h ****       __ctype_abstract_base(size_t __refs = 0): facet(__refs) { }
@@ -4069,6 +4078,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  402:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  403:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function searches for and returns the first char_type c in
  404:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  [__lo,__hi) for which is(__m,c) is true.
+GAS LISTING /tmp/ccCg8J2U.s 			page 69
+
+
  405:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  406:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  do_scan_is() is a hook for a derived facet to change the behavior of
  407:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  match searching.  do_is() must always return the same result for the
@@ -4078,9 +4090,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  411:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __lo  Pointer to start of range.
  412:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __hi  Pointer to end of range.
  413:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  Pointer to a matching char_type if found, else @a __hi.
-GAS LISTING /tmp/cc21GyWh.s 			page 69
-
-
  414:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  415:/usr/include/c++/9.1.0/bits/locale_facets.h ****       virtual const char_type*
  416:/usr/include/c++/9.1.0/bits/locale_facets.h ****       do_scan_is(mask __m, const char_type* __lo,
@@ -4129,6 +4138,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  459:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  to uppercase if possible.  Other elements remain untouched.
  460:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  461:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  do_toupper() is a hook for a derived facet to change the behavior of
+GAS LISTING /tmp/ccCg8J2U.s 			page 70
+
+
  462:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  uppercasing.  do_toupper() must always return the same result for
  463:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  the same input.
  464:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
@@ -4138,9 +4150,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  468:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  469:/usr/include/c++/9.1.0/bits/locale_facets.h ****       virtual const char_type*
  470:/usr/include/c++/9.1.0/bits/locale_facets.h ****       do_toupper(char_type* __lo, const char_type* __hi) const = 0;
-GAS LISTING /tmp/cc21GyWh.s 			page 70
-
-
  471:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  472:/usr/include/c++/9.1.0/bits/locale_facets.h ****       /**
  473:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @brief  Convert to lowercase.
@@ -4189,6 +4198,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  516:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  codecvt for that.
  517:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  518:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __c  The char to convert.
+GAS LISTING /tmp/ccCg8J2U.s 			page 71
+
+
  519:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  The converted char_type
  520:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  521:/usr/include/c++/9.1.0/bits/locale_facets.h ****       virtual char_type
@@ -4198,9 +4210,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  525:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @brief  Widen char array
  526:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  527:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function converts each char in the input to char_type using the
-GAS LISTING /tmp/cc21GyWh.s 			page 71
-
-
  528:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  simplest reasonable transformation.
  529:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  530:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  do_widen() is a hook for a derived facet to change the behavior of
@@ -4249,6 +4258,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  573:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  converted, @a __dfault is used instead.
  574:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  575:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  do_narrow() is a hook for a derived facet to change the behavior of
+GAS LISTING /tmp/ccCg8J2U.s 			page 72
+
+
  576:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  narrowing.  do_narrow() must always return the same result for the
  577:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  same input.
  578:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
@@ -4258,9 +4270,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  582:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __lo  Pointer to start of range.
  583:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __hi  Pointer to end of range.
  584:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __dfault  Char to use if conversion fails.
-GAS LISTING /tmp/cc21GyWh.s 			page 72
-
-
  585:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __to  Pointer to the destination array.
  586:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  @a __hi.
  587:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
@@ -4309,6 +4318,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  630:/usr/include/c++/9.1.0/bits/locale_facets.h ****       do_is(mask __m, char_type __c) const;
  631:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  632:/usr/include/c++/9.1.0/bits/locale_facets.h ****       virtual const char_type*
+GAS LISTING /tmp/ccCg8J2U.s 			page 73
+
+
  633:/usr/include/c++/9.1.0/bits/locale_facets.h ****       do_is(const char_type* __lo, const char_type* __hi, mask* __vec) const;
  634:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  635:/usr/include/c++/9.1.0/bits/locale_facets.h ****       virtual const char_type*
@@ -4318,9 +4330,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  639:/usr/include/c++/9.1.0/bits/locale_facets.h ****       do_scan_not(mask __m, const char_type* __lo,
  640:/usr/include/c++/9.1.0/bits/locale_facets.h **** 		  const char_type* __hi) const;
  641:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
-GAS LISTING /tmp/cc21GyWh.s 			page 73
-
-
  642:/usr/include/c++/9.1.0/bits/locale_facets.h ****       virtual char_type
  643:/usr/include/c++/9.1.0/bits/locale_facets.h ****       do_toupper(char_type __c) const;
  644:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
@@ -4369,6 +4378,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  687:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  688:/usr/include/c++/9.1.0/bits/locale_facets.h ****     protected:
  689:/usr/include/c++/9.1.0/bits/locale_facets.h ****       // Data Members:
+GAS LISTING /tmp/ccCg8J2U.s 			page 74
+
+
  690:/usr/include/c++/9.1.0/bits/locale_facets.h ****       __c_locale		_M_c_locale_ctype;
  691:/usr/include/c++/9.1.0/bits/locale_facets.h ****       bool			_M_del;
  692:/usr/include/c++/9.1.0/bits/locale_facets.h ****       __to_type			_M_toupper;
@@ -4378,9 +4390,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  696:/usr/include/c++/9.1.0/bits/locale_facets.h ****       mutable char		_M_widen[1 + static_cast<unsigned char>(-1)];
  697:/usr/include/c++/9.1.0/bits/locale_facets.h ****       mutable char		_M_narrow[1 + static_cast<unsigned char>(-1)];
  698:/usr/include/c++/9.1.0/bits/locale_facets.h ****       mutable char		_M_narrow_ok;	// 0 uninitialized, 1 init,
-GAS LISTING /tmp/cc21GyWh.s 			page 74
-
-
  699:/usr/include/c++/9.1.0/bits/locale_facets.h **** 						// 2 memcpy can't be used
  700:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  701:/usr/include/c++/9.1.0/bits/locale_facets.h ****     public:
@@ -4429,6 +4438,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  744:/usr/include/c++/9.1.0/bits/locale_facets.h ****       is(mask __m, char __c) const;
  745:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  746:/usr/include/c++/9.1.0/bits/locale_facets.h ****       /**
+GAS LISTING /tmp/ccCg8J2U.s 			page 75
+
+
  747:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @brief  Return a mask array.
  748:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  749:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function finds the mask for each char in the range [lo, hi) and
@@ -4438,9 +4450,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  753:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __lo  Pointer to start of range.
  754:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __hi  Pointer to end of range.
  755:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __vec  Pointer to an array of mask storage.
-GAS LISTING /tmp/cc21GyWh.s 			page 75
-
-
  756:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  @a __hi.
  757:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  758:/usr/include/c++/9.1.0/bits/locale_facets.h ****       inline const char*
@@ -4489,6 +4498,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  801:/usr/include/c++/9.1.0/bits/locale_facets.h ****       char_type
  802:/usr/include/c++/9.1.0/bits/locale_facets.h ****       toupper(char_type __c) const
  803:/usr/include/c++/9.1.0/bits/locale_facets.h ****       { return this->do_toupper(__c); }
+GAS LISTING /tmp/ccCg8J2U.s 			page 76
+
+
  804:/usr/include/c++/9.1.0/bits/locale_facets.h **** 
  805:/usr/include/c++/9.1.0/bits/locale_facets.h ****       /**
  806:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @brief  Convert array to uppercase.
@@ -4498,9 +4510,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  810:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  811:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  toupper() acts as if it returns ctype<char>:: do_toupper(__lo, __hi).
  812:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  do_toupper() must always return the same result for the same input.
-GAS LISTING /tmp/cc21GyWh.s 			page 76
-
-
  813:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  814:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __lo  Pointer to first char in range.
  815:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __hi  Pointer to end of range.
@@ -4549,6 +4558,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  858:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function converts the char to char_type using the simplest
  859:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  reasonable transformation.  For an underived ctype<char> facet, the
  860:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  argument will be returned unchanged.
+GAS LISTING /tmp/ccCg8J2U.s 			page 77
+
+
  861:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  862:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  This function works as if it returns ctype<char>::do_widen(c).
  863:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  do_widen() must always return the same result for the same input.
@@ -4558,9 +4570,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  867:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *
  868:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @param __c  The char to convert.
  869:/usr/include/c++/9.1.0/bits/locale_facets.h ****        *  @return  The converted character.
-GAS LISTING /tmp/cc21GyWh.s 			page 77
-
-
  870:/usr/include/c++/9.1.0/bits/locale_facets.h ****       */
  871:/usr/include/c++/9.1.0/bits/locale_facets.h ****       char_type
  872:/usr/include/c++/9.1.0/bits/locale_facets.h ****       widen(char __c) const
@@ -4609,6 +4618,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  613:/usr/include/c++/9.1.0/ostream **** 
  614:/usr/include/c++/9.1.0/ostream ****   /**
  615:/usr/include/c++/9.1.0/ostream ****    *  @brief  Flushes the output stream.
+GAS LISTING /tmp/ccCg8J2U.s 			page 78
+
+
  616:/usr/include/c++/9.1.0/ostream ****    *
  617:/usr/include/c++/9.1.0/ostream ****    *  This manipulator simply calls the stream's @c flush() member function.
  618:/usr/include/c++/9.1.0/ostream ****   */
@@ -4618,9 +4630,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  871              		.loc 4 621 5 is_stmt 1 view .LVU263
  872              	.LBB194:
  622:/usr/include/c++/9.1.0/ostream ****     { return __os.flush(); }
-GAS LISTING /tmp/cc21GyWh.s 			page 78
-
-
  873              		.loc 4 622 25 is_stmt 0 view .LVU264
  874 055f E8000000 		call	_ZNSo5flushEv@PLT
  874      00
@@ -4669,6 +4678,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   50:/usr/include/c++/9.1.0/bits/basic_ios.h ****       return *__f;
  906              		.loc 6 50 18 view .LVU270
  907 0597 E8000000 		call	_ZSt16__throw_bad_castv@PLT
+GAS LISTING /tmp/ccCg8J2U.s 			page 79
+
+
  907      00
  908              	.LVL70:
  909              	.L59:
@@ -4678,9 +4690,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  912              	.LBE190:
  913              	.LBB191:
  914              	.LBB189:
-GAS LISTING /tmp/cc21GyWh.s 			page 79
-
-
  876:/usr/include/c++/9.1.0/bits/locale_facets.h **** 	this->_M_widen_init();
  915              		.loc 7 876 2 is_stmt 1 view .LVU272
  916              		.loc 7 876 21 is_stmt 0 view .LVU273
@@ -4729,6 +4738,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  950              		.loc 1 155 9 is_stmt 1 view .LVU282
  155:Src/findwayBases.cpp ****             return {-1, -1};        //no intersections
  951              		.loc 1 155 24 is_stmt 0 view .LVU283
+GAS LISTING /tmp/ccCg8J2U.s 			page 80
+
+
  952 05c8 488D7C24 		leaq	24(%rsp), %rdi
  952      18
  953 05cd 4889EE   		movq	%rbp, %rsi
@@ -4738,9 +4750,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  155:Src/findwayBases.cpp ****             return {-1, -1};        //no intersections
  956              		.loc 1 155 9 view .LVU284
  957 05d5 84C0     		testb	%al, %al
-GAS LISTING /tmp/cc21GyWh.s 			page 80
-
-
  958 05d7 7517     		jne	.L65
  156:Src/findwayBases.cpp ****         else
  959              		.loc 1 156 13 is_stmt 1 view .LVU285
@@ -4789,6 +4798,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  984              	.L66:
  164:Src/findwayBases.cpp ****         return c1;
  985              		.loc 1 164 5 is_stmt 1 view .LVU294
+GAS LISTING /tmp/ccCg8J2U.s 			page 81
+
+
  986 0615 F30F107C 		movss	12(%rsp), %xmm7
  986      240C
  987 061b 0F2F7C24 		comiss	4(%rsp), %xmm7
@@ -4798,9 +4810,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  989              		.loc 1 164 16 is_stmt 0 discriminator 1 view .LVU295
  990 0622 F30F1074 		movss	8(%rsp), %xmm6
  990      2408
-GAS LISTING /tmp/cc21GyWh.s 			page 81
-
-
  991 0628 0F2FF7   		comiss	%xmm7, %xmm6
  992 062b 720A     		jb	.L67
  165:Src/findwayBases.cpp ****     else if(l3 >= l2)
@@ -4849,6 +4858,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1017              	.LVL78:
  1018              		.cfi_endproc
  1019              	.LFE1720:
+GAS LISTING /tmp/ccCg8J2U.s 			page 82
+
+
  1021              		.globl	_Z17getCoordsOfCornerPK8obstacleh
  1023              	_Z17getCoordsOfCornerPK8obstacleh:
  1024              	.LVL79:
@@ -4858,9 +4870,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1027              		.cfi_startproc
  235:Src/findwayBases.cpp ****     struct coords *ret = (struct coords*)malloc(sizeof(struct coords));
  1028              		.loc 1 235 1 is_stmt 0 view .LVU305
-GAS LISTING /tmp/cc21GyWh.s 			page 82
-
-
  1029 066a 55       		pushq	%rbp
  1030              		.cfi_def_cfa_offset 16
  1031              		.cfi_offset 6, -16
@@ -4909,6 +4918,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1060 069f 660FEFC9 		pxor	%xmm1, %xmm1
  1061 06a3 F30F5A0A 		cvtss2sd	(%rdx), %xmm1
  246:Src/findwayBases.cpp ****             ret->y = obst->c->y + obst->a + CONST;
+GAS LISTING /tmp/ccCg8J2U.s 			page 83
+
+
  1062              		.loc 1 246 33 view .LVU315
  1063 06a7 F20F1015 		movsd	.LC8(%rip), %xmm2
  1063      00000000 
@@ -4918,9 +4930,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1066              		.loc 1 246 20 view .LVU316
  1067 06b7 F30F1108 		movss	%xmm1, (%rax)
  247:Src/findwayBases.cpp ****             break;
-GAS LISTING /tmp/cc21GyWh.s 			page 83
-
-
  1068              		.loc 1 247 13 is_stmt 1 view .LVU317
  247:Src/findwayBases.cpp ****             break;
  1069              		.loc 1 247 41 is_stmt 0 view .LVU318
@@ -4969,6 +4978,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1096 06ee F20F100D 		movsd	.LC8(%rip), %xmm1
  1096      00000000 
  1097 06f6 F20F58C1 		addsd	%xmm1, %xmm0
+GAS LISTING /tmp/ccCg8J2U.s 			page 84
+
+
  1098 06fa F20F5AC0 		cvtsd2ss	%xmm0, %xmm0
  252:Src/findwayBases.cpp ****             ret->y = obst->c->y - CONST;
  1099              		.loc 1 252 20 view .LVU331
@@ -4978,9 +4990,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  253:Src/findwayBases.cpp ****             break;
  1102              		.loc 1 253 31 is_stmt 0 view .LVU333
  1103 0702 660FEFC0 		pxor	%xmm0, %xmm0
-GAS LISTING /tmp/cc21GyWh.s 			page 84
-
-
  1104 0706 F30F5A42 		cvtss2sd	4(%rdx), %xmm0
  1104      04
  253:Src/findwayBases.cpp ****             break;
@@ -5029,6 +5038,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1132 0743 F20F5CC1 		subsd	%xmm1, %xmm0
  1133 0747 F20F5AC0 		cvtsd2ss	%xmm0, %xmm0
  241:Src/findwayBases.cpp ****             break;
+GAS LISTING /tmp/ccCg8J2U.s 			page 85
+
+
  1134              		.loc 1 241 20 view .LVU347
  1135 074b F30F1140 		movss	%xmm0, 4(%rax)
  1135      04
@@ -5038,9 +5050,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  264:Src/findwayBases.cpp **** 
  1138              		.loc 1 264 1 is_stmt 0 view .LVU349
  1139 0750 4883C408 		addq	$8, %rsp
-GAS LISTING /tmp/cc21GyWh.s 			page 85
-
-
  1140              		.cfi_remember_state
  1141              		.cfi_def_cfa_offset 24
  1142 0754 5B       		popq	%rbx
@@ -5089,6 +5098,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1171      04
  1172 0784 F30F5AC0 		cvtss2sd	%xmm0, %xmm0
  259:Src/findwayBases.cpp ****             break;
+GAS LISTING /tmp/ccCg8J2U.s 			page 86
+
+
  1173              		.loc 1 259 43 view .LVU361
  1174 0788 F20F58C2 		addsd	%xmm2, %xmm0
  1175 078c F20F5AC0 		cvtsd2ss	%xmm0, %xmm0
@@ -5098,9 +5110,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1177      04
  260:Src/findwayBases.cpp ****         }
  1178              		.loc 1 260 13 is_stmt 1 view .LVU363
-GAS LISTING /tmp/cc21GyWh.s 			page 86
-
-
  263:Src/findwayBases.cpp **** }
  1179              		.loc 1 263 5 view .LVU364
  263:Src/findwayBases.cpp **** }
@@ -5149,6 +5158,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1215      00000000 
  1216 07ca 48C74720 		movq	$0, 32(%rdi)
  1216      00000000 
+GAS LISTING /tmp/ccCg8J2U.s 			page 87
+
+
  219:Src/findwayBases.cpp ****     ret.c->x = x;
  1217              		.loc 1 219 5 is_stmt 1 view .LVU370
  219:Src/findwayBases.cpp ****     ret.c->x = x;
@@ -5158,9 +5170,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1220              	.LVL85:
  219:Src/findwayBases.cpp ****     ret.c->x = x;
  1221              		.loc 1 219 35 view .LVU372
-GAS LISTING /tmp/cc21GyWh.s 			page 87
-
-
  1222 07d7 E8000000 		call	malloc@PLT
  1222      00
  1223              	.LVL86:
@@ -5209,6 +5218,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1250      00
  1251              	.LVL90:
  225:Src/findwayBases.cpp ****         ret.corners[i]->c = *getCoordsOfCorner(&ret, i);
+GAS LISTING /tmp/ccCg8J2U.s 			page 88
+
+
  1252              		.loc 1 225 24 discriminator 2 view .LVU386
  1253 07fe 4D63E5   		movslq	%r13d, %r12
  1254 0801 4A8944E3 		movq	%rax, 8(%rbx,%r12,8)
@@ -5218,9 +5230,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  226:Src/findwayBases.cpp ****     }
  1256              		.loc 1 226 47 is_stmt 0 discriminator 2 view .LVU388
  1257 0806 4489EE   		movl	%r13d, %esi
-GAS LISTING /tmp/cc21GyWh.s 			page 88
-
-
  1258 0809 4889DF   		movq	%rbx, %rdi
  1259 080c E8000000 		call	_Z17getCoordsOfCornerPK8obstacleh
  1259      00
@@ -5269,6 +5278,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1295              		.globl	_Z8getPointPK8obstacleh
  1297              	_Z8getPointPK8obstacleh:
  1298              	.LVL95:
+GAS LISTING /tmp/ccCg8J2U.s 			page 89
+
+
  1299              	.LFB1734:
  268:Src/findwayBases.cpp ****     return obst->corners[corner];
  1300              		.loc 1 268 1 is_stmt 1 view -0
@@ -5278,9 +5290,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  269:Src/findwayBases.cpp **** }
  1303              		.loc 1 269 32 is_stmt 0 view .LVU398
  1304 0837 400FB6F6 		movzbl	%sil, %esi
-GAS LISTING /tmp/cc21GyWh.s 			page 89
-
-
  269:Src/findwayBases.cpp **** }
  1305              		.loc 1 269 32 view .LVU399
  1306 083b 488B44F7 		movq	8(%rdi,%rsi,8), %rax
@@ -5329,6 +5338,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1336              		.cfi_def_cfa_offset 24
  1337              		.cfi_offset 12, -24
  1338 0845 55       		pushq	%rbp
+GAS LISTING /tmp/ccCg8J2U.s 			page 90
+
+
  1339              		.cfi_def_cfa_offset 32
  1340              		.cfi_offset 6, -32
  1341 0846 53       		pushq	%rbx
@@ -5338,9 +5350,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1345              		.cfi_def_cfa_offset 48
  1346 084b 4989FC   		movq	%rdi, %r12
  1347 084e 4889F5   		movq	%rsi, %rbp
-GAS LISTING /tmp/cc21GyWh.s 			page 90
-
-
  324:Src/findwayBases.cpp ****     std::cout << "obst: " << obst->c->x << ":" << obst->c->y << "; vect: " << v->c->x << ":" << v->
  1348              		.loc 1 324 5 is_stmt 1 view .LVU403
  324:Src/findwayBases.cpp ****     std::cout << "obst: " << obst->c->x << ":" << obst->c->y << "; vect: " << v->c->x << ":" << v->
@@ -5389,6 +5398,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  224:/usr/include/c++/9.1.0/ostream ****       {
  1378              		.loc 4 224 7 is_stmt 1 view .LVU413
  1379              	.LBB248:
+GAS LISTING /tmp/ccCg8J2U.s 			page 91
+
+
  228:/usr/include/c++/9.1.0/ostream ****       }
  1380              		.loc 4 228 43 is_stmt 0 view .LVU414
  1381 0877 660FEFC0 		pxor	%xmm0, %xmm0
@@ -5398,9 +5410,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1384 0886 E8000000 		call	_ZNSo9_M_insertIdEERSoT_@PLT
  1384      00
  1385              	.LVL101:
-GAS LISTING /tmp/cc21GyWh.s 			page 91
-
-
  228:/usr/include/c++/9.1.0/ostream ****       }
  1386              		.loc 4 228 43 view .LVU415
  1387 088b 4989C5   		movq	%rax, %r13
@@ -5449,6 +5458,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1418      04
  1419 08af 4C89EF   		movq	%r13, %rdi
  1420 08b2 E8000000 		call	_ZNSo9_M_insertIdEERSoT_@PLT
+GAS LISTING /tmp/ccCg8J2U.s 			page 92
+
+
  1420      00
  1421              	.LVL105:
  228:/usr/include/c++/9.1.0/ostream ****       }
@@ -5458,9 +5470,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  228:/usr/include/c++/9.1.0/ostream ****       }
  1425              		.loc 4 228 43 view .LVU426
  1426              	.LBE253:
-GAS LISTING /tmp/cc21GyWh.s 			page 92
-
-
  1427              	.LBE252:
  1428              	.LBB254:
  1429              	.LBI254:
@@ -5509,6 +5518,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1460              	.LVL110:
  228:/usr/include/c++/9.1.0/ostream ****       }
  1461              		.loc 4 228 43 view .LVU436
+GAS LISTING /tmp/ccCg8J2U.s 			page 93
+
+
  1462              	.LBE258:
  1463              	.LBE257:
  1464              	.LBB259:
@@ -5518,9 +5530,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  565:/usr/include/c++/9.1.0/ostream ****     {
  1467              		.loc 4 565 5 is_stmt 0 view .LVU438
  1468              	.LBE259:
-GAS LISTING /tmp/cc21GyWh.s 			page 93
-
-
  1469              		.loc 5 335 2 is_stmt 1 view .LVU439
  1470              	.LBB261:
  1471              	.LBB260:
@@ -5569,6 +5578,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1500              		.loc 1 326 5 view .LVU448
  1501 0912 0F2E0500 		ucomiss	.LC3(%rip), %xmm0
  1501      000000
+GAS LISTING /tmp/ccCg8J2U.s 			page 94
+
+
  1502 0919 7A13     		jp	.L106
  1503 091b 7511     		jne	.L106
  326:Src/findwayBases.cpp ****     {
@@ -5578,9 +5590,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1506              		.loc 1 326 23 discriminator 1 view .LVU450
  1507 0921 660F6EC3 		movd	%ebx, %xmm0
  326:Src/findwayBases.cpp ****     {
-GAS LISTING /tmp/cc21GyWh.s 			page 94
-
-
  1508              		.loc 1 326 18 discriminator 1 view .LVU451
  1509 0925 0F2E0500 		ucomiss	.LC3(%rip), %xmm0
  1509      000000
@@ -5629,6 +5638,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1539      000000
  1540 094d 488B1500 		movq	_ZSt4cout(%rip), %rdx
  1540      000000
+GAS LISTING /tmp/ccCg8J2U.s 			page 95
+
+
  1541 0954 480342E8 		addq	-24(%rdx), %rax
  1542              	.LVL116:
  1543              	.LBB270:
@@ -5638,9 +5650,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1546              	.LBB271:
  1547              		.loc 6 450 30 is_stmt 0 view .LVU462
  1548 0958 488B98F0 		movq	240(%rax), %rbx
-GAS LISTING /tmp/cc21GyWh.s 			page 95
-
-
  1548      000000
  1549              	.LVL117:
  1550              	.LBB272:
@@ -5689,6 +5698,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1581 0981 E8000000 		call	_ZNSo3putEc@PLT
  1581      00
  1582              	.LVL120:
+GAS LISTING /tmp/ccCg8J2U.s 			page 96
+
+
  1583 0986 4889C7   		movq	%rax, %rdi
  1584              	.LVL121:
  1585              	.LBB281:
@@ -5698,9 +5710,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1588              	.LBB282:
  1589              		.loc 4 622 25 is_stmt 0 view .LVU473
  1590 0989 E8000000 		call	_ZNSo5flushEv@PLT
-GAS LISTING /tmp/cc21GyWh.s 			page 96
-
-
  1590      00
  1591              	.LVL122:
  1592              		.loc 4 622 25 view .LVU474
@@ -5749,6 +5758,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1627              		.loc 4 565 5 is_stmt 0 view .LVU481
  1628              	.LBE286:
  1629              		.loc 5 335 2 is_stmt 1 view .LVU482
+GAS LISTING /tmp/ccCg8J2U.s 			page 97
+
+
  1630              	.LBB288:
  1631              	.LBB287:
  570:/usr/include/c++/9.1.0/ostream **** 			 static_cast<streamsize>(_Traits::length(__s)));
@@ -5758,9 +5770,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1634 09a5 488D3500 		leaq	.LC12(%rip), %rsi
  1634      000000
  1635 09ac 488D3D00 		leaq	_ZSt4cout(%rip), %rdi
-GAS LISTING /tmp/cc21GyWh.s 			page 97
-
-
  1635      000000
  1636 09b3 E8000000 		call	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@PLT
  1636      00
@@ -5809,6 +5818,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1668              		.loc 6 49 7 view .LVU492
  1669              	.LBE295:
  1670              	.LBE294:
+GAS LISTING /tmp/ccCg8J2U.s 			page 98
+
+
  1671              	.LBB297:
  1672              	.LBI297:
  872:/usr/include/c++/9.1.0/bits/locale_facets.h ****       {
@@ -5818,9 +5830,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1675              		.loc 7 874 2 view .LVU494
  1676 09d6 807B3800 		cmpb	$0, 56(%rbx)
  1677 09da 7428     		je	.L110
-GAS LISTING /tmp/cc21GyWh.s 			page 98
-
-
  875:/usr/include/c++/9.1.0/bits/locale_facets.h **** 	this->_M_widen_init();
  1678              		.loc 7 875 4 view .LVU495
  875:/usr/include/c++/9.1.0/bits/locale_facets.h **** 	this->_M_widen_init();
@@ -5869,6 +5878,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  600:/usr/include/c++/9.1.0/ostream **** 
  1713              		.loc 4 600 46 view .LVU503
  1714 09fd EB94     		jmp	.L105
+GAS LISTING /tmp/ccCg8J2U.s 			page 99
+
+
  1715              	.LVL135:
  1716              	.L121:
  1717              	.LBB305:
@@ -5878,9 +5890,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
   50:/usr/include/c++/9.1.0/bits/basic_ios.h ****       return *__f;
  1721              		.loc 6 50 18 view .LVU504
  1722 09ff E8000000 		call	_ZSt16__throw_bad_castv@PLT
-GAS LISTING /tmp/cc21GyWh.s 			page 99
-
-
  1722      00
  1723              	.LVL136:
  1724              	.L110:
@@ -5929,6 +5938,9 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1762              	.LBB274:
   50:/usr/include/c++/9.1.0/bits/basic_ios.h ****       return *__f;
  1763              		.loc 6 50 18 view .LVU513
+GAS LISTING /tmp/ccCg8J2U.s 			page 100
+
+
  1764 0a1e E8000000 		call	_ZSt16__throw_bad_castv@PLT
  1764      00
  1765              	.LVL140:
@@ -5938,9 +5950,6 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1768              	.LBE274:
  1769              	.LBE278:
  1770              	.LBB279:
-GAS LISTING /tmp/cc21GyWh.s 			page 100
-
-
  1771              	.LBB277:
  876:/usr/include/c++/9.1.0/bits/locale_facets.h **** 	return this->do_widen(__c);
  1772              		.loc 7 876 2 is_stmt 1 view .LVU515
@@ -5976,248 +5985,330 @@ GAS LISTING /tmp/cc21GyWh.s 			page 1
  1800              	_Z9addTargetP10graphPointS0_:
  1801              	.LVL143:
  1802              	.LFB1736:
- 340:Src/findwayBases.cpp ****     start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeo
+ 340:Src/findwayBases.cpp ****     if(start == end)
  1803              		.loc 1 340 1 is_stmt 1 view -0
  1804              		.cfi_startproc
- 340:Src/findwayBases.cpp ****     start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeo
- 1805              		.loc 1 340 1 is_stmt 0 view .LVU522
- 1806 0a40 55       		pushq	%rbp
- 1807              		.cfi_def_cfa_offset 16
- 1808              		.cfi_offset 6, -16
- 1809 0a41 53       		pushq	%rbx
- 1810              		.cfi_def_cfa_offset 24
- 1811              		.cfi_offset 3, -24
- 1812 0a42 4883EC08 		subq	$8, %rsp
- 1813              		.cfi_def_cfa_offset 32
- 1814 0a46 4889FB   		movq	%rdi, %rbx
- 1815 0a49 4889F5   		movq	%rsi, %rbp
- 341:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 1816              		.loc 1 341 5 is_stmt 1 view .LVU523
- 341:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 1817              		.loc 1 341 68 is_stmt 0 view .LVU524
- 1818 0a4c 488B4708 		movq	8(%rdi), %rax
- 1819 0a50 488D7001 		leaq	1(%rax), %rsi
- 1820              	.LVL144:
-GAS LISTING /tmp/cc21GyWh.s 			page 101
+ 341:Src/findwayBases.cpp ****         return;
+ 1805              		.loc 1 341 5 view .LVU522
+ 1806 0a40 4839F7   		cmpq	%rsi, %rdi
+ 1807 0a43 0F849500 		je	.L129
+ 1807      0000
+ 340:Src/findwayBases.cpp ****     if(start == end)
+ 1808              		.loc 1 340 1 is_stmt 0 view .LVU523
+ 1809 0a49 55       		pushq	%rbp
+ 1810              		.cfi_def_cfa_offset 16
+ 1811              		.cfi_offset 6, -16
+GAS LISTING /tmp/ccCg8J2U.s 			page 101
 
 
- 341:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 1821              		.loc 1 341 20 view .LVU525
- 1822 0a54 48897708 		movq	%rsi, 8(%rdi)
- 341:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 1823              		.loc 1 341 58 view .LVU526
- 1824 0a58 488B3F   		movq	(%rdi), %rdi
- 1825              	.LVL145:
- 341:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 1826              		.loc 1 341 50 view .LVU527
- 1827 0a5b 48C1E603 		salq	$3, %rsi
- 1828 0a5f E8000000 		call	realloc@PLT
- 1828      00
- 1829              	.LVL146:
- 341:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
- 1830              		.loc 1 341 20 view .LVU528
- 1831 0a64 488903   		movq	%rax, (%rbx)
- 342:Src/findwayBases.cpp **** 
- 1832              		.loc 1 342 5 is_stmt 1 view .LVU529
- 342:Src/findwayBases.cpp **** 
- 1833              		.loc 1 342 27 is_stmt 0 view .LVU530
- 1834 0a67 488B5308 		movq	8(%rbx), %rdx
- 342:Src/findwayBases.cpp **** 
- 1835              		.loc 1 342 45 view .LVU531
- 1836 0a6b 48896CD0 		movq	%rbp, -8(%rax,%rdx,8)
- 1836      F8
- 344:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 1837              		.loc 1 344 5 is_stmt 1 view .LVU532
- 344:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 1838              		.loc 1 344 64 is_stmt 0 view .LVU533
- 1839 0a70 488B4508 		movq	8(%rbp), %rax
- 1840 0a74 488D7001 		leaq	1(%rax), %rsi
- 344:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 1841              		.loc 1 344 18 view .LVU534
- 1842 0a78 48897508 		movq	%rsi, 8(%rbp)
- 344:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 1843              		.loc 1 344 54 view .LVU535
- 1844 0a7c 488B7D00 		movq	0(%rbp), %rdi
- 344:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 1845              		.loc 1 344 48 view .LVU536
- 1846 0a80 48C1E603 		salq	$3, %rsi
- 1847 0a84 E8000000 		call	realloc@PLT
- 1847      00
- 1848              	.LVL147:
- 344:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
- 1849              		.loc 1 344 18 view .LVU537
- 1850 0a89 48894500 		movq	%rax, 0(%rbp)
- 345:Src/findwayBases.cpp **** }
- 1851              		.loc 1 345 5 is_stmt 1 view .LVU538
- 345:Src/findwayBases.cpp **** }
- 1852              		.loc 1 345 23 is_stmt 0 view .LVU539
- 1853 0a8d 488B5508 		movq	8(%rbp), %rdx
- 345:Src/findwayBases.cpp **** }
- 1854              		.loc 1 345 41 view .LVU540
- 1855 0a91 48895CD0 		movq	%rbx, -8(%rax,%rdx,8)
- 1855      F8
- 1856              		.loc 1 346 1 view .LVU541
- 1857 0a96 4883C408 		addq	$8, %rsp
-GAS LISTING /tmp/cc21GyWh.s 			page 102
+ 1812 0a4a 53       		pushq	%rbx
+ 1813              		.cfi_def_cfa_offset 24
+ 1814              		.cfi_offset 3, -24
+ 1815 0a4b 4883EC08 		subq	$8, %rsp
+ 1816              		.cfi_def_cfa_offset 32
+ 1817 0a4f 4889FB   		movq	%rdi, %rbx
+ 1818 0a52 4889F5   		movq	%rsi, %rbp
+ 1819              	.LBB310:
+ 343:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 1820              		.loc 1 343 16 view .LVU524
+ 1821 0a55 B8000000 		movl	$0, %eax
+ 1821      00
+ 1822              	.L125:
+ 1823              	.LVL144:
+ 343:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 1824              		.loc 1 343 34 discriminator 1 view .LVU525
+ 1825 0a5a 488B5308 		movq	8(%rbx), %rdx
+ 343:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 1826              		.loc 1 343 25 discriminator 1 view .LVU526
+ 1827 0a5e 4839C2   		cmpq	%rax, %rdx
+ 1828 0a61 760F     		jbe	.L127
+ 344:Src/findwayBases.cpp ****             return;
+ 1829              		.loc 1 344 9 is_stmt 1 view .LVU527
+ 344:Src/findwayBases.cpp ****             return;
+ 1830              		.loc 1 344 19 is_stmt 0 view .LVU528
+ 1831 0a63 488B13   		movq	(%rbx), %rdx
+ 344:Src/findwayBases.cpp ****             return;
+ 1832              		.loc 1 344 9 view .LVU529
+ 1833 0a66 48392CC2 		cmpq	%rbp, (%rdx,%rax,8)
+ 1834 0a6a 746B     		je	.L122
+ 343:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 1835              		.loc 1 343 5 discriminator 2 view .LVU530
+ 1836 0a6c 4883C001 		addq	$1, %rax
+ 1837              	.LVL145:
+ 343:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 1838              		.loc 1 343 5 discriminator 2 view .LVU531
+ 1839 0a70 EBE8     		jmp	.L125
+ 1840              	.L127:
+ 343:Src/findwayBases.cpp ****         if(start->targets[i] == end)
+ 1841              		.loc 1 343 5 discriminator 2 view .LVU532
+ 1842              	.LBE310:
+ 1843              	.LBB311:
+ 346:Src/findwayBases.cpp ****         if(end->targets[i] == start)
+ 1844              		.loc 1 346 16 view .LVU533
+ 1845 0a72 B8000000 		movl	$0, %eax
+ 1845      00
+ 1846              	.LVL146:
+ 1847              	.L124:
+ 346:Src/findwayBases.cpp ****         if(end->targets[i] == start)
+ 1848              		.loc 1 346 25 discriminator 1 view .LVU534
+ 1849 0a77 48394508 		cmpq	%rax, 8(%rbp)
+ 1850 0a7b 7610     		jbe	.L126
+ 347:Src/findwayBases.cpp ****             return;
+ 1851              		.loc 1 347 9 is_stmt 1 view .LVU535
+ 347:Src/findwayBases.cpp ****             return;
+ 1852              		.loc 1 347 17 is_stmt 0 view .LVU536
+ 1853 0a7d 488B4D00 		movq	0(%rbp), %rcx
+GAS LISTING /tmp/ccCg8J2U.s 			page 102
 
 
- 1858              		.cfi_def_cfa_offset 24
- 1859 0a9a 5B       		popq	%rbx
- 1860              		.cfi_def_cfa_offset 16
- 1861              	.LVL148:
- 1862              		.loc 1 346 1 view .LVU542
- 1863 0a9b 5D       		popq	%rbp
- 1864              		.cfi_def_cfa_offset 8
- 1865              	.LVL149:
- 1866              		.loc 1 346 1 view .LVU543
- 1867 0a9c C3       		ret
- 1868              		.cfi_endproc
- 1869              	.LFE1736:
- 1872              	_GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_:
- 1873              	.LFB2063:
- 1874              		.loc 1 346 1 is_stmt 1 view -0
- 1875              		.cfi_startproc
- 1876 0a9d 4883EC08 		subq	$8, %rsp
- 1877              		.cfi_def_cfa_offset 16
- 1878              		.loc 1 346 1 is_stmt 0 view .LVU545
- 1879 0aa1 BEFFFF00 		movl	$65535, %esi
- 1879      00
- 1880 0aa6 BF010000 		movl	$1, %edi
- 1880      00
- 1881 0aab E850F5FF 		call	_Z41__static_initialization_and_destruction_0ii
- 1881      FF
- 1882              	.LVL150:
- 1883 0ab0 4883C408 		addq	$8, %rsp
- 1884              		.cfi_def_cfa_offset 8
- 1885 0ab4 C3       		ret
- 1886              		.cfi_endproc
- 1887              	.LFE2063:
- 1889              		.section	.init_array,"aw"
- 1890              		.align 8
- 1891 0000 00000000 		.quad	_GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_
- 1891      00000000 
- 1892              		.local	_ZStL8__ioinit
- 1893              		.comm	_ZStL8__ioinit,1,1
- 1894              		.section	.rodata.cst8,"aM",@progbits,8
- 1895              		.align 8
- 1896              	.LC0:
- 1897 0000 00000000 		.long	0
- 1898 0004 0000F03F 		.long	1072693248
- 1899              		.align 8
- 1900              	.LC1:
- 1901 0008 00000000 		.long	0
- 1902 000c 00000000 		.long	0
- 1903              		.section	.rodata.cst4,"aM",@progbits,4
- 1904              		.align 4
- 1905              	.LC2:
- 1906 0000 00000000 		.long	0
- 1907              		.align 4
- 1908              	.LC3:
- 1909 0004 000080BF 		.long	3212836864
- 1910              		.align 4
- 1911              	.LC4:
- 1912 0008 0000803F 		.long	1065353216
- 1913              		.section	.rodata.cst8
-GAS LISTING /tmp/cc21GyWh.s 			page 103
+ 347:Src/findwayBases.cpp ****             return;
+ 1854              		.loc 1 347 9 view .LVU537
+ 1855 0a81 48391CC1 		cmpq	%rbx, (%rcx,%rax,8)
+ 1856 0a85 7450     		je	.L122
+ 346:Src/findwayBases.cpp ****         if(end->targets[i] == start)
+ 1857              		.loc 1 346 5 discriminator 2 view .LVU538
+ 1858 0a87 4883C001 		addq	$1, %rax
+ 1859              	.LVL147:
+ 346:Src/findwayBases.cpp ****         if(end->targets[i] == start)
+ 1860              		.loc 1 346 5 discriminator 2 view .LVU539
+ 1861 0a8b EBEA     		jmp	.L124
+ 1862              	.LVL148:
+ 1863              	.L126:
+ 346:Src/findwayBases.cpp ****         if(end->targets[i] == start)
+ 1864              		.loc 1 346 5 discriminator 2 view .LVU540
+ 1865              	.LBE311:
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1866              		.loc 1 350 5 is_stmt 1 view .LVU541
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1867              		.loc 1 350 68 is_stmt 0 view .LVU542
+ 1868 0a8d 4883C201 		addq	$1, %rdx
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1869              		.loc 1 350 20 view .LVU543
+ 1870 0a91 48895308 		movq	%rdx, 8(%rbx)
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1871              		.loc 1 350 58 view .LVU544
+ 1872 0a95 488B3B   		movq	(%rbx), %rdi
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1873              		.loc 1 350 50 view .LVU545
+ 1874 0a98 488D34D5 		leaq	0(,%rdx,8), %rsi
+ 1874      00000000 
+ 1875              	.LVL149:
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1876              		.loc 1 350 50 view .LVU546
+ 1877 0aa0 E8000000 		call	realloc@PLT
+ 1877      00
+ 1878              	.LVL150:
+ 350:Src/findwayBases.cpp ****     start->targets[start->numOfTargets - 1] = end;
+ 1879              		.loc 1 350 20 view .LVU547
+ 1880 0aa5 488903   		movq	%rax, (%rbx)
+ 351:Src/findwayBases.cpp **** 
+ 1881              		.loc 1 351 5 is_stmt 1 view .LVU548
+ 351:Src/findwayBases.cpp **** 
+ 1882              		.loc 1 351 27 is_stmt 0 view .LVU549
+ 1883 0aa8 488B5308 		movq	8(%rbx), %rdx
+ 351:Src/findwayBases.cpp **** 
+ 1884              		.loc 1 351 45 view .LVU550
+ 1885 0aac 48896CD0 		movq	%rbp, -8(%rax,%rdx,8)
+ 1885      F8
+ 353:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 1886              		.loc 1 353 5 is_stmt 1 view .LVU551
+ 353:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 1887              		.loc 1 353 64 is_stmt 0 view .LVU552
+ 1888 0ab1 488B4508 		movq	8(%rbp), %rax
+ 1889 0ab5 488D7001 		leaq	1(%rax), %rsi
+ 353:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 1890              		.loc 1 353 18 view .LVU553
+GAS LISTING /tmp/ccCg8J2U.s 			page 103
 
 
- 1914              		.align 8
- 1915              	.LC8:
- 1916 0010 9A999999 		.long	2576980378
- 1917 0014 9999D93F 		.long	1071225241
- 1918              		.text
- 1919              	.Letext0:
- 1920              		.file 8 "/usr/include/c++/9.1.0/cwchar"
- 1921              		.file 9 "/usr/include/c++/9.1.0/new"
- 1922              		.file 10 "/usr/include/c++/9.1.0/bits/exception_ptr.h"
- 1923              		.file 11 "/usr/include/c++/9.1.0/type_traits"
- 1924              		.file 12 "/usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/c++config.h"
- 1925              		.file 13 "/usr/include/c++/9.1.0/bits/stl_pair.h"
- 1926              		.file 14 "/usr/include/c++/9.1.0/debug/debug.h"
- 1927              		.file 15 "/usr/include/c++/9.1.0/cstdint"
- 1928              		.file 16 "/usr/include/c++/9.1.0/clocale"
- 1929              		.file 17 "/usr/include/c++/9.1.0/cstdlib"
- 1930              		.file 18 "/usr/include/c++/9.1.0/cstdio"
- 1931              		.file 19 "/usr/include/c++/9.1.0/system_error"
- 1932              		.file 20 "/usr/include/c++/9.1.0/bits/ios_base.h"
- 1933              		.file 21 "/usr/include/c++/9.1.0/cwctype"
- 1934              		.file 22 "/usr/include/c++/9.1.0/bits/ostream.tcc"
- 1935              		.file 23 "/usr/include/c++/9.1.0/iosfwd"
- 1936              		.file 24 "/usr/include/c++/9.1.0/bits/std_abs.h"
- 1937              		.file 25 "/usr/include/c++/9.1.0/bits/functexcept.h"
- 1938              		.file 26 "/usr/include/c++/9.1.0/bits/ostream_insert.h"
- 1939              		.file 27 "/usr/include/c++/9.1.0/bits/predefined_ops.h"
- 1940              		.file 28 "/usr/include/c++/9.1.0/ext/new_allocator.h"
- 1941              		.file 29 "/usr/include/c++/9.1.0/ext/numeric_traits.h"
- 1942              		.file 30 "/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include/stddef.h"
- 1943              		.file 31 "<built-in>"
- 1944              		.file 32 "/usr/include/bits/types/wint_t.h"
- 1945              		.file 33 "/usr/include/bits/types/__mbstate_t.h"
- 1946              		.file 34 "/usr/include/bits/types/mbstate_t.h"
- 1947              		.file 35 "/usr/include/bits/types/__FILE.h"
- 1948              		.file 36 "/usr/include/bits/types/struct_FILE.h"
- 1949              		.file 37 "/usr/include/bits/types/FILE.h"
- 1950              		.file 38 "/usr/include/wchar.h"
- 1951              		.file 39 "/usr/include/bits/types/struct_tm.h"
- 1952              		.file 40 "/usr/include/bits/types.h"
- 1953              		.file 41 "/usr/include/bits/stdint-intn.h"
- 1954              		.file 42 "/usr/include/bits/stdint-uintn.h"
- 1955              		.file 43 "/usr/include/stdint.h"
- 1956              		.file 44 "/usr/include/locale.h"
- 1957              		.file 45 "/usr/include/time.h"
- 1958              		.file 46 "/usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/atomic_word.h"
- 1959              		.file 47 "/usr/include/stdlib.h"
- 1960              		.file 48 "/usr/include/bits/stdlib-float.h"
- 1961              		.file 49 "/usr/include/bits/stdlib-bsearch.h"
- 1962              		.file 50 "/usr/include/bits/types/__fpos_t.h"
- 1963              		.file 51 "/usr/include/stdio.h"
- 1964              		.file 52 "/usr/include/bits/sys_errlist.h"
- 1965              		.file 53 "/usr/include/bits/stdio.h"
- 1966              		.file 54 "/usr/include/errno.h"
- 1967              		.file 55 "/usr/include/bits/wctype-wchar.h"
- 1968              		.file 56 "/usr/include/wctype.h"
- 1969              		.file 57 "/usr/include/math.h"
- 1970              		.file 58 "/usr/include/c++/9.1.0/math.h"
-GAS LISTING /tmp/cc21GyWh.s 			page 104
+ 1891 0ab9 48897508 		movq	%rsi, 8(%rbp)
+ 353:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 1892              		.loc 1 353 54 view .LVU554
+ 1893 0abd 488B7D00 		movq	0(%rbp), %rdi
+ 353:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 1894              		.loc 1 353 48 view .LVU555
+ 1895 0ac1 48C1E603 		salq	$3, %rsi
+ 1896 0ac5 E8000000 		call	realloc@PLT
+ 1896      00
+ 1897              	.LVL151:
+ 353:Src/findwayBases.cpp ****     end->targets[end->numOfTargets - 1] = start;
+ 1898              		.loc 1 353 18 view .LVU556
+ 1899 0aca 48894500 		movq	%rax, 0(%rbp)
+ 354:Src/findwayBases.cpp **** }
+ 1900              		.loc 1 354 5 is_stmt 1 view .LVU557
+ 354:Src/findwayBases.cpp **** }
+ 1901              		.loc 1 354 23 is_stmt 0 view .LVU558
+ 1902 0ace 488B5508 		movq	8(%rbp), %rdx
+ 354:Src/findwayBases.cpp **** }
+ 1903              		.loc 1 354 41 view .LVU559
+ 1904 0ad2 48895CD0 		movq	%rbx, -8(%rax,%rdx,8)
+ 1904      F8
+ 1905              	.L122:
+ 1906              		.loc 1 355 1 view .LVU560
+ 1907 0ad7 4883C408 		addq	$8, %rsp
+ 1908              		.cfi_def_cfa_offset 24
+ 1909 0adb 5B       		popq	%rbx
+ 1910              		.cfi_def_cfa_offset 16
+ 1911              	.LVL152:
+ 1912              		.loc 1 355 1 view .LVU561
+ 1913 0adc 5D       		popq	%rbp
+ 1914              		.cfi_def_cfa_offset 8
+ 1915              	.LVL153:
+ 1916              		.loc 1 355 1 view .LVU562
+ 1917 0add C3       		ret
+ 1918              	.LVL154:
+ 1919              	.L129:
+ 1920              		.cfi_restore 3
+ 1921              		.cfi_restore 6
+ 1922              		.loc 1 355 1 view .LVU563
+ 1923 0ade C3       		ret
+ 1924              		.cfi_endproc
+ 1925              	.LFE1736:
+ 1928              	_GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_:
+ 1929              	.LFB2063:
+ 1930              		.loc 1 355 1 is_stmt 1 view -0
+ 1931              		.cfi_startproc
+ 1932 0adf 4883EC08 		subq	$8, %rsp
+ 1933              		.cfi_def_cfa_offset 16
+ 1934              		.loc 1 355 1 is_stmt 0 view .LVU565
+ 1935 0ae3 BEFFFF00 		movl	$65535, %esi
+ 1935      00
+ 1936 0ae8 BF010000 		movl	$1, %edi
+ 1936      00
+ 1937 0aed E80EF5FF 		call	_Z41__static_initialization_and_destruction_0ii
+ 1937      FF
+ 1938              	.LVL155:
+GAS LISTING /tmp/ccCg8J2U.s 			page 104
 
 
- 1971              		.file 59 "/usr/include/bits/mathcalls.h"
- 1972              		.file 60 "Includes/findwayBases.hpp"
-GAS LISTING /tmp/cc21GyWh.s 			page 105
+ 1939 0af2 4883C408 		addq	$8, %rsp
+ 1940              		.cfi_def_cfa_offset 8
+ 1941 0af6 C3       		ret
+ 1942              		.cfi_endproc
+ 1943              	.LFE2063:
+ 1945              		.section	.init_array,"aw"
+ 1946              		.align 8
+ 1947 0000 00000000 		.quad	_GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_
+ 1947      00000000 
+ 1948              		.local	_ZStL8__ioinit
+ 1949              		.comm	_ZStL8__ioinit,1,1
+ 1950              		.section	.rodata.cst8,"aM",@progbits,8
+ 1951              		.align 8
+ 1952              	.LC0:
+ 1953 0000 00000000 		.long	0
+ 1954 0004 0000F03F 		.long	1072693248
+ 1955              		.align 8
+ 1956              	.LC1:
+ 1957 0008 00000000 		.long	0
+ 1958 000c 00000000 		.long	0
+ 1959              		.section	.rodata.cst4,"aM",@progbits,4
+ 1960              		.align 4
+ 1961              	.LC2:
+ 1962 0000 00000000 		.long	0
+ 1963              		.align 4
+ 1964              	.LC3:
+ 1965 0004 000080BF 		.long	3212836864
+ 1966              		.align 4
+ 1967              	.LC4:
+ 1968 0008 0000803F 		.long	1065353216
+ 1969              		.section	.rodata.cst8
+ 1970              		.align 8
+ 1971              	.LC8:
+ 1972 0010 9A999999 		.long	2576980378
+ 1973 0014 9999D93F 		.long	1071225241
+ 1974              		.text
+ 1975              	.Letext0:
+ 1976              		.file 8 "/usr/include/c++/9.1.0/cwchar"
+ 1977              		.file 9 "/usr/include/c++/9.1.0/new"
+ 1978              		.file 10 "/usr/include/c++/9.1.0/bits/exception_ptr.h"
+ 1979              		.file 11 "/usr/include/c++/9.1.0/type_traits"
+ 1980              		.file 12 "/usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/c++config.h"
+ 1981              		.file 13 "/usr/include/c++/9.1.0/bits/stl_pair.h"
+ 1982              		.file 14 "/usr/include/c++/9.1.0/debug/debug.h"
+ 1983              		.file 15 "/usr/include/c++/9.1.0/cstdint"
+ 1984              		.file 16 "/usr/include/c++/9.1.0/clocale"
+ 1985              		.file 17 "/usr/include/c++/9.1.0/cstdlib"
+ 1986              		.file 18 "/usr/include/c++/9.1.0/cstdio"
+ 1987              		.file 19 "/usr/include/c++/9.1.0/system_error"
+ 1988              		.file 20 "/usr/include/c++/9.1.0/bits/ios_base.h"
+ 1989              		.file 21 "/usr/include/c++/9.1.0/cwctype"
+ 1990              		.file 22 "/usr/include/c++/9.1.0/bits/ostream.tcc"
+ 1991              		.file 23 "/usr/include/c++/9.1.0/iosfwd"
+ 1992              		.file 24 "/usr/include/c++/9.1.0/bits/std_abs.h"
+ 1993              		.file 25 "/usr/include/c++/9.1.0/bits/functexcept.h"
+ 1994              		.file 26 "/usr/include/c++/9.1.0/bits/ostream_insert.h"
+ 1995              		.file 27 "/usr/include/c++/9.1.0/bits/predefined_ops.h"
+GAS LISTING /tmp/ccCg8J2U.s 			page 105
+
+
+ 1996              		.file 28 "/usr/include/c++/9.1.0/ext/new_allocator.h"
+ 1997              		.file 29 "/usr/include/c++/9.1.0/ext/numeric_traits.h"
+ 1998              		.file 30 "/usr/lib/gcc/x86_64-pc-linux-gnu/9.1.0/include/stddef.h"
+ 1999              		.file 31 "<built-in>"
+ 2000              		.file 32 "/usr/include/bits/types/wint_t.h"
+ 2001              		.file 33 "/usr/include/bits/types/__mbstate_t.h"
+ 2002              		.file 34 "/usr/include/bits/types/mbstate_t.h"
+ 2003              		.file 35 "/usr/include/bits/types/__FILE.h"
+ 2004              		.file 36 "/usr/include/bits/types/struct_FILE.h"
+ 2005              		.file 37 "/usr/include/bits/types/FILE.h"
+ 2006              		.file 38 "/usr/include/wchar.h"
+ 2007              		.file 39 "/usr/include/bits/types/struct_tm.h"
+ 2008              		.file 40 "/usr/include/bits/types.h"
+ 2009              		.file 41 "/usr/include/bits/stdint-intn.h"
+ 2010              		.file 42 "/usr/include/bits/stdint-uintn.h"
+ 2011              		.file 43 "/usr/include/stdint.h"
+ 2012              		.file 44 "/usr/include/locale.h"
+ 2013              		.file 45 "/usr/include/time.h"
+ 2014              		.file 46 "/usr/include/c++/9.1.0/x86_64-pc-linux-gnu/bits/atomic_word.h"
+ 2015              		.file 47 "/usr/include/stdlib.h"
+ 2016              		.file 48 "/usr/include/bits/stdlib-float.h"
+ 2017              		.file 49 "/usr/include/bits/stdlib-bsearch.h"
+ 2018              		.file 50 "/usr/include/bits/types/__fpos_t.h"
+ 2019              		.file 51 "/usr/include/stdio.h"
+ 2020              		.file 52 "/usr/include/bits/sys_errlist.h"
+ 2021              		.file 53 "/usr/include/bits/stdio.h"
+ 2022              		.file 54 "/usr/include/errno.h"
+ 2023              		.file 55 "/usr/include/bits/wctype-wchar.h"
+ 2024              		.file 56 "/usr/include/wctype.h"
+ 2025              		.file 57 "/usr/include/math.h"
+ 2026              		.file 58 "/usr/include/c++/9.1.0/math.h"
+ 2027              		.file 59 "/usr/include/bits/mathcalls.h"
+ 2028              		.file 60 "Includes/findwayBases.hpp"
+GAS LISTING /tmp/ccCg8J2U.s 			page 106
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 findwayBases.cpp
-     /tmp/cc21GyWh.s:5      .text:0000000000000000 _Z41__static_initialization_and_destruction_0ii
+     /tmp/ccCg8J2U.s:5      .text:0000000000000000 _Z41__static_initialization_and_destruction_0ii
                              .bss:0000000000000000 _ZStL8__ioinit
-     /tmp/cc21GyWh.s:45     .text:000000000000003d _Z15hasIntersectionPK8baselineS1_
-     /tmp/cc21GyWh.s:65     .text:0000000000000050 _Z15getIntersectionPK8baselineS1_
-     /tmp/cc21GyWh.s:177    .text:0000000000000119 _Z11isDotInsidePK6coordsPK8obstacle
-     /tmp/cc21GyWh.s:232    .text:000000000000016d _Z14vectToBaselinePK4vect
-     /tmp/cc21GyWh.s:271    .text:00000000000001a2 _Z6getLenPK6coordsS1_
-     /tmp/cc21GyWh.s:321    .text:00000000000001ce _Z6getLenPK4vect
-     /tmp/cc21GyWh.s:360    .text:00000000000001f2 _Z12createCoordsff
-     /tmp/cc21GyWh.s:396    .text:000000000000020a _Z15getIntersectionPK8obstaclePK4vect
-     /tmp/cc21GyWh.s:1023   .text:000000000000066a _Z17getCoordsOfCornerPK8obstacleh
-     /tmp/cc21GyWh.s:1187   .text:0000000000000797 _Z14createObstaclefff
-     /tmp/cc21GyWh.s:1297   .text:0000000000000837 _Z8getPointPK8obstacleh
-     /tmp/cc21GyWh.s:1326   .text:0000000000000841 _Z15hasIntersectionPK8obstaclePK4vect
-     /tmp/cc21GyWh.s:1800   .text:0000000000000a40 _Z9addTargetP10graphPointS0_
-     /tmp/cc21GyWh.s:1872   .text:0000000000000a9d _GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_
-     /tmp/cc21GyWh.s:1896   .rodata.cst8:0000000000000000 .LC0
-     /tmp/cc21GyWh.s:1900   .rodata.cst8:0000000000000008 .LC1
-     /tmp/cc21GyWh.s:1905   .rodata.cst4:0000000000000000 .LC2
-     /tmp/cc21GyWh.s:1911   .rodata.cst4:0000000000000008 .LC4
-     /tmp/cc21GyWh.s:387    .rodata.str1.1:0000000000000000 .LC5
-     /tmp/cc21GyWh.s:389    .rodata.str1.1:0000000000000005 .LC6
-     /tmp/cc21GyWh.s:391    .rodata.str1.1:000000000000000c .LC7
-     /tmp/cc21GyWh.s:1915   .rodata.cst8:0000000000000010 .LC8
-     /tmp/cc21GyWh.s:1313   .rodata.str1.1:0000000000000013 .LC9
-     /tmp/cc21GyWh.s:1315   .rodata.str1.1:000000000000001a .LC10
-     /tmp/cc21GyWh.s:1317   .rodata.str1.1:000000000000001c .LC11
-     /tmp/cc21GyWh.s:1908   .rodata.cst4:0000000000000004 .LC3
-     /tmp/cc21GyWh.s:1321   .rodata.str1.1:000000000000003a .LC13
-     /tmp/cc21GyWh.s:1319   .rodata.str1.1:0000000000000025 .LC12
+     /tmp/ccCg8J2U.s:45     .text:000000000000003d _Z15hasIntersectionPK8baselineS1_
+     /tmp/ccCg8J2U.s:65     .text:0000000000000050 _Z15getIntersectionPK8baselineS1_
+     /tmp/ccCg8J2U.s:177    .text:0000000000000119 _Z11isDotInsidePK6coordsPK8obstacle
+     /tmp/ccCg8J2U.s:232    .text:000000000000016d _Z14vectToBaselinePK4vect
+     /tmp/ccCg8J2U.s:271    .text:00000000000001a2 _Z6getLenPK6coordsS1_
+     /tmp/ccCg8J2U.s:321    .text:00000000000001ce _Z6getLenPK4vect
+     /tmp/ccCg8J2U.s:360    .text:00000000000001f2 _Z12createCoordsff
+     /tmp/ccCg8J2U.s:396    .text:000000000000020a _Z15getIntersectionPK8obstaclePK4vect
+     /tmp/ccCg8J2U.s:1023   .text:000000000000066a _Z17getCoordsOfCornerPK8obstacleh
+     /tmp/ccCg8J2U.s:1187   .text:0000000000000797 _Z14createObstaclefff
+     /tmp/ccCg8J2U.s:1297   .text:0000000000000837 _Z8getPointPK8obstacleh
+     /tmp/ccCg8J2U.s:1326   .text:0000000000000841 _Z15hasIntersectionPK8obstaclePK4vect
+     /tmp/ccCg8J2U.s:1800   .text:0000000000000a40 _Z9addTargetP10graphPointS0_
+     /tmp/ccCg8J2U.s:1928   .text:0000000000000adf _GLOBAL__sub_I__Z15hasIntersectionPK8baselineS1_
+     /tmp/ccCg8J2U.s:1952   .rodata.cst8:0000000000000000 .LC0
+     /tmp/ccCg8J2U.s:1956   .rodata.cst8:0000000000000008 .LC1
+     /tmp/ccCg8J2U.s:1961   .rodata.cst4:0000000000000000 .LC2
+     /tmp/ccCg8J2U.s:1967   .rodata.cst4:0000000000000008 .LC4
+     /tmp/ccCg8J2U.s:387    .rodata.str1.1:0000000000000000 .LC5
+     /tmp/ccCg8J2U.s:389    .rodata.str1.1:0000000000000005 .LC6
+     /tmp/ccCg8J2U.s:391    .rodata.str1.1:000000000000000c .LC7
+     /tmp/ccCg8J2U.s:1971   .rodata.cst8:0000000000000010 .LC8
+     /tmp/ccCg8J2U.s:1313   .rodata.str1.1:0000000000000013 .LC9
+     /tmp/ccCg8J2U.s:1315   .rodata.str1.1:000000000000001a .LC10
+     /tmp/ccCg8J2U.s:1317   .rodata.str1.1:000000000000001c .LC11
+     /tmp/ccCg8J2U.s:1964   .rodata.cst4:0000000000000004 .LC3
+     /tmp/ccCg8J2U.s:1321   .rodata.str1.1:000000000000003a .LC13
+     /tmp/ccCg8J2U.s:1319   .rodata.str1.1:0000000000000025 .LC12
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

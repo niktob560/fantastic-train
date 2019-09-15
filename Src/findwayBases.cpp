@@ -338,6 +338,15 @@ bool            hasIntersection(const struct obstacle *obst, const struct vect *
 
 void            addTarget(struct graphPoint *start, struct graphPoint *end)
 {
+    if(start == end)
+        return;
+    for(size_t i = 0; i < start->numOfTargets; i++)
+        if(start->targets[i] == end)
+            return;
+    for(size_t i = 0; i < end->numOfTargets; i++)
+        if(end->targets[i] == start)
+            return;
+
     start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphPoint*));
     start->targets[start->numOfTargets - 1] = end;
 
