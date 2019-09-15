@@ -1,4 +1,5 @@
 #include <math.h>
+#include <cmath>
 
 #define sqr(x) (x * x)
 

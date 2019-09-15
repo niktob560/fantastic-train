@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccH45HTj.s 			page 1
+GAS LISTING /tmp/cc9a4L3W.s 			page 1
 
 
    1              		.file	"routines.cpp"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
   45              		.globl	_Z8drawLineffff
   47              	_Z8drawLineffff:
   48              	.LVL2:
-GAS LISTING /tmp/ccH45HTj.s 			page 2
+GAS LISTING /tmp/cc9a4L3W.s 			page 2
 
 
   49              	.LFB254:
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
   82      00
   83              	.LVL6:
   16:Src/routines.cpp **** }
-GAS LISTING /tmp/ccH45HTj.s 			page 3
+GAS LISTING /tmp/cc9a4L3W.s 			page 3
 
 
   84              		.loc 1 16 1 view .LVU19
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  122      00
  123              	.LVL10:
   24:Src/routines.cpp **** 	glVertex2d(x, y + b);
-GAS LISTING /tmp/ccH45HTj.s 			page 4
+GAS LISTING /tmp/cc9a4L3W.s 			page 4
 
 
  124              		.loc 1 24 2 is_stmt 1 view .LVU27
@@ -238,7 +238,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  161              	.LVL16:
   28:Src/routines.cpp **** }
  162              		.loc 1 28 1 view .LVU39
-GAS LISTING /tmp/ccH45HTj.s 			page 5
+GAS LISTING /tmp/cc9a4L3W.s 			page 5
 
 
  163 0167 4883C438 		addq	$56, %rsp
@@ -298,7 +298,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  202 01bb F30F5AC0 		cvtss2sd	%xmm0, %xmm0
  203 01bf F20F104C 		movsd	24(%rsp), %xmm1
  203      2418
-GAS LISTING /tmp/ccH45HTj.s 			page 6
+GAS LISTING /tmp/cc9a4L3W.s 			page 6
 
 
  204 01c5 E8000000 		call	glVertex2d@PLT
@@ -358,7 +358,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  247              		.cfi_def_cfa_offset 64
  248 0208 F30F1144 		movss	%xmm0, 24(%rsp)
  248      2418
-GAS LISTING /tmp/ccH45HTj.s 			page 7
+GAS LISTING /tmp/cc9a4L3W.s 			page 7
 
 
  249 020e F30F114C 		movss	%xmm1, 28(%rsp)
@@ -418,7 +418,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  289 025f F30F115C 		movss	%xmm3, 20(%rsp)
  289      2414
  290              	.LVL29:
-GAS LISTING /tmp/ccH45HTj.s 			page 8
+GAS LISTING /tmp/cc9a4L3W.s 			page 8
 
 
   46:Src/routines.cpp ****         float y = r * sinf(theta);//calculate the y component
@@ -478,7 +478,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  329              		.loc 1 50 1 view .LVU85
  330 029f 5D       		popq	%rbp
  331              		.cfi_def_cfa_offset 8
-GAS LISTING /tmp/ccH45HTj.s 			page 9
+GAS LISTING /tmp/cc9a4L3W.s 			page 9
 
 
  332              	.LVL38:
@@ -538,7 +538,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  375              		.loc 1 57 9 is_stmt 1 discriminator 2 view .LVU95
  376              		.loc 1 57 43 is_stmt 0 discriminator 2 view .LVU96
  377 02ce 660FEFC0 		pxor	%xmm0, %xmm0
-GAS LISTING /tmp/ccH45HTj.s 			page 10
+GAS LISTING /tmp/cc9a4L3W.s 			page 10
 
 
  378 02d2 F30F2AC3 		cvtsi2ssl	%ebx, %xmm0
@@ -598,7 +598,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  415              	.LBE37:
   55:Src/routines.cpp ****     {
  416              		.loc 1 55 5 discriminator 2 view .LVU109
-GAS LISTING /tmp/ccH45HTj.s 			page 11
+GAS LISTING /tmp/cc9a4L3W.s 			page 11
 
 
  417 032f 83C301   		addl	$1, %ebx
@@ -658,7 +658,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
   71:Src/routines.cpp **** 	glBegin(GL_POLYGON);
  459              		.loc 1 71 2 view .LVU120
  460              		.loc 1 71 9 is_stmt 0 view .LVU121
-GAS LISTING /tmp/ccH45HTj.s 			page 12
+GAS LISTING /tmp/cc9a4L3W.s 			page 12
 
 
  461 0355 BF090000 		movl	$9, %edi
@@ -718,7 +718,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
   47:/usr/include/c++/9.1.0/cmath **** #include <bits/std_abs.h>
   48:/usr/include/c++/9.1.0/cmath **** 
   49:/usr/include/c++/9.1.0/cmath **** #ifndef _GLIBCXX_CMATH
-GAS LISTING /tmp/ccH45HTj.s 			page 13
+GAS LISTING /tmp/cc9a4L3W.s 			page 13
 
 
   50:/usr/include/c++/9.1.0/cmath **** #define _GLIBCXX_CMATH 1
@@ -778,7 +778,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  104:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
  105:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
  106:/usr/include/c++/9.1.0/cmath ****   asin(float __x)
-GAS LISTING /tmp/ccH45HTj.s 			page 14
+GAS LISTING /tmp/cc9a4L3W.s 			page 14
 
 
  107:/usr/include/c++/9.1.0/cmath ****   { return __builtin_asinf(__x); }
@@ -838,7 +838,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  161:/usr/include/c++/9.1.0/cmath ****   using ::ceil;
  162:/usr/include/c++/9.1.0/cmath **** 
  163:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
-GAS LISTING /tmp/ccH45HTj.s 			page 15
+GAS LISTING /tmp/cc9a4L3W.s 			page 15
 
 
  164:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
@@ -898,7 +898,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  200:/usr/include/c++/9.1.0/cmath **** 
  201:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
  202:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
-GAS LISTING /tmp/ccH45HTj.s 			page 16
+GAS LISTING /tmp/cc9a4L3W.s 			page 16
 
 
  203:/usr/include/c++/9.1.0/cmath ****   cosh(float __x)
@@ -958,7 +958,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  257:/usr/include/c++/9.1.0/cmath **** 
  258:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
  259:/usr/include/c++/9.1.0/cmath ****   inline _GLIBCXX_CONSTEXPR float
-GAS LISTING /tmp/ccH45HTj.s 			page 17
+GAS LISTING /tmp/cc9a4L3W.s 			page 17
 
 
  260:/usr/include/c++/9.1.0/cmath ****   floor(float __x)
@@ -1018,7 +1018,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  314:/usr/include/c++/9.1.0/cmath **** 
  315:/usr/include/c++/9.1.0/cmath ****   using ::ldexp;
  316:/usr/include/c++/9.1.0/cmath **** 
-GAS LISTING /tmp/ccH45HTj.s 			page 18
+GAS LISTING /tmp/cc9a4L3W.s 			page 18
 
 
  317:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
@@ -1078,7 +1078,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  371:/usr/include/c++/9.1.0/cmath **** 
  372:/usr/include/c++/9.1.0/cmath ****   using ::modf;
  373:/usr/include/c++/9.1.0/cmath **** 
-GAS LISTING /tmp/ccH45HTj.s 			page 19
+GAS LISTING /tmp/cc9a4L3W.s 			page 19
 
 
  374:/usr/include/c++/9.1.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
@@ -1138,7 +1138,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  481              		.loc 1 72 19 is_stmt 0 view .LVU129
  482 0384 F30F591D 		mulss	.LC4(%rip), %xmm3
  482      00000000 
-GAS LISTING /tmp/ccH45HTj.s 			page 20
+GAS LISTING /tmp/cc9a4L3W.s 			page 20
 
 
  483              		.loc 1 72 15 view .LVU130
@@ -1198,7 +1198,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  517              	.LVL62:
  185:/usr/include/c++/9.1.0/cmath **** 
  518              		.loc 2 185 5 is_stmt 1 view .LVU141
-GAS LISTING /tmp/ccH45HTj.s 			page 21
+GAS LISTING /tmp/cc9a4L3W.s 			page 21
 
 
  519              		.loc 1 74 15 is_stmt 0 view .LVU142
@@ -1258,7 +1258,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  556              		.loc 2 426 5 is_stmt 1 view .LVU154
  557              		.loc 1 76 12 is_stmt 0 view .LVU155
  558 0464 F20F1174 		movsd	%xmm6, 8(%rsp)
-GAS LISTING /tmp/ccH45HTj.s 			page 22
+GAS LISTING /tmp/cc9a4L3W.s 			page 22
 
 
  558      2408
@@ -1318,7 +1318,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  594      24
  595 04bc E8000000 		call	glVertex2d@PLT
  595      00
-GAS LISTING /tmp/ccH45HTj.s 			page 23
+GAS LISTING /tmp/cc9a4L3W.s 			page 23
 
 
  596              	.LVL72:
@@ -1378,7 +1378,7 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  644              	.LC4:
  645 0010 69D0B3BE 		.long	3199455337
  646              		.text
-GAS LISTING /tmp/ccH45HTj.s 			page 24
+GAS LISTING /tmp/cc9a4L3W.s 			page 24
 
 
  647              	.Letext0:
@@ -1399,24 +1399,24 @@ GAS LISTING /tmp/ccH45HTj.s 			page 1
  662              		.file 17 "/usr/include/c++/9.1.0/math.h"
  663              		.file 18 "/usr/include/bits/mathcalls.h"
  664              		.file 19 "<built-in>"
-GAS LISTING /tmp/ccH45HTj.s 			page 25
+GAS LISTING /tmp/cc9a4L3W.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 routines.cpp
-     /tmp/ccH45HTj.s:6      .text:0000000000000000 _Z10glSetColorj
-     /tmp/ccH45HTj.s:47     .text:000000000000004c _Z8drawLineffff
-     /tmp/ccH45HTj.s:95     .text:00000000000000ac _Z8drawRectffff
-     /tmp/ccH45HTj.s:171    .text:000000000000016c _Z12drawTrianglefff
-     /tmp/ccH45HTj.s:234    .text:0000000000000202 _Z10drawCirclefffi
-     /tmp/ccH45HTj.s:340    .text:00000000000002a1 _Z16drawCircleFilledfffi
-     /tmp/ccH45HTj.s:446    .text:0000000000000340 _Z7drawOctfff
-     /tmp/ccH45HTj.s:610    .text:00000000000004cb _Z8drawQuadfff
-     /tmp/ccH45HTj.s:632    .rodata.cst4:0000000000000000 .LC0
-     /tmp/ccH45HTj.s:635    .rodata.cst4:0000000000000004 .LC1
-     /tmp/ccH45HTj.s:638    .rodata.cst4:0000000000000008 .LC2
-     /tmp/ccH45HTj.s:641    .rodata.cst4:000000000000000c .LC3
-     /tmp/ccH45HTj.s:644    .rodata.cst4:0000000000000010 .LC4
+     /tmp/cc9a4L3W.s:6      .text:0000000000000000 _Z10glSetColorj
+     /tmp/cc9a4L3W.s:47     .text:000000000000004c _Z8drawLineffff
+     /tmp/cc9a4L3W.s:95     .text:00000000000000ac _Z8drawRectffff
+     /tmp/cc9a4L3W.s:171    .text:000000000000016c _Z12drawTrianglefff
+     /tmp/cc9a4L3W.s:234    .text:0000000000000202 _Z10drawCirclefffi
+     /tmp/cc9a4L3W.s:340    .text:00000000000002a1 _Z16drawCircleFilledfffi
+     /tmp/cc9a4L3W.s:446    .text:0000000000000340 _Z7drawOctfff
+     /tmp/cc9a4L3W.s:610    .text:00000000000004cb _Z8drawQuadfff
+     /tmp/cc9a4L3W.s:632    .rodata.cst4:0000000000000000 .LC0
+     /tmp/cc9a4L3W.s:635    .rodata.cst4:0000000000000004 .LC1
+     /tmp/cc9a4L3W.s:638    .rodata.cst4:0000000000000008 .LC2
+     /tmp/cc9a4L3W.s:641    .rodata.cst4:000000000000000c .LC3
+     /tmp/cc9a4L3W.s:644    .rodata.cst4:0000000000000010 .LC4
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_

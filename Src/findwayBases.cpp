@@ -32,8 +32,73 @@ struct coords   getIntersection(const struct baseline *b1, const struct baseline
 //will return NULL if there is no intersections
 struct coords   getIntersection(const struct obstacle *obst, const struct vect *v)
 {
-    if((obst->c->x - v->c->x) / v->dx < 0 || (obst->c->y - v->c->y) / v->dy < 0)
+    // if((obst->c->x - v->c->x) / v->dx < 0 || (obst->c->y - v->c->y) / v->dy < 0)
+    // if(!
+    //     (
+    //         (
+    //             (
+    //                 v->dx >= 0
+    //              && v->c->x <= obst->c->x
+    //              && obst->c->x + obst->a <= v->c->x + v->dx
+    //             )
+    //             ||
+    //             (
+    //                 v->dx < 0
+    //              && v->c->x >= obst->c->x + obst->a
+    //              && obst->c->x + obst->a >= v->c->x + v->dx
+    //             )
+    //         )
+    //         &&
+    //         (
+    //             (
+    //                 v->dy >= 0
+    //              && v->c->y <= obst->c->y
+    //              && obst->c->y + obst->a <= v->c->y + v->dy
+    //             )
+    //             ||
+    //             (
+    //                 v->dy < 0
+    //              && v->c->y >= obst->c->y + obst->a
+    //              && obst->c->y + obst->a  >= v->c->y + v->dy
+    //              )
+    //          )
+    //      )
+    //  )
+    // std::cout << "   " << (       v->dx >= 0          ) << "\n";
+    if(!
+        (
+            (
+                (
+                       v->dx >= 0
+                    && v->c->x <= obst->c->x + obst->a
+                    && obst->c->x <= v->c->x + v->dx
+                )
+                ||
+                (
+                       v->dx < 0
+                    && v->c->x >= obst->c->x
+                    && obst->c->x >= v->c->x + v->dx
+                )
+            )
+            &&
+            (
+                (
+                       v->dy >= 0
+                    && v->c->y <= obst->c->y + obst->a
+                    && obst->c->y <= v->c->y + v->dy
+                )
+                ||
+                (
+                       v->dy < 0
+                    && v->c->y >= obst->c->y
+                    && obst->c->y >= v->c->y + v->dy
+                )
+            )
+        )
+    )
+    {
         return {-1, -1};
+    }
 
     struct coords   c1,
                     c2,
@@ -47,17 +112,14 @@ struct coords   getIntersection(const struct obstacle *obst, const struct vect *
     b2 = vectToBaseline(v);
     c1 = getIntersection(&b, &b2);
 
-    std::cout << "found c1\n";
 
     b.k = INF;
     b.b = obst->c->x + obst->a;
     c2 = getIntersection(&b, &b2);
 
-    std::cout << "found c1 and c2\n";
 
     if(!isDotInside(&c1, obst) && isDotInside(&c2, obst))
     {
-        std::cout << "C1 isn't in obstacle\n";
         c1 = c2;
     }
     //have one intersection in c1 at here
@@ -71,12 +133,23 @@ struct coords   getIntersection(const struct obstacle *obst, const struct vect *
     b.b = obst->c->y + obst->a;
     c3 = getIntersection(&b, &b2);
 
-    std::cout << "found c2 and c3\n";
     if(!isDotInside(&c2, obst) && isDotInside(&c3, obst))
     {
-        std::cout << "C2 isn't in obstacle\n";
         c2 = c3;
     }
+
+
+
+    c3 = createCoords(v->c->x, v->c->y);
+
+    COORDS_DATATYPE l1 = getLen(&c3, &c1),
+                    l2 = getLen(&c3, &c2),
+                    l3 = getLen(v);
+
+    std::cout << "l1: " << l1 << "; l2: " << l2 << "; l3: " << l3 << std::endl;
+
+    if(l3 < l2 && l3 < l1)
+        return {-1, -1};
 
     if(!isDotInside(&c1, obst))
         if(!isDotInside(&c2, obst))
@@ -87,12 +160,6 @@ struct coords   getIntersection(const struct obstacle *obst, const struct vect *
         if(!isDotInside(&c2, obst))
             return c1;          //intersection only in c1
 
-
-    c3 = createCoords(v->c->x, v->c->y);
-
-    COORDS_DATATYPE l1 = getLen(&c3, &c1),
-                    l2 = getLen(&c3, &c2),
-                    l3 = getLen(v);
 
     if(l1 > l2 && l3 >= l1)
         return c1;
