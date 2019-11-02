@@ -1,0 +1,895 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"arra",
+				"array"
+			],
+			[
+				"datas",
+				"datasize"
+			],
+			[
+				"pho",
+				"phone_number"
+			],
+			[
+				"array_com",
+				"array_compare_element"
+			],
+			[
+				"TEMPLATE_3",
+				"TEMPLATE_3WH_2ALONG_1PERP"
+			],
+			[
+				"TEMPLATE_",
+				"TEMPLATE_4WH_ALONG_OMNI"
+			],
+			[
+				"TEMPLATE_4WH_",
+				"TEMPLATE_4WH_2ALONG_2PERP"
+			],
+			[
+				"ERROR_",
+				"ERROR_BAD_WHEEL"
+			],
+			[
+				"uint",
+				"uint8_t"
+			],
+			[
+				"usart",
+				"usartInBuf"
+			],
+			[
+				"usa",
+				"usartInBuf"
+			],
+			[
+				"par",
+				"parseInputCmds"
+			],
+			[
+				"rec",
+				"recvUsart"
+			],
+			[
+				"_arr",
+				"_arrLen"
+			],
+			[
+				"usartIn",
+				"usartInBufCounter"
+			],
+			[
+				"USAR",
+				"USART0Println"
+			],
+			[
+				"USART",
+				"USART0Println"
+			],
+			[
+				"USA",
+				"USART0Send"
+			],
+			[
+				"uit",
+				"uint8_t"
+			],
+			[
+				"get",
+				"getCountsOfDigits"
+			],
+			[
+				"TIMER0_WF_F",
+				"TIMER0_WF_FPWM_TOPOCR0A\t(TimerModes_2560.h)"
+			],
+			[
+				"TIMER0_COMB_FPWM",
+				"TIMER0_COMB_FPWM_NORMAL\t(TimerModes_2560.h)"
+			],
+			[
+				"TIMER3_WF_FPWM_",
+				"TIMER3_WF_FPWM_10B\t(TimerModes_2560.h)"
+			],
+			[
+				"WD",
+				"USE_WATCHDOG"
+			],
+			[
+				"ne",
+				"nextInt"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 13501,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nSummitLinter\n------------\n\n  SummitLinter\n  -------------------------------\n  This linter plugin for SublimeLinter provides an interface to luacheck and SummitEditor.\n  \n  ** IMPORTANT! **\n  \n  Before this plugin will activate, you *must*\n  follow the installation instructions here:\n  \n  https://github.com/corvisacloud/SummitLinter\n",
+			"settings":
+			{
+				"buffer_size": 385,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 894,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "[nikto_b@iceberg fantastic-train]$                                                                                                                                                              \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n",
+			"settings":
+			{
+				"buffer_size": 1930,
+				"line_ending": "Unix",
+				"name": "Terminal (bash)",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "Packages/C++11/C++11.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++11/C++11.sublime-build",
+					""
+				],
+				[
+					"Packages/C++11/C++11.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++11/C++11.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"sublimelinter",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"linter",
+				"SublimeLinter: Reload SublimeLinter and its Plugins"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"linter:",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"linetr",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"terminal",
+				"Terminal View: Open Bash Terminal"
+			],
+			[
+				"color scheme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"open bas",
+				"Terminal View: Open Bash Terminal"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"make ",
+				"Build With: Make"
+			],
+			[
+				"build",
+				"Build With: Make"
+			],
+			[
+				"termianl",
+				"Preferences: Terminality Settings – Default"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"open fli",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"color ",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"set s",
+				"Set Syntax: C++"
+			],
+			[
+				"set syntax C",
+				"Set Syntax: C++"
+			],
+			[
+				"rest",
+				"RESTer: HTTP Request"
+			],
+			[
+				"syntax php",
+				"Set Syntax: PHP"
+			],
+			[
+				"cmake",
+				"Set Syntax: CMake"
+			],
+			[
+				"ui theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"thee",
+				"UI: Select Theme"
+			],
+			[
+				"the",
+				"UI: Select Theme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"toggle ",
+				"View: Toggle Menu"
+			],
+			[
+				"toggle me",
+				"View: Toggle Menu"
+			],
+			[
+				"toggle",
+				"View: Toggle Menu"
+			],
+			[
+				"autosa",
+				"Toggle AutoSave: all files"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"men",
+				"View: Toggle Menu"
+			],
+			[
+				"autosave",
+				"Toggle AutoSave: all files"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"git",
+				"GitGutter: Disable for View"
+			],
+			[
+				"tab",
+				"View: Toggle Tabs"
+			],
+			[
+				"bar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"stat",
+				"View: Toggle Status Bar"
+			],
+			[
+				"tabs",
+				"View: Toggle Tabs"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"status bar",
+				"View: Toggle Status Bar"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"package control ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"package control insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control e",
+				"Package Control: Enable Package"
+			],
+			[
+				"package control",
+				"Package Control: Disable Package"
+			],
+			[
+				"package control li",
+				"Package Control: List Packages"
+			],
+			[
+				"package control Disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"package control list",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"Pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"Package",
+				"Package Control: Disable Package"
+			],
+			[
+				"Package Control: disa",
+				"Package Control: Disable Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"show all",
+			"show",
+			"show statusbar",
+			"terminality",
+			"terminal",
+			"packet control: list packets",
+			"packet control list",
+			"packet control",
+			"restart",
+			"reset",
+			"clear",
+			"?",
+			"h",
+			"-h",
+			"help",
+			"goto",
+			"goro",
+			"loop",
+			"make",
+			"zsh",
+			"cd"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/nikto_b/Documents/C++/fantastic-train",
+		"/home/nikto_b/Documents/C++/fantastic-train/Src"
+	],
+	"file_history":
+	[
+		"/home/nikto_b/.config/sublime-text-3/Packages/User/Makefile.sublime-build",
+		"/home/nikto_b/.config/sublime-text-3/Packages/TerminalView/README.md",
+		"/home/nikto_b/.config/sublime-text-3/Packages/Terminality/README.md",
+		"/home/nikto_b/.config/sublime-text-3/Packages/Terminality/Terminality.sublime-settings",
+		"/home/nikto_b/.config/sublime-text-3/Packages/Terminality/Default.sublime-keymap",
+		"/home/nikto_b/.config/sublime-text-3/Packages/User/Terminality.sublime-keymap",
+		"/home/nikto_b/sshfs/testapp_debug/api/req_change.php",
+		"/etc/X11/xorg.conf.d/00-keyboard.conf",
+		"/home/nikto_b/sshfs/testapp_debug/api/load_user_data.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/get_request.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/add_task.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/get_executor_location.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/update_user_location.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/check_notifications.php",
+		"/home/nikto_b/Documents/C++/revos/Makefile",
+		"/home/nikto_b/Documents/C++/botBrainz/Makefile",
+		"/home/nikto_b/Documents/C++/botBrainz/main_x86.cpp",
+		"/home/nikto_b/Documents/C++/mess/botMonitor/main.cpp",
+		"/home/nikto_b/Documents/C++/botBrainz/pathFinder.h",
+		"/home/nikto_b/Documents/C++/botBrainz/pathFinder.cpp",
+		"/home/nikto_b/sshfs/testapp_debug/api/add_request.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/auther.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/get_tasks.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/get_user.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/upload_avatar.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/auth.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/params_getter.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/get_requests.php",
+		"/home/nikto_b/sshfs/testapp_debug/api/sendparam.sh",
+		"/home/nikto_b/sshfs/testapp_debug/api/error_handler.php",
+		"/home/nikto_b/Documents/C++/revos/Src/kernel/rmm.h",
+		"/home/nikto_b/Documents/C++/avr-api/Makefile",
+		"/home/nikto_b/Documents/C++/avr-api/tmp/Makefile",
+		"/home/nikto_b/Documents/C++/revos/Src/main.c",
+		"/home/nikto_b/test",
+		"/home/nikto_b/Documents/C++/revos/CMakeLists.txt",
+		"/home/nikto_b/Documents/C++/revos/STM32F1xx.cmake",
+		"/home/nikto_b/Documents/C++/revos/CmakeLists.txt",
+		"/home/nikto_b/Documents/C++/glWindow/Makefile",
+		"/home/nikto_b/Documents/C++/glTry/Makefile",
+		"/home/nikto_b/Documents/C++/glTry/main.cpp",
+		"/home/nikto_b/Documents/C++/mess/botMonitor/490889618-612x612.jpg",
+		"/home/nikto_b/Documents/C++/avr-api/CMakeLists.txt",
+		"/home/nikto_b/Documents/C++/avr-api/.gitignore",
+		"/home/nikto_b/Documents/C++/avr-api/a.sublime-project",
+		"/home/nikto_b/Documents/tests/Makefile",
+		"/home/nikto_b/Documents/C++/wheellib/Makefile",
+		"/home/nikto_b/Documents/C++/wheellib/api.h",
+		"/home/nikto_b/Documents/C++/wheellib/avr-api/Makefile",
+		"/home/nikto_b/Documents/C++/avr-api/stringFuncs.h",
+		"/home/nikto_b/Documents/C++/avr-api/stringFuncs.c",
+		"/home/nikto_b/Documents/C++/avr-api/customFuncAddr.h",
+		"/home/nikto_b/Documents/C++/avr-api/customFuncAddr.c",
+		"/home/nikto_b/Documents/C++/avr-api/api.h",
+		"/home/nikto_b/Documents/C++/avr-api/digitalRegisters.c",
+		"/home/nikto_b/Documents/C++/avr-api/USART.h",
+		"/home/nikto_b/Documents/C++/avr-api/USART.c",
+		"/home/nikto_b/Documents/C++/avr-api/Timers.c",
+		"/home/nikto_b/Documents/C++/avr-api/main.cpp",
+		"/home/nikto_b/Documents/C++/avr-api/avr-api.sublime-project",
+		"/home/nikto_b/C++/avr-api/main.cpp",
+		"/home/nikto_b/.config/sublime-text-3/Packages/User/intellitip.sublime-settings",
+		"/home/nikto_b/.config/sublime-text-3/Packages/Intellitip/intellitip.sublime-settings",
+		"/home/nikto_b/C++/avr-api/Timers.h",
+		"/home/nikto_b/C++/avr-api/Timer.c.old",
+		"/home/nikto_b/C++/avr-api/TimerModes_2560.h",
+		"/home/nikto_b/C++/avr-api/Timers.c",
+		"/home/nikto_b/C++/avr-api/Makefile",
+		"/home/nikto_b/C++/avr-api/stringFuncs.c",
+		"/home/nikto_b/C++/avr-api/api.h",
+		"/home/nikto_b/C++/avr-api/avr-api.sublime-project",
+		"/home/nikto_b/C++/avr-api/TimerModes_2560.h.old",
+		"/home/nikto_b/C++/avr-api/main.d",
+		"/home/nikto_b/C++/avr-api/main.eep",
+		"/home/nikto_b/C++/avr-api/main.elf",
+		"/home/nikto_b/C++/avr-api/main.hex",
+		"/home/nikto_b/Arduino/sketch_dec02a/sketch_dec02a.ino",
+		"/home/nikto_b/C++/avr-api/watchdogModes.h",
+		"/home/nikto_b/C++/avr-api/watchdog.h",
+		"/home/nikto_b/C++/avr-api/watchdog.c",
+		"/home/nikto_b/.config/sublime-text-3/Packages/Terminal/Default (Linux).sublime-keymap",
+		"/home/nikto_b/C++/avr-api/.gitignore",
+		"/home/nikto_b/C++/avr-api/USARTModes.h",
+		"/home/nikto_b/C++/avr-api/USART.h",
+		"/home/nikto_b/C++/avr-api/USART.c",
+		"/home/nikto_b/C++/avr-api/stringFuncs.h",
+		"/home/nikto_b/C++/avr-api/settings.h",
+		"/home/nikto_b/C++/avr-api/FuncsInputProtector.h",
+		"/home/nikto_b/C++/avr-api/FuncsInputProtector.c",
+		"/home/nikto_b/C++/avr-api/digitalRegisters.h",
+		"/home/nikto_b/C++/avr-api/digitalRegisters.c",
+		"/home/nikto_b/C++/avr-api/ADCModes.h",
+		"/home/nikto_b/C++/avr-api/ADC.h",
+		"/home/nikto_b/C++/avr-api/ADC.c",
+		"/home/nikto_b/C++/avr-api/delayMicroseconds.c",
+		"/home/nikto_b/C++/avr-api/customFuncAddr.h",
+		"/home/nikto_b/C++/avr-api/customFuncAddr.c",
+		"/home/nikto_b/.config/sublime-text-3/Packages/All Autocomplete/All Autocomplete.sublime-settings",
+		"/home/nikto_b/.config/sublime-text-3/Packages/User/All Autocomplete.sublime-settings",
+		"/home/nikto_b/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/nikto_b/IdeaProjects/untitled1/src/Program.java",
+		"/home/nikto_b/IdeaProjects/untitled1/src/[path",
+		"/home/nikto_b/.config/sublime-text-3/Packages/User/javac+java.sublime-build",
+		"/home/nikto_b/4.10. MiniProject/src/com/example/DBMatches/DBMatches.java",
+		"/home/nikto_b/Downloads/Program.java"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12963,
+								12963
+							]
+						],
+						"settings":
+						{
+							"SL.33.region_keys":
+							[
+								"SL.g++.Highlights.|e4be0be4a5c90887389e24db374cbf357e626fa5c2ca0a0984424870dc5b6d7e|region.redish markup.error.sublime_linter|32",
+								"SL.g++.Gutter.|region.redish markup.error.sublime_linter|dot",
+								"sublime_linter.protected_regions"
+							],
+							"syntax": "Packages/C++11/C++11.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8202.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 385,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								335,
+								335
+							]
+						],
+						"settings":
+						{
+							"SL.52.region_keys":
+							[
+							],
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 894,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								894,
+								894
+							]
+						],
+						"settings":
+						{
+							"SL.34.region_keys":
+							[
+							],
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 44.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1930,
+						"regions":
+						{
+							"0,0":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										0,
+										34
+									]
+								],
+								"scope": "terminalview.black_green"
+							}
+						},
+						"selection":
+						[
+							[
+								35,
+								35
+							]
+						],
+						"settings":
+						{
+							"SL.44.region_keys":
+							[
+							],
+							"auto_complete": false,
+							"auto_complete_commit_on_tab": false,
+							"caret_style": "blink",
+							"color_scheme": "Packages/TerminalView/TerminalView.hidden-tmTheme",
+							"draw_centered": false,
+							"draw_indent_guides": false,
+							"draw_white_space": "none",
+							"gutter": false,
+							"highlight_line": false,
+							"scroll_past_end": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"terminal_view": true,
+							"terminal_view_activate_args":
+							{
+								"cmd": "/bin/bash -l",
+								"cwd": "/home/nikto_b/Documents/C++/fantastic-train",
+								"keep_open": false,
+								"syntax": null,
+								"title": "Terminal (bash)"
+							},
+							"terminal_view_last_cursor_pos":
+							[
+								0,
+								35
+							],
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.780989854318,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 104.0
+	},
+	"output.exec":
+	{
+		"height": 182.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Makefile/Make.sublime-build",
+	"project": "fantastic-train.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"main",
+				"main.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 501.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/C++/avr-api/avr-api.sublime-workspace"
+			]
+		],
+		"width": 381.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 186.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

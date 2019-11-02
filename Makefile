@@ -1,5 +1,5 @@
 TARGET=main
-LIBS=-lGL -lGLU -lX11 -lglut -lpthread -lpng -lftgl
+LIBS=-lGL -lGLU -lX11 -lglut -lpthread -lpng -lftgl -g
 OPTIMIZE=-Og
 LFLAGS=-Wall -Wextra -lm $(LIBS)
 CPP=g++
@@ -15,7 +15,8 @@ CPP_INCLUDES = \
 CPP_SOURCES = \
 Src/main.cpp \
 Src/routines.cpp \
-Src/findwayBases.cpp
+Src/findwayBases.cpp \
+Src/math.cpp
 
 
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(CPP_SOURCES:.cpp=.o)))
@@ -49,10 +50,6 @@ $(BIN_DIR):
 $(SOURCE_DIR):
 	mkdir $@
 
-
+.PHONY: clean
 clean:
 	rm -rf $(BUILD_DIR)/*
-
-
-run: main
-	./run

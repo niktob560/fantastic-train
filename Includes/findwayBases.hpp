@@ -1,4 +1,5 @@
 #include "math.hpp"
+#include <string>
 
 #define COORDS_DATATYPE float
 
@@ -12,6 +13,26 @@ struct coords
 {
     COORDS_DATATYPE     x,
                         y;
+    std::string toString()
+    {
+        std::string str = "";
+        str += "{";
+        str += std::to_string(x);
+        str += ":";
+        str += std::to_string(y);
+        str += "}";
+        return str;
+    }
+
+    bool eq(struct coords *c)
+    {
+        return (x == c->x && y == c->y);
+    }
+
+    bool eq(COORDS_DATATYPE _x, COORDS_DATATYPE _y)
+    {
+        return (x == _x && y == _y);
+    }
 };
 
 struct graphPoint
@@ -19,6 +40,9 @@ struct graphPoint
     struct graphPoint **targets = NULL;
     size_t numOfTargets = 0;
     struct coords c;
+    bool calculated = false;
+    COORDS_DATATYPE weight = INF;
+    size_t i = 0;
 };
 
 /*
@@ -38,8 +62,8 @@ struct obstacle
 
 struct baseline
 {
-    COORDS_DATATYPE     k = 0,
-                        b = 0;
+    float               k = 0;
+    COORDS_DATATYPE     b = 0;
 };
 
 struct vect
@@ -47,6 +71,17 @@ struct vect
     struct coords      *c = NULL;
     COORDS_DATATYPE     dx = 0,
                         dy = 0;
+
+    std::string toString()
+    {
+        std::string str = "";
+        str += "{";
+        str += std::to_string(dx);
+        str += ":";
+        str += std::to_string(dy);
+        str += "}";
+        return str;
+    }
 };
 
 
@@ -76,3 +111,7 @@ struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner);
 void            addTarget(struct graphPoint *start, struct graphPoint *end);
 
 COORDS_DATATYPE getLen(const struct vect *v);
+
+COORDS_DATATYPE getWayPrice(struct graphPoint *start, struct graphPoint *end);
+
+COORDS_DATATYPE getWayPrice(struct coords *start, struct coords *end);

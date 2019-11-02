@@ -1,0 +1,22 @@
+GAS LISTING /tmp/ccfZsZ2l.s 			page 1
+
+
+   1              		.file	"math.cpp"
+   2              		.text
+   3              	.Ltext0:
+   4              	.Letext0:
+   5              		.file 1 "/usr/include/c++/9.2.0/cmath"
+   6              		.file 2 "/usr/include/c++/9.2.0/bits/std_abs.h"
+   7              		.file 3 "/usr/include/c++/9.2.0/x86_64-pc-linux-gnu/bits/c++config.h"
+   8              		.file 4 "/usr/include/math.h"
+   9              		.file 5 "/usr/include/c++/9.2.0/math.h"
+  10              		.file 6 "/usr/include/bits/mathcalls.h"
+  11              		.file 7 "/usr/include/stdlib.h"
+  12              		.file 8 "<built-in>"
+GAS LISTING /tmp/ccfZsZ2l.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 math.cpp
+
+NO UNDEFINED SYMBOLS

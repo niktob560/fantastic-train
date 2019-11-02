@@ -13,6 +13,9 @@ void drawLine(float x1, float y1, float x2, float y2)
 	glVertex2d(x1, y1);
 	glVertex2d(x2, y2);
 	glEnd();
+	
+    drawCircleFilled(x2, y2, 1, 10);
+    drawCircleFilled(x1, y1, 1, 10);
 }
 
 void drawRect(float x, float y, float a, float b)
@@ -83,4 +86,24 @@ void drawOct(float x, float y, float a)
 void drawQuad(float x, float y, float a)
 {
 	drawRect(x, y, a, a);
+}
+
+
+void drawText(std::wstring text, int size, int x, int y)
+{
+	FTGLPixmapFont hack_italic_font("/usr/share/fonts/TTF/Hack-Italic.ttf");
+	if(!hack_italic_font.Error())
+	{
+		glPushMatrix();
+		//const wchar_t * tarr = (wchar_t*)malloc(text.length());
+		//wstrcpy(tarr, text);
+		hack_italic_font.FaceSize(size);
+		glRasterPos2f(x, y);//TODO: refactor
+		hack_italic_font.Render(text.c_str());
+		glPopMatrix();
+	}
+	else
+	{
+		// std::cout << "FONT ERR\n";
+	}
 }

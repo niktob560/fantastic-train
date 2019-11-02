@@ -2,6 +2,9 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <string>
+#include <FTGL/ftgl.h>
+#include <FTGL/FTGLPixmapFont.h>
 
 #include "math.hpp"
 
@@ -20,3 +23,5 @@ void drawCircleFilled(float cx, float cy, float r, int numSegments);
 void drawOct(float x, float y, float a);
 
 void drawQuad(float x, float y, float a);
+
+void drawText(std::wstring text, int size, int x, int y);
