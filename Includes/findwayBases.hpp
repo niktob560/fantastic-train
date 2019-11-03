@@ -43,6 +43,21 @@ struct graphPoint
     bool calculated = false;
     COORDS_DATATYPE weight = INF;
     size_t i = 0;
+
+    std::string toString()
+    {
+        std::string str = "";
+        str += "{tgts: ";
+        str += std::to_string(numOfTargets);
+        str += "; cal: ";
+        str += std::to_string(calculated);
+        str += "; weight: ";
+        str += std::to_string(weight);
+        str += "; i: ";
+        str += std::to_string(i);
+        str += "}";
+        return str;
+    }
 };
 
 /*
@@ -81,6 +96,14 @@ struct vect
         str += std::to_string(dy);
         str += "}";
         return str;
+    }
+
+    struct coords getLastCoords()
+    {
+        struct coords _c;
+        _c.x = c->x + dx;
+        _c.y = c->y + dy;
+        return _c;
     }
 };
 

@@ -449,22 +449,22 @@ bool            hasIntersection(const struct obstacle *obst, const struct vect *
 
 void            addTarget(struct graphPoint *start, struct graphPoint *end)
 {
-    std::cout << "ADD TARGET ";
+    // std::cout << "ADD TARGET ";
     if(start == end) 
     {
-        std::cout << "ST=EN ";
+        // std::cout << "ST=EN ";
         return;
     }
     for(size_t i = 0; i < start->numOfTargets; i++)
         if(start->targets[i] == end)
         {
-            std::cout << "ALREADY EXISTS ";
+            // std::cout << "ALREADY EXISTS ";
             return;
         }
     for(size_t i = 0; i < end->numOfTargets; i++)
         if(end->targets[i] == start)
         {
-            std::cout << "ALREADY EXISTS ";
+            // std::cout << "ALREADY EXISTS ";
             return;
         }
 
@@ -485,3 +485,4 @@ COORDS_DATATYPE getWayPrice(struct coords *start, struct coords *end)
 {
     return sqrt(pow(start->x - end->x, 2) + pow(start->y - end->y, 2));
 }
+
