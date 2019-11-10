@@ -449,24 +449,28 @@ bool            hasIntersection(const struct obstacle *obst, const struct vect *
 
 void            addTarget(struct graphPoint *start, struct graphPoint *end)
 {
+    std::cout << "ADD " << start->toString() << " TO " << end->toString() << std::endl;
     // std::cout << "ADD TARGET ";
     if(start == end) 
     {
-        // std::cout << "ST=EN ";
+        std::cout << "SE\n";
         return;
     }
     for(size_t i = 0; i < start->numOfTargets; i++)
         if(start->targets[i] == end)
         {
+            std::cout << "AE\n";
             // std::cout << "ALREADY EXISTS ";
             return;
         }
     for(size_t i = 0; i < end->numOfTargets; i++)
         if(end->targets[i] == start)
         {
+            std::cout << "AE\n";
             // std::cout << "ALREADY EXISTS ";
             return;
         }
+
 
     start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphPoint*));
     start->targets[start->numOfTargets - 1] = end;

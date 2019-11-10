@@ -108,19 +108,18 @@
 	"buffers":
 	[
 		{
-			"file": "Src/main.cpp",
+			"file": "/home/nikto_b/Documents/C++/glTry/Makefile",
 			"settings":
 			{
-				"buffer_size": 13501,
-				"encoding": "UTF-8",
+				"buffer_size": 600,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Package Control Messages\n========================\n\nSummitLinter\n------------\n\n  SummitLinter\n  -------------------------------\n  This linter plugin for SublimeLinter provides an interface to luacheck and SummitEditor.\n  \n  ** IMPORTANT! **\n  \n  Before this plugin will activate, you *must*\n  follow the installation instructions here:\n  \n  https://github.com/corvisacloud/SummitLinter\n",
+			"contents": "Package Control Messages\n========================\n\nEasyClangComplete\n-----------------\n\n  A plugin for easy to use clang-based completions::\n  \n      ╔═╗┌─┐┌─┐┬ ┬  ╔═╗┬  ┌─┐┌┐┌┌─┐  ╔═╗┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐\n      ║╣ ├─┤└─┐└┬┘  ║  │  ├─┤││││ ┬  ║  │ ││││├─┘│  ├┤  │ ├┤\n      ╚═╝┴ ┴└─┘ ┴   ╚═╝┴─┘┴ ┴┘└┘└─┘  ╚═╝└─┘┴ ┴┴  ┴─┘└─┘ ┴ └─┘\n  \n  Let't get started!\n  ==================\n  \n  You're just two steps away!\n  \n  1. Install clang\n  ----------------\n  \n  - **Ubuntu**        : ``sudo apt-get install clang``\n  - **OSX**           : ships `clang` by default. You are all set!\n  - **Windows**       : install the latest release from clang website.\n  - **Other Systems** : use your package manager or install from clang website.\n  - clang website: http://llvm.org/releases/download.html\n  \n  2. Configure your includes\n  --------------------------\n  \n  Using CMake?\n  ~~~~~~~~~~~~\n  \n  Plugin will run cmake on a proper ``CMakeLists.txt`` in your project folder and\n  will use information from it to complete your code out of the box.\n  \n  Don't like CMake?\n  ~~~~~~~~~~~~~~~~~~\n  \n  There are many ways of configuring the plugin!\n  Read the docs here: https://niosus.github.io/EasyClangComplete/configs/\n  \n  That's it! You're ready to use the plugin!\n  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  \n  Intro and Documentation\n  ~~~~~~~~~~~~~~~~~~~~~~~\n  \n  https://niosus.github.io/EasyClangComplete/\n  \n  Thanks!\n  =======\n  \n  💜 this plugin? Consider buying me a 🍵\n  https://niosus.github.io/EasyClangComplete/support/\n",
 			"settings":
 			{
-				"buffer_size": 385,
+				"buffer_size": 1517,
 				"line_ending": "Unix",
 				"name": "Package Control Messages",
 				"read_only": true,
@@ -128,19 +127,10 @@
 			}
 		},
 		{
-			"file": "Makefile",
+			"contents": "[nikto_b@iceberg fantastic-train]$ zsh                                                                                                                                                          \n nikto_b@iceberg  ~/Documents/C++/fantastic-train   master ●                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n",
 			"settings":
 			{
-				"buffer_size": 894,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "[nikto_b@iceberg fantastic-train]$                                                                                                                                                              \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n                                                                                                                                                                                                \n",
-			"settings":
-			{
-				"buffer_size": 1930,
+				"buffer_size": 2316,
 				"line_ending": "Unix",
 				"name": "Terminal (bash)",
 				"read_only": true,
@@ -176,16 +166,20 @@
 		"selected_items":
 		[
 			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
 				"sublimelinter",
 				"SublimeLinter: Lint This View"
 			],
 			[
 				"linter",
 				"SublimeLinter: Reload SublimeLinter and its Plugins"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"linter:",
@@ -461,11 +455,11 @@
 	},
 	"expanded_folders":
 	[
-		"/home/nikto_b/Documents/C++/fantastic-train",
-		"/home/nikto_b/Documents/C++/fantastic-train/Src"
 	],
 	"file_history":
 	[
+		"/home/nikto_b/Documents/C++/fantastic-train/Makefile",
+		"/home/nikto_b/Documents/C++/fantastic-train/Src/main.cpp",
 		"/home/nikto_b/.config/sublime-text-3/Packages/User/Makefile.sublime-build",
 		"/home/nikto_b/.config/sublime-text-3/Packages/TerminalView/README.md",
 		"/home/nikto_b/.config/sublime-text-3/Packages/Terminality/README.md",
@@ -605,69 +599,29 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Src/main.cpp",
+					"file": "/home/nikto_b/Documents/C++/glTry/Makefile",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13501,
+						"buffer_size": 600,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12963,
-								12963
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"SL.33.region_keys":
-							[
-								"SL.g++.Highlights.|e4be0be4a5c90887389e24db374cbf357e626fa5c2ca0a0984424870dc5b6d7e|region.redish markup.error.sublime_linter|32",
-								"SL.g++.Gutter.|region.redish markup.error.sublime_linter|dot",
-								"sublime_linter.protected_regions"
-							],
-							"syntax": "Packages/C++11/C++11.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 8202.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 385,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								335,
-								335
-							]
-						],
-						"settings":
-						{
-							"SL.52.region_keys":
-							[
-							],
-							"auto_indent": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_width": 2,
-							"word_wrap": true
+							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -677,34 +631,33 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Makefile",
+					"buffer": 1,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 894,
+						"buffer_size": 1517,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								894,
-								894
+								266,
+								266
 							]
 						],
 						"settings":
 						{
-							"SL.34.region_keys":
-							[
-							],
-							"syntax": "Packages/Makefile/Makefile.sublime-syntax"
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 44.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -714,11 +667,11 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1930,
+						"buffer_size": 2316,
 						"regions":
 						{
 							"0,0":
@@ -732,13 +685,61 @@
 									]
 								],
 								"scope": "terminalview.black_green"
+							},
+							"1,17":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										210,
+										244
+									]
+								],
+								"scope": "terminalview.blue_black"
+							},
+							"1,51":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										244,
+										245
+									]
+								],
+								"scope": "terminalview.brown_blue"
+							},
+							"1,52":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										245,
+										257
+									]
+								],
+								"scope": "terminalview.brown_black"
+							},
+							"1,64":
+							{
+								"flags": 272,
+								"regions":
+								[
+									[
+										257,
+										258
+									]
+								],
+								"scope": "terminalview.black_brown"
 							}
 						},
 						"selection":
 						[
 							[
-								35,
-								35
+								259,
+								259
 							]
 						],
 						"settings":
@@ -768,8 +769,8 @@
 							},
 							"terminal_view_last_cursor_pos":
 							[
-								0,
-								35
+								1,
+								66
 							],
 							"word_wrap": false
 						},

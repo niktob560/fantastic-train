@@ -18,7 +18,7 @@ struct coords
         std::string str = "";
         str += "{";
         str += std::to_string(x);
-        str += ":";
+        str += ", ";
         str += std::to_string(y);
         str += "}";
         return str;
@@ -92,7 +92,7 @@ struct vect
         std::string str = "";
         str += "{";
         str += std::to_string(dx);
-        str += ":";
+        str += ", ";
         str += std::to_string(dy);
         str += "}";
         return str;

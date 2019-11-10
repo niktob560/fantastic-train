@@ -62,7 +62,8 @@ struct array
 
 uint8_t getMinDatasetSize()
 {
-	int ret = ((MIN_DATASEIZE_FUNC_A * pow((double)calculatedPoints, 2)) + (MIN_DATASEIZE_FUNC_B * (calculatedPoints)) + MIN_DATASEIZE_FUNC_C) / 4;
+	// int ret = ((MIN_DATASEIZE_FUNC_A * pow((double)calculatedPoints, 2)) + (MIN_DATASEIZE_FUNC_B * (calculatedPoints)) + MIN_DATASEIZE_FUNC_C) / 4;
+	int ret = numOfObstacles;
 	if(ret < 2)
 		ret = 2;
 	if(ret >= numOfObstacles)
@@ -165,6 +166,44 @@ struct array* getDataSet(const struct coords *c)
 }
 
 
+struct array* getPointsDataSet(const struct coords *c)
+{
+	size_t size = 0;
+	uint16_t watchRadius = ZERO_QUAD_CHECK_SIDE;
+	while (size < getMinDatasetSize()) {
+		size = 0;
+		for(size_t i = 0; i < graphSize; i++)
+		{
+			if(graph[i]->c.x >= c->x - watchRadius
+			&& graph[i]->c.x <= c->x + watchRadius
+			&& graph[i]->c.y >= c->y - watchRadius
+			&& graph[i]->c.y <= c->y + watchRadius)
+				size++;
+		}
+		if(size < getMinDatasetSize())
+		{
+			cout << "Increacing radius\n";
+			watchRadius += 100;
+		}
+	}
+	// cout << "Size: " << size << endl;
+	size_t iter = 0;
+	struct graphPoint **dataset = (struct graphPoint**)malloc(sizeof(struct graphPoint*) * size);
+	for(size_t i = 0; i < graphSize; i++)
+	{
+		if(graph[i]->c.x >= c->x - watchRadius
+		&& graph[i]->c.x <= c->x + watchRadius
+		&& graph[i]->c.y >= c->y - watchRadius
+		&& graph[i]->c.y <= c->y + watchRadius)
+			dataset[iter++] = graph[i];
+	}
+	struct array *ret = (struct array*)malloc(sizeof(struct array));
+	ret->items = dataset;
+	ret->size = size;
+	return ret;
+}
+
+
 struct array* getDataSet(const struct obstacle *obst, const uint8_t corner)
 {
 	struct graphPoint *p = getPoint(obst, corner);
@@ -199,15 +238,16 @@ bool hasIntersections(const struct vect *v)
 }
 
 
+#define CONST 0.4
 
 bool isDotInside(const struct coords *c)
 {
     for(size_t i = 0; i < numOfObstacles; i++)
 	{
-		if(	(c->x > obstacles[i].c->x)
-		&&  (c->x < obstacles[i].c->x + obstacles[i].a)
-		&&  (c->y > obstacles[i].c->y)
-		&&  (c->y < obstacles[i].c->y + obstacles[i].a))
+		if(	(c->x - CONST > obstacles[i].c->x)
+		&&  (c->x + CONST < obstacles[i].c->x + obstacles[i].a)
+		&&  (c->y - CONST > obstacles[i].c->y)
+		&&  (c->y + CONST < obstacles[i].c->y + obstacles[i].a))
 			return true;
 	}
 	return false;
@@ -250,42 +290,67 @@ struct obstacle*	getIntersected(const struct array *dataset, const struct vect *
 	return o;
 }
 
-void initPoint(struct graphPoint *p, const struct array *obsts)
+// void initGraph(const struct array *obsts)
+// {
+// 	struct vect v;
+// 	struct coords *tgt, *start, endpoint;
+// 	struct obstacle *zeroObst, *oneObst;
+// 	for(size_t i = 0; i < obsts->size; i++)
+// 	{
+// 		zeroObst = &((struct obstacle*)obsts->items)[i];
+// 		for(uint8_t j = 0; j < 4; j++)
+// 		{
+// 			for(size_t ii = 0; ii < obsts->size; ii++)
+// 			{
+// 				oneObst = &((struct obstacle*)obsts->items)[ii];
+// 				for(uint8_t jj = 0; jj < 4; jj++)
+// 				{
+// 					tgt = getCoordsOfCorner(oneObst, jj);
+// 					start = getCoordsOfCorner(zeroObst, j);
+// 					v = createVect(start, tgt);
+// 					endpoint = v.getLastCoords();
+// 					std::cout << "from obst " << i << " corner " << j << " to obst " << ii << " corner " << jj << endl;
+// 					if((v.dx != 0 || v.dy != 0) && !hasIntersections(&v) && !isDotInside(v.c) && !isDotInside(tgt) && !isDotInside(start) && !isDotInside(&endpoint))
+// 					{
+// 						std::cout << "ADD" << endl;
+// 						if(oneObst->corners[jj]->numOfTargets == 0)
+// 							calculatedPoints++;
+// 						if(zeroObst->corners[j]->numOfTargets == 0)
+// 							calculatedPoints++;
+// 						addTarget(zeroObst->corners[j], oneObst->corners[jj]);
+// 					}
+// 					else
+// 						std::cout << "NOPE" << endl;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+
+void initPoint(struct graphPoint *p)
 {
+	struct array* points = getPointsDataSet(&p->c);
+	// cout << "checking point " << p->toString() << endl;
 	struct vect v;
 	struct coords *tgt;
-	for(size_t i = 0; i < obsts->size; i++)
+	struct graphPoint *currP = 0x00;
+	for(int i = 0; i < points->size; i++)
 	{
-		for(uint8_t j = 0; j < 4; j++)
+		currP = ((struct graphPoint**)(points->items))[i];
+		v = createVect(&p->c, &currP->c);
+		if((v.dx != 0 || v.dy != 0) && !hasIntersections(&v) && !isDotInside(&p->c) && !isDotInside(&currP->c))
 		{
-			tgt = getCoordsOfCorner(&((struct obstacle*)obsts->items)[i], j);
-			// tgt = &((struct obstacle*)obsts->items)[i].corners[j]->c;
-			v = createVect(&p->c, tgt);
-			struct coords endpoint = v.getLastCoords();
-
-			// if()
-
-			if((v.dx != 0 || v.dy != 0) && !hasIntersections(&v) && !isDotInside(v.c) && !isDotInside(&endpoint))
-			{
-				// cout << "Creating tgt\n";
-				if(p->numOfTargets == 0)
-					calculatedPoints++;
-				if(((struct obstacle*)obsts->items)[i].corners[j]->numOfTargets == 0)
-					calculatedPoints++;
-				// cout << "Creating from " << p->c.toString() << " to " << ((struct obstacle*)(obsts->items))[i].corners[j]->c.toString() << endl;
-				addTarget(p, ((struct obstacle*)(obsts->items))[i].corners[j]);
-				for(uint8_t h = 0; h < 4; h++)
-					if(((struct obstacle*)obsts->items)[i].corners[h]->numOfTargets == 0)
-						initPoint(((struct obstacle*)obsts->items)[i].corners[h], getCoordsOfCorner(&((struct obstacle*)obsts->items)[i], h));
-				// initObst(&((struct obstacle*)obsts->items)[i]);
-			}
-			else
-			{
-				// cout << "AAA\n" << v.dx << ":" << v.dy << endl;
-			}
-			free(tgt);
+			if(p->numOfTargets == 0)
+				calculatedPoints++;
+			if(currP->numOfTargets == 0)
+				calculatedPoints++;
+			addTarget(p, currP);
+			if(currP->numOfTargets == 1)
+				initPoint(currP);
 		}
 	}
+	free(points);
 }
 
 
@@ -293,9 +358,9 @@ void initPoint(struct graphPoint *p, const struct array *obsts)
 
 void initPoint(struct graphPoint *p, const struct coords *c)
 {
-	struct array *obsts = getDataSet(c);
-	initPoint(p, obsts);
-	free(obsts);
+	// struct array *obsts = getDataSet(c);
+	initPoint(p);
+	// free(obsts);
 }
 
 
@@ -320,16 +385,18 @@ void initObst(const struct obstacle *obst)
 void initGraph(struct graphPoint *startp)
 {
 	struct array *ar = getDataSet(&startp->c);
-	initPoint(startp, ar);
+	// initGraph(ar);
+	initPoint(startp);
 	for(size_t i = 0; i < graphSize; i++)
 	{
 		if(graph[i]->numOfTargets == 0)
 		{
 			free(ar);
 			ar = getDataSet(&graph[i]->c);
-			initPoint(graph[i], ar);
+			initPoint(graph[i]);
 		}
 	}
+	free(ar);
 }
 
 
@@ -445,17 +512,23 @@ void drawEdges(struct graphPoint *p)
 		return;
 	}
 
-	struct coords start, end;
-	start = getCoordsOfPoint(p);
+	// struct coords start, end;
+	// start = getCoordsOfPoint(p);
+	// for(size_t i = 0; i < p->numOfTargets; i++)
+	// {
+	// 	end = getCoordsOfPoint(p->targets[i]);
+	// 	glSetColor(GRAPH_COLOR);
+	// 	drawLine(&start, &end);
+	// 	// drawWeight(&start, &end);
+
+	// 	// cout 	<< "\tLine: " << endl
+	// 	// 		<< "\t\t" << start.x << ":" << start.y << " -> " << end.x << ":" << end.y << endl;
+	// }
+
+	glSetColor(GRAPH_COLOR);
 	for(size_t i = 0; i < p->numOfTargets; i++)
 	{
-		end = getCoordsOfPoint(p->targets[i]);
-		glSetColor(GRAPH_COLOR);
-		drawLine(&start, &end);
-		// drawWeight(&start, &end);
-
-		// cout 	<< "\tLine: " << endl
-		// 		<< "\t\t" << start.x << ":" << start.y << " -> " << end.x << ":" << end.y << endl;
+		drawLine(&p->c, &p->targets[i]->c);
 	}
 }
 
@@ -467,6 +540,11 @@ void drawObstacle(const struct obstacle *o)
 	// cout << "Draw obst: x=" << o->c->x << ", y=" << o->c->y << ", a=" << o->a << endl;
 	glSetColor(OBST_COLOR);
 	drawQuad(o->c->x, o->c->y, o->a);
+	glSetColor(0xFFFFFF);
+	drawText(L"0", 10, o->c->x, o->c->y);
+	drawText(L"1", 10, o->c->x, o->c->y + o->a);
+	drawText(L"2", 10, o->c->x + o->a, o->c->y + o->a);
+	drawText(L"3", 10, o->c->x + o->a, o->c->y);
 }
 
 
@@ -509,9 +587,18 @@ void renderScene(void)
 
 		glLineWidth(5);
 		glSetColor(0x00FF99);
-		drawWay(home, target);
+		// drawWay(home, target);
+		// struct coords ss[] = {{120.000000, 770.000000}, {120.000000, 770.000000}, {109.599998, 349.600006}, {99.599998, 99.599998}, {300.399994, 300.399994}, {300.399994, 99.599998}, {310.399994, 550.400024},
+		// {300.399994, 300.399994}, {99.599998, 99.599998}, {109.599998, 349.600006}, {120.000000, 770.000000}, {350.000000, 10.000000}, {350.000000, 10.000000}};
 
-		drawText(to_wstring(graph[home]->weight), 12, 10, 10);
+		// for(int i = 0; i < sizeof(ss); i++)
+		// {
+		// 	drawCircleFilled(ss[i].x, ss[i].y, 4, 10);
+		// }
+
+		// drawText(to_wstring(graph[home]->weight), 12, 10, 10);
+
+		// drawCircleFilled(283.913025, 550.000000, 10, 100);
 
     glutSwapBuffers();
 }
@@ -571,10 +658,10 @@ int main(int argc, char **argv)
 	obstacles = (struct obstacle*)malloc(sizeof(struct obstacle) * numOfObstacles);
 	obstacles[iter++] = createObstacle(100, 100, 200);
 	obstacles[iter++] = createObstacle(110, 350, 200);
-	obstacles[iter++] = createObstacle(280, 580, 20);
-	obstacles[iter++] = createObstacle(80, 330, 50);
+	// obstacles[iter++] = createObstacle(280, 580, 20);
+	// obstacles[iter++] = createObstacle(80, 330, 50);
 	// obstacles[iter++] = createObstacle(120, 340, 50);
-	obstacles[iter++] = createObstacle(60, 400, 30);
+	// obstacles[iter++] = createObstacle(60, 400, 30);
 	numOfObstacles = iter;
 
 	graphSize = numOfObstacles * 4 + 2;
@@ -595,6 +682,8 @@ int main(int argc, char **argv)
 	graph = (struct graphPoint**)malloc(graphSize * sizeof(struct graphPoint*));
 	target = numOfObstacles * 4;
 	home = target + 1;
+	p2->i = home;
+	p->i = target;
 	graph[target] = p;
 	graph[home] = p2;
 	for(size_t i = 0; i < numOfObstacles * 4; i++)
@@ -621,27 +710,56 @@ int main(int argc, char **argv)
 	c3.x = 200;
 	c3.y = 0;
 
-	// struct graphPoint startp, endp;
-	// startp.c.x = 300;
-	// startp.c.y = 100;
-	// endp.c.x = 300;
-	// endp.c.y = 500;
+
+	// initGraph(p);
+	// calculatedPoints = 0;
+	initGraph(p);
+	
+	
+
+	struct graphPoint startp, endp;
+	startp = *graph[7];
+	endp = *graph[1];
+
+	// startp.c.x = obstacles[2].c->x;
+	// startp.c.y = obstacles[2].c->y;
+	// endp.c.x = obstacles[1].c->x + obstacles[1].a / 2;
+	// endp.c.y = obstacles[1].c->y + obstacles[1].a / 2;
 	// struct vect v = createVect(&startp.c, &endp.c);
-	// struct vect v = createVect(&obstacles[0].corners[2]->c, &obstacles[1].corners[3]->c);
-	// cout << v.toString() << endl << v.c->toString() << endl << "{" << (v.dx + v.c->x) << ":" << (v.dy + v.c->y) << "}" << endl;
-	// cout << getIntersection(&obstacles[0], &v).toString() << endl;
-	// cout << hasIntersections(&v) << endl;
-	// cout << hasIntersection(&obstacles[0], &v) << endl;
+
+	// struct graphPoint tgt;
+
+	// startp.c = *getCoordsOfCorner(&obstacles[2], 0);
+	// endp.c = *getCoordsOfCorner(&obstacles[1], 2);
+	
+	// tgt = &((struct obstacle*)obsts->items)[i].corners[j]->c;
+	
+	struct vect v = createVect(&startp.c, &endp.c);
+	// endp.c = v.getLastCoords();
+
+	cout << "start: " << startp.c.toString() << "\tend: " << endp.c.toString() << endl;
+	int shit = 1;
+	
+	// struct vect v = createVect(&obstacles[1].corners[2]->c, &obstacles[1].corners[3]->c);
+	
+	cout << v.toString() << endl << v.c->toString() << endl << "{" << (v.dx + v.c->x) << ":" << (v.dy + v.c->y) << "}" << endl;
+	cout << getIntersection(&obstacles[shit], &v).toString() << endl;
+	cout << hasIntersections(&v) << endl;
+	cout << hasIntersection(&obstacles[shit], &v) << endl;
+	cout << hasIntersections(&v) << " " << isDotInside(v.c) << " " << isDotInside(&endp.c) << endl;
+
+	
 
 	// struct coords cc = {150, 150};
 
 	// cout << isDotInside(&cc) << endl;
 
-	// exit(0);
-	initGraph(p);
-	calculatedPoints = 0;
-	initGraph(p2);
-	calculateWay(target);
+	if(argc == 1)
+		exit(0);
+	// initGraph(p);
+	// calculatedPoints = 0;
+	// initGraph(p2);
+	// calculateWay(target);
 	// return 0;
 
 	
