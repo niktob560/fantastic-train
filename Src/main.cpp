@@ -62,14 +62,11 @@ struct array
 
 uint8_t getMinDatasetSize()
 {
-	// int ret = ((MIN_DATASEIZE_FUNC_A * pow((double)calculatedPoints, 2)) + (MIN_DATASEIZE_FUNC_B * (calculatedPoints)) + MIN_DATASEIZE_FUNC_C) / 4;
 	int ret = numOfObstacles;
 	if(ret < 2)
 		ret = 2;
 	if(ret >= numOfObstacles)
 		ret = (numOfObstacles) - 1;
-
-	// cout << "min size for " << (int)(calculatedPoints) << ": " << (int)ret << endl;
 	return ret;
 }
 
@@ -148,7 +145,6 @@ struct array* getPointsDataSet(const struct coords *c)
 			watchRadius += 100;
 		}
 	}
-	// cout << "Size: " << size << endl;
 	size_t iter = 0;
 	struct graphPoint **dataset = (struct graphPoint**)malloc(sizeof(struct graphPoint*) * size);
 	for(size_t i = 0; i < graphSize; i++)
@@ -200,7 +196,6 @@ bool isDotInside(const struct coords *c)
 void initPoint(struct graphPoint *p)
 {
 	struct array* points = getPointsDataSet(&p->c);
-	// cout << "checking point " << p->toString() << endl;
 	struct vect v;
 	struct coords *tgt;
 	struct graphPoint *currP = 0x00;
@@ -286,7 +281,6 @@ void calculateWay(size_t index)
 		w = getWayPrice(graph[index], watch);
 		if(watch->weight > graph[index]->weight + w)
 		{
-			// cout << "\t>new weight\n"; 
 			watch->weight = w + graph[index]->weight;
 			ways[watch->i] = index;
 		}
@@ -312,23 +306,23 @@ void drawLine(struct graphPoint *start, struct graphPoint *end)
 }
 
 
-void drawWeight(struct graphPoint *start, struct graphPoint *end)
-{
-	COORDS_DATATYPE w = getWayPrice(start, end),
-					x = end->c.x - start->c.x,
-					y = end->c.y - start->c.y;
-	drawText(to_wstring(w), 12, x, y);
-}
+// void drawWeight(struct graphPoint *start, struct graphPoint *end)
+// {
+// 	COORDS_DATATYPE w = getWayPrice(start, end),
+// 					x = end->c.x - start->c.x,
+// 					y = end->c.y - start->c.y;
+// 	drawText(to_wstring(w), 12, x, y);
+// }
 
 
-void drawWeight(struct coords *start, struct coords *end)
-{
-	glSetColor(0xFFFFFF);
-	COORDS_DATATYPE w = getWayPrice(start, end),
-					x = (end->x + start->x) / 2,
-					y = (end->y + start->y) / 2;
-	drawText(to_wstring(w), 10, x, y);
-}
+// void drawWeight(struct coords *start, struct coords *end)
+// {
+// 	glSetColor(0xFFFFFF);
+// 	COORDS_DATATYPE w = getWayPrice(start, end),
+// 					x = (end->x + start->x) / 2,
+// 					y = (end->y + start->y) / 2;
+// 	drawText(to_wstring(w), 10, x, y);
+// }
 
 
 
@@ -336,23 +330,8 @@ void drawEdges(struct graphPoint *p)
 {
 	if(p == NULL || p->numOfTargets == 0) 
 	{
-		// cout << "SHIT\n";
 		return;
 	}
-
-	// struct coords start, end;
-	// start = getCoordsOfPoint(p);
-	// for(size_t i = 0; i < p->numOfTargets; i++)
-	// {
-	// 	end = getCoordsOfPoint(p->targets[i]);
-	// 	glSetColor(GRAPH_COLOR);
-	// 	drawLine(&start, &end);
-	// 	// drawWeight(&start, &end);
-
-	// 	// cout 	<< "\tLine: " << endl
-	// 	// 		<< "\t\t" << start.x << ":" << start.y << " -> " << end.x << ":" << end.y << endl;
-	// }
-
 	glSetColor(GRAPH_COLOR);
 	for(size_t i = 0; i < p->numOfTargets; i++)
 	{
@@ -369,7 +348,7 @@ void drawObstacle(const struct obstacle *o)
 	glSetColor(OBST_COLOR);
 	// drawQuad(o->c->x, o->c->y, o->a);
 	drawRect(o->c->x, o->c->y, o->a, o->b);
-	glSetColor(0xFFFFFF);
+	glSetColor(DATA_COLOR);
 	drawText(L"0", 10, o->c->x, o->c->y);
 	drawText(L"1", 10, o->c->x, o->c->y + o->b);
 	drawText(L"2", 10, o->c->x + o->a, o->c->y + o->b);
@@ -401,33 +380,12 @@ void renderScene(void)
 		for(size_t i = 0; i < graphSize; i++)
 		{
 			glLineWidth(1);
-			// cout << "edge from:{" << graph[i]->c->x << ":" << graph[i]->c->y << "} to {" << endl;
 			drawEdges(graph[i]);
 		}
-
-		// cout << "{";
-		// for(int i = 0; i < graphSize; i++)
-		// 	cout << i << ((i < graphSize - 1)? ", " : " ");
-		// cout << "}\n";
-		// cout << "{";
-		// for(int i = 0; i < graphSize; i++)
-		// 	cout << ways[i] << ((i < graphSize - 1)? ", " : " ");
-		// cout << "}\n";
 
 		glLineWidth(5);
 		glSetColor(0x00FF99);
 		drawWay(home, target);
-		// struct coords ss[] = {{120.000000, 770.000000}, {120.000000, 770.000000}, {109.599998, 349.600006}, {99.599998, 99.599998}, {300.399994, 300.399994}, {300.399994, 99.599998}, {310.399994, 550.400024},
-		// {300.399994, 300.399994}, {99.599998, 99.599998}, {109.599998, 349.600006}, {120.000000, 770.000000}, {350.000000, 10.000000}, {350.000000, 10.000000}};
-
-		// for(int i = 0; i < sizeof(ss); i++)
-		// {
-		// 	drawCircleFilled(ss[i].x, ss[i].y, 4, 10);
-		// }
-
-		// drawText(to_wstring(graph[home]->weight), 12, 10, 10);
-
-		// drawCircleFilled(283.913025, 550.000000, 10, 100);
 
     glutSwapBuffers();
 }
@@ -541,57 +499,13 @@ int main(int argc, char **argv)
 	c3.y = 0;
 
 
-	// initGraph(p);
-	// calculatedPoints = 0;
-	// initGraph(p);
 	initPoint(p);
+	calculateWay(target);
 	
 	
-
-	struct graphPoint startp, endp;
-	startp = *graph[7];
-	endp = *graph[1];
-
-	// startp.c.x = obstacles[2].c->x;
-	// startp.c.y = obstacles[2].c->y;
-	// endp.c.x = obstacles[1].c->x + obstacles[1].a / 2;
-	// endp.c.y = obstacles[1].c->y + obstacles[1].a / 2;
-	// struct vect v = createVect(&startp.c, &endp.c);
-
-	// struct graphPoint tgt;
-
-	// startp.c = *getCoordsOfCorner(&obstacles[2], 0);
-	// endp.c = *getCoordsOfCorner(&obstacles[1], 2);
-	
-	// tgt = &((struct obstacle*)obsts->items)[i].corners[j]->c;
-	
-	struct vect v = createVect(&startp.c, &endp.c);
-	// endp.c = v.getLastCoords();
-
-	cout << "start: " << startp.c.toString() << "\tend: " << endp.c.toString() << endl;
-	int shit = 1;
-	
-	// struct vect v = createVect(&obstacles[1].corners[2]->c, &obstacles[1].corners[3]->c);
-	
-	cout << v.toString() << endl << v.c->toString() << endl << "{" << (v.dx + v.c->x) << ":" << (v.dy + v.c->y) << "}" << endl;
-	cout << getIntersection(&obstacles[shit], &v).toString() << endl;
-	cout << hasIntersections(&v) << endl;
-	cout << hasIntersection(&obstacles[shit], &v) << endl;
-	cout << hasIntersections(&v) << " " << isDotInside(v.c) << " " << isDotInside(&endp.c) << endl;
-
-	
-
-	// struct coords cc = {150, 150};
-
-	// cout << isDotInside(&cc) << endl;
 
 	if(argc == 1)
 		exit(0);
-	// initGraph(p);
-	// calculatedPoints = 0;
-	// initGraph(p2);
-	calculateWay(target);
-	// return 0;
 
 	
 
