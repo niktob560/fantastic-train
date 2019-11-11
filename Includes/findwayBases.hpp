@@ -72,7 +72,7 @@ struct obstacle
 {
     struct coords      *c = NULL;
     struct graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
-    COORDS_DATATYPE     a = 0;
+    COORDS_DATATYPE     a = 0, b = 0;
 };
 
 struct baseline
@@ -122,6 +122,8 @@ bool            isDotInside(const struct coords *dot, const struct obstacle *obs
 struct baseline vectToBaseline(const struct vect *v);
 
 COORDS_DATATYPE getLen(const struct coords *c1, const struct coords *c2);
+
+struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b);
 
 struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a);
 

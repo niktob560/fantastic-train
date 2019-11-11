@@ -101,88 +101,6 @@ struct coords   getIntersection(const struct obstacle *obst, const struct vect *
         inter2 = {0, 0};
     }
 
-    // if(!inter2.eq(0, 0))
-    // {
-    //     if(!inter1.eq(0, 0))
-    //     {
-    //         if(l1 <= lv)
-    //         {
-    //             if(l2 <= lv)
-    //             {
-    //                 if(l2 < l1)
-    //                 {
-    //                     inter1 = inter2;
-    //                     l1 = l2;
-
-    //                     l2 = 0;
-    //                     inter2 = {0, 0};
-    //                 }
-    //             }
-    //             else 
-    //             {
-    //                 l2 = 0;
-    //                 inter2 = {0, 0};
-    //             }
-    //         }
-    //         else
-    //         {
-    //             if(l2 <= lv)
-    //             {
-    //                 inter1 = inter2;
-    //                 l1 = l2;
-
-    //                 l2 = 0;
-    //                 inter2 = {0, 0};
-    //             }
-    //             else
-    //             {
-    //                 l1 = 0;
-    //                 inter1 = {0, 0};
-
-    //                 l2 = 0;
-    //                 inter2 = {0, 0};
-    //             }
-                
-    //         }
-    //     }
-    //     else
-    //     {
-    //         if(l2 <= lv)
-    //         {
-    //             inter1 = inter2;
-    //             l1 = l2;
-
-    //             l2 = 0;
-    //             inter2 = {0, 0};
-    //         }
-    //         else
-    //         {
-    //             inter1 = {0, 0};
-    //             l1 = 0;
-
-    //             l2 = 0;
-    //             inter2 = {0, 0};
-    //         }
-    //     }   
-    // }
-    // else if(!inter1.eq(0, 0))
-    // {
-    //     if(l1 > lv)
-    //     {
-    //         inter1 = {0, 0};
-    //         l1 = 0;
-    //     }
-    //     l2 = 0;
-    //     inter2 = {0, 0};
-    // }
-    // else 
-    // {
-    //     l1 = 0;
-    //     inter1 = {0, 0};
-
-    //     l2 = 0;
-    //     inter2 = {0, 0};
-    // }
 
     b2.k = 0;
     b2.b = obst->c->y;
@@ -215,7 +133,7 @@ struct coords   getIntersection(const struct obstacle *obst, const struct vect *
     }
 
     
-    b2.b += obst->a;
+    b2.b += obst->b;
 
     inter2 = getIntersection(&b1, &b2);
     if(isDotInside(&inter2, obst))
@@ -246,81 +164,6 @@ struct coords   getIntersection(const struct obstacle *obst, const struct vect *
     }
 
     return inter1;
-    
-    // struct coords   c,
-    //                 c2,
-    //                 c3;
-
-    // struct baseline b,
-    //                 b2;
-
-    // COORDS_DATATYPE l1,
-    //                 l2,
-    //                 l3;
-    // c3 = {(v->dx + v->c->x), (v->dy + v->c->y)};
-    // l3 = getLen(v->c, &c3);
-
-    // b.k = INF;
-    // b.b = obst->c->x;
-    // b2 = vectToBaseline(v);
-    // c = getIntersection(&b, &b2);
-
-    // b.k = INF;
-    // b.b = obst->c->x + obst->a;
-    // c2 = getIntersection(&b, &b2);
-    // l1 = getLen(v->c, &c);
-    // if(!isDotInside(&c, obst) && isDotInside(&c2, obst))
-    // {
-    //     c = c2;
-    // }
-    // else if(isDotInside(&c, obst) && isDotInside(&c2, obst))
-    // {
-    //     l2 = getLen(v->c, &c2);
-    //     if(l1 < l2 && l1 <= l3)
-    //         c = c2;
-    // }
-
-    // b.k = 0;
-    // b.b = obst->c->y;
-    // c2 = getIntersection(&b, &b2);
-    // if(isDotInside(&c2, obst))
-    // {
-    //     l2 = getLen(v->c, &c2);
-    //     if(l1 < l2 && l1 <= l3)
-    //         c = c2;
-    // }
-
-
-    // b.k = 0;
-    // b.b = obst->c->y + obst->a;
-    // c2 = getIntersection(&b, &b2);
-    // if(isDotInside(&c2, obst))
-    // {
-    //     l2 = getLen(v->c, &c2);
-    //     if(l2 < l1 && l2 <= l3)
-    //         c = c2;
-    // }
-
-    // if(isDotInside(&c, obst))
-    // {
-    //     if(isDotInside(&c2, obst))
-    //     {
-    //         l1 = getLen(v->c, &c);
-    //         l2 = getLen(v->c, &c2);
-    //         if(l1 < l2 && l1 <= l3)
-    //             return c;
-    //         else if(l2 <= l3)
-    //             return c2;
-    //         else
-    //             return {0, 0};
-    //     }
-    //     else
-    //         return c;
-    // }
-    // else if(isDotInside(&c2, obst) &&  getLen(v->c, &c2) <= l3)
-    //     return c2;
-    // else
-    //     return {0, 0};
 }
 
 
@@ -331,7 +174,7 @@ bool            isDotInside(const struct coords *dot, const struct obstacle *obs
     return      (dot->x >= obstacle->c->x)
             &&  (dot->x <= obstacle->c->x + obstacle->a)
             &&  (dot->y >= obstacle->c->y)
-            &&  (dot->y <= obstacle->c->y + obstacle->a);
+            &&  (dot->y <= obstacle->c->y + obstacle->b);
 }
 
 struct baseline vectToBaseline(const struct vect *v)
@@ -371,6 +214,26 @@ struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
     return ret;
 }
 
+
+struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b)
+{
+    struct obstacle ret;
+    ret.c = (struct coords*)malloc(sizeof(struct coords));
+    ret.c->x = x;
+    ret.c->y = y;
+    ret.a    = a;
+    ret.b    = b;
+    for(uint8_t i = 0; i < 4; i++)
+    {
+        ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+        struct coords *c = getCoordsOfCorner(&ret, i);
+        ret.corners[i]->c = *c;
+        free(c);
+    }
+
+    return ret;
+}
+
 struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a)
 {
     struct obstacle ret;
@@ -378,10 +241,13 @@ struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y,
     ret.c->x = x;
     ret.c->y = y;
     ret.a    = a;
+    ret.b    = a;
     for(uint8_t i = 0; i < 4; i++)
     {
         ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
-        ret.corners[i]->c = *getCoordsOfCorner(&ret, i);
+        struct coords *c = getCoordsOfCorner(&ret, i);
+        ret.corners[i]->c = *c;
+        free(c);
     }
 
     return ret;
@@ -403,7 +269,7 @@ struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t cor
         case CORNER_LEFT_TOP:
         {
             ret->x = obst->c->x - CONST;
-            ret->y = obst->c->y + obst->a + CONST;
+            ret->y = obst->c->y + obst->b + CONST;
             break;
         }
         case CORNER_RIGHT_BOT:
@@ -415,7 +281,7 @@ struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t cor
         case CORNER_RIGHT_TOP:
         {
             ret->x = obst->c->x + obst->a + CONST;
-            ret->y = obst->c->y + obst->a + CONST;
+            ret->y = obst->c->y + obst->b + CONST;
             break;
         }
     }

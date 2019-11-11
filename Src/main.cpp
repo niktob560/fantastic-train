@@ -367,11 +367,12 @@ void drawObstacle(const struct obstacle *o)
 {
 	// cout << "Draw obst: x=" << o->c->x << ", y=" << o->c->y << ", a=" << o->a << endl;
 	glSetColor(OBST_COLOR);
-	drawQuad(o->c->x, o->c->y, o->a);
+	// drawQuad(o->c->x, o->c->y, o->a);
+	drawRect(o->c->x, o->c->y, o->a, o->b);
 	glSetColor(0xFFFFFF);
 	drawText(L"0", 10, o->c->x, o->c->y);
-	drawText(L"1", 10, o->c->x, o->c->y + o->a);
-	drawText(L"2", 10, o->c->x + o->a, o->c->y + o->a);
+	drawText(L"1", 10, o->c->x, o->c->y + o->b);
+	drawText(L"2", 10, o->c->x + o->a, o->c->y + o->b);
 	drawText(L"3", 10, o->c->x + o->a, o->c->y);
 }
 
@@ -395,7 +396,7 @@ void renderScene(void)
 		{
 			drawObstacle(&obstacles[i]);
 			glSetColor(DATA_COLOR);
-			drawText(to_wstring(i), 12, obstacles[i].c->x + obstacles[i].a / 2, obstacles[i].c->y + obstacles[i].a / 2);
+			drawText(to_wstring(i), 12, obstacles[i].c->x + obstacles[i].a / 2, obstacles[i].c->y + obstacles[i].b / 2);
 		}
 		for(size_t i = 0; i < graphSize; i++)
 		{
@@ -415,7 +416,7 @@ void renderScene(void)
 
 		glLineWidth(5);
 		glSetColor(0x00FF99);
-		// drawWay(home, target);
+		drawWay(home, target);
 		// struct coords ss[] = {{120.000000, 770.000000}, {120.000000, 770.000000}, {109.599998, 349.600006}, {99.599998, 99.599998}, {300.399994, 300.399994}, {300.399994, 99.599998}, {310.399994, 550.400024},
 		// {300.399994, 300.399994}, {99.599998, 99.599998}, {109.599998, 349.600006}, {120.000000, 770.000000}, {350.000000, 10.000000}, {350.000000, 10.000000}};
 
@@ -486,6 +487,7 @@ int main(int argc, char **argv)
 	obstacles = (struct obstacle*)malloc(sizeof(struct obstacle) * numOfObstacles);
 	obstacles[iter++] = createObstacle(100, 100, 200);
 	obstacles[iter++] = createObstacle(110, 350, 200);
+	obstacles[iter++] = createObstacle(510, 350, 200, 100);
 	// obstacles[iter++] = createObstacle(280, 580, 20);
 	// obstacles[iter++] = createObstacle(80, 330, 50);
 	// obstacles[iter++] = createObstacle(120, 340, 50);
@@ -503,8 +505,8 @@ int main(int argc, char **argv)
 	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
 	struct coords c2;
-	c2.x = 120;
-	c2.y = 770;
+	c2.x = 80;
+	c2.y = 440;
 	p2->c = c2;
 
 	graph = (struct graphPoint**)malloc(graphSize * sizeof(struct graphPoint*));
@@ -588,7 +590,7 @@ int main(int argc, char **argv)
 	// initGraph(p);
 	// calculatedPoints = 0;
 	// initGraph(p2);
-	// calculateWay(target);
+	calculateWay(target);
 	// return 0;
 
 	

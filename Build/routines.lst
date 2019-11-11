@@ -1,4 +1,4 @@
-GAS LISTING /tmp/ccM3huFJ.s 			page 1
+GAS LISTING /tmp/cc0dQez4.s 			page 1
 
 
    1              		.file	"routines.cpp"
@@ -58,7 +58,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   45              		.globl	_Z8drawRectffff
   47              	_Z8drawRectffff:
   48              	.LVL2:
-GAS LISTING /tmp/ccM3huFJ.s 			page 2
+GAS LISTING /tmp/cc0dQez4.s 			page 2
 
 
   49              	.LFB1961:
@@ -118,7 +118,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   74 009a E8000000 		call	glVertex2d@PLT
   74      00
   75              	.LVL4:
-GAS LISTING /tmp/ccM3huFJ.s 			page 3
+GAS LISTING /tmp/cc0dQez4.s 			page 3
 
 
   27:Src/routines.cpp **** 	glVertex2d(x, y + b);
@@ -178,7 +178,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  112      00
  113              	.LVL10:
   31:Src/routines.cpp **** }
-GAS LISTING /tmp/ccM3huFJ.s 			page 4
+GAS LISTING /tmp/cc0dQez4.s 			page 4
 
 
  114              		.loc 1 31 1 view .LVU27
@@ -238,7 +238,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  153              		.loc 1 37 12 view .LVU36
  154 015b F30F5AC0 		cvtss2sd	%xmm0, %xmm0
  155 015f F20F104C 		movsd	24(%rsp), %xmm1
-GAS LISTING /tmp/ccM3huFJ.s 			page 5
+GAS LISTING /tmp/cc0dQez4.s 			page 5
 
 
  155      2418
@@ -298,7 +298,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  198 01a4 4883EC28 		subq	$40, %rsp
  199              		.cfi_def_cfa_offset 64
  200 01a8 F30F1144 		movss	%xmm0, 24(%rsp)
-GAS LISTING /tmp/ccM3huFJ.s 			page 6
+GAS LISTING /tmp/cc0dQez4.s 			page 6
 
 
  200      2418
@@ -358,7 +358,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  240      240C
  241 01ff F30F115C 		movss	%xmm3, 20(%rsp)
  241      2414
-GAS LISTING /tmp/ccM3huFJ.s 			page 7
+GAS LISTING /tmp/cc0dQez4.s 			page 7
 
 
  242              	.LVL23:
@@ -418,7 +418,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  280              	.LVL31:
  281              		.loc 1 53 1 view .LVU73
  282 023f 5D       		popq	%rbp
-GAS LISTING /tmp/ccM3huFJ.s 			page 8
+GAS LISTING /tmp/cc0dQez4.s 			page 8
 
 
  283              		.cfi_def_cfa_offset 8
@@ -478,7 +478,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   60:Src/routines.cpp ****         float theta = 2.0f * 3.1415926f * float(ii) / float(numSegments);//get the current angle
  327              		.loc 1 60 9 discriminator 2 view .LVU83
  328              		.loc 1 60 43 is_stmt 0 discriminator 2 view .LVU84
-GAS LISTING /tmp/ccM3huFJ.s 			page 9
+GAS LISTING /tmp/cc0dQez4.s 			page 9
 
 
  329 026e 660FEFC0 		pxor	%xmm0, %xmm0
@@ -538,7 +538,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  366              	.LVL43:
  367              	.LBE49:
   58:Src/routines.cpp ****     {
-GAS LISTING /tmp/ccM3huFJ.s 			page 10
+GAS LISTING /tmp/cc0dQez4.s 			page 10
 
 
  368              		.loc 1 58 5 is_stmt 1 discriminator 2 view .LVU97
@@ -598,7 +598,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   12:Src/routines.cpp **** 	glVertex2d(x1, y1);
  411              		.loc 1 12 9 is_stmt 0 view .LVU108
  412 02fb BF010000 		movl	$1, %edi
-GAS LISTING /tmp/ccM3huFJ.s 			page 11
+GAS LISTING /tmp/cc0dQez4.s 			page 11
 
 
  412      00
@@ -658,7 +658,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   18:Src/routines.cpp **** }
  444              		.loc 1 18 21 is_stmt 0 view .LVU118
  445 0359 BF0A0000 		movl	$10, %edi
-GAS LISTING /tmp/ccM3huFJ.s 			page 12
+GAS LISTING /tmp/cc0dQez4.s 			page 12
 
 
  445      00
@@ -718,7 +718,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
    2:/usr/include/c++/9.2.0/cmath **** 
    3:/usr/include/c++/9.2.0/cmath **** // Copyright (C) 1997-2019 Free Software Foundation, Inc.
    4:/usr/include/c++/9.2.0/cmath **** //
-GAS LISTING /tmp/ccM3huFJ.s 			page 13
+GAS LISTING /tmp/cc0dQez4.s 			page 13
 
 
    5:/usr/include/c++/9.2.0/cmath **** // This file is part of the GNU ISO C++ Library.  This library is free
@@ -778,7 +778,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   59:/usr/include/c++/9.2.0/cmath **** #undef cos
   60:/usr/include/c++/9.2.0/cmath **** #undef cosh
   61:/usr/include/c++/9.2.0/cmath **** #undef exp
-GAS LISTING /tmp/ccM3huFJ.s 			page 14
+GAS LISTING /tmp/cc0dQez4.s 			page 14
 
 
   62:/usr/include/c++/9.2.0/cmath **** #undef fabs
@@ -838,7 +838,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  116:/usr/include/c++/9.2.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
  117:/usr/include/c++/9.2.0/cmath ****                                     double>::__type
  118:/usr/include/c++/9.2.0/cmath ****     asin(_Tp __x)
-GAS LISTING /tmp/ccM3huFJ.s 			page 15
+GAS LISTING /tmp/cc0dQez4.s 			page 15
 
 
  119:/usr/include/c++/9.2.0/cmath ****     { return __builtin_asin(__x); }
@@ -898,7 +898,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  173:/usr/include/c++/9.2.0/cmath ****   template<typename _Tp>
  174:/usr/include/c++/9.2.0/cmath ****     inline _GLIBCXX_CONSTEXPR
  175:/usr/include/c++/9.2.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
-GAS LISTING /tmp/ccM3huFJ.s 			page 16
+GAS LISTING /tmp/cc0dQez4.s 			page 16
 
 
  176:/usr/include/c++/9.2.0/cmath ****                                     double>::__type
@@ -958,7 +958,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  212:/usr/include/c++/9.2.0/cmath ****     inline _GLIBCXX_CONSTEXPR
  213:/usr/include/c++/9.2.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
  214:/usr/include/c++/9.2.0/cmath ****                                     double>::__type
-GAS LISTING /tmp/ccM3huFJ.s 			page 17
+GAS LISTING /tmp/cc0dQez4.s 			page 17
 
 
  215:/usr/include/c++/9.2.0/cmath ****     cosh(_Tp __x)
@@ -1018,7 +1018,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  269:/usr/include/c++/9.2.0/cmath ****     inline _GLIBCXX_CONSTEXPR
  270:/usr/include/c++/9.2.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
  271:/usr/include/c++/9.2.0/cmath ****                                     double>::__type
-GAS LISTING /tmp/ccM3huFJ.s 			page 18
+GAS LISTING /tmp/cc0dQez4.s 			page 18
 
 
  272:/usr/include/c++/9.2.0/cmath ****     floor(_Tp __x)
@@ -1078,7 +1078,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  326:/usr/include/c++/9.2.0/cmath **** 
  327:/usr/include/c++/9.2.0/cmath ****   template<typename _Tp>
  328:/usr/include/c++/9.2.0/cmath ****     inline _GLIBCXX_CONSTEXPR
-GAS LISTING /tmp/ccM3huFJ.s 			page 19
+GAS LISTING /tmp/cc0dQez4.s 			page 19
 
 
  329:/usr/include/c++/9.2.0/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
@@ -1138,7 +1138,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  383:/usr/include/c++/9.2.0/cmath **** 
  384:/usr/include/c++/9.2.0/cmath ****   using ::pow;
  385:/usr/include/c++/9.2.0/cmath **** 
-GAS LISTING /tmp/ccM3huFJ.s 			page 20
+GAS LISTING /tmp/cc0dQez4.s 			page 20
 
 
  386:/usr/include/c++/9.2.0/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
@@ -1198,7 +1198,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  506 03dd F20F1174 		movsd	%xmm6, 32(%rsp)
  506      2420
  507 03e3 660F28CE 		movapd	%xmm6, %xmm1
-GAS LISTING /tmp/ccM3huFJ.s 			page 21
+GAS LISTING /tmp/cc0dQez4.s 			page 21
 
 
  508 03e7 F20F1144 		movsd	%xmm0, 40(%rsp)
@@ -1258,7 +1258,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  541      4C2430
  542 044e 66410F28 		movapd	%xmm9, %xmm1
  542      C9
-GAS LISTING /tmp/ccM3huFJ.s 			page 22
+GAS LISTING /tmp/cc0dQez4.s 			page 22
 
 
  543 0453 F20F115C 		movsd	%xmm3, 56(%rsp)
@@ -1318,7 +1318,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   80:Src/routines.cpp **** 	glVertex2d(x + a * sin(alpha), y - a * cos(alpha));
  581              		.loc 1 80 2 is_stmt 1 view .LVU161
  185:/usr/include/c++/9.2.0/cmath **** 
-GAS LISTING /tmp/ccM3huFJ.s 			page 23
+GAS LISTING /tmp/cc0dQez4.s 			page 23
 
 
  582              		.loc 2 185 5 view .LVU162
@@ -1378,7 +1378,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  618 0501 4883C448 		addq	$72, %rsp
  619              		.cfi_def_cfa_offset 8
  620 0505 C3       		ret
-GAS LISTING /tmp/ccM3huFJ.s 			page 24
+GAS LISTING /tmp/cc0dQez4.s 			page 24
 
 
  621              		.cfi_endproc
@@ -1438,7 +1438,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  665              		.cfi_def_cfa_register 6
  666 051b 4157     		pushq	%r15
  667 051d 4156     		pushq	%r14
-GAS LISTING /tmp/ccM3huFJ.s 			page 25
+GAS LISTING /tmp/cc0dQez4.s 			page 25
 
 
  668 051f 4155     		pushq	%r13
@@ -1498,7 +1498,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  710              	.LVL83:
   98:Src/routines.cpp **** 		//const wchar_t * tarr = (wchar_t*)malloc(text.length());
   99:Src/routines.cpp **** 		//wstrcpy(tarr, text);
-GAS LISTING /tmp/ccM3huFJ.s 			page 26
+GAS LISTING /tmp/cc0dQez4.s 			page 26
 
 
  100:Src/routines.cpp **** 		hack_italic_font.FaceSize(size);
@@ -1558,7 +1558,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   29:/usr/include/FTGL/FTPoint.h **** #   warning This header is deprecated. Please use <FTGL/ftgl.h> from now.
   30:/usr/include/FTGL/FTPoint.h **** #   include <FTGL/ftgl.h>
   31:/usr/include/FTGL/FTPoint.h **** #endif
-GAS LISTING /tmp/ccM3huFJ.s 			page 27
+GAS LISTING /tmp/cc0dQez4.s 			page 27
 
 
   32:/usr/include/FTGL/FTPoint.h **** 
@@ -1618,7 +1618,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  755              		.loc 3 52 23 is_stmt 0 view .LVU212
  756 05ae 48C74580 		movq	$0x000000000, -128(%rbp)
  756      00000000 
-GAS LISTING /tmp/ccM3huFJ.s 			page 28
+GAS LISTING /tmp/cc0dQez4.s 			page 28
 
 
  757              	.LVL87:
@@ -1678,7 +1678,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
   47:/usr/include/c++/9.2.0/bits/basic_string.h **** #if __cplusplus >= 201703L
   48:/usr/include/c++/9.2.0/bits/basic_string.h **** # include <string_view>
   49:/usr/include/c++/9.2.0/bits/basic_string.h **** #endif
-GAS LISTING /tmp/ccM3huFJ.s 			page 29
+GAS LISTING /tmp/cc0dQez4.s 			page 29
 
 
   50:/usr/include/c++/9.2.0/bits/basic_string.h **** 
@@ -1738,7 +1738,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  104:/usr/include/c++/9.2.0/bits/basic_string.h ****       // type used for positions in insert, erase etc.
  105:/usr/include/c++/9.2.0/bits/basic_string.h **** #if __cplusplus < 201103L
  106:/usr/include/c++/9.2.0/bits/basic_string.h ****       typedef iterator __const_iterator;
-GAS LISTING /tmp/ccM3huFJ.s 			page 30
+GAS LISTING /tmp/cc0dQez4.s 			page 30
 
 
  107:/usr/include/c++/9.2.0/bits/basic_string.h **** #else
@@ -1798,7 +1798,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  161:/usr/include/c++/9.2.0/bits/basic_string.h **** #endif
  162:/usr/include/c++/9.2.0/bits/basic_string.h **** 
  163:/usr/include/c++/9.2.0/bits/basic_string.h **** 	pointer _M_p; // The actual data.
-GAS LISTING /tmp/ccM3huFJ.s 			page 31
+GAS LISTING /tmp/cc0dQez4.s 			page 31
 
 
  164:/usr/include/c++/9.2.0/bits/basic_string.h ****       };
@@ -1858,7 +1858,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  218:/usr/include/c++/9.2.0/bits/basic_string.h ****       }
  219:/usr/include/c++/9.2.0/bits/basic_string.h **** 
  220:/usr/include/c++/9.2.0/bits/basic_string.h ****       bool
-GAS LISTING /tmp/ccM3huFJ.s 			page 32
+GAS LISTING /tmp/cc0dQez4.s 			page 32
 
 
  221:/usr/include/c++/9.2.0/bits/basic_string.h ****       _M_is_local() const
@@ -1918,7 +1918,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  275:/usr/include/c++/9.2.0/bits/basic_string.h ****       // For forward_iterators up to random_access_iterators, used for
  276:/usr/include/c++/9.2.0/bits/basic_string.h ****       // string::iterator, _CharT*, etc.
  277:/usr/include/c++/9.2.0/bits/basic_string.h ****       template<typename _FwdIterator>
-GAS LISTING /tmp/ccM3huFJ.s 			page 33
+GAS LISTING /tmp/cc0dQez4.s 			page 33
 
 
  278:/usr/include/c++/9.2.0/bits/basic_string.h ****         void
@@ -1978,7 +1978,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  332:/usr/include/c++/9.2.0/bits/basic_string.h **** 	return __testoff ? __off : this->size() - __pos;
  333:/usr/include/c++/9.2.0/bits/basic_string.h ****       }
  334:/usr/include/c++/9.2.0/bits/basic_string.h **** 
-GAS LISTING /tmp/ccM3huFJ.s 			page 34
+GAS LISTING /tmp/cc0dQez4.s 			page 34
 
 
  335:/usr/include/c++/9.2.0/bits/basic_string.h ****       // True if _Rep and source do not overlap.
@@ -2038,7 +2038,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  389:/usr/include/c++/9.2.0/bits/basic_string.h ****       { _S_copy_chars(__p, __k1.base(), __k2.base()); }
  390:/usr/include/c++/9.2.0/bits/basic_string.h **** 
  391:/usr/include/c++/9.2.0/bits/basic_string.h ****       static void
-GAS LISTING /tmp/ccM3huFJ.s 			page 35
+GAS LISTING /tmp/cc0dQez4.s 			page 35
 
 
  392:/usr/include/c++/9.2.0/bits/basic_string.h ****       _S_copy_chars(_CharT* __p, _CharT* __k1, _CharT* __k2) _GLIBCXX_NOEXCEPT
@@ -2098,7 +2098,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  446:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __str  Source string.
  447:/usr/include/c++/9.2.0/bits/basic_string.h ****        */
  448:/usr/include/c++/9.2.0/bits/basic_string.h ****       basic_string(const basic_string& __str)
-GAS LISTING /tmp/ccM3huFJ.s 			page 36
+GAS LISTING /tmp/cc0dQez4.s 			page 36
 
 
  449:/usr/include/c++/9.2.0/bits/basic_string.h ****       : _M_dataplus(_M_local_data(),
@@ -2158,7 +2158,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  503:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __s  Source character %array.
  504:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __n  Number of characters to copy.
  505:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __a  Allocator to use (default is default allocator).
-GAS LISTING /tmp/ccM3huFJ.s 			page 37
+GAS LISTING /tmp/cc0dQez4.s 			page 37
 
 
  506:/usr/include/c++/9.2.0/bits/basic_string.h ****        *
@@ -2218,7 +2218,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  560:/usr/include/c++/9.2.0/bits/basic_string.h **** 	else
  561:/usr/include/c++/9.2.0/bits/basic_string.h **** 	  {
  562:/usr/include/c++/9.2.0/bits/basic_string.h **** 	    _M_data(__str._M_data());
-GAS LISTING /tmp/ccM3huFJ.s 			page 38
+GAS LISTING /tmp/cc0dQez4.s 			page 38
 
 
  563:/usr/include/c++/9.2.0/bits/basic_string.h **** 	    _M_capacity(__str._M_allocated_capacity);
@@ -2278,7 +2278,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  617:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __a  Allocator to use (default is default allocator).
  618:/usr/include/c++/9.2.0/bits/basic_string.h ****        */
  619:/usr/include/c++/9.2.0/bits/basic_string.h **** #if __cplusplus >= 201103L
-GAS LISTING /tmp/ccM3huFJ.s 			page 39
+GAS LISTING /tmp/cc0dQez4.s 			page 39
 
 
  620:/usr/include/c++/9.2.0/bits/basic_string.h ****       template<typename _InputIterator,
@@ -2338,7 +2338,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  674:/usr/include/c++/9.2.0/bits/basic_string.h **** 		// deallocate it before replacing current allocator.
  675:/usr/include/c++/9.2.0/bits/basic_string.h **** 		if (__str.size() <= _S_local_capacity)
  676:/usr/include/c++/9.2.0/bits/basic_string.h **** 		  {
-GAS LISTING /tmp/ccM3huFJ.s 			page 40
+GAS LISTING /tmp/cc0dQez4.s 			page 40
 
 
  677:/usr/include/c++/9.2.0/bits/basic_string.h **** 		    _M_destroy(_M_allocated_capacity);
@@ -2398,7 +2398,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  731:/usr/include/c++/9.2.0/bits/basic_string.h ****       basic_string&
  732:/usr/include/c++/9.2.0/bits/basic_string.h ****       operator=(basic_string&& __str)
  733:/usr/include/c++/9.2.0/bits/basic_string.h ****       noexcept(_Alloc_traits::_S_nothrow_move())
-GAS LISTING /tmp/ccM3huFJ.s 			page 41
+GAS LISTING /tmp/cc0dQez4.s 			page 41
 
 
  734:/usr/include/c++/9.2.0/bits/basic_string.h ****       {
@@ -2458,7 +2458,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  788:/usr/include/c++/9.2.0/bits/basic_string.h ****       }
  789:/usr/include/c++/9.2.0/bits/basic_string.h **** 
  790:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
-GAS LISTING /tmp/ccM3huFJ.s 			page 42
+GAS LISTING /tmp/cc0dQez4.s 			page 42
 
 
  791:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Set value to string constructed from initializer %list.
@@ -2518,7 +2518,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  845:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
  846:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  Returns a read-only (constant) iterator that points one past the
  847:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  last character in the %string.
-GAS LISTING /tmp/ccM3huFJ.s 			page 43
+GAS LISTING /tmp/cc0dQez4.s 			page 43
 
 
  848:/usr/include/c++/9.2.0/bits/basic_string.h ****        */
@@ -2578,7 +2578,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  902:/usr/include/c++/9.2.0/bits/basic_string.h ****       const_iterator
  903:/usr/include/c++/9.2.0/bits/basic_string.h ****       cend() const noexcept
  904:/usr/include/c++/9.2.0/bits/basic_string.h ****       { return const_iterator(this->_M_data() + this->size()); }
-GAS LISTING /tmp/ccM3huFJ.s 			page 44
+GAS LISTING /tmp/cc0dQez4.s 			page 44
 
 
  905:/usr/include/c++/9.2.0/bits/basic_string.h **** 
@@ -2638,7 +2638,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  959:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __n  Number of characters the %string should contain.
  960:/usr/include/c++/9.2.0/bits/basic_string.h ****        *
  961:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  This function will resize the %string to the specified length.  If
-GAS LISTING /tmp/ccM3huFJ.s 			page 45
+GAS LISTING /tmp/cc0dQez4.s 			page 45
 
 
  962:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  the new size is smaller than the %string's current size the %string
@@ -2698,7 +2698,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1016:/usr/include/c++/9.2.0/bits/basic_string.h ****       void
 1017:/usr/include/c++/9.2.0/bits/basic_string.h ****       reserve(size_type __res_arg = 0);
 1018:/usr/include/c++/9.2.0/bits/basic_string.h **** 
-GAS LISTING /tmp/ccM3huFJ.s 			page 46
+GAS LISTING /tmp/cc0dQez4.s 			page 46
 
 
 1019:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
@@ -2758,7 +2758,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1073:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
 1074:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Provides access to the data contained in the %string.
 1075:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __n The index of the character to access.
-GAS LISTING /tmp/ccM3huFJ.s 			page 47
+GAS LISTING /tmp/cc0dQez4.s 			page 47
 
 
 1076:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @return  Read-only (const) reference to the character.
@@ -2818,7 +2818,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1130:/usr/include/c++/9.2.0/bits/basic_string.h ****        */
 1131:/usr/include/c++/9.2.0/bits/basic_string.h ****       const_reference
 1132:/usr/include/c++/9.2.0/bits/basic_string.h ****       front() const noexcept
-GAS LISTING /tmp/ccM3huFJ.s 			page 48
+GAS LISTING /tmp/cc0dQez4.s 			page 48
 
 
 1133:/usr/include/c++/9.2.0/bits/basic_string.h ****       {
@@ -2878,7 +2878,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1187:/usr/include/c++/9.2.0/bits/basic_string.h ****       {
 1188:/usr/include/c++/9.2.0/bits/basic_string.h **** 	this->push_back(__c);
 1189:/usr/include/c++/9.2.0/bits/basic_string.h **** 	return *this;
-GAS LISTING /tmp/ccM3huFJ.s 			page 49
+GAS LISTING /tmp/cc0dQez4.s 			page 49
 
 
 1190:/usr/include/c++/9.2.0/bits/basic_string.h ****       }
@@ -2938,7 +2938,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1244:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Append a C substring.
 1245:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __s  The C string to append.
 1246:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __n  The number of characters to append.
-GAS LISTING /tmp/ccM3huFJ.s 			page 50
+GAS LISTING /tmp/cc0dQez4.s 			page 50
 
 
 1247:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @return  Reference to this string.
@@ -2998,7 +2998,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1301:/usr/include/c++/9.2.0/bits/basic_string.h ****        */
 1302:/usr/include/c++/9.2.0/bits/basic_string.h **** #if __cplusplus >= 201103L
 1303:/usr/include/c++/9.2.0/bits/basic_string.h ****       template<class _InputIterator,
-GAS LISTING /tmp/ccM3huFJ.s 			page 51
+GAS LISTING /tmp/cc0dQez4.s 			page 51
 
 
 1304:/usr/include/c++/9.2.0/bits/basic_string.h **** 	       typename = std::_RequireInputIter<_InputIterator>>
@@ -3058,7 +3058,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1358:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
 1359:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Set value to contents of another string.
 1360:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param  __str  Source string to use.
-GAS LISTING /tmp/ccM3huFJ.s 			page 52
+GAS LISTING /tmp/cc0dQez4.s 			page 52
 
 
 1361:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @return  Reference to this string.
@@ -3118,7 +3118,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1415:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  characters of @a __s.  If @a __n is is larger than the number of
 1416:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  available characters in @a __s, the remainder of @a __s is used.
 1417:/usr/include/c++/9.2.0/bits/basic_string.h ****        */
-GAS LISTING /tmp/ccM3huFJ.s 			page 53
+GAS LISTING /tmp/cc0dQez4.s 			page 53
 
 
 1418:/usr/include/c++/9.2.0/bits/basic_string.h ****       basic_string&
@@ -3178,7 +3178,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1472:/usr/include/c++/9.2.0/bits/basic_string.h **** 
 1473:/usr/include/c++/9.2.0/bits/basic_string.h **** #if __cplusplus >= 201103L
 1474:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
-GAS LISTING /tmp/ccM3huFJ.s 			page 54
+GAS LISTING /tmp/cc0dQez4.s 			page 54
 
 
 1475:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Set value to an initializer_list of characters.
@@ -3238,7 +3238,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1529:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  characters causes the length to exceed max_size(),
 1530:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  length_error is thrown.  The value of the string doesn't
 1531:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  change if an error is thrown.
-GAS LISTING /tmp/ccM3huFJ.s 			page 55
+GAS LISTING /tmp/cc0dQez4.s 			page 55
 
 
 1532:/usr/include/c++/9.2.0/bits/basic_string.h ****       */
@@ -3298,7 +3298,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1586:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
 1587:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Insert a range of characters.
 1588:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __p  Iterator referencing location in string to insert at.
-GAS LISTING /tmp/ccM3huFJ.s 			page 56
+GAS LISTING /tmp/cc0dQez4.s 			page 56
 
 
 1589:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __beg  Start of range.
@@ -3358,7 +3358,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1643:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
 1644:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Insert a substring.
 1645:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __pos1  Iterator referencing location in string to insert at.
-GAS LISTING /tmp/ccM3huFJ.s 			page 57
+GAS LISTING /tmp/cc0dQez4.s 			page 57
 
 
 1646:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __str  The string to insert.
@@ -3418,7 +3418,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1700:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  thrown.  The value of the string doesn't change if an error is
 1701:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  thrown.
 1702:/usr/include/c++/9.2.0/bits/basic_string.h ****       */
-GAS LISTING /tmp/ccM3huFJ.s 			page 58
+GAS LISTING /tmp/cc0dQez4.s 			page 58
 
 
 1703:/usr/include/c++/9.2.0/bits/basic_string.h ****       basic_string&
@@ -3478,7 +3478,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1757:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __pos  Iterator referencing position in string to insert at.
 1758:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __svt  The object convertible to string_view to insert.
 1759:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @return  Reference to this string.
-GAS LISTING /tmp/ccM3huFJ.s 			page 59
+GAS LISTING /tmp/cc0dQez4.s 			page 59
 
 
 1760:/usr/include/c++/9.2.0/bits/basic_string.h ****       */
@@ -3538,7 +3538,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1814:/usr/include/c++/9.2.0/bits/basic_string.h **** 	return *this;
 1815:/usr/include/c++/9.2.0/bits/basic_string.h ****       }
 1816:/usr/include/c++/9.2.0/bits/basic_string.h **** 
-GAS LISTING /tmp/ccM3huFJ.s 			page 60
+GAS LISTING /tmp/cc0dQez4.s 			page 60
 
 
 1817:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
@@ -3598,7 +3598,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1871:/usr/include/c++/9.2.0/bits/basic_string.h ****       /**
 1872:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @brief  Replace characters with value from another string.
 1873:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __pos  Index of first character to replace.
-GAS LISTING /tmp/ccM3huFJ.s 			page 61
+GAS LISTING /tmp/cc0dQez4.s 			page 61
 
 
 1874:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __n  Number of characters to be replaced.
@@ -3658,7 +3658,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1928:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  from this string.  In place, the first @a __n2 characters of
 1929:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @a __s are inserted, or all of @a __s if @a __n2 is too large.  If
 1930:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @a __pos is beyond end of string, out_of_range is thrown.  If
-GAS LISTING /tmp/ccM3huFJ.s 			page 62
+GAS LISTING /tmp/cc0dQez4.s 			page 62
 
 
 1931:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  the length of result exceeds max_size(), length_error is
@@ -3718,7 +3718,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 1985:/usr/include/c++/9.2.0/bits/basic_string.h ****       replace(size_type __pos, size_type __n1, size_type __n2, _CharT __c)
 1986:/usr/include/c++/9.2.0/bits/basic_string.h ****       { return _M_replace_aux(_M_check(__pos, "basic_string::replace"),
 1987:/usr/include/c++/9.2.0/bits/basic_string.h **** 			      _M_limit(__pos, __n1), __n2, __c); }
-GAS LISTING /tmp/ccM3huFJ.s 			page 63
+GAS LISTING /tmp/cc0dQez4.s 			page 63
 
 
 1988:/usr/include/c++/9.2.0/bits/basic_string.h **** 
@@ -3778,7 +3778,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 2042:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  value of the string doesn't change if an error is thrown.
 2043:/usr/include/c++/9.2.0/bits/basic_string.h ****       */
 2044:/usr/include/c++/9.2.0/bits/basic_string.h ****       basic_string&
-GAS LISTING /tmp/ccM3huFJ.s 			page 64
+GAS LISTING /tmp/cc0dQez4.s 			page 64
 
 
 2045:/usr/include/c++/9.2.0/bits/basic_string.h ****       replace(__const_iterator __i1, __const_iterator __i2, const _CharT* __s)
@@ -3838,7 +3838,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 2099:/usr/include/c++/9.2.0/bits/basic_string.h **** 	  return this->_M_replace_dispatch(__i1, __i2, __k1, __k2,
 2100:/usr/include/c++/9.2.0/bits/basic_string.h **** 					   std::__false_type());
 2101:/usr/include/c++/9.2.0/bits/basic_string.h **** 	}
-GAS LISTING /tmp/ccM3huFJ.s 			page 65
+GAS LISTING /tmp/cc0dQez4.s 			page 65
 
 
 2102:/usr/include/c++/9.2.0/bits/basic_string.h **** #else
@@ -3898,7 +3898,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 2156:/usr/include/c++/9.2.0/bits/basic_string.h ****       replace(__const_iterator __i1, __const_iterator __i2,
 2157:/usr/include/c++/9.2.0/bits/basic_string.h **** 	      const_iterator __k1, const_iterator __k2)
 2158:/usr/include/c++/9.2.0/bits/basic_string.h ****       {
-GAS LISTING /tmp/ccM3huFJ.s 			page 66
+GAS LISTING /tmp/cc0dQez4.s 			page 66
 
 
 2159:/usr/include/c++/9.2.0/bits/basic_string.h **** 	_GLIBCXX_DEBUG_PEDASSERT(begin() <= __i1 && __i1 <= __i2
@@ -3958,7 +3958,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 2213:/usr/include/c++/9.2.0/bits/basic_string.h **** 	replace(size_type __pos1, size_type __n1, const _Tp& __svt,
 2214:/usr/include/c++/9.2.0/bits/basic_string.h **** 		size_type __pos2, size_type __n2 = npos)
 2215:/usr/include/c++/9.2.0/bits/basic_string.h **** 	{
-GAS LISTING /tmp/ccM3huFJ.s 			page 67
+GAS LISTING /tmp/cc0dQez4.s 			page 67
 
 
 2216:/usr/include/c++/9.2.0/bits/basic_string.h **** 	  __sv_type __sv = __svt;
@@ -4018,7 +4018,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
 2270:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __n  Number of characters to copy.
 2271:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @param __pos  Index of first character to copy.
 2272:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @return  Number of characters actually copied
-GAS LISTING /tmp/ccM3huFJ.s 			page 68
+GAS LISTING /tmp/cc0dQez4.s 			page 68
 
 
 2273:/usr/include/c++/9.2.0/bits/basic_string.h ****        *  @throw  std::out_of_range  If __pos > size().
@@ -4078,7 +4078,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  786      0000
  787 05d9 B9FFFFFF 		movl	$-1, %ecx
  787      FF
-GAS LISTING /tmp/ccM3huFJ.s 			page 69
+GAS LISTING /tmp/cc0dQez4.s 			page 69
 
 
  788              		.cfi_escape 0x2e,0x30
@@ -4138,7 +4138,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  828              		.loc 1 109 1 view .LVU227
  829 0616 4889C3   		movq	%rax, %rbx
  830              	.LVL97:
-GAS LISTING /tmp/ccM3huFJ.s 			page 70
+GAS LISTING /tmp/cc0dQez4.s 			page 70
 
 
   94:Src/routines.cpp **** 	if(!hack_italic_font.Error())
@@ -4198,7 +4198,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  881 000c 0000803F 		.long	1065353216
  882              		.align 4
  883              	.LC4:
-GAS LISTING /tmp/ccM3huFJ.s 			page 71
+GAS LISTING /tmp/cc0dQez4.s 			page 71
 
 
  884 0010 67B16FBF 		.long	3211768167
@@ -4258,7 +4258,7 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  938              		.file 53 "/usr/include/bits/stdio.h"
  939              		.file 54 "/usr/include/errno.h"
  940              		.file 55 "/usr/include/freetype/ftimage.h"
-GAS LISTING /tmp/ccM3huFJ.s 			page 72
+GAS LISTING /tmp/cc0dQez4.s 			page 72
 
 
  941              		.file 56 "/usr/include/FTGL/ftgl.h"
@@ -4271,28 +4271,28 @@ GAS LISTING /tmp/ccM3huFJ.s 			page 1
  83379      00000000 
  83380              		.ident	"GCC: (GNU) 9.2.0"
  83381              		.section	.note.GNU-stack,"",@progbits
-GAS LISTING /tmp/ccM3huFJ.s 			page 73
+GAS LISTING /tmp/cc0dQez4.s 			page 73
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 routines.cpp
-     /tmp/ccM3huFJ.s:6      .text:0000000000000000 _Z10glSetColorj
-     /tmp/ccM3huFJ.s:47     .text:000000000000004c _Z8drawRectffff
-     /tmp/ccM3huFJ.s:123    .text:000000000000010c _Z12drawTrianglefff
-     /tmp/ccM3huFJ.s:186    .text:00000000000001a2 _Z10drawCirclefffi
-     /tmp/ccM3huFJ.s:292    .text:0000000000000241 _Z16drawCircleFilledfffi
-     /tmp/ccM3huFJ.s:398    .text:00000000000002e0 _Z8drawLineffff
-     /tmp/ccM3huFJ.s:462    .text:000000000000037b _Z7drawOctfff
-     /tmp/ccM3huFJ.s:626    .text:0000000000000506 _Z8drawQuadfff
-     /tmp/ccM3huFJ.s:653    .text:0000000000000517 _Z8drawTextNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEEEiii
-     /tmp/ccM3huFJ.s:83378  .data.rel.local.DW.ref.__gxx_personality_v0:0000000000000000 DW.ref.__gxx_personality_v0
-     /tmp/ccM3huFJ.s:871    .rodata.cst4:0000000000000000 .LC0
-     /tmp/ccM3huFJ.s:874    .rodata.cst4:0000000000000004 .LC1
-     /tmp/ccM3huFJ.s:877    .rodata.cst4:0000000000000008 .LC2
-     /tmp/ccM3huFJ.s:880    .rodata.cst4:000000000000000c .LC3
-     /tmp/ccM3huFJ.s:883    .rodata.cst4:0000000000000010 .LC4
-     /tmp/ccM3huFJ.s:886    .rodata.cst4:0000000000000014 .LC5
-     /tmp/ccM3huFJ.s:648    .rodata.str1.8:0000000000000000 .LC6
+     /tmp/cc0dQez4.s:6      .text:0000000000000000 _Z10glSetColorj
+     /tmp/cc0dQez4.s:47     .text:000000000000004c _Z8drawRectffff
+     /tmp/cc0dQez4.s:123    .text:000000000000010c _Z12drawTrianglefff
+     /tmp/cc0dQez4.s:186    .text:00000000000001a2 _Z10drawCirclefffi
+     /tmp/cc0dQez4.s:292    .text:0000000000000241 _Z16drawCircleFilledfffi
+     /tmp/cc0dQez4.s:398    .text:00000000000002e0 _Z8drawLineffff
+     /tmp/cc0dQez4.s:462    .text:000000000000037b _Z7drawOctfff
+     /tmp/cc0dQez4.s:626    .text:0000000000000506 _Z8drawQuadfff
+     /tmp/cc0dQez4.s:653    .text:0000000000000517 _Z8drawTextNSt7__cxx1112basic_stringIwSt11char_traitsIwESaIwEEEiii
+     /tmp/cc0dQez4.s:83378  .data.rel.local.DW.ref.__gxx_personality_v0:0000000000000000 DW.ref.__gxx_personality_v0
+     /tmp/cc0dQez4.s:871    .rodata.cst4:0000000000000000 .LC0
+     /tmp/cc0dQez4.s:874    .rodata.cst4:0000000000000004 .LC1
+     /tmp/cc0dQez4.s:877    .rodata.cst4:0000000000000008 .LC2
+     /tmp/cc0dQez4.s:880    .rodata.cst4:000000000000000c .LC3
+     /tmp/cc0dQez4.s:883    .rodata.cst4:0000000000000010 .LC4
+     /tmp/cc0dQez4.s:886    .rodata.cst4:0000000000000014 .LC5
+     /tmp/cc0dQez4.s:648    .rodata.str1.8:0000000000000000 .LC6
 
 UNDEFINED SYMBOLS
 _GLOBAL_OFFSET_TABLE_
