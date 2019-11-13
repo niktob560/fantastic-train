@@ -1,0 +1,4 @@
+./.vscode
+*subl*
+./.*
+./Build/*

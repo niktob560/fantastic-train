@@ -13,10 +13,13 @@ CPP_INCLUDES = \
 -IIncludes
 
 CPP_SOURCES = \
+Src/bases.cpp \
 Src/main.cpp \
 Src/routines.cpp \
-Src/findwayBases.cpp \
-Src/math.cpp
+Src/math.cpp \
+Src/geometry.cpp \
+Src/grapher.cpp \
+Src/pathfinder.cpp
 
 
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(CPP_SOURCES:.cpp=.o)))

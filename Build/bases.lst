@@ -1,0 +1,1001 @@
+GAS LISTING /tmp/ccjPsvj4.s 			page 1
+
+
+   1              		.file	"bases.cpp"
+   2              		.text
+   3              	.Ltext0:
+   5              	_Z41__static_initialization_and_destruction_0ii:
+   6              	.LVL0:
+   7              	.LFB2044:
+   8              		.file 1 "Src/bases.cpp"
+   1:Src/bases.cpp **** #include "bases.hpp"
+   2:Src/bases.cpp **** #include "geometry.hpp"
+   3:Src/bases.cpp **** 
+   4:Src/bases.cpp **** struct bases::graphPoint **graph;
+   5:Src/bases.cpp **** struct bases::obstacle *obstacles;
+   6:Src/bases.cpp **** 
+   7:Src/bases.cpp **** struct bases::coords	startway,
+   8:Src/bases.cpp **** 							endway;
+   9:Src/bases.cpp **** size_t *ways;
+  10:Src/bases.cpp **** 
+  11:Src/bases.cpp **** size_t numOfObstacles = 0;
+  12:Src/bases.cpp **** size_t graphSize = 0;
+  13:Src/bases.cpp **** size_t calculatedPoints = 0;
+  14:Src/bases.cpp **** size_t 	target = 1,
+  15:Src/bases.cpp **** 		home = 1;
+  16:Src/bases.cpp **** 
+  17:Src/bases.cpp **** 
+  18:Src/bases.cpp **** namespace bases
+  19:Src/bases.cpp **** {
+  20:Src/bases.cpp **** 
+  21:Src/bases.cpp **** 	struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
+  22:Src/bases.cpp **** 	{
+  23:Src/bases.cpp **** 		struct coords ret;
+  24:Src/bases.cpp **** 		ret.x = x;
+  25:Src/bases.cpp **** 		ret.y = y;
+  26:Src/bases.cpp **** 		return ret;
+  27:Src/bases.cpp **** 	}
+  28:Src/bases.cpp **** 
+  29:Src/bases.cpp **** 
+  30:Src/bases.cpp **** 	struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATA
+  31:Src/bases.cpp **** 	{
+  32:Src/bases.cpp **** 		struct obstacle ret;
+  33:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+  34:Src/bases.cpp **** 		ret.c->x = x;
+  35:Src/bases.cpp **** 		ret.c->y = y;
+  36:Src/bases.cpp **** 		ret.a    = a;
+  37:Src/bases.cpp **** 		ret.b    = b;
+  38:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+  39:Src/bases.cpp **** 		{
+  40:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+  41:Src/bases.cpp **** 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+  42:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+  43:Src/bases.cpp **** 			free(c);
+  44:Src/bases.cpp **** 		}
+  45:Src/bases.cpp **** 
+  46:Src/bases.cpp **** 		return ret;
+  47:Src/bases.cpp **** 	}
+  48:Src/bases.cpp **** 
+  49:Src/bases.cpp **** 	struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATA
+  50:Src/bases.cpp **** 	{
+GAS LISTING /tmp/ccjPsvj4.s 			page 2
+
+
+  51:Src/bases.cpp **** 		struct obstacle ret;
+  52:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+  53:Src/bases.cpp **** 		ret.c->x = x;
+  54:Src/bases.cpp **** 		ret.c->y = y;
+  55:Src/bases.cpp **** 		ret.a    = a;
+  56:Src/bases.cpp **** 		ret.b    = a;
+  57:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+  58:Src/bases.cpp **** 		{
+  59:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+  60:Src/bases.cpp **** 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+  61:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+  62:Src/bases.cpp **** 			free(c);
+  63:Src/bases.cpp **** 		}
+  64:Src/bases.cpp **** 
+  65:Src/bases.cpp **** 		return ret;
+  66:Src/bases.cpp **** 	}
+  67:Src/bases.cpp **** 
+  68:Src/bases.cpp **** 
+  69:Src/bases.cpp **** 
+  70:Src/bases.cpp **** 
+  71:Src/bases.cpp ****     void            addTarget(struct graphPoint *start, struct graphPoint *end)
+  72:Src/bases.cpp ****     {
+  73:Src/bases.cpp ****         if(start == end) 
+  74:Src/bases.cpp ****         {
+  75:Src/bases.cpp ****             return;
+  76:Src/bases.cpp ****         }
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+  78:Src/bases.cpp ****             if(start->targets[i] == end)
+  79:Src/bases.cpp ****             {
+  80:Src/bases.cpp ****                 return;
+  81:Src/bases.cpp ****             }
+  82:Src/bases.cpp ****         for(size_t i = 0; i < end->numOfTargets; i++)
+  83:Src/bases.cpp ****             if(end->targets[i] == start)
+  84:Src/bases.cpp ****             {
+  85:Src/bases.cpp ****                 return;
+  86:Src/bases.cpp ****             }
+  87:Src/bases.cpp **** 
+  88:Src/bases.cpp **** 
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+  90:Src/bases.cpp ****         start->targets[start->numOfTargets - 1] = end;
+  91:Src/bases.cpp **** 
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+  93:Src/bases.cpp ****         end->targets[end->numOfTargets - 1] = start;
+  94:Src/bases.cpp ****     }
+  95:Src/bases.cpp **** }...
+   9              		.loc 1 95 1 view -0
+  10              		.cfi_startproc
+  11              		.loc 1 95 1 is_stmt 0 view .LVU1
+  12 0000 83FF01   		cmpl	$1, %edi
+  13 0003 7401     		je	.L7
+  14              	.L4:
+  15 0005 C3       		ret
+  16              	.L7:
+  17              		.loc 1 95 1 discriminator 1 view .LVU2
+  18 0006 81FEFFFF 		cmpl	$65535, %esi
+  18      0000
+  19 000c 75F7     		jne	.L4
+GAS LISTING /tmp/ccjPsvj4.s 			page 3
+
+
+  20              		.loc 1 95 1 view .LVU3
+  21 000e 4883EC08 		subq	$8, %rsp
+  22              		.cfi_def_cfa_offset 16
+  23              		.file 2 "/usr/include/c++/9.2.0/iostream"
+   1:/usr/include/c++/9.2.0/iostream **** // Standard iostream objects -*- C++ -*-
+   2:/usr/include/c++/9.2.0/iostream **** 
+   3:/usr/include/c++/9.2.0/iostream **** // Copyright (C) 1997-2019 Free Software Foundation, Inc.
+   4:/usr/include/c++/9.2.0/iostream **** //
+   5:/usr/include/c++/9.2.0/iostream **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:/usr/include/c++/9.2.0/iostream **** // software; you can redistribute it and/or modify it under the
+   7:/usr/include/c++/9.2.0/iostream **** // terms of the GNU General Public License as published by the
+   8:/usr/include/c++/9.2.0/iostream **** // Free Software Foundation; either version 3, or (at your option)
+   9:/usr/include/c++/9.2.0/iostream **** // any later version.
+  10:/usr/include/c++/9.2.0/iostream **** 
+  11:/usr/include/c++/9.2.0/iostream **** // This library is distributed in the hope that it will be useful,
+  12:/usr/include/c++/9.2.0/iostream **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:/usr/include/c++/9.2.0/iostream **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:/usr/include/c++/9.2.0/iostream **** // GNU General Public License for more details.
+  15:/usr/include/c++/9.2.0/iostream **** 
+  16:/usr/include/c++/9.2.0/iostream **** // Under Section 7 of GPL version 3, you are granted additional
+  17:/usr/include/c++/9.2.0/iostream **** // permissions described in the GCC Runtime Library Exception, version
+  18:/usr/include/c++/9.2.0/iostream **** // 3.1, as published by the Free Software Foundation.
+  19:/usr/include/c++/9.2.0/iostream **** 
+  20:/usr/include/c++/9.2.0/iostream **** // You should have received a copy of the GNU General Public License and
+  21:/usr/include/c++/9.2.0/iostream **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:/usr/include/c++/9.2.0/iostream **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:/usr/include/c++/9.2.0/iostream **** // <http://www.gnu.org/licenses/>.
+  24:/usr/include/c++/9.2.0/iostream **** 
+  25:/usr/include/c++/9.2.0/iostream **** /** @file include/iostream
+  26:/usr/include/c++/9.2.0/iostream ****  *  This is a Standard C++ Library header.
+  27:/usr/include/c++/9.2.0/iostream ****  */
+  28:/usr/include/c++/9.2.0/iostream **** 
+  29:/usr/include/c++/9.2.0/iostream **** //
+  30:/usr/include/c++/9.2.0/iostream **** // ISO C++ 14882: 27.3  Standard iostream objects
+  31:/usr/include/c++/9.2.0/iostream **** //
+  32:/usr/include/c++/9.2.0/iostream **** 
+  33:/usr/include/c++/9.2.0/iostream **** #ifndef _GLIBCXX_IOSTREAM
+  34:/usr/include/c++/9.2.0/iostream **** #define _GLIBCXX_IOSTREAM 1
+  35:/usr/include/c++/9.2.0/iostream **** 
+  36:/usr/include/c++/9.2.0/iostream **** #pragma GCC system_header
+  37:/usr/include/c++/9.2.0/iostream **** 
+  38:/usr/include/c++/9.2.0/iostream **** #include <bits/c++config.h>
+  39:/usr/include/c++/9.2.0/iostream **** #include <ostream>
+  40:/usr/include/c++/9.2.0/iostream **** #include <istream>
+  41:/usr/include/c++/9.2.0/iostream **** 
+  42:/usr/include/c++/9.2.0/iostream **** namespace std _GLIBCXX_VISIBILITY(default)
+  43:/usr/include/c++/9.2.0/iostream **** {
+  44:/usr/include/c++/9.2.0/iostream **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  45:/usr/include/c++/9.2.0/iostream **** 
+  46:/usr/include/c++/9.2.0/iostream ****   /**
+  47:/usr/include/c++/9.2.0/iostream ****    *  @name Standard Stream Objects
+  48:/usr/include/c++/9.2.0/iostream ****    *
+  49:/usr/include/c++/9.2.0/iostream ****    *  The &lt;iostream&gt; header declares the eight <em>standard stream
+  50:/usr/include/c++/9.2.0/iostream ****    *  objects</em>.  For other declarations, see
+  51:/usr/include/c++/9.2.0/iostream ****    *  http://gcc.gnu.org/onlinedocs/libstdc++/manual/io.html
+  52:/usr/include/c++/9.2.0/iostream ****    *  and the @link iosfwd I/O forward declarations @endlink
+  53:/usr/include/c++/9.2.0/iostream ****    *
+GAS LISTING /tmp/ccjPsvj4.s 			page 4
+
+
+  54:/usr/include/c++/9.2.0/iostream ****    *  They are required by default to cooperate with the global C
+  55:/usr/include/c++/9.2.0/iostream ****    *  library's @c FILE streams, and to be available during program
+  56:/usr/include/c++/9.2.0/iostream ****    *  startup and termination. For more information, see the section of the
+  57:/usr/include/c++/9.2.0/iostream ****    *  manual linked to above.
+  58:/usr/include/c++/9.2.0/iostream ****   */
+  59:/usr/include/c++/9.2.0/iostream ****   //@{
+  60:/usr/include/c++/9.2.0/iostream ****   extern istream cin;		/// Linked to standard input
+  61:/usr/include/c++/9.2.0/iostream ****   extern ostream cout;		/// Linked to standard output
+  62:/usr/include/c++/9.2.0/iostream ****   extern ostream cerr;		/// Linked to standard error (unbuffered)
+  63:/usr/include/c++/9.2.0/iostream ****   extern ostream clog;		/// Linked to standard error (buffered)
+  64:/usr/include/c++/9.2.0/iostream **** 
+  65:/usr/include/c++/9.2.0/iostream **** #ifdef _GLIBCXX_USE_WCHAR_T
+  66:/usr/include/c++/9.2.0/iostream ****   extern wistream wcin;		/// Linked to standard input
+  67:/usr/include/c++/9.2.0/iostream ****   extern wostream wcout;	/// Linked to standard output
+  68:/usr/include/c++/9.2.0/iostream ****   extern wostream wcerr;	/// Linked to standard error (unbuffered)
+  69:/usr/include/c++/9.2.0/iostream ****   extern wostream wclog;	/// Linked to standard error (buffered)
+  70:/usr/include/c++/9.2.0/iostream **** #endif
+  71:/usr/include/c++/9.2.0/iostream ****   //@}
+  72:/usr/include/c++/9.2.0/iostream **** 
+  73:/usr/include/c++/9.2.0/iostream ****   // For construction of filebuffers for cout, cin, cerr, clog et. al.
+  74:/usr/include/c++/9.2.0/iostream ****   static ios_base::Init __ioinit;
+  24              		.loc 2 74 25 view .LVU4
+  25 0012 488D3D00 		leaq	_ZStL8__ioinit(%rip), %rdi
+  25      000000
+  26              	.LVL1:
+  27              		.loc 2 74 25 view .LVU5
+  28 0019 E8000000 		call	_ZNSt8ios_base4InitC1Ev@PLT
+  28      00
+  29              	.LVL2:
+  30              		.loc 2 74 25 view .LVU6
+  31 001e 488D1500 		leaq	__dso_handle(%rip), %rdx
+  31      000000
+  32 0025 488D3500 		leaq	_ZStL8__ioinit(%rip), %rsi
+  32      000000
+  33 002c 488B3D00 		movq	_ZNSt8ios_base4InitD1Ev@GOTPCREL(%rip), %rdi
+  33      000000
+  34 0033 E8000000 		call	__cxa_atexit@PLT
+  34      00
+  35              	.LVL3:
+  36              		.loc 1 95 1 view .LVU7
+  37 0038 4883C408 		addq	$8, %rsp
+  38              		.cfi_def_cfa_offset 8
+  39 003c C3       		ret
+  40              		.cfi_endproc
+  41              	.LFE2044:
+  43              		.globl	_ZN5bases12createCoordsEff
+  45              	_ZN5bases12createCoordsEff:
+  46              	.LVL4:
+  47              	.LFB1721:
+  22:Src/bases.cpp **** 	{
+  48              		.loc 1 22 2 is_stmt 1 view -0
+  49              		.cfi_startproc
+  23:Src/bases.cpp **** 		struct coords ret;
+  50              		.loc 1 23 3 view .LVU9
+  24:Src/bases.cpp **** 		ret.x = x;
+  51              		.loc 1 24 3 view .LVU10
+  25:Src/bases.cpp **** 		ret.y = y;
+GAS LISTING /tmp/ccjPsvj4.s 			page 5
+
+
+  52              		.loc 1 25 3 view .LVU11
+  25:Src/bases.cpp **** 		ret.y = y;
+  53              		.loc 1 25 9 is_stmt 0 view .LVU12
+  54 003d 660F7EC8 		movd	%xmm1, %eax
+  55 0041 4889C2   		movq	%rax, %rdx
+  56 0044 48C1E220 		salq	$32, %rdx
+  57 0048 660F7EC0 		movd	%xmm0, %eax
+  58              	.LVL5:
+  25:Src/bases.cpp **** 		ret.y = y;
+  59              		.loc 1 25 9 view .LVU13
+  60 004c 4809D0   		orq	%rdx, %rax
+  61              	.LVL6:
+  26:Src/bases.cpp **** 		return ret;
+  62              		.loc 1 26 3 is_stmt 1 view .LVU14
+  27:Src/bases.cpp **** 	}
+  63              		.loc 1 27 2 is_stmt 0 view .LVU15
+  64 004f 66480F6E 		movq	%rax, %xmm0
+  64      C0
+  65              	.LVL7:
+  27:Src/bases.cpp **** 	}
+  66              		.loc 1 27 2 view .LVU16
+  67 0054 C3       		ret
+  68              		.cfi_endproc
+  69              	.LFE1721:
+  71              		.globl	_ZN5bases14createObstacleEffff
+  73              	_ZN5bases14createObstacleEffff:
+  74              	.LVL8:
+  75              	.LFB1722:
+  31:Src/bases.cpp **** 	{
+  76              		.loc 1 31 2 is_stmt 1 view -0
+  77              		.cfi_startproc
+  31:Src/bases.cpp **** 	{
+  78              		.loc 1 31 2 is_stmt 0 view .LVU18
+  79 0055 4156     		pushq	%r14
+  80              		.cfi_def_cfa_offset 16
+  81              		.cfi_offset 14, -16
+  82 0057 4155     		pushq	%r13
+  83              		.cfi_def_cfa_offset 24
+  84              		.cfi_offset 13, -24
+  85 0059 4154     		pushq	%r12
+  86              		.cfi_def_cfa_offset 32
+  87              		.cfi_offset 12, -32
+  88 005b 55       		pushq	%rbp
+  89              		.cfi_def_cfa_offset 40
+  90              		.cfi_offset 6, -40
+  91 005c 53       		pushq	%rbx
+  92              		.cfi_def_cfa_offset 48
+  93              		.cfi_offset 3, -48
+  94 005d 4889FB   		movq	%rdi, %rbx
+  95 0060 66410F7E 		movd	%xmm0, %r14d
+  95      C6
+  96 0065 66410F7E 		movd	%xmm1, %r13d
+  96      CD
+  97 006a 66410F7E 		movd	%xmm2, %r12d
+  97      D4
+  98 006f 660F7EDD 		movd	%xmm3, %ebp
+  32:Src/bases.cpp **** 		struct obstacle ret;
+GAS LISTING /tmp/ccjPsvj4.s 			page 6
+
+
+  99              		.loc 1 32 3 is_stmt 1 view .LVU19
+  32:Src/bases.cpp **** 		struct obstacle ret;
+ 100              		.loc 1 32 19 is_stmt 0 view .LVU20
+ 101 0073 48C74708 		movq	$0, 8(%rdi)
+ 101      00000000 
+ 102 007b 48C74710 		movq	$0, 16(%rdi)
+ 102      00000000 
+ 103 0083 48C74718 		movq	$0, 24(%rdi)
+ 103      00000000 
+ 104 008b 48C74720 		movq	$0, 32(%rdi)
+ 104      00000000 
+  33:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 105              		.loc 1 33 3 is_stmt 1 view .LVU21
+  33:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 106              		.loc 1 33 33 is_stmt 0 view .LVU22
+ 107 0093 BF080000 		movl	$8, %edi
+ 107      00
+ 108              	.LVL9:
+  33:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 109              		.loc 1 33 33 view .LVU23
+ 110 0098 E8000000 		call	malloc@PLT
+ 110      00
+ 111              	.LVL10:
+  33:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 112              		.loc 1 33 9 view .LVU24
+ 113 009d 488903   		movq	%rax, (%rbx)
+  34:Src/bases.cpp **** 		ret.c->x = x;
+ 114              		.loc 1 34 3 is_stmt 1 view .LVU25
+  34:Src/bases.cpp **** 		ret.c->x = x;
+ 115              		.loc 1 34 12 is_stmt 0 view .LVU26
+ 116 00a0 448930   		movl	%r14d, (%rax)
+  35:Src/bases.cpp **** 		ret.c->y = y;
+ 117              		.loc 1 35 3 is_stmt 1 view .LVU27
+  35:Src/bases.cpp **** 		ret.c->y = y;
+ 118              		.loc 1 35 12 is_stmt 0 view .LVU28
+ 119 00a3 44896804 		movl	%r13d, 4(%rax)
+  36:Src/bases.cpp **** 		ret.a    = a;
+ 120              		.loc 1 36 3 is_stmt 1 view .LVU29
+  36:Src/bases.cpp **** 		ret.a    = a;
+ 121              		.loc 1 36 12 is_stmt 0 view .LVU30
+ 122 00a7 44896328 		movl	%r12d, 40(%rbx)
+  37:Src/bases.cpp **** 		ret.b    = b;
+ 123              		.loc 1 37 3 is_stmt 1 view .LVU31
+  37:Src/bases.cpp **** 		ret.b    = b;
+ 124              		.loc 1 37 12 is_stmt 0 view .LVU32
+ 125 00ab 896B2C   		movl	%ebp, 44(%rbx)
+  38:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 126              		.loc 1 38 3 is_stmt 1 view .LVU33
+ 127              	.LVL11:
+ 128              	.LBB2:
+  38:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 129              		.loc 1 38 15 is_stmt 0 view .LVU34
+ 130 00ae BD000000 		movl	$0, %ebp
+ 130      00
+ 131              	.LVL12:
+  38:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 132              		.loc 1 38 15 view .LVU35
+GAS LISTING /tmp/ccjPsvj4.s 			page 7
+
+
+ 133 00b3 EB38     		jmp	.L11
+ 134              	.LVL13:
+ 135              	.L13:
+ 136              	.LBB3:
+  40:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 137              		.loc 1 40 4 is_stmt 1 discriminator 2 view .LVU36
+  40:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 138              		.loc 1 40 16 is_stmt 0 discriminator 2 view .LVU37
+ 139 00b5 440FB6ED 		movzbl	%bpl, %r13d
+  40:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 140              		.loc 1 40 47 discriminator 2 view .LVU38
+ 141 00b9 BF280000 		movl	$40, %edi
+ 141      00
+ 142 00be E8000000 		call	malloc@PLT
+ 142      00
+ 143              	.LVL14:
+  40:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 144              		.loc 1 40 19 discriminator 2 view .LVU39
+ 145 00c3 4D63E5   		movslq	%r13d, %r12
+ 146 00c6 4A8944E3 		movq	%rax, 8(%rbx,%r12,8)
+ 146      08
+  41:Src/bases.cpp **** 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+ 147              		.loc 1 41 4 is_stmt 1 discriminator 2 view .LVU40
+  41:Src/bases.cpp **** 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+ 148              		.loc 1 41 50 is_stmt 0 discriminator 2 view .LVU41
+ 149 00cb 4489EE   		movl	%r13d, %esi
+ 150 00ce 4889DF   		movq	%rbx, %rdi
+ 151 00d1 E8000000 		call	_ZN8geometry17getCoordsOfCornerEPKN5bases8obstacleEh@PLT
+ 151      00
+ 152              	.LVL15:
+ 153 00d6 4889C7   		movq	%rax, %rdi
+ 154              	.LVL16:
+  42:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+ 155              		.loc 1 42 4 is_stmt 1 discriminator 2 view .LVU42
+  42:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+ 156              		.loc 1 42 17 is_stmt 0 discriminator 2 view .LVU43
+ 157 00d9 4A8B44E3 		movq	8(%rbx,%r12,8), %rax
+ 157      08
+ 158              	.LVL17:
+  42:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+ 159              		.loc 1 42 22 discriminator 2 view .LVU44
+ 160 00de 488B17   		movq	(%rdi), %rdx
+ 161 00e1 48895010 		movq	%rdx, 16(%rax)
+  43:Src/bases.cpp **** 			free(c);
+ 162              		.loc 1 43 4 is_stmt 1 discriminator 2 view .LVU45
+  43:Src/bases.cpp **** 			free(c);
+ 163              		.loc 1 43 8 is_stmt 0 discriminator 2 view .LVU46
+ 164 00e5 E8000000 		call	free@PLT
+ 164      00
+ 165              	.LVL18:
+  43:Src/bases.cpp **** 			free(c);
+ 166              		.loc 1 43 8 discriminator 2 view .LVU47
+ 167              	.LBE3:
+  38:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 168              		.loc 1 38 3 is_stmt 1 discriminator 2 view .LVU48
+ 169 00ea 83C501   		addl	$1, %ebp
+ 170              	.LVL19:
+GAS LISTING /tmp/ccjPsvj4.s 			page 8
+
+
+ 171              	.L11:
+  38:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 172              		.loc 1 38 24 discriminator 3 view .LVU49
+ 173 00ed 4080FD03 		cmpb	$3, %bpl
+ 174 00f1 76C2     		jbe	.L13
+ 175              	.LBE2:
+  47:Src/bases.cpp **** 	}
+ 176              		.loc 1 47 2 is_stmt 0 view .LVU50
+ 177 00f3 4889D8   		movq	%rbx, %rax
+ 178 00f6 5B       		popq	%rbx
+ 179              		.cfi_def_cfa_offset 40
+ 180              	.LVL20:
+  47:Src/bases.cpp **** 	}
+ 181              		.loc 1 47 2 view .LVU51
+ 182 00f7 5D       		popq	%rbp
+ 183              		.cfi_def_cfa_offset 32
+ 184              	.LVL21:
+  47:Src/bases.cpp **** 	}
+ 185              		.loc 1 47 2 view .LVU52
+ 186 00f8 415C     		popq	%r12
+ 187              		.cfi_def_cfa_offset 24
+ 188 00fa 415D     		popq	%r13
+ 189              		.cfi_def_cfa_offset 16
+ 190 00fc 415E     		popq	%r14
+ 191              		.cfi_def_cfa_offset 8
+ 192              	.LVL22:
+  47:Src/bases.cpp **** 	}
+ 193              		.loc 1 47 2 view .LVU53
+ 194 00fe C3       		ret
+ 195              		.cfi_endproc
+ 196              	.LFE1722:
+ 198              		.globl	_ZN5bases14createObstacleEfff
+ 200              	_ZN5bases14createObstacleEfff:
+ 201              	.LVL23:
+ 202              	.LFB1726:
+  50:Src/bases.cpp **** 	{
+ 203              		.loc 1 50 2 is_stmt 1 view -0
+ 204              		.cfi_startproc
+  50:Src/bases.cpp **** 	{
+ 205              		.loc 1 50 2 is_stmt 0 view .LVU55
+ 206 00ff 4155     		pushq	%r13
+ 207              		.cfi_def_cfa_offset 16
+ 208              		.cfi_offset 13, -16
+ 209 0101 4154     		pushq	%r12
+ 210              		.cfi_def_cfa_offset 24
+ 211              		.cfi_offset 12, -24
+ 212 0103 55       		pushq	%rbp
+ 213              		.cfi_def_cfa_offset 32
+ 214              		.cfi_offset 6, -32
+ 215 0104 53       		pushq	%rbx
+ 216              		.cfi_def_cfa_offset 40
+ 217              		.cfi_offset 3, -40
+ 218 0105 4883EC08 		subq	$8, %rsp
+ 219              		.cfi_def_cfa_offset 48
+ 220 0109 4889FB   		movq	%rdi, %rbx
+ 221 010c 66410F7E 		movd	%xmm0, %r13d
+ 221      C5
+GAS LISTING /tmp/ccjPsvj4.s 			page 9
+
+
+ 222 0111 66410F7E 		movd	%xmm1, %r12d
+ 222      CC
+ 223 0116 660F7ED5 		movd	%xmm2, %ebp
+  51:Src/bases.cpp **** 		struct obstacle ret;
+ 224              		.loc 1 51 3 is_stmt 1 view .LVU56
+  51:Src/bases.cpp **** 		struct obstacle ret;
+ 225              		.loc 1 51 19 is_stmt 0 view .LVU57
+ 226 011a 48C74708 		movq	$0, 8(%rdi)
+ 226      00000000 
+ 227 0122 48C74710 		movq	$0, 16(%rdi)
+ 227      00000000 
+ 228 012a 48C74718 		movq	$0, 24(%rdi)
+ 228      00000000 
+ 229 0132 48C74720 		movq	$0, 32(%rdi)
+ 229      00000000 
+  52:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 230              		.loc 1 52 3 is_stmt 1 view .LVU58
+  52:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 231              		.loc 1 52 33 is_stmt 0 view .LVU59
+ 232 013a BF080000 		movl	$8, %edi
+ 232      00
+ 233              	.LVL24:
+  52:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 234              		.loc 1 52 33 view .LVU60
+ 235 013f E8000000 		call	malloc@PLT
+ 235      00
+ 236              	.LVL25:
+  52:Src/bases.cpp **** 		ret.c = (struct coords*)malloc(sizeof(struct coords));
+ 237              		.loc 1 52 9 view .LVU61
+ 238 0144 488903   		movq	%rax, (%rbx)
+  53:Src/bases.cpp **** 		ret.c->x = x;
+ 239              		.loc 1 53 3 is_stmt 1 view .LVU62
+  53:Src/bases.cpp **** 		ret.c->x = x;
+ 240              		.loc 1 53 12 is_stmt 0 view .LVU63
+ 241 0147 448928   		movl	%r13d, (%rax)
+  54:Src/bases.cpp **** 		ret.c->y = y;
+ 242              		.loc 1 54 3 is_stmt 1 view .LVU64
+  54:Src/bases.cpp **** 		ret.c->y = y;
+ 243              		.loc 1 54 12 is_stmt 0 view .LVU65
+ 244 014a 44896004 		movl	%r12d, 4(%rax)
+  55:Src/bases.cpp **** 		ret.a    = a;
+ 245              		.loc 1 55 3 is_stmt 1 view .LVU66
+  55:Src/bases.cpp **** 		ret.a    = a;
+ 246              		.loc 1 55 12 is_stmt 0 view .LVU67
+ 247 014e 896B28   		movl	%ebp, 40(%rbx)
+  56:Src/bases.cpp **** 		ret.b    = a;
+ 248              		.loc 1 56 3 is_stmt 1 view .LVU68
+  56:Src/bases.cpp **** 		ret.b    = a;
+ 249              		.loc 1 56 12 is_stmt 0 view .LVU69
+ 250 0151 896B2C   		movl	%ebp, 44(%rbx)
+  57:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 251              		.loc 1 57 3 is_stmt 1 view .LVU70
+ 252              	.LVL26:
+ 253              	.LBB4:
+  57:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 254              		.loc 1 57 15 is_stmt 0 view .LVU71
+ 255 0154 BD000000 		movl	$0, %ebp
+GAS LISTING /tmp/ccjPsvj4.s 			page 10
+
+
+ 255      00
+ 256              	.LVL27:
+  57:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 257              		.loc 1 57 15 view .LVU72
+ 258 0159 EB38     		jmp	.L16
+ 259              	.LVL28:
+ 260              	.L18:
+ 261              	.LBB5:
+  59:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 262              		.loc 1 59 4 is_stmt 1 discriminator 2 view .LVU73
+  59:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 263              		.loc 1 59 16 is_stmt 0 discriminator 2 view .LVU74
+ 264 015b 440FB6ED 		movzbl	%bpl, %r13d
+  59:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 265              		.loc 1 59 47 discriminator 2 view .LVU75
+ 266 015f BF280000 		movl	$40, %edi
+ 266      00
+ 267 0164 E8000000 		call	malloc@PLT
+ 267      00
+ 268              	.LVL29:
+  59:Src/bases.cpp **** 			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+ 269              		.loc 1 59 19 discriminator 2 view .LVU76
+ 270 0169 4D63E5   		movslq	%r13d, %r12
+ 271 016c 4A8944E3 		movq	%rax, 8(%rbx,%r12,8)
+ 271      08
+  60:Src/bases.cpp **** 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+ 272              		.loc 1 60 4 is_stmt 1 discriminator 2 view .LVU77
+  60:Src/bases.cpp **** 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+ 273              		.loc 1 60 50 is_stmt 0 discriminator 2 view .LVU78
+ 274 0171 4489EE   		movl	%r13d, %esi
+ 275 0174 4889DF   		movq	%rbx, %rdi
+ 276 0177 E8000000 		call	_ZN8geometry17getCoordsOfCornerEPKN5bases8obstacleEh@PLT
+ 276      00
+ 277              	.LVL30:
+ 278 017c 4889C7   		movq	%rax, %rdi
+ 279              	.LVL31:
+  61:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+ 280              		.loc 1 61 4 is_stmt 1 discriminator 2 view .LVU79
+  61:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+ 281              		.loc 1 61 17 is_stmt 0 discriminator 2 view .LVU80
+ 282 017f 4A8B44E3 		movq	8(%rbx,%r12,8), %rax
+ 282      08
+ 283              	.LVL32:
+  61:Src/bases.cpp **** 			ret.corners[i]->c = *c;
+ 284              		.loc 1 61 22 discriminator 2 view .LVU81
+ 285 0184 488B17   		movq	(%rdi), %rdx
+ 286 0187 48895010 		movq	%rdx, 16(%rax)
+  62:Src/bases.cpp **** 			free(c);
+ 287              		.loc 1 62 4 is_stmt 1 discriminator 2 view .LVU82
+  62:Src/bases.cpp **** 			free(c);
+ 288              		.loc 1 62 8 is_stmt 0 discriminator 2 view .LVU83
+ 289 018b E8000000 		call	free@PLT
+ 289      00
+ 290              	.LVL33:
+  62:Src/bases.cpp **** 			free(c);
+ 291              		.loc 1 62 8 discriminator 2 view .LVU84
+ 292              	.LBE5:
+GAS LISTING /tmp/ccjPsvj4.s 			page 11
+
+
+  57:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 293              		.loc 1 57 3 is_stmt 1 discriminator 2 view .LVU85
+ 294 0190 83C501   		addl	$1, %ebp
+ 295              	.LVL34:
+ 296              	.L16:
+  57:Src/bases.cpp **** 		for(uint8_t i = 0; i < 4; i++)
+ 297              		.loc 1 57 24 discriminator 3 view .LVU86
+ 298 0193 4080FD03 		cmpb	$3, %bpl
+ 299 0197 76C2     		jbe	.L18
+ 300              	.LBE4:
+  66:Src/bases.cpp **** 	}
+ 301              		.loc 1 66 2 is_stmt 0 view .LVU87
+ 302 0199 4889D8   		movq	%rbx, %rax
+ 303 019c 4883C408 		addq	$8, %rsp
+ 304              		.cfi_def_cfa_offset 40
+ 305 01a0 5B       		popq	%rbx
+ 306              		.cfi_def_cfa_offset 32
+ 307              	.LVL35:
+  66:Src/bases.cpp **** 	}
+ 308              		.loc 1 66 2 view .LVU88
+ 309 01a1 5D       		popq	%rbp
+ 310              		.cfi_def_cfa_offset 24
+ 311              	.LVL36:
+  66:Src/bases.cpp **** 	}
+ 312              		.loc 1 66 2 view .LVU89
+ 313 01a2 415C     		popq	%r12
+ 314              		.cfi_def_cfa_offset 16
+ 315 01a4 415D     		popq	%r13
+ 316              		.cfi_def_cfa_offset 8
+ 317 01a6 C3       		ret
+ 318              		.cfi_endproc
+ 319              	.LFE1726:
+ 321              		.globl	_ZN5bases9addTargetEPNS_10graphPointES1_
+ 323              	_ZN5bases9addTargetEPNS_10graphPointES1_:
+ 324              	.LVL37:
+ 325              	.LFB1727:
+  72:Src/bases.cpp ****     {
+ 326              		.loc 1 72 5 is_stmt 1 view -0
+ 327              		.cfi_startproc
+  73:Src/bases.cpp ****         if(start == end) 
+ 328              		.loc 1 73 9 view .LVU91
+ 329 01a7 4839F7   		cmpq	%rsi, %rdi
+ 330 01aa 0F849500 		je	.L26
+ 330      0000
+  72:Src/bases.cpp ****     {
+ 331              		.loc 1 72 5 is_stmt 0 view .LVU92
+ 332 01b0 55       		pushq	%rbp
+ 333              		.cfi_def_cfa_offset 16
+ 334              		.cfi_offset 6, -16
+ 335 01b1 53       		pushq	%rbx
+ 336              		.cfi_def_cfa_offset 24
+ 337              		.cfi_offset 3, -24
+ 338 01b2 4883EC08 		subq	$8, %rsp
+ 339              		.cfi_def_cfa_offset 32
+ 340 01b6 4889FB   		movq	%rdi, %rbx
+ 341 01b9 4889F5   		movq	%rsi, %rbp
+ 342              	.LBB6:
+GAS LISTING /tmp/ccjPsvj4.s 			page 12
+
+
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 343              		.loc 1 77 20 view .LVU93
+ 344 01bc B8000000 		movl	$0, %eax
+ 344      00
+ 345              	.L22:
+ 346              	.LVL38:
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 347              		.loc 1 77 29 is_stmt 1 discriminator 1 view .LVU94
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 348              		.loc 1 77 38 is_stmt 0 discriminator 1 view .LVU95
+ 349 01c1 488B5308 		movq	8(%rbx), %rdx
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 350              		.loc 1 77 29 discriminator 1 view .LVU96
+ 351 01c5 4839C2   		cmpq	%rax, %rdx
+ 352 01c8 760F     		jbe	.L24
+  78:Src/bases.cpp ****             if(start->targets[i] == end)
+ 353              		.loc 1 78 13 is_stmt 1 view .LVU97
+  78:Src/bases.cpp ****             if(start->targets[i] == end)
+ 354              		.loc 1 78 23 is_stmt 0 view .LVU98
+ 355 01ca 488B13   		movq	(%rbx), %rdx
+  78:Src/bases.cpp ****             if(start->targets[i] == end)
+ 356              		.loc 1 78 13 view .LVU99
+ 357 01cd 48392CC2 		cmpq	%rbp, (%rdx,%rax,8)
+ 358 01d1 746B     		je	.L19
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 359              		.loc 1 77 9 is_stmt 1 discriminator 2 view .LVU100
+ 360 01d3 4883C001 		addq	$1, %rax
+ 361              	.LVL39:
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 362              		.loc 1 77 9 is_stmt 0 discriminator 2 view .LVU101
+ 363 01d7 EBE8     		jmp	.L22
+ 364              	.L24:
+  77:Src/bases.cpp ****         for(size_t i = 0; i < start->numOfTargets; i++)
+ 365              		.loc 1 77 9 discriminator 2 view .LVU102
+ 366              	.LBE6:
+ 367              	.LBB7:
+  82:Src/bases.cpp ****         for(size_t i = 0; i < end->numOfTargets; i++)
+ 368              		.loc 1 82 20 view .LVU103
+ 369 01d9 B8000000 		movl	$0, %eax
+ 369      00
+ 370              	.LVL40:
+ 371              	.L21:
+  82:Src/bases.cpp ****         for(size_t i = 0; i < end->numOfTargets; i++)
+ 372              		.loc 1 82 29 is_stmt 1 discriminator 1 view .LVU104
+ 373 01de 48394508 		cmpq	%rax, 8(%rbp)
+ 374 01e2 7610     		jbe	.L23
+  83:Src/bases.cpp ****             if(end->targets[i] == start)
+ 375              		.loc 1 83 13 view .LVU105
+  83:Src/bases.cpp ****             if(end->targets[i] == start)
+ 376              		.loc 1 83 21 is_stmt 0 view .LVU106
+ 377 01e4 488B4D00 		movq	0(%rbp), %rcx
+  83:Src/bases.cpp ****             if(end->targets[i] == start)
+ 378              		.loc 1 83 13 view .LVU107
+ 379 01e8 48391CC1 		cmpq	%rbx, (%rcx,%rax,8)
+ 380 01ec 7450     		je	.L19
+  82:Src/bases.cpp ****         for(size_t i = 0; i < end->numOfTargets; i++)
+ 381              		.loc 1 82 9 is_stmt 1 discriminator 2 view .LVU108
+GAS LISTING /tmp/ccjPsvj4.s 			page 13
+
+
+ 382 01ee 4883C001 		addq	$1, %rax
+ 383              	.LVL41:
+  82:Src/bases.cpp ****         for(size_t i = 0; i < end->numOfTargets; i++)
+ 384              		.loc 1 82 9 is_stmt 0 discriminator 2 view .LVU109
+ 385 01f2 EBEA     		jmp	.L21
+ 386              	.LVL42:
+ 387              	.L23:
+  82:Src/bases.cpp ****         for(size_t i = 0; i < end->numOfTargets; i++)
+ 388              		.loc 1 82 9 discriminator 2 view .LVU110
+ 389              	.LBE7:
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 390              		.loc 1 89 9 is_stmt 1 view .LVU111
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 391              		.loc 1 89 72 is_stmt 0 view .LVU112
+ 392 01f4 4883C201 		addq	$1, %rdx
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 393              		.loc 1 89 24 view .LVU113
+ 394 01f8 48895308 		movq	%rdx, 8(%rbx)
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 395              		.loc 1 89 62 view .LVU114
+ 396 01fc 488B3B   		movq	(%rbx), %rdi
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 397              		.loc 1 89 54 view .LVU115
+ 398 01ff 488D34D5 		leaq	0(,%rdx,8), %rsi
+ 398      00000000 
+ 399              	.LVL43:
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 400              		.loc 1 89 54 view .LVU116
+ 401 0207 E8000000 		call	realloc@PLT
+ 401      00
+ 402              	.LVL44:
+  89:Src/bases.cpp ****         start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * s
+ 403              		.loc 1 89 24 view .LVU117
+ 404 020c 488903   		movq	%rax, (%rbx)
+  90:Src/bases.cpp ****         start->targets[start->numOfTargets - 1] = end;
+ 405              		.loc 1 90 9 is_stmt 1 view .LVU118
+  90:Src/bases.cpp ****         start->targets[start->numOfTargets - 1] = end;
+ 406              		.loc 1 90 31 is_stmt 0 view .LVU119
+ 407 020f 488B5308 		movq	8(%rbx), %rdx
+  90:Src/bases.cpp ****         start->targets[start->numOfTargets - 1] = end;
+ 408              		.loc 1 90 49 view .LVU120
+ 409 0213 48896CD0 		movq	%rbp, -8(%rax,%rdx,8)
+ 409      F8
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+ 410              		.loc 1 92 9 is_stmt 1 view .LVU121
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+ 411              		.loc 1 92 68 is_stmt 0 view .LVU122
+ 412 0218 488B4508 		movq	8(%rbp), %rax
+ 413 021c 488D7001 		leaq	1(%rax), %rsi
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+ 414              		.loc 1 92 22 view .LVU123
+ 415 0220 48897508 		movq	%rsi, 8(%rbp)
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+ 416              		.loc 1 92 58 view .LVU124
+ 417 0224 488B7D00 		movq	0(%rbp), %rdi
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+ 418              		.loc 1 92 52 view .LVU125
+GAS LISTING /tmp/ccjPsvj4.s 			page 14
+
+
+ 419 0228 48C1E603 		salq	$3, %rsi
+ 420 022c E8000000 		call	realloc@PLT
+ 420      00
+ 421              	.LVL45:
+  92:Src/bases.cpp ****         end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(
+ 422              		.loc 1 92 22 view .LVU126
+ 423 0231 48894500 		movq	%rax, 0(%rbp)
+  93:Src/bases.cpp ****         end->targets[end->numOfTargets - 1] = start;
+ 424              		.loc 1 93 9 is_stmt 1 view .LVU127
+  93:Src/bases.cpp ****         end->targets[end->numOfTargets - 1] = start;
+ 425              		.loc 1 93 27 is_stmt 0 view .LVU128
+ 426 0235 488B5508 		movq	8(%rbp), %rdx
+  93:Src/bases.cpp ****         end->targets[end->numOfTargets - 1] = start;
+ 427              		.loc 1 93 45 view .LVU129
+ 428 0239 48895CD0 		movq	%rbx, -8(%rax,%rdx,8)
+ 428      F8
+ 429              	.L19:
+  94:Src/bases.cpp ****     }
+ 430              		.loc 1 94 5 view .LVU130
+ 431 023e 4883C408 		addq	$8, %rsp
+ 432              		.cfi_def_cfa_offset 24
+ 433 0242 5B       		popq	%rbx
+ 434              		.cfi_def_cfa_offset 16
+ 435              	.LVL46:
+  94:Src/bases.cpp ****     }
+ 436              		.loc 1 94 5 view .LVU131
+ 437 0243 5D       		popq	%rbp
+ 438              		.cfi_def_cfa_offset 8
+ 439              	.LVL47:
+  94:Src/bases.cpp ****     }
+ 440              		.loc 1 94 5 view .LVU132
+ 441 0244 C3       		ret
+ 442              	.LVL48:
+ 443              	.L26:
+ 444              		.cfi_restore 3
+ 445              		.cfi_restore 6
+  94:Src/bases.cpp ****     }
+ 446              		.loc 1 94 5 view .LVU133
+ 447 0245 C3       		ret
+ 448              		.cfi_endproc
+ 449              	.LFE1727:
+ 452              	_GLOBAL__sub_I_graph:
+ 453              	.LFB2045:
+ 454              		.loc 1 95 1 is_stmt 1 view -0
+ 455              		.cfi_startproc
+ 456 0246 4883EC08 		subq	$8, %rsp
+ 457              		.cfi_def_cfa_offset 16
+ 458              		.loc 1 95 1 is_stmt 0 view .LVU135
+ 459 024a BEFFFF00 		movl	$65535, %esi
+ 459      00
+ 460 024f BF010000 		movl	$1, %edi
+ 460      00
+ 461 0254 E8A7FDFF 		call	_Z41__static_initialization_and_destruction_0ii
+ 461      FF
+ 462              	.LVL49:
+ 463 0259 4883C408 		addq	$8, %rsp
+ 464              		.cfi_def_cfa_offset 8
+GAS LISTING /tmp/ccjPsvj4.s 			page 15
+
+
+ 465 025d C3       		ret
+ 466              		.cfi_endproc
+ 467              	.LFE2045:
+ 469              		.section	.init_array,"aw"
+ 470              		.align 8
+ 471 0000 00000000 		.quad	_GLOBAL__sub_I_graph
+ 471      00000000 
+ 472              		.globl	home
+ 473              		.data
+ 474              		.align 8
+ 477              	home:
+ 478 0000 01000000 		.quad	1
+ 478      00000000 
+ 479              		.globl	target
+ 480              		.align 8
+ 483              	target:
+ 484 0008 01000000 		.quad	1
+ 484      00000000 
+ 485              		.globl	calculatedPoints
+ 486              		.bss
+ 487              		.align 8
+ 490              	calculatedPoints:
+ 491 0000 00000000 		.zero	8
+ 491      00000000 
+ 492              		.globl	graphSize
+ 493              		.align 8
+ 496              	graphSize:
+ 497 0008 00000000 		.zero	8
+ 497      00000000 
+ 498              		.globl	numOfObstacles
+ 499              		.align 8
+ 502              	numOfObstacles:
+ 503 0010 00000000 		.zero	8
+ 503      00000000 
+ 504              		.globl	ways
+ 505              		.align 8
+ 508              	ways:
+ 509 0018 00000000 		.zero	8
+ 509      00000000 
+ 510              		.globl	endway
+ 511              		.align 8
+ 514              	endway:
+ 515 0020 00000000 		.zero	8
+ 515      00000000 
+ 516              		.globl	startway
+ 517              		.align 8
+ 520              	startway:
+ 521 0028 00000000 		.zero	8
+ 521      00000000 
+ 522              		.globl	obstacles
+ 523              		.align 8
+ 526              	obstacles:
+ 527 0030 00000000 		.zero	8
+ 527      00000000 
+ 528              		.globl	graph
+ 529              		.align 8
+ 532              	graph:
+GAS LISTING /tmp/ccjPsvj4.s 			page 16
+
+
+ 533 0038 00000000 		.zero	8
+ 533      00000000 
+ 534              		.local	_ZStL8__ioinit
+ 535              		.comm	_ZStL8__ioinit,1,1
+ 536              		.text
+ 537              	.Letext0:
+ 538              		.file 3 "/usr/include/c++/9.2.0/cwchar"
+ 539              		.file 4 "/usr/include/c++/9.2.0/new"
+ 540              		.file 5 "/usr/include/c++/9.2.0/bits/exception_ptr.h"
+ 541              		.file 6 "/usr/include/c++/9.2.0/type_traits"
+ 542              		.file 7 "/usr/include/c++/9.2.0/x86_64-pc-linux-gnu/bits/c++config.h"
+ 543              		.file 8 "/usr/include/c++/9.2.0/bits/stl_pair.h"
+ 544              		.file 9 "/usr/include/c++/9.2.0/debug/debug.h"
+ 545              		.file 10 "/usr/include/c++/9.2.0/bits/char_traits.h"
+ 546              		.file 11 "/usr/include/c++/9.2.0/cstdint"
+ 547              		.file 12 "/usr/include/c++/9.2.0/clocale"
+ 548              		.file 13 "/usr/include/c++/9.2.0/cstdlib"
+ 549              		.file 14 "/usr/include/c++/9.2.0/cstdio"
+ 550              		.file 15 "/usr/include/c++/9.2.0/system_error"
+ 551              		.file 16 "/usr/include/c++/9.2.0/bits/ios_base.h"
+ 552              		.file 17 "/usr/include/c++/9.2.0/cwctype"
+ 553              		.file 18 "/usr/include/c++/9.2.0/iosfwd"
+ 554              		.file 19 "/usr/include/c++/9.2.0/bits/std_abs.h"
+ 555              		.file 20 "/usr/include/c++/9.2.0/cmath"
+ 556              		.file 21 "/usr/include/c++/9.2.0/bits/predefined_ops.h"
+ 557              		.file 22 "/usr/include/c++/9.2.0/ext/new_allocator.h"
+ 558              		.file 23 "/usr/include/c++/9.2.0/ext/numeric_traits.h"
+ 559              		.file 24 "/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include/stddef.h"
+ 560              		.file 25 "<built-in>"
+ 561              		.file 26 "/usr/include/bits/types/wint_t.h"
+ 562              		.file 27 "/usr/include/bits/types/__mbstate_t.h"
+ 563              		.file 28 "/usr/include/bits/types/mbstate_t.h"
+ 564              		.file 29 "/usr/include/bits/types/__FILE.h"
+ 565              		.file 30 "/usr/include/bits/types/struct_FILE.h"
+ 566              		.file 31 "/usr/include/bits/types/FILE.h"
+ 567              		.file 32 "/usr/include/wchar.h"
+ 568              		.file 33 "/usr/include/bits/types/struct_tm.h"
+ 569              		.file 34 "/usr/include/bits/types.h"
+ 570              		.file 35 "/usr/include/bits/stdint-intn.h"
+ 571              		.file 36 "/usr/include/bits/stdint-uintn.h"
+ 572              		.file 37 "/usr/include/stdint.h"
+ 573              		.file 38 "/usr/include/locale.h"
+ 574              		.file 39 "/usr/include/time.h"
+ 575              		.file 40 "/usr/include/c++/9.2.0/x86_64-pc-linux-gnu/bits/atomic_word.h"
+ 576              		.file 41 "/usr/include/stdlib.h"
+ 577              		.file 42 "/usr/include/bits/stdlib-float.h"
+ 578              		.file 43 "/usr/include/bits/stdlib-bsearch.h"
+ 579              		.file 44 "/usr/include/bits/types/__fpos_t.h"
+ 580              		.file 45 "/usr/include/stdio.h"
+ 581              		.file 46 "/usr/include/bits/sys_errlist.h"
+ 582              		.file 47 "/usr/include/bits/stdio.h"
+ 583              		.file 48 "/usr/include/errno.h"
+ 584              		.file 49 "/usr/include/bits/wctype-wchar.h"
+ 585              		.file 50 "/usr/include/wctype.h"
+ 586              		.file 51 "/usr/include/c++/9.2.0/stdlib.h"
+ 587              		.file 52 "/usr/include/unistd.h"
+ 588              		.file 53 "/usr/include/bits/getopt_core.h"
+GAS LISTING /tmp/ccjPsvj4.s 			page 17
+
+
+ 589              		.file 54 "/usr/include/math.h"
+ 590              		.file 55 "/usr/include/c++/9.2.0/math.h"
+ 591              		.file 56 "/usr/include/bits/mathcalls.h"
+ 592              		.file 57 "Includes/bases.hpp"
+ 593              		.file 58 "Includes/geometry.hpp"
+GAS LISTING /tmp/ccjPsvj4.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 bases.cpp
+     /tmp/ccjPsvj4.s:5      .text:0000000000000000 _Z41__static_initialization_and_destruction_0ii
+                             .bss:0000000000000040 _ZStL8__ioinit
+     /tmp/ccjPsvj4.s:45     .text:000000000000003d _ZN5bases12createCoordsEff
+     /tmp/ccjPsvj4.s:73     .text:0000000000000055 _ZN5bases14createObstacleEffff
+     /tmp/ccjPsvj4.s:200    .text:00000000000000ff _ZN5bases14createObstacleEfff
+     /tmp/ccjPsvj4.s:323    .text:00000000000001a7 _ZN5bases9addTargetEPNS_10graphPointES1_
+     /tmp/ccjPsvj4.s:452    .text:0000000000000246 _GLOBAL__sub_I_graph
+     /tmp/ccjPsvj4.s:477    .data:0000000000000000 home
+     /tmp/ccjPsvj4.s:483    .data:0000000000000008 target
+     /tmp/ccjPsvj4.s:490    .bss:0000000000000000 calculatedPoints
+     /tmp/ccjPsvj4.s:496    .bss:0000000000000008 graphSize
+     /tmp/ccjPsvj4.s:502    .bss:0000000000000010 numOfObstacles
+     /tmp/ccjPsvj4.s:508    .bss:0000000000000018 ways
+     /tmp/ccjPsvj4.s:514    .bss:0000000000000020 endway
+     /tmp/ccjPsvj4.s:520    .bss:0000000000000028 startway
+     /tmp/ccjPsvj4.s:526    .bss:0000000000000030 obstacles
+     /tmp/ccjPsvj4.s:532    .bss:0000000000000038 graph
+
+UNDEFINED SYMBOLS
+_GLOBAL_OFFSET_TABLE_
+_ZNSt8ios_base4InitC1Ev
+__dso_handle
+_ZNSt8ios_base4InitD1Ev
+__cxa_atexit
+malloc
+_ZN8geometry17getCoordsOfCornerEPKN5bases8obstacleEh
+free
+realloc
