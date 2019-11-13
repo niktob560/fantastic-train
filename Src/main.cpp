@@ -16,16 +16,17 @@
 
 #include "bases.hpp"
 #include "routines.hpp"
-#include "findwayBases.hpp"
 #include "grapher.hpp"
 #include "pathfinder.hpp"
 
 
 #define GL_TIMER_DELAY	400
 #define RETURN_CODE_OK 0
-#define OBST_COLOR 0xFF0000
-#define GRAPH_COLOR 0x00FFFF
-#define DATA_COLOR	0xFFFFFF
+#define OBST_COLOR 	0x268BD2
+#define GRAPH_COLOR 0x99D4AA
+#define DATA_COLOR	0xD9E6F2
+#define WAY_COLOR	0xAA99D4
+#define BG_COLOR	0x1C2639
 
 using bases::array;
 using bases::coords;
@@ -35,10 +36,6 @@ using namespace std;
 
 
 bool terminated = false;
-
-
-
-
 
 
 
@@ -80,10 +77,10 @@ void drawObstacle(const struct obstacle *o)
 	glSetColor(OBST_COLOR);
 	drawRect(o->c->x, o->c->y, o->a, o->b);
 	glSetColor(DATA_COLOR);
-	drawText(L"0", 10, o->c->x, o->c->y);
-	drawText(L"1", 10, o->c->x, o->c->y + o->b);
-	drawText(L"2", 10, o->c->x + o->a, o->c->y + o->b);
-	drawText(L"3", 10, o->c->x + o->a, o->c->y);
+	drawText(L"0", 10, o->c->x + 5, o->c->y + 5);
+	drawText(L"1", 10, o->c->x + 5, o->c->y + o->b - 15);
+	drawText(L"2", 10, o->c->x + o->a - 15, o->c->y + o->b - 15);
+	drawText(L"3", 10, o->c->x + o->a - 15, o->c->y + 5);
 }
 
 
@@ -101,7 +98,8 @@ void drawWay(size_t pointNum, size_t target)
 void renderScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-
+		glSetColor(BG_COLOR);
+		drawRect(0, 0, glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
 		for(size_t i = 0; i < numOfObstacles; i++)
 		{
 			drawObstacle(&obstacles[i]);
@@ -115,7 +113,7 @@ void renderScene(void)
 		}
 
 		glLineWidth(5);
-		glSetColor(0x00FF99);
+		glSetColor(WAY_COLOR);
 		drawWay(home, target);
 
     glutSwapBuffers();
@@ -238,6 +236,17 @@ int main(int argc, char **argv)
 	if(argc == 1)
 		exit(0);
 
+	int W = 0;
+	for(int i = 0; i < graphSize; i++)
+		if(graph[i]->c.x > W)
+			W = graph[i]->c.x;
+
+	int H = 0;
+	for(int i = 0; i < graphSize; i++)
+		if(graph[i]->c.x > H)
+			H = graph[i]->c.x;
+	
+
 	
 
 
@@ -247,6 +256,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutCreateWindow("floating");
 	cout << "reshape\n";
+	glutReshapeWindow(W, H);
 	glutReshapeFunc(reshape);
 	cout << "dispfunc\n";
 	glutDisplayFunc(renderScene);
