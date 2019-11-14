@@ -7,26 +7,25 @@ namespace pathfinder
 
     using namespace bases;
 
-    bool hasUncalculatedPoints(const struct graphPoint *p)
+
+    bool hasUncalculatedPoints()
     {
-        for(size_t i = 0; i < (p->numOfTargets); i++)
-        {
-            if(!(p->targets[i]->calculated))
+        for(size_t i = 0; i < graphSize; i++)
+            if(!graph[i]->calculated)
                 return true;
-        }
         return false;
     }
-
-    struct graphPoint* getMinTarget(const struct graphPoint *p)
+    
+    struct graphPoint* getMinTarget()
     {
         COORDS_DATATYPE w = INF;
         struct graphPoint * pp = 0;
-        for(size_t i = 0; i < p->numOfTargets; i++)
+        for(size_t i = 0; i < graphSize; i++)
         {
-            if(!p->targets[i]->calculated && p->targets[i]->weight <= w)
+            if(!graph[i]->calculated && graph[i]->weight <= w)
             {
-                w = p->targets[i]->weight;
-                pp = p->targets[i];
+                pp = graph[i];
+                w = pp->weight;
             }
         }
         return pp;
@@ -34,31 +33,35 @@ namespace pathfinder
 
     void calculateWay(size_t index) 
     {
-        if(graph[index] == NULL || graph[index]->calculated)
-            return;
-        graph[index]->calculated = true;
+        if(graph[index] == NULL || graph[index]->calculated)    //Если точки не существует либо она уже обработана
+            return;                                             //                  завершить
+
+        graph[index]->calculated = true;                        //Отметить как обработанную
         
-        if(graph[index]->numOfTargets == 0)
+        if(graph[index]->numOfTargets == 0)                     //Если целей нет то завершить
             return;
 
         struct graphPoint * watch;
         COORDS_DATATYPE w;
 
-        for(size_t i = 0; i < graph[index]->numOfTargets; i++)
+        for(size_t i = 0; i < graph[index]->numOfTargets; i++)  //Итерируемся по всем целям точки
         {
-            watch = graph[index]->targets[i];
-            w = getWayPrice(graph[index], watch);
-            if(watch->weight > graph[index]->weight + w)
+            watch = graph[index]->targets[i];                   //Текущая цель
+            if(!watch->calculated)
             {
-                watch->weight = w + graph[index]->weight;
-                ways[watch->i] = index;
+                w = getWayPrice(graph[index], watch);               //Цена пути от текущей точки до цели
+                if(graph[index]->weight + w < watch->weight)        //Если полученная цена меньше чем имеющаяся
+                {
+                    watch->weight = w + graph[index]->weight;       //Установим новую цену
+                    ways[watch->i] = index;                         //Запишем об этом в вектор путей
+                }
             }
         }
 
-        while (hasUncalculatedPoints(graph[index]))
+        while (hasUncalculatedPoints())             //Если есть необработанные цели
         {
-            watch = getMinTarget(graph[index]);
-            calculateWay(watch->i);
+            watch = getMinTarget();                 //Берём с наименьшей ценой
+            calculateWay(watch->i);                             //Вычисляем её рекурсивно
         }
     }
 
@@ -72,5 +75,4 @@ namespace pathfinder
     {
         return sqrt(pow(start->x - end->x, 2) + pow(start->y - end->y, 2));
     }
-
 }

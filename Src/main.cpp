@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <stdio.h>      // standard input / output functions
 #include <stdlib.h>
 #include <string.h>     // string function definitions
@@ -27,6 +28,7 @@
 #define DATA_COLOR	0xD9E6F2
 #define WAY_COLOR	0xAA99D4
 #define BG_COLOR	0x1C2639
+#define DATA_EXTRA_COLOR 0xDC322F
 
 using bases::array;
 using bases::coords;
@@ -65,7 +67,10 @@ void drawEdges(struct bases::graphPoint *p)
 	glSetColor(GRAPH_COLOR);
 	for(size_t i = 0; i < p->numOfTargets; i++)
 	{
+		glSetColor(GRAPH_COLOR);
 		drawLine(&p->c, &p->targets[i]->c);
+		// glSetColor(DATA_EXTRA_COLOR);
+		// drawText(to_wstring(pathfinder::getWayPrice(p, p->targets[i])), 11, (p->c.x + p->targets[i]->c.x) / 2, (p->c.y + p->targets[i]->c.y) / 2);
 	}
 }
 
@@ -76,11 +81,11 @@ void drawObstacle(const struct obstacle *o)
 {
 	glSetColor(OBST_COLOR);
 	drawRect(o->c->x, o->c->y, o->a, o->b);
-	glSetColor(DATA_COLOR);
-	drawText(L"0", 10, o->c->x + 5, o->c->y + 5);
-	drawText(L"1", 10, o->c->x + 5, o->c->y + o->b - 15);
-	drawText(L"2", 10, o->c->x + o->a - 15, o->c->y + o->b - 15);
-	drawText(L"3", 10, o->c->x + o->a - 15, o->c->y + 5);
+	// glSetColor(DATA_COLOR);
+	// drawText(L"0", 10, o->c->x, o->c->y);
+	// drawText(L"1", 10, o->c->x, o->c->y + o->b);
+	// drawText(L"2", 10, o->c->x + o->a, o->c->y + o->b);
+	// drawText(L"3", 10, o->c->x + o->a, o->c->y);
 }
 
 
@@ -89,8 +94,22 @@ void drawWay(size_t pointNum, size_t target)
 	size_t curr = pointNum;
 	while(curr != target)
 	{
+		glSetColor(WAY_COLOR);
 		drawLine(graph[curr], graph[ways[curr]]);
+		// glSetColor(DATA_EXTRA_COLOR);
+		// drawText(to_wstring(pathfinder::getWayPrice(graph[curr], graph[ways[curr]])), 10, (graph[curr]->c.x + graph[ways[curr]]->c.x + 10) / 2, (graph[curr]->c.y + graph[ways[curr]]->c.y + 10) / 2);
 		curr = ways[curr];
+	}
+}
+
+void drawDots()
+{
+	for(int i = 0; i < graphSize; i++)
+	{
+		glSetColor(DATA_EXTRA_COLOR);
+		drawCircleFilled(graph[i]->c.x, graph[i]->c.y, 3, 10);
+		glSetColor(DATA_COLOR);
+		drawText(to_wstring((int)graph[i]->i), 12, graph[i]->c.x - 10, graph[i]->c.y - 6);
 	}
 }
 
@@ -104,7 +123,7 @@ void renderScene(void)
 		{
 			drawObstacle(&obstacles[i]);
 			glSetColor(DATA_COLOR);
-			drawText(to_wstring(i), 12, obstacles[i].c->x + obstacles[i].a / 2, obstacles[i].c->y + obstacles[i].b / 2);
+			// drawText(to_wstring(i), 12, obstacles[i].c->x + obstacles[i].a / 2, obstacles[i].c->y + obstacles[i].b / 2);
 		}
 		for(size_t i = 0; i < graphSize; i++)
 		{
@@ -115,6 +134,11 @@ void renderScene(void)
 		glLineWidth(5);
 		glSetColor(WAY_COLOR);
 		drawWay(home, target);
+
+		glSetColor(DATA_EXTRA_COLOR);
+		drawText(to_wstring(graph[home]->weight), 14, 10, 10);
+
+		// drawDots();
 
     glutSwapBuffers();
 }
@@ -169,16 +193,16 @@ void timf(int value)				// Timer function
 
 int main(int argc, char **argv)
 {
-	numOfObstacles = 30;
+	numOfObstacles = 300;
 	size_t iter = 0;
 	obstacles = (struct bases::obstacle*)malloc(sizeof(struct bases::obstacle) * numOfObstacles);
 	obstacles[iter++] = bases::createObstacle(100, 100, 200);
 	obstacles[iter++] = bases::createObstacle(110, 350, 200);
+	obstacles[iter++] = bases::createObstacle(280, 580, 20);
+	obstacles[iter++] = bases::createObstacle(80, 330, 50);
+	obstacles[iter++] = bases::createObstacle(120, 340, 50);
+	obstacles[iter++] = bases::createObstacle(60, 400, 30);
 	obstacles[iter++] = bases::createObstacle(510, 350, 200, 100);
-	// obstacles[iter++] = createObstacle(280, 580, 20);
-	// obstacles[iter++] = createObstacle(80, 330, 50);
-	// obstacles[iter++] = createObstacle(120, 340, 50);
-	// obstacles[iter++] = createObstacle(60, 400, 30);
 	numOfObstacles = iter;
 
 	graphSize = numOfObstacles * 4 + 2;
@@ -231,21 +255,32 @@ int main(int argc, char **argv)
 	grapher::initPoint(p);
 	pathfinder::calculateWay(target);
 	
-	
 
-	if(argc == 1)
-		exit(0);
+	cout << endl;
+	for(int i = 0; i < graphSize; i++)
+		cout << setw(3) << i;
+	cout << endl;
+	for(int i = 0; i < graphSize; i++)
+		cout << setw(3) << ways[i];
+	cout << endl;
+
 
 	int W = 0;
 	for(int i = 0; i < graphSize; i++)
 		if(graph[i]->c.x > W)
 			W = graph[i]->c.x;
+	for(int i = 0; i < numOfObstacles; i++)
+		if(obstacles[i].c->x + obstacles[i].a > W)
+			W = obstacles[i].c->x + obstacles[i].a;
 
 	int H = 0;
 	for(int i = 0; i < graphSize; i++)
-		if(graph[i]->c.x > H)
-			H = graph[i]->c.x;
+		if(graph[i]->c.y > H)
+			H = graph[i]->c.y;
 	
+	for(int i = 0; i < numOfObstacles; i++)
+		if(obstacles[i].c->y + obstacles[i].b > H)
+			W = obstacles[i].c->y + obstacles[i].b;
 
 	
 

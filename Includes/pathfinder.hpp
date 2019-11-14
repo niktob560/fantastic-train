@@ -4,9 +4,9 @@ namespace pathfinder
 {
     using namespace bases;
     
-    bool hasUncalculatedPoints(const struct graphPoint *p);
+    bool hasUncalculatedPoints();
 
-    struct graphPoint* getMinTarget(const struct graphPoint *p);
+    struct graphPoint* getMinTarget();
 
     void calculateWay(size_t index);
 
