@@ -210,13 +210,13 @@ int main(int argc, char **argv)
 	struct bases::graphPoint *p = (struct bases::graphPoint*)malloc(sizeof(struct bases::graphPoint));
 
 	struct coords c;	
-	c.x = 350;
-	c.y = 10;
+	c.x = 800;
+	c.y = 100;
 	p->c = c;
 	struct bases::graphPoint *p2 = (struct bases::graphPoint*)malloc(sizeof(struct bases::graphPoint));
 
 	struct coords c2;
-	c2.x = 80;
+	c2.x = 1500;
 	c2.y = 440;
 	p2->c = c2;
 
@@ -248,8 +248,8 @@ int main(int argc, char **argv)
 
 
 	struct coords c3;
-	c3.x = 200;
-	c3.y = 0;
+	c3.x = 2000;
+	c3.y = 100;
 
 
 	grapher::initPoint(p);
