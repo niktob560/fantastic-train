@@ -1,10 +1,10 @@
 #include "bases.hpp"
 #include "geometry.hpp"
 
-struct bases::graphPoint **graph;
+struct graphbases::graphPoint **graph;
 struct bases::obstacle *obstacles;
 
-struct bases::coords	startway,
+struct graphbases::coords	startway,
 							endway;
 size_t *ways;
 
@@ -17,6 +17,7 @@ size_t 	target = 1,
 
 namespace bases
 {
+    using namespace graphbases;
 
 	struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
 	{
@@ -37,7 +38,7 @@ namespace bases
 		ret.b    = b;
 		for(uint8_t i = 0; i < 4; i++)
 		{
-			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+			ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
 			ret.corners[i]->c = *c;
 			free(c);
@@ -49,14 +50,14 @@ namespace bases
 	struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a)
 	{
 		struct obstacle ret;
-		ret.c = (struct coords*)malloc(sizeof(struct coords));
+		ret.c = (struct graphbases::coords*)malloc(sizeof(struct graphbases::coords));
 		ret.c->x = x;
 		ret.c->y = y;
 		ret.a    = a;
 		ret.b    = a;
 		for(uint8_t i = 0; i < 4; i++)
 		{
-			ret.corners[i] = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+			ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
 			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
 			ret.corners[i]->c = *c;
 			free(c);
@@ -68,7 +69,7 @@ namespace bases
 
 
 
-    void            addTarget(struct graphPoint *start, struct graphPoint *end)
+    void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end)
     {
         if(start == end) 
         {
@@ -86,10 +87,10 @@ namespace bases
             }
 
 
-        start->targets = (struct graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphPoint*));
+        start->targets = (struct graphbases::graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphbases::graphPoint*));
         start->targets[start->numOfTargets - 1] = end;
 
-        end->targets = (struct graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(struct graphPoint*));
+        end->targets = (struct graphbases::graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(struct graphbases::graphPoint*));
         end->targets[end->numOfTargets - 1] = start;
     }
 }

@@ -6,6 +6,7 @@
 namespace geometry
 {
     using namespace bases;
+    using namespace graphbases;
     const uint16_t FIELD_MAX_LEN = 2000;
 
 
@@ -22,9 +23,9 @@ namespace geometry
 
     bool isDotInside(const struct coords *c);
 
-    struct coords getCoordsOfPoint(struct graphPoint *p);
+    struct coords getCoordsOfPoint(struct graphbases::graphPoint *p);
 
-    struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner);
+    struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner);
 
     COORDS_DATATYPE getLen(const struct vect *v);
 

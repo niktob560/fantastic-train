@@ -2,15 +2,16 @@
 
 namespace pathfinder
 {
+    using namespace graphbases;
     using namespace bases;
     
     bool hasUncalculatedPoints();
 
-    struct graphPoint* getMinTarget();
+    struct graphbases::graphPoint* getMinTarget();
 
     void calculateWay(size_t index);
 
-    COORDS_DATATYPE getWayPrice(struct graphPoint *start, struct graphPoint *end);
+    COORDS_DATATYPE getWayPrice(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 
     COORDS_DATATYPE getWayPrice(struct coords *start, struct coords *end);
 }

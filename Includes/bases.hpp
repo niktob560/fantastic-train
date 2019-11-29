@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include "math.hpp"
+#include "graphbases.hpp"
 
 namespace bases
 {
@@ -15,42 +16,9 @@ namespace bases
     const uint8_t CORNER_LEFT_TOP  = 1;
     const uint8_t CORNER_RIGHT_TOP = 2;
     const uint8_t CORNER_RIGHT_BOT = 3;
- 
-	struct array
-	{
-		void *items;
-		size_t size;
-	};
 
 
-	struct coords
-	{
-		COORDS_DATATYPE     x,
-							y;
-
-		bool eq(struct coords *c)
-		{
-			return (x == c->x && y == c->y);
-		}
-
-		bool eq(COORDS_DATATYPE _x, COORDS_DATATYPE _y)
-		{
-			return (x == _x && y == _y);
-		}
-	};
-
-
-
-    struct graphPoint
-    {
-        struct graphPoint **targets = NULL;
-        size_t numOfTargets = 0;
-        struct bases::coords c;
-        bool calculated = false;
-        COORDS_DATATYPE weight = INF;
-        size_t i = 0;
-    };
-
+	
     /*
     *  1-------2
     *  |       |
@@ -61,8 +29,8 @@ namespace bases
 
     struct obstacle
     {
-        struct bases::coords      *c = NULL;
-        struct graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
+        struct graphbases::coords      *c = NULL;
+        struct graphbases::graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
         COORDS_DATATYPE     a = 0, b = 0;
     };
 
@@ -74,13 +42,13 @@ namespace bases
 
     struct vect
     {
-        struct bases::coords      *c = NULL;
+        struct graphbases::coords      *c = NULL;
         COORDS_DATATYPE     dx = 0,
                             dy = 0;
 
-        struct bases::coords getLastCoords()
+        struct graphbases::coords getLastCoords()
         {
-            struct bases::coords _c;
+            struct graphbases::coords _c;
             _c.x = c->x + dx;
             _c.y = c->y + dy;
             return _c;
@@ -92,17 +60,17 @@ namespace bases
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a);
 
-    struct bases::coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y);
+    struct graphbases::coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y);
 
-    void            addTarget(struct graphPoint *start, struct graphPoint *end);
+    void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 }
 
-extern struct bases::graphPoint **graph;
+extern struct graphbases::graphPoint **graph;
 extern struct bases::obstacle *obstacles;
 extern size_t numOfObstacles;
 extern size_t calculatedPoints;
 
-extern struct bases::coords	startway,
+extern struct graphbases::coords	startway,
 							endway;
 extern size_t *ways;
 

@@ -1,0 +1,3 @@
+[submodule "waypointmanager"]
+	path = waypointmanager
+	url = https://github.com/niktob560/waypointmanager

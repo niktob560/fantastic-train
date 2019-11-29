@@ -20,6 +20,8 @@
 #include "grapher.hpp"
 #include "pathfinder.hpp"
 
+#include "manager.hpp"
+
 
 #define GL_TIMER_DELAY	400
 #define RETURN_CODE_OK 0
@@ -30,9 +32,10 @@
 #define BG_COLOR	0x1C2639
 #define DATA_EXTRA_COLOR 0xDC322F
 
-using bases::array;
-using bases::coords;
+using graphbases::array;
+using graphbases::coords;
 using bases::obstacle;
+using graphbases::graphPoint;
 
 using namespace std;
 
@@ -49,7 +52,7 @@ void drawLine(struct coords *start, struct coords *end)
 	drawLine(start->x, start->y, end->x, end->y);
 }
 
-void drawLine(struct bases::graphPoint *start, struct bases::graphPoint *end)
+void drawLine(struct graphPoint *start, struct graphPoint *end)
 {
 	drawLine(&start->c, &end->c);
 }
@@ -58,7 +61,7 @@ void drawLine(struct bases::graphPoint *start, struct bases::graphPoint *end)
 
 
 
-void drawEdges(struct bases::graphPoint *p)
+void drawEdges(struct graphPoint *p)
 {
 	if(p == NULL || p->numOfTargets == 0) 
 	{
@@ -104,7 +107,7 @@ void drawWay(size_t pointNum, size_t target)
 
 void drawDots()
 {
-	for(int i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < graphSize; i++)
 	{
 		glSetColor(DATA_EXTRA_COLOR);
 		drawCircleFilled(graph[i]->c.x, graph[i]->c.y, 3, 10);
@@ -147,6 +150,8 @@ void renderScene(void)
 void handleKeypress(unsigned char key, //The key that was pressed
                                         int x, int y) //The current mouse coordinates
 {
+    x++;
+    y++;
     cout << "PRESSED\n" << (int)key << endl;
     if(key == 27) //ESC
     {
@@ -176,6 +181,7 @@ void reshape(int w, int h)
 
 void timf(int value)				// Timer function
 {
+    value++;
 	if(!terminated)					//if don't wanna terminate
 	{
 		glutPostRedisplay();		//Redraw windows
@@ -207,20 +213,20 @@ int main(int argc, char **argv)
 
 	graphSize = numOfObstacles * 4 + 2;
 
-	struct bases::graphPoint *p = (struct bases::graphPoint*)malloc(sizeof(struct bases::graphPoint));
+	struct graphPoint *p = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
 	struct coords c;	
 	c.x = 800;
 	c.y = 100;
 	p->c = c;
-	struct bases::graphPoint *p2 = (struct bases::graphPoint*)malloc(sizeof(struct bases::graphPoint));
+	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
 	struct coords c2;
 	c2.x = 1500;
 	c2.y = 440;
 	p2->c = c2;
 
-	graph = (struct bases::graphPoint**)malloc(graphSize * sizeof(struct bases::graphPoint*));
+	graph = (struct graphPoint**)malloc(graphSize * sizeof(struct graphPoint*));
 	target = numOfObstacles * 4;
 	home = target + 1;
 	p2->i = home;
@@ -247,38 +253,33 @@ int main(int argc, char **argv)
 	endway.y	= 150;
 
 
-	struct coords c3;
-	c3.x = 2000;
-	c3.y = 100;
-
-
 	grapher::initPoint(p);
 	pathfinder::calculateWay(target);
 	
 
 	cout << endl;
-	for(int i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < graphSize; i++)
 		cout << setw(3) << i;
 	cout << endl;
-	for(int i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < graphSize; i++)
 		cout << setw(3) << ways[i];
 	cout << endl;
 
 
 	int W = 0;
-	for(int i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < graphSize; i++)
 		if(graph[i]->c.x > W)
 			W = graph[i]->c.x;
-	for(int i = 0; i < numOfObstacles; i++)
+	for(size_t i = 0; i < numOfObstacles; i++)
 		if(obstacles[i].c->x + obstacles[i].a > W)
 			W = obstacles[i].c->x + obstacles[i].a;
 
 	int H = 0;
-	for(int i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < graphSize; i++)
 		if(graph[i]->c.y > H)
 			H = graph[i]->c.y;
 	
-	for(int i = 0; i < numOfObstacles; i++)
+	for(size_t i = 0; i < numOfObstacles; i++)
 		if(obstacles[i].c->y + obstacles[i].b > H)
 			W = obstacles[i].c->y + obstacles[i].b;
 

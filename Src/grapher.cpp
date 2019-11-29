@@ -5,11 +5,13 @@
 namespace grapher
 {
 	using namespace bases;
+    using namespace graphbases;
+    using graphbases::graphPoint;
 
 
 	uint8_t getMinDatasetSize()
 	{
-		int ret = numOfObstacles;
+		size_t ret = numOfObstacles;
 		if(ret < 2)
 			ret = 2;
 		if(ret >= numOfObstacles)
@@ -17,7 +19,7 @@ namespace grapher
 		return ret;
 	}
 
-	struct array* getPointsDataSet(const struct coords *c)
+	struct graphbases::array* getPointsDataSet(struct graphbases::coords *c)
 	{
 		size_t size = 0;
 		uint16_t watchRadius = ZERO_QUAD_CHECK_SIDE;
@@ -46,22 +48,21 @@ namespace grapher
 			&& graph[i]->c.y <= c->y + watchRadius)
 				dataset[iter++] = graph[i];
 		}
-		struct array *ret = (struct array*)malloc(sizeof(struct array));
+		struct graphbases::array *ret = (struct graphbases::array*)malloc(sizeof(struct graphbases::array));
 		ret->items = dataset;
 		ret->size = size;
 		return ret;
 	}
 
 
-	void initPoint(struct graphPoint *p)
+	void initPoint(struct graphbases::graphPoint *p)
 	{
-		struct array* points = getPointsDataSet(&p->c);
+		struct graphbases::array* points = getPointsDataSet(&p->c);
 		struct vect v;
-		struct coords *tgt;
-		struct bases::graphPoint *currP = 0x00;
-		for(int i = 0; i < points->size; i++)
+		struct graphbases::graphPoint *currP = 0x00;
+		for(size_t i = 0; i < points->size; i++)
 		{
-			currP = ((struct bases::graphPoint**)(points->items))[i];
+			currP = ((struct graphbases::graphPoint**)(points->items))[i];
 			v = geometry::createVect(&p->c, &currP->c);
 			if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v) && !geometry::isDotInside(&p->c) && !geometry::isDotInside(&currP->c))
 			{
@@ -69,7 +70,7 @@ namespace grapher
 					calculatedPoints++;
 				if(currP->numOfTargets == 0)
 					calculatedPoints++;
-				addTarget(p, currP);
+				bases::addTarget(p, currP);
 				if(currP->numOfTargets == 1)
 					initPoint(currP);
 			}

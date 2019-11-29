@@ -74,7 +74,7 @@ namespace geometry
 
 
 
-    struct coords getCoordsOfPoint(struct graphPoint *p)
+    struct coords getCoordsOfPoint(struct graphbases::graphPoint *p)
     {
         return (p->c);
     }
@@ -328,7 +328,7 @@ namespace geometry
     }
 
 
-    struct graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner)
+    struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner)
     {
         return obst->corners[corner];
     }
