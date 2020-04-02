@@ -61,10 +61,10 @@ namespace geometry
     {
         for(size_t i = 0; i < numOfObstacles; i++)
         {
-            if(	(c->x - CONST > obstacles[i].c->x)
-            &&  (c->x + CONST < obstacles[i].c->x + obstacles[i].a)
-            &&  (c->y - CONST > obstacles[i].c->y)
-            &&  (c->y + CONST < obstacles[i].c->y + obstacles[i].a))
+            if(	(c->x - CONST > obstacles[i].c->x - (obstacles[i].a / 2))
+            &&  (c->x + CONST < obstacles[i].c->x + (obstacles[i].a / 2))
+            &&  (c->y - CONST > obstacles[i].c->y - (obstacles[i].b / 2))
+            &&  (c->y + CONST < obstacles[i].c->y + (obstacles[i].b / 2)))
                 return true;
         }
         return false;
@@ -258,10 +258,10 @@ namespace geometry
 
     bool            isDotInside(const struct coords *dot, const struct obstacle *obstacle)
     {
-        return      (dot->x >= obstacle->c->x)
-                &&  (dot->x <= obstacle->c->x + obstacle->a)
-                &&  (dot->y >= obstacle->c->y)
-                &&  (dot->y <= obstacle->c->y + obstacle->b);
+        return      (dot->x >= obstacle->c->x - (obstacle->a / 2))
+                &&  (dot->x <= obstacle->c->x + (obstacle->a / 2))
+                &&  (dot->y >= obstacle->c->y - (obstacle->b / 2))
+                &&  (dot->y <= obstacle->c->y + (obstacle->b / 2));
     }
 
     struct baseline vectToBaseline(const struct vect *v)
@@ -301,26 +301,26 @@ namespace geometry
         switch (corner) {
             case Corner::LEFT_BOTTOM:
             {
-                ret->x = obst->c->x - CONST;
-                ret->y = obst->c->y - CONST;
+                ret->x = obst->c->x - CONST - (obst->a / 2);
+                ret->y = obst->c->y - CONST - (obst->b / 2);
                 break;
             }
             case Corner::LEFT_TOP:
             {
-                ret->x = obst->c->x - CONST;
-                ret->y = obst->c->y + obst->b + CONST;
+                ret->x = obst->c->x - CONST - (obst->a / 2);
+                ret->y = obst->c->y + CONST + (obst->b / 2);
                 break;
             }
             case Corner::RIGHT_BOTTOM:
             {
-                ret->x = obst->c->x + obst->a + CONST;
-                ret->y = obst->c->y - CONST;
+                ret->x = obst->c->x + CONST + (obst->a / 2);
+                ret->y = obst->c->y - CONST - (obst->b / 2);
                 break;
             }
             case Corner::RIGHT_TOP:
             {
-                ret->x = obst->c->x + obst->a + CONST;
-                ret->y = obst->c->y + obst->b + CONST;
+                ret->x = obst->c->x + CONST + (obst->a / 2);
+                ret->y = obst->c->y + CONST + (obst->b / 2);
                 break;
             }
         }

@@ -20,8 +20,8 @@ void drawLine(float x1, float y1, float x2, float y2)
 
 void drawRect(float x, float y, float a, float b)
 {
-	// x -= a / 2;
-	// y -= b / 2;
+	x -= a / 2;
+	y -= b / 2;
 	glBegin(GL_QUADS);
 	glVertex2d(x, y);
 	glVertex2d(x, y + b);
@@ -91,7 +91,7 @@ void drawQuad(float x, float y, float a)
 
 void drawText(std::wstring text, int size, int x, int y)
 {
-	FTGLPixmapFont hack_italic_font("/usr/share/fonts/TTF/Hack-Italic.ttf");
+	FTGLPixmapFont hack_italic_font("/usr/share/fonts/TTF/JetBrainsMonoNL-Regular.ttf");
 	if(!hack_italic_font.Error())
 	{
 		glPushMatrix();

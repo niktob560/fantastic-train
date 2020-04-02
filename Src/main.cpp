@@ -130,12 +130,12 @@ void renderScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 		glSetColor(BG_COLOR);
-		drawRect(0, 0, glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
+		drawRect(glutGet(GLUT_SCREEN_WIDTH) / 2, glutGet(GLUT_SCREEN_HEIGHT) / 2, glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
 		for(size_t i = 0; i < numOfObstacles; i++)
 		{
 			drawObstacle(&obstacles[i]);
 			glSetColor(DATA_COLOR);
-			// drawText(to_wstring(i), 12, obstacles[i].c->x + obstacles[i].a / 2, obstacles[i].c->y + obstacles[i].b / 2);
+			drawText(to_wstring(i), 12, obstacles[i].c->x, obstacles[i].c->y);
 		}
 		for(size_t i = 0; i < graphSize; i++)
 		{
@@ -211,13 +211,13 @@ int main(int argc, char **argv)
 	numOfObstacles = 300;
 	size_t iter = 0;
 	obstacles = (struct bases::obstacle*)malloc(sizeof(struct bases::obstacle) * numOfObstacles);
-	obstacles[iter++] = bases::createObstacle(100, 100, 200);
-	obstacles[iter++] = bases::createObstacle(110, 350, 200);
-	obstacles[iter++] = bases::createObstacle(280, 580, 20);
-	obstacles[iter++] = bases::createObstacle(80, 330, 50);
-	obstacles[iter++] = bases::createObstacle(120, 340, 50);
-	obstacles[iter++] = bases::createObstacle(60, 400, 30);
-	obstacles[iter++] = bases::createObstacle(510, 350, 200, 100);
+	obstacles[iter++] = bases::createObstacle(100, 100, 100);
+	obstacles[iter++] = bases::createObstacle(310, 350, 200);
+	// obstacles[iter++] = bases::createObstacle(280, 580, 20);
+	// obstacles[iter++] = bases::createObstacle(80, 330, 50);
+	// obstacles[iter++] = bases::createObstacle(120, 340, 50);
+	// obstacles[iter++] = bases::createObstacle(60, 400, 30);
+	// obstacles[iter++] = bases::createObstacle(510, 350, 200, 100);
 	numOfObstacles = iter;
 
 	graphSize = numOfObstacles * 4 + 2;
