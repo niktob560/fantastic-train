@@ -39,7 +39,7 @@ namespace bases
 		for(uint8_t i = 0; i < 4; i++)
 		{
 			ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
-			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+			struct coords *c = geometry::getCoordsOfCorner(&ret, cornerFromNum(i));
 			ret.corners[i]->c = *c;
 			free(c);
 		}
@@ -58,7 +58,7 @@ namespace bases
 		for(uint8_t i = 0; i < 4; i++)
 		{
 			ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
-			struct coords *c = geometry::getCoordsOfCorner(&ret, i);
+			struct coords *c = geometry::getCoordsOfCorner(&ret, cornerFromNum(i));
 			ret.corners[i]->c = *c;
 			free(c);
 		}

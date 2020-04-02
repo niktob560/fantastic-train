@@ -12,10 +12,42 @@ namespace bases
     typedef float COORDS_DATATYPE;
 
 
-    const uint8_t CORNER_LEFT_BOT  = 0;
-    const uint8_t CORNER_LEFT_TOP  = 1;
-    const uint8_t CORNER_RIGHT_TOP = 2;
-    const uint8_t CORNER_RIGHT_BOT = 3;
+    // const uint8_t CORNER_LEFT_BOT  = 0;
+    // const uint8_t CORNER_LEFT_TOP  = 1;
+    // const uint8_t CORNER_RIGHT_TOP = 2;
+    // const uint8_t CORNER_RIGHT_BOT = 3;
+
+    enum Corner
+    {
+        LEFT_BOTTOM     = 0,
+        LEFT_TOP        = 1,
+        RIGHT_TOP       = 2,
+        RIGHT_BOTTOM    = 3
+    };
+
+    template<typename T>
+    constexpr Corner cornerFromNum(const T num)
+    {
+        Corner ret;
+        switch (num)
+        {
+        case 0:
+            ret = LEFT_BOTTOM;
+            break;
+        case 1:
+            ret = LEFT_TOP;
+            break;
+        case 2:
+            ret = RIGHT_TOP;
+            break;
+        case 3:
+            ret = RIGHT_BOTTOM;
+            break;
+        default:
+            ret = LEFT_BOTTOM;
+        }
+        return ret;
+    }
 
 
 	

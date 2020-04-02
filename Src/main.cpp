@@ -222,8 +222,8 @@ int main(int argc, char **argv)
 	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
 	struct coords c2;
-	c2.x = 1500;
-	c2.y = 440;
+	c2.x = 50;
+	c2.y = 400;
 	p2->c = c2;
 
 	graph = (struct graphPoint**)malloc(graphSize * sizeof(struct graphPoint*));

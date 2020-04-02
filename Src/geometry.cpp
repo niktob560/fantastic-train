@@ -36,7 +36,7 @@ namespace geometry
         return ret;
     }
 
-    struct vect createVect(const struct obstacle *obst, const uint8_t corner, const COORDS_DATATYPE angle)
+    struct vect createVect(const struct obstacle *obst, const Corner corner, const COORDS_DATATYPE angle)
     {
         struct vect ret;
         struct coords *c = getCoordsOfCorner(obst, corner);
@@ -295,29 +295,29 @@ namespace geometry
 
     #define CONST 0.4
 
-    struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t corner)
+    struct coords*  getCoordsOfCorner(const struct obstacle *obst, const Corner corner)
     {
         struct coords *ret = (struct coords*)malloc(sizeof(struct coords));
         switch (corner) {
-            case CORNER_LEFT_BOT:
+            case Corner::LEFT_BOTTOM:
             {
                 ret->x = obst->c->x - CONST;
                 ret->y = obst->c->y - CONST;
                 break;
             }
-            case CORNER_LEFT_TOP:
+            case Corner::LEFT_TOP:
             {
                 ret->x = obst->c->x - CONST;
                 ret->y = obst->c->y + obst->b + CONST;
                 break;
             }
-            case CORNER_RIGHT_BOT:
+            case Corner::RIGHT_BOTTOM:
             {
                 ret->x = obst->c->x + obst->a + CONST;
                 ret->y = obst->c->y - CONST;
                 break;
             }
-            case CORNER_RIGHT_TOP:
+            case Corner::RIGHT_TOP:
             {
                 ret->x = obst->c->x + obst->a + CONST;
                 ret->y = obst->c->y + obst->b + CONST;
@@ -328,7 +328,7 @@ namespace geometry
     }
 
 
-    struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner)
+    struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const Corner corner)
     {
         return obst->corners[corner];
     }

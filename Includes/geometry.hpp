@@ -17,7 +17,7 @@ namespace geometry
 
     struct vect createVect(const struct coords *start, const struct coords *end);
 
-    struct vect createVect(const struct obstacle *obst, const uint8_t corner, const COORDS_DATATYPE angle);
+    struct vect createVect(const struct obstacle *obst, const Corner corner, const COORDS_DATATYPE angle);
 
     bool hasIntersections(const struct vect *v);
 
@@ -25,11 +25,11 @@ namespace geometry
 
     struct coords getCoordsOfPoint(struct graphbases::graphPoint *p);
 
-    struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const uint8_t corner);
+    struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const Corner corner);
 
     COORDS_DATATYPE getLen(const struct vect *v);
 
-    struct coords*  getCoordsOfCorner(const struct obstacle *obst, const uint8_t corner);
+    struct coords*  getCoordsOfCorner(const struct obstacle *obst, const Corner corner);
 
 
     bool            hasIntersection(const struct baseline *b1,  const struct baseline *b2);
