@@ -45,4 +45,11 @@ namespace geometry
     struct baseline vectToBaseline(const struct vect *v);
 
     COORDS_DATATYPE getLen(const struct coords *c1, const struct coords *c2);
+
+    bool hasIntersection(const struct vect *v1, const struct vect *v2);
+
+    struct coords getIntersection(const struct vect *v1, const struct vect *v2);
+
+    struct coords  _getCoordsOfCorner(const struct obstacle *obst, const Corner corner);
+
 }

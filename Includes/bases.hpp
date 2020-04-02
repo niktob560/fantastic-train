@@ -76,12 +76,9 @@ namespace bases
         COORDS_DATATYPE     dx = 0,
                             dy = 0;
 
-        struct graphbases::coords getLastCoords()
+        constexpr struct graphbases::coords getLastCoords()
         {
-            struct graphbases::coords _c;
-            _c.x = c->x + dx;
-            _c.y = c->y + dy;
-            return _c;
+            return {c->x + dx, c->y + dy};
         }
     };
 

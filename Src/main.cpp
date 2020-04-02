@@ -18,6 +18,7 @@
 #include "bases.hpp"
 #include "routines.hpp"
 #include "grapher.hpp"
+#include "geometry.hpp"
 #include "pathfinder.hpp"
 
 #include "manager.hpp"
@@ -92,7 +93,10 @@ void drawEdges(struct graphPoint *p)
 void drawObstacle(const struct obstacle *o)
 {
 	glSetColor(OBST_COLOR);
-	drawRect(o->c->x, o->c->y, o->a, o->b);
+	// glPushMatrix();
+	// glRotatef(o->rot, 0, 1, 0);
+	drawRect(o->c->x, o->c->y, o->a, o->b, o->rot);
+	// glPopMatrix();
 	// glSetColor(DATA_COLOR);
 	// drawText(L"0", 10, o->c->x, o->c->y);
 	// drawText(L"1", 10, o->c->x, o->c->y + o->b);
@@ -121,7 +125,10 @@ void drawDots()
 		glSetColor(DATA_EXTRA_COLOR);
 		drawCircleFilled(graph[i]->c.x, graph[i]->c.y, 3, 10);
 		glSetColor(DATA_COLOR);
-		drawText(to_wstring((int)graph[i]->i), 12, graph[i]->c.x - 10, graph[i]->c.y - 6);
+		// drawText(to_wstring((int)graph[i]->i), 12, graph[i]->c.x - 10, graph[i]->c.y - 6);
+		std::wstring str = L"";
+		str = to_wstring((int)graph[i]->c.x) + L";" + to_wstring((int)graph[i]->c.y);
+		drawText((str), 12, graph[i]->c.x - 10, graph[i]->c.y - 6);
 	}
 }
 
@@ -211,13 +218,13 @@ int main(int argc, char **argv)
 	numOfObstacles = 300;
 	size_t iter = 0;
 	obstacles = (struct bases::obstacle*)malloc(sizeof(struct bases::obstacle) * numOfObstacles);
-	obstacles[iter++] = bases::createObstacle(100, 100, 100);
-	obstacles[iter++] = bases::createObstacle(310, 350, 200);
-	// obstacles[iter++] = bases::createObstacle(280, 580, 20);
-	// obstacles[iter++] = bases::createObstacle(80, 330, 50);
-	// obstacles[iter++] = bases::createObstacle(120, 340, 50);
-	// obstacles[iter++] = bases::createObstacle(60, 400, 30);
-	// obstacles[iter++] = bases::createObstacle(510, 350, 200, 100);
+	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, M_PI_4 / 2);
+	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, M_PI_4);
+	obstacles[iter++] = bases::createObstacle(280, 580, 20);
+	obstacles[iter++] = bases::createObstacle(80, 330, 50);
+	obstacles[iter++] = bases::createObstacle(120, 340, 50);
+	obstacles[iter++] = bases::createObstacle(60, 400, 30);
+	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100);
 	numOfObstacles = iter;
 
 	graphSize = numOfObstacles * 4 + 2;
@@ -225,13 +232,13 @@ int main(int argc, char **argv)
 	struct graphPoint *p = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
 	struct coords c;	
-	c.x = 800;
-	c.y = 100;
+	c.x = 600;
+	c.y = 300;
 	p->c = c;
 	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
 	struct coords c2;
-	c2.x = 50;
+	c2.x = 100;
 	c2.y = 400;
 	p2->c = c2;
 
@@ -255,11 +262,6 @@ int main(int argc, char **argv)
 	ways = (size_t*)malloc(graphSize * sizeof(size_t));
 	for(size_t i = 0; i < graphSize; i++)
 		ways[i] = target;
-
-	startway.x 	= 0;
-	startway.y 	= 0;
-	endway.x	= 150;
-	endway.y	= 150;
 
 
 	grapher::initPoint(p);
@@ -293,7 +295,7 @@ int main(int argc, char **argv)
 			W = obstacles[i].c->y + obstacles[i].b;
 
 	
-
+	while(1);
 
  	cout << "glut init\n";
 	glutInit(&argc, argv);

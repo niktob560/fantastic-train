@@ -22,10 +22,7 @@ namespace bases
 
 	struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
 	{
-		struct coords ret;
-		ret.x = x;
-		ret.y = y;
-		return ret;
+		return {x, y};
 	}
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const COORDS_DATATYPE rotation)

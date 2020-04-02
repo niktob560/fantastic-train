@@ -29,6 +29,25 @@ void drawRect(float x, float y, float a, float b)
 	glVertex2d(x + a, y);
 	glEnd();
 }
+void drawRect(float x, float y, float a, float b, float rot)
+{
+	glPushMatrix();
+		glTranslatef(x, y, 0);
+		glPushMatrix();
+			glRotatef(rot * 180 / M_PI, 0, 0, 1);
+			glPushMatrix();
+				glTranslatef(a / -2, b / -2, 0);
+				glBegin(GL_QUADS);
+				glVertex2d(0, 0);
+				glVertex2d(0, b);
+				glVertex2d(a, b);
+				glVertex2d(a, 0);
+				glEnd();
+			glPopMatrix();
+		glPopMatrix();
+	glPopMatrix();
+	// drawRect(x, y, a, b);
+}
 
 void drawTriangle(float x, float y, float a)
 {
