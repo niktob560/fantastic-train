@@ -12,10 +12,6 @@ namespace bases
     typedef float COORDS_DATATYPE;
 
 
-    // const uint8_t CORNER_LEFT_BOT  = 0;
-    // const uint8_t CORNER_LEFT_TOP  = 1;
-    // const uint8_t CORNER_RIGHT_TOP = 2;
-    // const uint8_t CORNER_RIGHT_BOT = 3;
 
     enum Corner
     {
@@ -88,6 +84,23 @@ namespace bases
     };
 
 
+    extern struct graphbases::graphPoint **graph;
+    extern struct bases::obstacle *obstacles;
+    extern size_t numOfObstacles;
+    extern size_t calculatedPoints;
+
+    extern struct graphbases::coords	startway,
+                                        endway;
+    extern size_t *ways;
+
+    extern size_t numOfObstacles;
+    extern size_t graphSize;
+    extern size_t calculatedPoints;
+
+    extern size_t 	target,
+                    home;
+
+                    
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b);
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a);
@@ -96,19 +109,3 @@ namespace bases
 
     void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 }
-
-extern struct graphbases::graphPoint **graph;
-extern struct bases::obstacle *obstacles;
-extern size_t numOfObstacles;
-extern size_t calculatedPoints;
-
-extern struct graphbases::coords	startway,
-							endway;
-extern size_t *ways;
-
-extern size_t numOfObstacles;
-extern size_t graphSize;
-extern size_t calculatedPoints;
-
-extern size_t 	target,
-				home;

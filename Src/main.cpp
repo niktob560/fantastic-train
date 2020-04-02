@@ -35,6 +35,15 @@
 using graphbases::array;
 using graphbases::coords;
 using bases::obstacle;
+using bases::graph;
+using bases::ways;
+using bases::graphSize;
+using bases::numOfObstacles;
+using bases::obstacles;
+using bases::home;
+using bases::target;
+using bases::startway;
+using bases::endway;
 using graphbases::graphPoint;
 
 using namespace std;

@@ -1,23 +1,24 @@
 #include "bases.hpp"
 #include "geometry.hpp"
 
-struct graphbases::graphPoint **graph;
-struct bases::obstacle *obstacles;
-
-struct graphbases::coords	startway,
-							endway;
-size_t *ways;
-
-size_t numOfObstacles = 0;
-size_t graphSize = 0;
-size_t calculatedPoints = 0;
-size_t 	target = 1,
-		home = 1;
-
-
 namespace bases
 {
     using namespace graphbases;
+
+	struct graphbases::graphPoint **graph;
+	struct bases::obstacle *obstacles;
+
+	struct graphbases::coords	startway,
+								endway;
+	size_t *ways;
+
+	size_t numOfObstacles = 0;
+	size_t graphSize = 0;
+	size_t calculatedPoints = 0;
+	size_t 	target = 1,
+			home = 1;
+
+
 
 	struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
 	{
