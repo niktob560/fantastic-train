@@ -9,8 +9,7 @@
 
 namespace bases
 {
-    typedef float COORDS_DATATYPE;
-
+    using graphbases::COORDS_DATATYPE;
 
 
     enum Corner
