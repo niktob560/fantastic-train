@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include "math.hpp"
 #include "graphbases.hpp"
+#include "geometry.hpp"
 
 namespace bases
 {
@@ -59,8 +60,8 @@ namespace bases
         struct graphbases::coords      *c = NULL;
         struct graphbases::graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
         COORDS_DATATYPE                 a = 0, 
-                                        b = 0, 
-                                        rot = 0;
+                                        b = 0; 
+        float                           rot = 0;
     };
 
     struct baseline
@@ -99,7 +100,7 @@ namespace bases
                     home;
 
                     
-    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const COORDS_DATATYPE rotation);
+    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation);
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b);
 

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 
 project(fantastic-train)
 
-include_directories(Includes ./waypointmanager/Inc)
+include_directories(Includes ./waypointmanager/Inc ./waypointmanager ./)
 
 
 find_library(PTHREAD_LIBRARY pthread)
@@ -17,6 +17,7 @@ find_library(FTGL_LIBRARY ftgl)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Og -Wall -Wextra -std=gnu++11 -g")
+set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
 add_executable(main Src/main.cpp Src/bases.cpp Src/routines.cpp Src/math.cpp Src/geometry.cpp Src/grapher.cpp Src/pathfinder.cpp)
 

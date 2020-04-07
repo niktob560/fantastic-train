@@ -1,6 +1,4 @@
 #include "geometry.hpp"
-#include <stdint.h>
-#include "bases.hpp"
 
 namespace geometry
 {

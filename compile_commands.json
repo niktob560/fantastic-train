@@ -1,37 +1,37 @@
 [
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/main.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/main.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/main.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/main.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/main.cpp"
 },
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/bases.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/bases.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/bases.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/bases.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/bases.cpp"
 },
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/routines.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/routines.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/routines.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/routines.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/routines.cpp"
 },
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/math.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/math.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/math.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/math.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/math.cpp"
 },
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/geometry.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/geometry.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/geometry.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/geometry.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/geometry.cpp"
 },
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/grapher.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/grapher.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/grapher.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/grapher.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/grapher.cpp"
 },
 {
-  "directory": "/home/nikto_b/Documents/C++/fantastic-train",
-  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/pathfinder.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/pathfinder.cpp",
+  "directory": "/home/nikto_b/Documents/C++/fantastic-train/Build",
+  "command": "/usr/bin/c++   -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/.   -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17 -o CMakeFiles/main.dir/Src/pathfinder.cpp.o -c /home/nikto_b/Documents/C++/fantastic-train/Src/pathfinder.cpp",
   "file": "/home/nikto_b/Documents/C++/fantastic-train/Src/pathfinder.cpp"
 }
 ]

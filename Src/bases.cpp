@@ -1,5 +1,4 @@
 #include "bases.hpp"
-#include "geometry.hpp"
 
 namespace bases
 {
@@ -25,7 +24,7 @@ namespace bases
 		return {x, y};
 	}
 
-    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const COORDS_DATATYPE rotation)
+    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation)
 	{
 		struct obstacle ret;
 		ret.c = (struct coords*)malloc(sizeof(struct coords));
@@ -60,6 +59,9 @@ namespace bases
 
     void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end)
     {
+		if(start->numOfTargets > 10 || end->numOfTargets > 10)
+			return;
+
         if(start == end) 
             return;
         
@@ -71,7 +73,6 @@ namespace bases
             if(end->targets[i] == start)
                 return;
             
-
 
         start->targets = (struct graphbases::graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphbases::graphPoint*));
         start->targets[start->numOfTargets - 1] = end;

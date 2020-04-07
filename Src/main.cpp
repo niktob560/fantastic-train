@@ -255,7 +255,7 @@ int main(int argc, char **argv)
 	for(size_t i = 0; i < graphSize; i++)
 	{
 		graph[i]->i = i;
-		graph[i]->weight = (1.0 / 0.0);
+		graph[i]->weight = INF;
 	}
 	graph[target]->weight = 0;
 
@@ -264,6 +264,9 @@ int main(int argc, char **argv)
 		ways[i] = target;
 
 
+	// bases::vect _v_ = {&c2, (c.x-c2.x), (c.y-c2.y)};
+	// cout << geometry::hasIntersections(&_v_) << endl;
+	// exit(0);
 	grapher::initPoint(p);
 	pathfinder::calculateWay(target);
 	
@@ -295,7 +298,7 @@ int main(int argc, char **argv)
 			W = obstacles[i].c->y + obstacles[i].b;
 
 	
-	while(1);
+	// while(1);
 
  	cout << "glut init\n";
 	glutInit(&argc, argv);

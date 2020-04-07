@@ -6,5 +6,5 @@ CXX_FLAGS =  -Og -Wall -Wextra -std=gnu++11 -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc 
+CXX_INCLUDES = -I/home/nikto_b/Documents/C++/fantastic-train/Includes -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager/Inc -I/home/nikto_b/Documents/C++/fantastic-train/./waypointmanager -I/home/nikto_b/Documents/C++/fantastic-train/. 
 

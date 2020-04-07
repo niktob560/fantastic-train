@@ -2,10 +2,12 @@
 
 #include <math.h>
 #include <cmath>
+#include "waypointmanager/Inc/math.hpp"
 
 #define sqr(x) ((x * x))
 
 #ifndef INF
+    #pragma message "Definition of INF"
     #define INF (1.0 / 0.0)
 #endif //ifndef INF
 

@@ -1,6 +1,4 @@
 #include "pathfinder.hpp"
-#include "bases.hpp"
-#include "math.hpp"
 
 namespace pathfinder
 {
@@ -18,7 +16,7 @@ namespace pathfinder
     
     struct graphPoint* getMinTarget()
     {
-        COORDS_DATATYPE w = INF;
+        uint16_t w = INF;
         struct graphPoint * pp = 0;
         for(size_t i = 0; i < graphSize; i++)
         {
@@ -42,7 +40,7 @@ namespace pathfinder
             return;
 
         struct graphPoint * watch;
-        COORDS_DATATYPE w;
+        uint16_t w;
 
         for(size_t i = 0; i < graph[index]->numOfTargets; i++)  //Итерируемся по всем целям точки
         {

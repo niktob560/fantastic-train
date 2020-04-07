@@ -1,5 +1,3 @@
-#include "bases.hpp"
-#include "geometry.hpp"
 #include "grapher.hpp"
 
 namespace grapher
