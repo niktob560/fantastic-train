@@ -75,27 +75,6 @@ struct obstacle* getRootObstacle(struct graphPoint *p)
 	return NULL;
 }
 
-// struct coords* getCoordsOfPoint(struct graphPoint *p)
-// {
-// 	struct obstacle *rootObst = NULL;
-// 	size_t corner = 5;
-// 	for(size_t i = 0; i < numOfObstacles; i++)
-// 	{
-// 		if(rootObst == NULL)
-// 			for(size_t j = 0; j < 4; j++)
-// 			{
-// 				if(obstacles[i].corners[j]->i == p->i)
-// 				{
-// 					rootObst = &obstacles[i];
-// 					corner = j;
-// 					break;
-// 				}
-// 			}
-// 		else
-// 			break;
-// 	}
-// 	return geometry::getCoordsOfCorner(rootObst, bases::cornerFromNum(corner));
-// }
 
 void drawLine(struct graphPoint *start, struct graphPoint *end)
 {
@@ -103,11 +82,6 @@ void drawLine(struct graphPoint *start, struct graphPoint *end)
 					c2 = geometry::getCoordsOfPoint(end);
 	drawLine(&c1, &c2);
 }
-
-// void drawObstacleEdges(struct obstacle *o)
-// {
-
-// }
 
 
 
@@ -124,8 +98,6 @@ void drawEdges(struct graphPoint *p)
 	{
 		glSetColor(GRAPH_COLOR);
 		drawLine(p, p->targets[i]);
-		// glSetColor(DATA_EXTRA_COLOR);
-		// drawText(to_wstring(pathfinder::getWayPrice(p, p->targets[i])), 11, (p->c.x + p->targets[i]->c.x) / 2, (p->c.y + p->targets[i]->c.y) / 2);
 	}
 }
 
@@ -135,15 +107,7 @@ void drawEdges(struct graphPoint *p)
 void drawObstacle(const struct obstacle *o)
 {
 	glSetColor(OBST_COLOR);
-	// glPushMatrix();
-	// glRotatef(o->rot, 0, 1, 0);
 	drawRect(o->c->x, o->c->y, o->a - 2, o->b - 2, o->rot);
-	// glPopMatrix();
-	// glSetColor(DATA_COLOR);
-	// drawText(L"0", 10, o->c->x, o->c->y);
-	// drawText(L"1", 10, o->c->x, o->c->y + o->b);
-	// drawText(L"2", 10, o->c->x + o->a, o->c->y + o->b);
-	// drawText(L"3", 10, o->c->x + o->a, o->c->y);
 }
 
 
@@ -154,8 +118,6 @@ void drawWay(size_t pointNum, size_t target)
 	{
 		glSetColor(WAY_COLOR);
 		drawLine(graph[curr], graph[ways[curr]]);
-		// glSetColor(DATA_EXTRA_COLOR);
-		// drawText(to_wstring(pathfinder::getWayPrice(graph[curr], graph[ways[curr]])), 10, (graph[curr]->c.x + graph[ways[curr]]->c.x + 10) / 2, (graph[curr]->c.y + graph[ways[curr]]->c.y + 10) / 2);
 		curr = ways[curr];
 	}
 }
@@ -167,13 +129,11 @@ void drawDots()
 		glSetColor(DATA_EXTRA_COLOR);
 		drawCircleFilled(geometry::getCoordsOfPoint(graph[i]).x, geometry::getCoordsOfPoint(graph[i]).y, 3, 10);
 		glSetColor(DATA_COLOR);
-		// drawText(to_wstring((int)graph[i]->i), 12, graph[i]->c.x - 10, graph[i]->c.y - 6);
 		std::wstring str = L"";
 		for(size_t k = 0; k < numOfObstacles; k++)
 		{
 			for(size_t j = 0; j < 4; j++)
 			{
-				// obs bases::cornerFromNum(j);
 				if(obstacles[k].corners[j]->i == graph[i]->i)
 				{
 					str = to_wstring((int)j);
@@ -182,17 +142,8 @@ void drawDots()
 				}
 			}
 		}
-		// str = to_wstring((int)graph[i]->i);
 		drawText((str), 12, geometry::getCoordsOfPoint(graph[i]).x, geometry::getCoordsOfPoint(graph[i]).y);
 	}
-	// for(size_t i = 0; i < numOfObstacles; i++)
-	// {
-	// 	for(size_t j = 0; j < 4; j++)
-	// 	{
-	// 		glSetColor(DATA_EXTRA_COLOR);
-	// 		// drawCircleFilled
-	// 	}
-	// }
 }
 
 
@@ -292,34 +243,15 @@ int main(int argc, char **argv)
 	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100);
 	numOfObstacles = iter;
 
-	// graphSize = numOfObstacles * 4 + 2;
 
 	struct graphPoint *p = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
-	// struct coords c;	
-	// c.x = 600;
-	// c.y = 300;
-	// p->c = c;
 	p->i = 0;
 	graph[0] = p;
 	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
 
-	// struct coords c2;
-	// c2.x = 100;
-	// c2.y = 400;
 	p2->i = 1;
 	graph[1] = p2;
-	// p2->c = c2;
-	// target = 1;
-	// home = 0;
-	// target = numOfObstacles * 4;
-	// home = target + 1;
-	// p2 = home;
-	// p = target;
-	// graph[target] = p;
-	// graph[home] = p2;
-	// for(size_t i = 0; i < numOfObstacles * 4; i++)
-	// 	graph[i] = obstacles[i / 4].corners[i % 4];
 
 	for(size_t i = 0; i < graphSize; i++)
 	{
@@ -332,34 +264,6 @@ int main(int argc, char **argv)
 	for(size_t i = 0; i < graphSize; i++)
 		ways[i] = target;
 
-
-	// bases::vect _v_ = {&c2, (c.x-c2.x), (c.y-c2.y)};
-	// cout << geometry::hasIntersections(&_v_) << endl;
-
-	struct obstacle nobst = obstacles[0];
-	nobst.a -= 2;
-	nobst.b -= 2;
-
-	struct coords 	_c0 = geometry::getCoordsOfPoint(graph[0]), 
-					_c1 = geometry::_getCoordsOfCorner(&obstacles[0], bases::cornerFromNum(1)),
-					__c0 = geometry::_getCoordsOfCorner(&nobst, bases::cornerFromNum(2)), 
-					__c1 = geometry::_getCoordsOfCorner(&nobst, bases::cornerFromNum(3));
-
-
-
-	struct bases::vect 	_v = geometry::createVect(&_c0, &_c1),
-						_v1 = geometry::createVect(&__c0, &__c1);
-
-	cout << geometry::hasIntersection(&_v, &_v1) << endl;
-	cout << geometry::hasIntersection(&obstacles[0], &_v) << endl;
-	cout << geometry::hasIntersections(&_v) << endl;
-	cout << "{" << __c0.x << ";" << __c0.y << "}->{" << __c1.x << ";" << __c1.y << "}\n";
-	cout << "{" << _c0.x << ";" << _c0.y << "}->{" << _c1.x << ";" << _c1.y << "}\n";
-	// cout << geometry::hasIntersection(&obstacles[5], &_v) << endl;
-	// cout << geometry::hasIntersection(&obstacles[1], &_v) << endl;
-	// cout << "{" << obstacles[5].c->x << ";" << obstacles[5].c->y << "}\t";
-	// cout << "[" << obstacles[5].a << ";" << obstacles[5].b << "]" << endl;
-	// exit(0);
 
 
 
@@ -376,25 +280,24 @@ int main(int argc, char **argv)
 	cout << endl;
 
 
-	// int W = 0;
-	// for(size_t i = 0; i < graphSize; i++)
-	// 	if(graph[i]->c.x > W)
-			// W = graph[i]->c.x;
-	// for(size_t i = 0; i < numOfObstacles; i++)
-	// 	if(obstacles[i].c->x + obstacles[i].a > W)
-	// 		W = obstacles[i].c->x + obstacles[i].a;
+	int W = 0;
+	for(size_t i = 0; i < graphSize; i++)
+		if(geometry::getCoordsOfPoint(graph[i]).x > W)
+			W = geometry::getCoordsOfPoint(graph[i]).x;
+	for(size_t i = 0; i < numOfObstacles; i++)
+		if(obstacles[i].c->x + obstacles[i].a > W)
+			W = obstacles[i].c->x + obstacles[i].a;
 
-	// int H = 0;
-	// for(size_t i = 0; i < graphSize; i++)
-	// 	if(graph[i]->c.y > H)
-	// 		H = graph[i]->c.y;
+	int H = 0;
+	for(size_t i = 0; i < graphSize; i++)
+		if(geometry::getCoordsOfPoint(graph[i]).y > H)
+			H = geometry::getCoordsOfPoint(graph[i]).y;
 	
-	// for(size_t i = 0; i < numOfObstacles; i++)
-	// 	if(obstacles[i].c->y + obstacles[i].b > H)
-	// 		W = obstacles[i].c->y + obstacles[i].b;
+	for(size_t i = 0; i < numOfObstacles; i++)
+		if(obstacles[i].c->y + obstacles[i].b > H)
+			W = obstacles[i].c->y + obstacles[i].b;
 
 	
-	// while(1);
 
  	cout << "glut init\n";
 	glutInit(&argc, argv);
@@ -402,7 +305,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutCreateWindow("floating");
 	cout << "reshape\n";
-	// glutReshapeWindow(W, H);
+	glutReshapeWindow(W, H);
 	glutReshapeFunc(reshape);
 	cout << "dispfunc\n";
 	glutDisplayFunc(renderScene);
