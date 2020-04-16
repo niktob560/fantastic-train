@@ -48,7 +48,9 @@ namespace geometry
         for(size_t i = 0; i < numOfObstacles; i++)
         {
             if(hasIntersection(&obstacles[i], v))
+            {
                 return true;
+            }
         }
         return false;
     }
@@ -77,23 +79,45 @@ namespace geometry
 
     struct coords getCoordsOfPoint(struct graphbases::graphPoint *p)
     {
-        return (p->c);
+        if(p->i > 1)
+        {
+            struct obstacle *rootObst = NULL;
+            size_t corner = 5;
+            for(size_t i = 0; i < numOfObstacles; i++)
+            {
+                if(rootObst == NULL)
+                    for(size_t j = 0; j < 4; j++)
+                    {
+                        if(obstacles[i].corners[j]->i == p->i)
+                        {
+                            rootObst = &obstacles[i];
+                            corner = j;
+                            break;
+                        }
+                    }
+                else
+                    break;
+            }
+            // if(rootObst == NULL)
+            //     rootObst = obstacles;
+            return _getCoordsOfCorner(rootObst, bases::cornerFromNum(corner));
+        }
+        else
+        {
+            if(p->i == 0)
+                return {1, 1};
+            else
+                return {1000, 1000};
+        }
     }
 
     bool            hasIntersection(const struct obstacle *obst, const struct vect *v)
     {
-        // struct vect nv = *v;
         struct coords c0, c1;
-        // struct coords nz = *nv.c, ne = *nv.c, c0, c1;
-        // ne.x += v->dx;
-        // ne.y += v->dy;
-        // nz = nz.rotate(obst->c, obst->rot);
-        // ne = ne.rotate(obst->c, obst->rot);
-        // nv = createVect(&nz, &ne);
 
         struct obstacle nobst = *obst;
-        nobst.a -= 0.1;
-        nobst.b -= 0.1;
+        nobst.a -= 2;
+        nobst.b -= 2;
 
         c0 = *getCoordsOfCorner(&nobst, Corner::LEFT_TOP);
         c1 = *getCoordsOfCorner(&nobst, Corner::LEFT_BOTTOM);
@@ -121,15 +145,7 @@ namespace geometry
         if(hasIntersection(&v0, v))
             return true;
         
-
-        struct coords c = getIntersection(&nobst, v); 
-        if(!c.eq({0, 0}))
-            return true;
-        else
-        // if((c.eq({0, 0})) || c.eq(nv.c) || (((nv.dx + nv.c->x) == c.x) && ((nv.dy + nv.c->y) == c.y)))
-        //     return false;
-        // else
-            return false;
+        return false;
     }
 
 
@@ -177,38 +193,36 @@ namespace geometry
 
     bool hasIntersection(const struct vect *v1, const struct vect *v2)
     {
-        struct vect v;
-        struct baseline b1 = vectToBaseline(v1), 
-                        b2 = vectToBaseline(v2);
-        COORDS_DATATYPE l1, l2;
-        struct coords   c = getIntersection(&b1, &b2), 
-                        c0;
-        if(c.eq({0, 0}))
-            return false;
+        int16_t dx1, dx2, dx3, 
+                dy1, dy2, dy3;
+        uint8_t samesign1;
 
-        v = *v1;                //рассматриваем первый вектор
-        l1 = getLen(&c, v.c);   //от начала до пересечения
-        l2 = getLen(&v);        //длина вектора
-        if(l1 >= l2)             //если от начала до пересечения дальше чем длина вектора
-            return false;       //то пересечения нет
+        dx1 = v2->c->x - v1->c->x;
+        dx2 = v1->dx;
+        dx3 = v2->c->x + v2->dx - v1->c->x;
+
+        dy1 = v2->c->y - v1->c->y;
+        dy2 = v1->dy;
+        dy3 = v2->c->y + v2->dy - v1->c->y;
+
+        samesign1  = (dx1 * dy2) > (dy1 * dx2) ? 1 : 0;
+        samesign1 |= ((dx3 * dy2) > (dy3 * dx2) ? 1 : 0) << 1;
+
+        samesign1 = (samesign1 & 1) == ((samesign1 >> 1) & 1) ? 1 : 0;
+
+        dx1 = v1->c->x - v2->c->x;
+        dx2 = v2->dx;
+        dx3 = v1->c->x + v1->dx - v2->c->x;
+
+        dy1 = v1->c->y - v2->c->y;
+        dy2 = v2->dy;
+        dy3 = v1->c->y + v1->dy - v2->c->y;
         
-        c0 = v.getLastCoords(); //конец вектора
-        l1 = getLen(&c, &c0);   //от конца до пересечения
-        if(l1 >= l2)             //если от конца до пересечения дальше чем длина вектора
-            return false;       //то пересечения нет
-        
-        v = *v2;                //рассматриваем второй вектор
-        l1 = getLen(&c, v.c);   //от начала до пересечения
-        l2 = getLen(&v);        //длина вектора
-        if(l1 >= l2)             //если от начала до пересечения дальше чем длина вектора
-            return false;       //то пересечения нет
-        
-        c0 = v.getLastCoords(); //конец вектора
-        l1 = getLen(&c, &c0);   //от конца до пересечения
-        if(l1 >= l2)             //если от конца до пересечения дальше чем длина вектора
-            return false;       //то пересечения нет
-        
-        return true;
+        samesign1 |= ((dx1 * dy2) > (dy1 * dx2) ? 1 : 0) << 1;
+        samesign1 |= ((dx3 * dy2) > (dy3 * dx2) ? 1 : 0) << 2;
+        samesign1  = ((((samesign1 >> 2) & 1) == ((samesign1 >> 1) & 1) ? 1 : 0) << 1) | (samesign1 & 1);
+
+        return !((samesign1 & 1) || ((samesign1 >> 1) & 1));
     }
 
     struct coords getIntersection(const struct vect *v1, const struct vect *v2)
@@ -225,63 +239,6 @@ namespace geometry
 
     struct coords   getIntersection(const struct obstacle *obst, const struct vect *v)
     {
-        // if(hasIntersection(obst, v))
-        // {
-        //     struct coords c0, c1, int1, int0;
-        //     COORDS_DATATYPE l0, l1;
-        //     c0 = *getCoordsOfCorner(obst, Corner::LEFT_BOTTOM);
-        //     c1 = *getCoordsOfCorner(obst, Corner::LEFT_TOP);
-        //     struct vect v0 = createVect(&c0, &c1),
-        //                 v1;
-        //     c0 = *getCoordsOfCorner(obst, Corner::RIGHT_BOTTOM);
-        //     c1 = *getCoordsOfCorner(obst, Corner::RIGHT_TOP);
-        //     v1 = createVect(&c0, &c1);
-        //     int0 = getIntersection(v, &v0);
-        //     int1 = getIntersection(v, &v1);
-        //     if(int0.eq({0, 0}))
-        //         int0 = int1;
-        //     else if(!int1.eq({0, 0}))
-        //     {
-        //         l0 = getLen(v->c, &int0);
-        //         l1 = getLen(v->c, &int1);
-        //         if(l1 < l0)
-        //             int0 = int1;
-        //     }
-
-        //     c0 = *getCoordsOfCorner(obst, Corner::LEFT_BOTTOM);
-        //     c1 = *getCoordsOfCorner(obst, Corner::RIGHT_BOTTOM);
-        //     v1 = createVect(&c0, &c1);
-        //     int1 = getIntersection(v, &v1);
-        //     if(int0.eq({0, 0}))
-        //         int0 = int1;
-        //     else if(!int1.eq({0, 0}))
-        //     {
-        //         l0 = getLen(v->c, &int0);
-        //         l1 = getLen(v->c, &int1);
-        //         if(l1 < l0)
-        //             int0 = int1;
-        //     }
-
-        //     c0 = *getCoordsOfCorner(obst, Corner::LEFT_TOP);
-        //     c1 = *getCoordsOfCorner(obst, Corner::RIGHT_TOP);
-        //     v1 = createVect(&c0, &c1);
-        //     int1 = getIntersection(v, &v1);
-        //     if(int0.eq({0, 0}))
-        //         int0 = int1;
-        //     else if(!int1.eq({0, 0}))
-        //     {
-        //         l0 = getLen(v->c, &int0);
-        //         l1 = getLen(v->c, &int1);
-        //         if(l1 < l0)
-        //             int0 = int1;
-        //     }
-
-        //     return int0;
-            
-        // }
-        // else
-        //     return {0, 0};
-
         struct vect nv = *v;
         struct coords nz = *nv.c, ne = *nv.c;
         ne.x += v->dx;
@@ -459,31 +416,31 @@ namespace geometry
         return l;
     }
 
-    #define CONST 0.4
+    #define CONST 1
 
     struct coords*  getCoordsOfCorner(const struct obstacle *obst, const Corner corner)
     {
         struct coords *ret = (struct coords*)malloc(sizeof(struct coords));
         switch (corner) {
-            case Corner::LEFT_BOTTOM:
+            case Corner::RIGHT_TOP:
             {
                 ret->x = obst->c->x - CONST - (obst->a / 2);
                 ret->y = obst->c->y - CONST - (obst->b / 2);
                 break;
             }
-            case Corner::LEFT_TOP:
+            case Corner::RIGHT_BOTTOM:
             {
                 ret->x = obst->c->x - CONST - (obst->a / 2);
                 ret->y = obst->c->y + CONST + (obst->b / 2);
                 break;
             }
-            case Corner::RIGHT_BOTTOM:
+            case Corner::LEFT_TOP:
             {
                 ret->x = obst->c->x + CONST + (obst->a / 2);
                 ret->y = obst->c->y - CONST - (obst->b / 2);
                 break;
             }
-            case Corner::RIGHT_TOP:
+            case Corner::LEFT_BOTTOM:
             {
                 ret->x = obst->c->x + CONST + (obst->a / 2);
                 ret->y = obst->c->y + CONST + (obst->b / 2);
@@ -498,25 +455,25 @@ namespace geometry
     {
         struct coords ret;
         switch (corner) {
-            case Corner::LEFT_BOTTOM:
+            case Corner::RIGHT_TOP:
             {
                 ret.x = obst->c->x - CONST - (obst->a / 2);
                 ret.y = obst->c->y - CONST - (obst->b / 2);
                 break;
             }
-            case Corner::LEFT_TOP:
+            case Corner::RIGHT_BOTTOM:
             {
                 ret.x = obst->c->x - CONST - (obst->a / 2);
                 ret.y = obst->c->y + CONST + (obst->b / 2);
                 break;
             }
-            case Corner::RIGHT_BOTTOM:
+            case Corner::LEFT_TOP:
             {
                 ret.x = obst->c->x + CONST + (obst->a / 2);
                 ret.y = obst->c->y - CONST - (obst->b / 2);
                 break;
             }
-            case Corner::RIGHT_TOP:
+            case Corner::LEFT_BOTTOM:
             {
                 ret.x = obst->c->x + CONST + (obst->a / 2);
                 ret.y = obst->c->y + CONST + (obst->b / 2);

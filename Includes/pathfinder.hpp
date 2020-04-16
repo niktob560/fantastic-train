@@ -1,5 +1,4 @@
 #include "bases.hpp"
-#include "bases.hpp"
 #include "math.hpp"
 
 namespace pathfinder

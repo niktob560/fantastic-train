@@ -66,7 +66,9 @@ namespace pathfinder
 
     COORDS_DATATYPE getWayPrice(struct graphPoint *start, struct graphPoint *end)
     {
-        return sqrt(pow(start->c.x - end->c.x, 2) + pow(start->c.y - end->c.y, 2));
+        const struct coords c1 = geometry::getCoordsOfPoint(start), 
+                            c2 = geometry::getCoordsOfPoint(end);
+        return sqrt(pow(c1.x - c2.x, 2) + pow(c1.y - c2.y, 2));
     }
 
     COORDS_DATATYPE getWayPrice(struct coords *start, struct coords *end)

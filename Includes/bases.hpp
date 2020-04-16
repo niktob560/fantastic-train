@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
@@ -7,6 +5,9 @@
 #include "math.hpp"
 #include "graphbases.hpp"
 #include "geometry.hpp"
+
+#ifndef __BASES_HPP__
+#define __BASES_HPP__
 
 namespace bases
 {
@@ -99,6 +100,14 @@ namespace bases
     extern size_t 	target,
                     home;
 
+    template<typename T>
+    T max(T t1, T t2)
+    {
+        if(t1 > t2)
+            return t1;
+        else
+            return t2;
+    }
                     
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation);
 
@@ -110,3 +119,5 @@ namespace bases
 
     void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 }
+
+#endif //ifndef __BASES_HPP__

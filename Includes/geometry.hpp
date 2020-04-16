@@ -3,7 +3,6 @@
 #include <stdint.h>
 #include "bases.hpp"
 #include <stdint.h>
-#include "bases.hpp"
 
 namespace geometry
 {

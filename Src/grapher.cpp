@@ -21,14 +21,16 @@ namespace grapher
 	{
 		size_t size = 0;
 		uint16_t watchRadius = ZERO_QUAD_CHECK_SIDE;
+		struct coords pc;
 		while (size < getMinDatasetSize()) {
 			size = 0;
 			for(size_t i = 0; i < graphSize; i++)
 			{
-				if(graph[i]->c.x >= c->x - watchRadius
-				&& graph[i]->c.x <= c->x + watchRadius
-				&& graph[i]->c.y >= c->y - watchRadius
-				&& graph[i]->c.y <= c->y + watchRadius)
+				pc = geometry::getCoordsOfPoint(graph[i]);
+				if(pc.x >= c->x - watchRadius
+				&& pc.x <= c->x + watchRadius
+				&& pc.y >= c->y - watchRadius
+				&& pc.y <= c->y + watchRadius)
 					size++;
 			}
 			if(size < getMinDatasetSize())
@@ -40,13 +42,16 @@ namespace grapher
 		struct graphPoint **dataset = (struct graphPoint**)malloc(sizeof(struct graphPoint*) * size);
 		for(size_t i = 0; i < graphSize; i++)
 		{
-			if(graph[i]->c.x >= c->x - watchRadius
-			&& graph[i]->c.x <= c->x + watchRadius
-			&& graph[i]->c.y >= c->y - watchRadius
-			&& graph[i]->c.y <= c->y + watchRadius)
+			pc = geometry::getCoordsOfPoint(graph[i]);
+			if(pc.x >= c->x - watchRadius
+			&& pc.x <= c->x + watchRadius
+			&& pc.y >= c->y - watchRadius
+			&& pc.y <= c->y + watchRadius)
 				dataset[iter++] = graph[i];
 		}
 		struct graphbases::array *ret = (struct graphbases::array*)malloc(sizeof(struct graphbases::array));
+		// ret->items = graph;
+		// ret->size = graphSize;
 		ret->items = dataset;
 		ret->size = size;
 		return ret;
@@ -55,22 +60,39 @@ namespace grapher
 
 	void initPoint(struct graphbases::graphPoint *p)
 	{
-		struct graphbases::array* points = getPointsDataSet(&p->c);
+		struct coords 	c1 = geometry::getCoordsOfPoint(p), 
+						c2;
+		struct graphbases::array* points = getPointsDataSet(&c1);
 		struct vect v;
 		struct graphbases::graphPoint *currP = 0x00;
 		for(size_t i = 0; i < points->size; i++)
 		{
 			currP = ((struct graphbases::graphPoint**)(points->items))[i];
-			v = geometry::createVect(&p->c, &currP->c);
-			if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v) && !geometry::isDotInside(&p->c) && !geometry::isDotInside(&currP->c))
+			// if(!currP->calculated)
 			{
-				if(p->numOfTargets == 0)
-					calculatedPoints++;
-				if(currP->numOfTargets == 0)
-					calculatedPoints++;
-				bases::addTarget(p, currP);
-				if(currP->numOfTargets == 1)
-					initPoint(currP);
+				c2 = geometry::getCoordsOfPoint(currP);
+				v = geometry::createVect(&c1, &c2);
+				//TODO: cleanup
+				if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v) && !geometry::isDotInside(&c1) && !geometry::isDotInside(&c2))
+				{
+					bool state = false;
+					if(p->numOfTargets == 0) 
+					{
+						state = true;
+						calculatedPoints++;
+					}
+
+					if(currP->numOfTargets == 0)
+					{
+						state = true;
+						calculatedPoints++;
+					}
+
+					bases::addTarget(p, currP);
+					if(state)
+						initPoint(currP);
+				}
+				free(v.c);
 			}
 		}
 		free(points);

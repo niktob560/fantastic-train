@@ -14,7 +14,7 @@ namespace bases
 	size_t numOfObstacles = 0;
 	size_t graphSize = 0;
 	size_t calculatedPoints = 0;
-	size_t 	target = 1,
+	size_t 	target = 0,
 			home = 1;
 
 
@@ -35,10 +35,17 @@ namespace bases
 		ret.rot  = rotation;
 		for(uint8_t i = 0; i < 4; i++)
 		{
-			ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
-			struct coords *c = geometry::getCoordsOfCorner(&ret, cornerFromNum(i));
-			ret.corners[i]->c = *c;
-			free(c);
+			// ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
+			// graph[graphSize] = ret.corners[i];
+			// graphSize++;
+			graph[graphSize] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
+			ret.corners[i] = graph[graphSize];
+			ret.corners[i]->i = graphSize;
+			graphSize++;
+			
+			// struct coords *c = geometry::getCoordsOfCorner(&ret, cornerFromNum(i));
+			// ret.corners[i]->c = *c;
+			// free(c);
 		}
 
 		return ret;
@@ -59,8 +66,8 @@ namespace bases
 
     void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end)
     {
-		if(start->numOfTargets > 10 || end->numOfTargets > 10)
-			return;
+		// if(start->numOfTargets > 10 && end->numOfTargets > 10)
+		// 	return;
 
         if(start == end) 
             return;
