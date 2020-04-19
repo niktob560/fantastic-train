@@ -62,7 +62,7 @@ namespace bases
         struct graphbases::graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
         COORDS_DATATYPE                 a = 0, 
                                         b = 0; 
-        float                           rot = 0;
+        uint8_t                         rot = 0;
     };
 
     struct baseline
@@ -109,6 +109,8 @@ namespace bases
             return t2;
     }
                     
+    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const uint8_t rotation);
+
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation);
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b);

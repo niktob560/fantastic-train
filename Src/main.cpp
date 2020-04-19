@@ -107,7 +107,7 @@ void drawEdges(struct graphPoint *p)
 void drawObstacle(const struct obstacle *o)
 {
 	glSetColor(OBST_COLOR);
-	drawRect(o->c->x, o->c->y, o->a, o->b, o->rot);
+	drawRect(o->c->x, o->c->y, o->a, o->b, static_cast<float>((o->rot * M_PI) / 90.0));
 }
 
 
@@ -239,24 +239,24 @@ int main(int argc, char **argv)
 	obstacles[iter++] = bases::createObstacle(1020 / 2, -5, 1020, 10);
 	obstacles[iter++] = bases::createObstacle(1020 / 2, 1020, 1020, 10);
 
-	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, static_cast<float>(-M_PI_4 / 2.0));
-	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, static_cast<float>(M_PI_4 * 1.0));
-	obstacles[iter++] = bases::createObstacle(280, 580, 20, 20, static_cast<float>(2.0));
-	obstacles[iter++] = bases::createObstacle(80, 330, 50, 40, static_cast<float>(4.0));
-	obstacles[iter++] = bases::createObstacle(120, 340, 50, 49, static_cast<float>(22.0));
-	obstacles[iter++] = bases::createObstacle(60, 400, 30, 32, static_cast<float>(5.0));
-	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100, static_cast<float>(1.8));
-	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, static_cast<float>(1.8));
-	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, static_cast<float>(1.8));
-	obstacles[iter++] = bases::createObstacle(910, 100, 150, 100, static_cast<float>(1.8));
-	obstacles[iter++] = bases::createObstacle(110, 500, 200, 100, static_cast<float>(1.8));
-	obstacles[iter++] = bases::createObstacle(10, 600, 200, 100, static_cast<float>(3.8));
-	obstacles[iter++] = bases::createObstacle(500, 400, 200, 100, static_cast<float>(2.8));
-	obstacles[iter++] = bases::createObstacle(650, 300, 200, 100, static_cast<float>(2.8));
-	obstacles[iter++] = bases::createObstacle(350, 700, 200, 100, static_cast<float>(0.8));
-	obstacles[iter++] = bases::createObstacle(150, 600, 200, 100, static_cast<float>(0.2));
-	obstacles[iter++] = bases::createObstacle(550, 550, 200, 100, static_cast<float>(0.4));
-	obstacles[iter++] = bases::createObstacle(750, 550, 200, 100, static_cast<float>(0.9));
+	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, 	static_cast<uint8_t>(34));
+	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, 	static_cast<uint8_t>(20));
+	obstacles[iter++] = bases::createObstacle(280, 580, 20, 20, 	static_cast<uint8_t>(40));
+	obstacles[iter++] = bases::createObstacle(80, 330, 50, 40, 		static_cast<uint8_t>(60));
+	obstacles[iter++] = bases::createObstacle(120, 340, 50, 49, 	static_cast<uint8_t>(120));
+	obstacles[iter++] = bases::createObstacle(60, 400, 30, 32, 		static_cast<uint8_t>(250));
+	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100, 	static_cast<uint8_t>(34));
+	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, 	static_cast<uint8_t>(80));
+	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, 	static_cast<uint8_t>(70));
+	obstacles[iter++] = bases::createObstacle(910, 100, 150, 100, 	static_cast<uint8_t>(60));
+	obstacles[iter++] = bases::createObstacle(110, 500, 200, 100, 	static_cast<uint8_t>(50));
+	obstacles[iter++] = bases::createObstacle(10, 600, 200, 100, 	static_cast<uint8_t>(40));
+	obstacles[iter++] = bases::createObstacle(500, 400, 200, 100, 	static_cast<uint8_t>(40));
+	obstacles[iter++] = bases::createObstacle(650, 300, 200, 100, 	static_cast<uint8_t>(30));
+	obstacles[iter++] = bases::createObstacle(350, 700, 200, 100, 	static_cast<uint8_t>(20));
+	obstacles[iter++] = bases::createObstacle(150, 600, 200, 100, 	static_cast<uint8_t>(10));
+	obstacles[iter++] = bases::createObstacle(550, 550, 200, 100, 	static_cast<uint8_t>(40));
+	obstacles[iter++] = bases::createObstacle(750, 550, 200, 100, 	static_cast<uint8_t>(120));
 	numOfObstacles = iter;
 
 
@@ -296,7 +296,7 @@ int main(int argc, char **argv)
 	cout << endl;
 
 
-	exit(0);
+	// exit(0);
 
 
 	int W = 0;

@@ -65,7 +65,7 @@ namespace geometry
         for(size_t i = 0; i < numOfObstacles; i++)
         {
             nc = *c;
-            nc = nc.rotate(obstacles[i].c, obstacles[i].rot);
+            nc = nc.rotate(obstacles[i].c, static_cast<float>((obstacles[i].rot * M_PI) / 90.0f));
             if(	(nc.x - CONST > obstacles[i].c->x - (obstacles[i].a / 2))
             &&  (nc.x + CONST < obstacles[i].c->x + (obstacles[i].a / 2))
             &&  (nc.y - CONST > obstacles[i].c->y - (obstacles[i].b / 2))
@@ -253,8 +253,8 @@ namespace geometry
         struct coords nz = *nv.c, ne = *nv.c;
         ne.x = static_cast<COORDS_DATATYPE>(ne.x + v->dx);
         ne.y = static_cast<COORDS_DATATYPE>(ne.y + v->dy);
-        nz = nz.rotate(obst->c, obst->rot);
-        ne = ne.rotate(obst->c, obst->rot);
+        nz = nz.rotate(obst->c, static_cast<float>((obst->rot * M_PI) / 90.0f));
+        ne = ne.rotate(obst->c, static_cast<float>((obst->rot * M_PI) / 90.0f));
         nv = createVect(&nz, &ne);
 
         struct coords tgt, inter1, inter2;
@@ -391,7 +391,7 @@ namespace geometry
     bool            isDotInside(const struct coords *dot, const struct obstacle *obstacle)
     {
         struct coords ndot = *dot;
-        ndot = ndot.rotate(obstacle->c, obstacle->rot);
+        ndot = ndot.rotate(obstacle->c, static_cast<float>((obstacle->rot * M_PI) / 90.0f));
         return      (ndot.x >= obstacle->c->x - (obstacle->a / 2))
                 &&  (ndot.x <= obstacle->c->x + (obstacle->a / 2))
                 &&  (ndot.y >= obstacle->c->y - (obstacle->b / 2))
@@ -457,7 +457,7 @@ namespace geometry
                 break;
             }
         }
-        *ret = ret->rotate(obst->c, obst->rot);
+        *ret = ret->rotate(obst->c, static_cast<float>((obst->rot * M_PI) / 90.0f));
         return ret;
     }
 
@@ -490,7 +490,7 @@ namespace geometry
                 break;
             }
         }
-        ret = ret.rotate(obst->c, obst->rot);
+        ret = ret.rotate(obst->c, static_cast<float>((obst->rot * M_PI) / 90.0f));
         return ret;
     }
 

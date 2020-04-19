@@ -23,8 +23,7 @@ namespace bases
 	{
 		return {x, y};
 	}
-
-    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation)
+    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const uint8_t rotation)
 	{
 		struct obstacle ret;
 		ret.c = static_cast<struct coords*>(malloc(sizeof(struct coords)));
@@ -51,9 +50,15 @@ namespace bases
 		return ret;
 	}
 
+
+    struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation)
+	{
+		return createObstacle(x, y, a, b, static_cast<uint8_t>((rotation * 180) / M_PI));
+	}
+
 	struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b)
 	{
-		return createObstacle(x, y, a, b, 0);
+		return createObstacle(x, y, a, b, 0.0f);
 	}
 
 	struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a)
