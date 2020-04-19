@@ -229,11 +229,16 @@ void timf(int value)				// Timer function
 
 int main(int argc, char **argv)
 {
-	numOfObstacles = 300;
+	numOfObstacles = 50;
 	size_t iter = 0;
 	graphSize = 2;
-	graph = static_cast<struct graphPoint**>(malloc((7 * 4 + 2) * sizeof(struct graphPoint*)));
+	graph = static_cast<struct graphPoint**>(malloc((200) * sizeof(struct graphPoint*)));
 	obstacles = static_cast<struct bases::obstacle*>(malloc(sizeof(struct bases::obstacle) * numOfObstacles));
+	obstacles[iter++] = bases::createObstacle(-5, 1020 / 2, 10, 1020);
+	obstacles[iter++] = bases::createObstacle(1020, 1020 / 2, 10, 1020);
+	obstacles[iter++] = bases::createObstacle(1020 / 2, -5, 1020, 10);
+	obstacles[iter++] = bases::createObstacle(1020 / 2, 1020, 1020, 10);
+
 	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, static_cast<float>(-M_PI_4 / 2.0));
 	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, static_cast<float>(M_PI_4 * 1.0));
 	obstacles[iter++] = bases::createObstacle(280, 580, 20, 20, static_cast<float>(2.0));
@@ -241,6 +246,17 @@ int main(int argc, char **argv)
 	obstacles[iter++] = bases::createObstacle(120, 340, 50, 49, static_cast<float>(22.0));
 	obstacles[iter++] = bases::createObstacle(60, 400, 30, 32, static_cast<float>(5.0));
 	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100, static_cast<float>(1.8));
+	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, static_cast<float>(1.8));
+	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, static_cast<float>(1.8));
+	obstacles[iter++] = bases::createObstacle(910, 100, 150, 100, static_cast<float>(1.8));
+	obstacles[iter++] = bases::createObstacle(110, 500, 200, 100, static_cast<float>(1.8));
+	obstacles[iter++] = bases::createObstacle(10, 600, 200, 100, static_cast<float>(3.8));
+	obstacles[iter++] = bases::createObstacle(500, 400, 200, 100, static_cast<float>(2.8));
+	obstacles[iter++] = bases::createObstacle(650, 300, 200, 100, static_cast<float>(2.8));
+	obstacles[iter++] = bases::createObstacle(350, 700, 200, 100, static_cast<float>(0.8));
+	obstacles[iter++] = bases::createObstacle(150, 600, 200, 100, static_cast<float>(0.2));
+	obstacles[iter++] = bases::createObstacle(550, 550, 200, 100, static_cast<float>(0.4));
+	obstacles[iter++] = bases::createObstacle(750, 550, 200, 100, static_cast<float>(0.9));
 	numOfObstacles = iter;
 
 
@@ -264,7 +280,7 @@ int main(int argc, char **argv)
 		ways[i] = target;
 
 	geometry::targetCoords = {500, 1000};
-	geometry::homeCoords = {1, 1};
+	geometry::homeCoords = {20, 20};
 
 
 	grapher::initPoint(p);
@@ -278,6 +294,9 @@ int main(int argc, char **argv)
 	for(size_t i = 0; i < graphSize; i++)
 		cout << setw(3) << ways[i];
 	cout << endl;
+
+
+	exit(0);
 
 
 	int W = 0;
@@ -305,7 +324,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutCreateWindow("floating");
 	cout << "reshape\n";
-	glutReshapeWindow(W, H);
+	glutReshapeWindow(W - 20, H - 10);
 	glutReshapeFunc(reshape);
 	cout << "dispfunc\n";
 	glutDisplayFunc(renderScene);

@@ -50,8 +50,6 @@ namespace grapher
 				dataset[iter++] = graph[i];
 		}
 		struct graphbases::array *ret = static_cast<struct graphbases::array*>(malloc(sizeof(struct graphbases::array)));
-		// ret->items = graph;
-		// ret->size = graphSize;
 		ret->items = dataset;
 		ret->size = size;
 		return ret;
@@ -62,40 +60,35 @@ namespace grapher
 	{
 		struct coords 	c1 = geometry::getCoordsOfPoint(p), 
 						c2;
-		struct graphbases::array* points = getPointsDataSet(&c1);
 		struct vect v;
 		struct graphbases::graphPoint *currP = 0x00;
-		for(size_t i = 0; i < points->size; i++)
+		for(size_t i = 0; i < graphSize; i++)
 		{
-			currP = (static_cast<struct graphbases::graphPoint**>(points->items))[i];
-			// if(!currP->calculated)
+			currP = graph[i];
+			c2 = geometry::getCoordsOfPoint(currP);
+			v = geometry::createVect(&c1, &c2);
+			//TODO: cleanup
+			if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v) && !geometry::isDotInside(&c1) && !geometry::isDotInside(&c2))
 			{
-				c2 = geometry::getCoordsOfPoint(currP);
-				v = geometry::createVect(&c1, &c2);
-				//TODO: cleanup
-				if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v) && !geometry::isDotInside(&c1) && !geometry::isDotInside(&c2))
+				bool state = false;
+				if(p->numOfTargets == 0) 
 				{
-					bool state = false;
-					if(p->numOfTargets == 0) 
-					{
-						state = true;
-						calculatedPoints++;
-					}
-
-					if(currP->numOfTargets == 0)
-					{
-						state = true;
-						calculatedPoints++;
-					}
-
-					bases::addTarget(p, currP);
-					if(state)
-						initPoint(currP);
+					state = true;
+					calculatedPoints++;
 				}
-				free(v.c);
+
+				if(currP->numOfTargets == 0)
+				{
+					state = true;
+					calculatedPoints++;
+				}
+
+				bases::addTarget(p, currP);
+				if(state)
+					initPoint(currP);
 			}
+			free(v.c);
 		}
-		free(points);
 	}
 }
 

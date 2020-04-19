@@ -83,8 +83,18 @@ namespace geometry
     {
         if(p->i > 1)
         {
-            struct obstacle *rootObst = NULL;
+            struct obstacle *rootObst = &obstacles[(p->i - 2) / 4];
             size_t corner = 5;
+
+            for(size_t j = 0; j < 4; j++)
+            {
+                if(rootObst->corners[j]->i == p->i)
+                {
+                    return _getCoordsOfCorner(rootObst, bases::cornerFromNum(j));
+                }
+            }
+            rootObst = NULL;
+
             for(size_t i = 0; i < numOfObstacles; i++)
             {
                 if(rootObst == NULL)
