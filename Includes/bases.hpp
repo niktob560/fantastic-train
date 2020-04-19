@@ -58,7 +58,7 @@ namespace bases
 
     struct obstacle
     {
-        struct graphbases::coords      *c = NULL;
+        struct graphbases::coords      c = {0, 0};
         struct graphbases::graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
         COORDS_DATATYPE                 a = 0, 
                                         b = 0; 
@@ -116,8 +116,6 @@ namespace bases
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b);
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a);
-
-    struct graphbases::coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y);
 
     void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 }

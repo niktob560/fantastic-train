@@ -18,17 +18,10 @@ namespace bases
 			home = 1;
 
 
-
-	struct coords   createCoords(const COORDS_DATATYPE x, const COORDS_DATATYPE y)
-	{
-		return {x, y};
-	}
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const uint8_t rotation)
 	{
 		struct obstacle ret;
-		ret.c = static_cast<struct coords*>(malloc(sizeof(struct coords)));
-		ret.c->x = x;
-		ret.c->y = y;
+		ret.c = {x, y};
 		ret.a    = a;
 		ret.b    = b;
 		ret.rot  = rotation;

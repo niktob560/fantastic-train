@@ -107,7 +107,7 @@ void drawEdges(struct graphPoint *p)
 void drawObstacle(const struct obstacle *o)
 {
 	glSetColor(OBST_COLOR);
-	drawRect(o->c->x, o->c->y, o->a, o->b, static_cast<float>((o->rot * M_PI) / 90.0));
+	drawRect(o->c.x, o->c.y, o->a, o->b, static_cast<float>((o->rot * M_PI) / 90.0));
 }
 
 
@@ -156,7 +156,7 @@ void renderScene(void)
 		{
 			drawObstacle(&obstacles[i]);
 			glSetColor(DATA_COLOR);
-			drawText(to_wstring(i), 12, obstacles[i].c->x, obstacles[i].c->y);
+			drawText(to_wstring(i), 12, obstacles[i].c.x, obstacles[i].c.y);
 		}
 		for(size_t i = 0; i < graphSize; i++)
 		{
@@ -293,8 +293,8 @@ int main(int argc, char **argv)
 		if(geometry::getCoordsOfPoint(&graph[i]).x > W)
 			W = geometry::getCoordsOfPoint(&graph[i]).x;
 	for(size_t i = 0; i < numOfObstacles; i++)
-		if(obstacles[i].c->x + obstacles[i].a > W)
-			W = obstacles[i].c->x + obstacles[i].a;
+		if(obstacles[i].c.x + obstacles[i].a > W)
+			W = obstacles[i].c.x + obstacles[i].a;
 
 	int H = 0;
 	for(size_t i = 0; i < graphSize; i++)
@@ -302,8 +302,8 @@ int main(int argc, char **argv)
 			H = geometry::getCoordsOfPoint(&graph[i]).y;
 	
 	for(size_t i = 0; i < numOfObstacles; i++)
-		if(obstacles[i].c->y + obstacles[i].b > H)
-			W = obstacles[i].c->y + obstacles[i].b;
+		if(obstacles[i].c.y + obstacles[i].b > H)
+			W = obstacles[i].c.y + obstacles[i].b;
 
 	
 
