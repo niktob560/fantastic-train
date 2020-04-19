@@ -7,7 +7,7 @@ namespace grapher
     using graphbases::graphPoint;
 
 
-	uint8_t getMinDatasetSize()
+	size_t getMinDatasetSize()
 	{
 		size_t ret = numOfObstacles;
 		if(ret < 2)
@@ -20,7 +20,7 @@ namespace grapher
 	struct graphbases::array* getPointsDataSet(struct graphbases::coords *c)
 	{
 		size_t size = 0;
-		uint16_t watchRadius = ZERO_QUAD_CHECK_SIDE;
+		COORDS_DATATYPE watchRadius = ZERO_QUAD_CHECK_SIDE;
 		struct coords pc;
 		while (size < getMinDatasetSize()) {
 			size = 0;
@@ -35,11 +35,11 @@ namespace grapher
 			}
 			if(size < getMinDatasetSize())
 			{
-				watchRadius += 100;
+				watchRadius = static_cast<COORDS_DATATYPE>(watchRadius + 100);
 			}
 		}
 		size_t iter = 0;
-		struct graphPoint **dataset = (struct graphPoint**)malloc(sizeof(struct graphPoint*) * size);
+		struct graphPoint **dataset = static_cast<struct graphPoint**>(malloc(sizeof(struct graphPoint*) * size));
 		for(size_t i = 0; i < graphSize; i++)
 		{
 			pc = geometry::getCoordsOfPoint(graph[i]);
@@ -49,7 +49,7 @@ namespace grapher
 			&& pc.y <= c->y + watchRadius)
 				dataset[iter++] = graph[i];
 		}
-		struct graphbases::array *ret = (struct graphbases::array*)malloc(sizeof(struct graphbases::array));
+		struct graphbases::array *ret = static_cast<struct graphbases::array*>(malloc(sizeof(struct graphbases::array)));
 		// ret->items = graph;
 		// ret->size = graphSize;
 		ret->items = dataset;
@@ -67,7 +67,7 @@ namespace grapher
 		struct graphbases::graphPoint *currP = 0x00;
 		for(size_t i = 0; i < points->size; i++)
 		{
-			currP = ((struct graphbases::graphPoint**)(points->items))[i];
+			currP = (static_cast<struct graphbases::graphPoint**>(points->items))[i];
 			// if(!currP->calculated)
 			{
 				c2 = geometry::getCoordsOfPoint(currP);
@@ -97,6 +97,6 @@ namespace grapher
 		}
 		free(points);
 	}
-
-
 }
+
+

@@ -20,7 +20,8 @@
 #endif //ifndef PI
 
 // template <typename T> int sgn(T val);
-#define sgn(x) ((x < 0.0)? -1 : 1)
+// #define sgn(x) ((x < 0.0)? -1 : 1)
+// #define abs(x) ((x > 0)? x : (-x))
 // inline int sgn(float a)
 // {
 //     return ((0 < a) - (a < 0));

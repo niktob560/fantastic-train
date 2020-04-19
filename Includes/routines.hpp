@@ -28,4 +28,4 @@ void drawOct(float x, float y, float a);
 
 void drawQuad(float x, float y, float a);
 
-void drawText(std::wstring text, int size, int x, int y);
+void drawText(std::wstring text, unsigned int size, int x, int y);

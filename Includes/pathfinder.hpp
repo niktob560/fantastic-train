@@ -12,7 +12,7 @@ namespace pathfinder
 
     void calculateWay(size_t index);
 
-    COORDS_DATATYPE getWayPrice(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
+    uint16_t getWayPrice(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 
-    COORDS_DATATYPE getWayPrice(struct coords *start, struct coords *end);
+    uint16_t getWayPrice(struct coords *start, struct coords *end);
 }

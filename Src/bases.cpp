@@ -27,7 +27,7 @@ namespace bases
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const float rotation)
 	{
 		struct obstacle ret;
-		ret.c = (struct coords*)malloc(sizeof(struct coords));
+		ret.c = static_cast<struct coords*>(malloc(sizeof(struct coords)));
 		ret.c->x = x;
 		ret.c->y = y;
 		ret.a    = a;
@@ -38,7 +38,7 @@ namespace bases
 			// ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
 			// graph[graphSize] = ret.corners[i];
 			// graphSize++;
-			graph[graphSize] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
+			graph[graphSize] = static_cast<struct graphbases::graphPoint*>(malloc(sizeof(struct graphbases::graphPoint)));
 			ret.corners[i] = graph[graphSize];
 			ret.corners[i]->i = graphSize;
 			graphSize++;
@@ -81,10 +81,10 @@ namespace bases
                 return;
             
 
-        start->targets = (struct graphbases::graphPoint**)realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphbases::graphPoint*));
+        start->targets = static_cast<struct graphbases::graphPoint**>(realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphbases::graphPoint*)));
         start->targets[start->numOfTargets - 1] = end;
 
-        end->targets = (struct graphbases::graphPoint**)realloc(end->targets, (++(end->numOfTargets)) * sizeof(struct graphbases::graphPoint*));
+        end->targets = static_cast<struct graphbases::graphPoint**>(realloc(end->targets, (++(end->numOfTargets)) * sizeof(struct graphbases::graphPoint*)));
         end->targets[end->numOfTargets - 1] = start;
     }
 }

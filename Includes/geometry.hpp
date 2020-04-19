@@ -10,7 +10,7 @@ namespace geometry
     using namespace graphbases;
     const uint16_t FIELD_MAX_LEN = 2000;
 
-
+    extern struct coords homeCoords, targetCoords;
 
 
 
@@ -28,7 +28,7 @@ namespace geometry
 
     struct graphbases::graphPoint* getPoint(const struct obstacle *obst, const Corner corner);
 
-    COORDS_DATATYPE getLen(const struct vect *v);
+    uint16_t getLen(const struct vect *v);
 
     struct coords*  getCoordsOfCorner(const struct obstacle *obst, const Corner corner);
 
@@ -45,7 +45,7 @@ namespace geometry
 
     struct baseline vectToBaseline(const struct vect *v);
 
-    COORDS_DATATYPE getLen(const struct coords *c1, const struct coords *c2);
+    uint16_t getLen(const struct coords *c1, const struct coords *c2);
 
     bool hasIntersection(const struct vect *v1, const struct vect *v2);
 

@@ -79,7 +79,7 @@ namespace bases
 
         constexpr struct graphbases::coords getLastCoords()
         {
-            return {c->x + dx, c->y + dy};
+            return {static_cast<COORDS_DATATYPE>(c->x + dx), static_cast<COORDS_DATATYPE>(c->y + dy)};
         }
     };
 

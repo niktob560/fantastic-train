@@ -50,7 +50,7 @@ namespace pathfinder
                 w = getWayPrice(graph[index], watch);               //Цена пути от текущей точки до цели
                 if(graph[index]->weight + w < watch->weight)        //Если полученная цена меньше чем имеющаяся
                 {
-                    watch->weight = w + graph[index]->weight;       //Установим новую цену
+                    watch->weight = static_cast<uint16_t>(w + graph[index]->weight);       //Установим новую цену
                     ways[watch->i] = index;                         //Запишем об этом в вектор путей
                 }
             }
@@ -64,15 +64,15 @@ namespace pathfinder
     }
 
 
-    COORDS_DATATYPE getWayPrice(struct graphPoint *start, struct graphPoint *end)
+    uint16_t getWayPrice(struct graphPoint *start, struct graphPoint *end)
     {
         const struct coords c1 = geometry::getCoordsOfPoint(start), 
                             c2 = geometry::getCoordsOfPoint(end);
-        return sqrt(pow(c1.x - c2.x, 2) + pow(c1.y - c2.y, 2));
+        return static_cast<uint16_t>(sqrt(pow(c1.x - c2.x, 2) + pow(c1.y - c2.y, 2)));
     }
 
-    COORDS_DATATYPE getWayPrice(struct coords *start, struct coords *end)
+    uint16_t getWayPrice(struct coords *start, struct coords *end)
     {
-        return sqrt(pow(start->x - end->x, 2) + pow(start->y - end->y, 2));
+        return static_cast<uint16_t>(sqrt(pow(start->x - end->x, 2) + pow(start->y - end->y, 2)));
     }
 }

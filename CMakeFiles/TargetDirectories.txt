@@ -1,3 +1,0 @@
-/home/nikto_b/Documents/C++/fantastic-train/CMakeFiles/rebuild_cache.dir
-/home/nikto_b/Documents/C++/fantastic-train/CMakeFiles/main.dir
-/home/nikto_b/Documents/C++/fantastic-train/CMakeFiles/edit_cache.dir

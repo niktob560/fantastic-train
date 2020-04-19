@@ -1,1 +1,0 @@
-/usr/bin/c++   -Og -Wall -Wextra -std=gnu++11 -g  -rdynamic CMakeFiles/main.dir/Src/main.cpp.o CMakeFiles/main.dir/Src/bases.cpp.o CMakeFiles/main.dir/Src/routines.cpp.o CMakeFiles/main.dir/Src/math.cpp.o CMakeFiles/main.dir/Src/geometry.cpp.o CMakeFiles/main.dir/Src/grapher.cpp.o CMakeFiles/main.dir/Src/pathfinder.cpp.o  -o main  -lpthread -lGL -lGLU -lglut -lX11 -lpng -lftgl 

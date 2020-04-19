@@ -107,7 +107,7 @@ void drawEdges(struct graphPoint *p)
 void drawObstacle(const struct obstacle *o)
 {
 	glSetColor(OBST_COLOR);
-	drawRect(o->c->x, o->c->y, o->a - 2, o->b - 2, o->rot);
+	drawRect(o->c->x, o->c->y, o->a, o->b, o->rot);
 }
 
 
@@ -132,11 +132,11 @@ void drawDots()
 		std::wstring str = L"";
 		for(size_t k = 0; k < numOfObstacles; k++)
 		{
-			for(size_t j = 0; j < 4; j++)
+			for(int j = 0; j < 4; j++)
 			{
 				if(obstacles[k].corners[j]->i == graph[i]->i)
 				{
-					str = to_wstring((int)j);
+					str = to_wstring(j);
 					k = numOfObstacles;
 					break;
 				}
@@ -151,7 +151,7 @@ void renderScene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 		glSetColor(BG_COLOR);
-		drawRect(glutGet(GLUT_SCREEN_WIDTH) / 2, glutGet(GLUT_SCREEN_HEIGHT) / 2, glutGet(GLUT_SCREEN_WIDTH), glutGet(GLUT_SCREEN_HEIGHT));
+		drawRect(static_cast<float>(glutGet(GLUT_SCREEN_WIDTH) / 2.0), static_cast<float>(glutGet(GLUT_SCREEN_HEIGHT) / 2.0), static_cast<float>(glutGet(GLUT_SCREEN_WIDTH)), static_cast<float>(glutGet(GLUT_SCREEN_HEIGHT)));
 		for(size_t i = 0; i < numOfObstacles; i++)
 		{
 			drawObstacle(&obstacles[i]);
@@ -169,7 +169,7 @@ void renderScene(void)
 		drawWay(home, target);
 
 		glSetColor(DATA_EXTRA_COLOR);
-		drawText(to_wstring(graph[home]->weight), 14, 10, 10);
+		drawText(to_wstring(static_cast<unsigned int>(graph[home]->weight)), 14, 10, 10);
 
 		drawDots();
 
@@ -182,7 +182,7 @@ void handleKeypress(unsigned char key, //The key that was pressed
 {
     x++;
     y++;
-    cout << "PRESSED\n" << (int)key << endl;
+    cout << "PRESSED\n" << static_cast<int>(key) << endl;
     if(key == 27) //ESC
     {
 	    cout << "ESC\n";
@@ -232,39 +232,39 @@ int main(int argc, char **argv)
 	numOfObstacles = 300;
 	size_t iter = 0;
 	graphSize = 2;
-	graph = (struct graphPoint**)malloc((7 * 4 + 2) * sizeof(struct graphPoint*));
-	obstacles = (struct bases::obstacle*)malloc(sizeof(struct bases::obstacle) * numOfObstacles);
-	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, M_PI_4 / 2);
-	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, M_PI_4);
-	obstacles[iter++] = bases::createObstacle(280, 580, 20);
-	obstacles[iter++] = bases::createObstacle(80, 330, 50);
-	obstacles[iter++] = bases::createObstacle(120, 340, 50);
-	obstacles[iter++] = bases::createObstacle(60, 400, 30);
-	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100);
+	graph = static_cast<struct graphPoint**>(malloc((7 * 4 + 2) * sizeof(struct graphPoint*)));
+	obstacles = static_cast<struct bases::obstacle*>(malloc(sizeof(struct bases::obstacle) * numOfObstacles));
+	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, static_cast<float>(-M_PI_4 / 2.0));
+	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, static_cast<float>(M_PI_4 * 1.0));
+	obstacles[iter++] = bases::createObstacle(280, 580, 20, 20, static_cast<float>(2.0));
+	obstacles[iter++] = bases::createObstacle(80, 330, 50, 40, static_cast<float>(4.0));
+	obstacles[iter++] = bases::createObstacle(120, 340, 50, 49, static_cast<float>(22.0));
+	obstacles[iter++] = bases::createObstacle(60, 400, 30, 32, static_cast<float>(5.0));
+	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100, static_cast<float>(1.8));
 	numOfObstacles = iter;
 
 
-	struct graphPoint *p = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+	struct graphPoint *p = static_cast<struct graphPoint*>(malloc(sizeof(struct graphPoint)));
 
 	p->i = 0;
 	graph[0] = p;
-	struct graphPoint *p2 = (struct graphPoint*)malloc(sizeof(struct graphPoint));
+	struct graphPoint *p2 = static_cast<struct graphPoint*>(malloc(sizeof(struct graphPoint)));
 
 	p2->i = 1;
 	graph[1] = p2;
 
 	for(size_t i = 0; i < graphSize; i++)
-	{
 		graph[i]->weight = INF;
-	}
+		
 	graph[target]->weight = 0;
 	
 
-	ways = (size_t*)malloc(graphSize * sizeof(size_t));
+	ways = static_cast<size_t*>(malloc(graphSize * sizeof(size_t)));
 	for(size_t i = 0; i < graphSize; i++)
 		ways[i] = target;
 
-
+	geometry::targetCoords = {500, 1000};
+	geometry::homeCoords = {1, 1};
 
 
 	grapher::initPoint(p);

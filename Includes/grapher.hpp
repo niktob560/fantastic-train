@@ -13,7 +13,7 @@ namespace grapher
 
 
 
-    uint8_t getMinDatasetSize();
+    size_t getMinDatasetSize();
 
     struct graphbases::array* getPointsDataSet(const struct graphbases::coords *c);
 

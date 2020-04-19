@@ -3,7 +3,7 @@
 
 void glSetColor(uint32_t color)
 {
-	glColor3f((float)((color >> 16) & 0xFF) / 255, (float)((color >> 8) & 0xFF) / 255, (float)(color & 0xFF) / 255);
+	glColor3f(static_cast<float>((color >> 16) & 0xFF) / 255, static_cast<float>((color >> 8) & 0xFF) / 255, static_cast<float>(color & 0xFF) / 255);
 }
 
 
@@ -34,7 +34,7 @@ void drawRect(float x, float y, float a, float b, float rot)
 	glPushMatrix();
 		glTranslatef(x, y, 0);
 		glPushMatrix();
-			glRotatef(rot * 180 / M_PI, 0, 0, 1);
+			glRotatef(static_cast<GLfloat>(rot * 180 / M_PI), 0, 0, 1);
 			glPushMatrix();
 				glTranslatef(a / -2, b / -2, 0);
 				glBegin(GL_QUADS);
@@ -88,7 +88,7 @@ void drawCircleFilled(float cx, float cy, float r, int numSegments)
 
 void drawOct(float x, float y, float a)
 {
-	float alpha = 22.35;
+	float alpha = 22.35f;
 
 	glBegin(GL_POLYGON);
 	glVertex2d(x + a * sin(alpha), y + a * cos(alpha));
@@ -108,7 +108,7 @@ void drawQuad(float x, float y, float a)
 }
 
 
-void drawText(std::wstring text, int size, int x, int y)
+void drawText(std::wstring text, unsigned int size, int x, int y)
 {
 	FTGLPixmapFont hack_italic_font("/usr/share/fonts/TTF/JetBrainsMonoNL-Regular.ttf");
 	if(!hack_italic_font.Error())
@@ -117,12 +117,8 @@ void drawText(std::wstring text, int size, int x, int y)
 		//const wchar_t * tarr = (wchar_t*)malloc(text.length());
 		//wstrcpy(tarr, text);
 		hack_italic_font.FaceSize(size);
-		glRasterPos2f(x, y);//TODO: refactor
+		glRasterPos2f(static_cast<GLfloat>(x), static_cast<GLfloat>(y));//TODO: refactor
 		hack_italic_font.Render(text.c_str());
 		glPopMatrix();
-	}
-	else
-	{
-		// std::cout << "FONT ERR\n";
 	}
 }
