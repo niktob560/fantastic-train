@@ -13,9 +13,5 @@ namespace grapher
 
 
 
-    size_t getMinDatasetSize();
-
-    struct graphbases::array* getPointsDataSet(const struct graphbases::coords *c);
-
     void initPoint(struct graphbases::graphPoint *p);
 }

@@ -30,8 +30,6 @@ namespace geometry
 
     uint16_t getLen(const struct vect *v);
 
-    struct coords*  getCoordsOfCorner(const struct obstacle *obst, const Corner corner);
-
 
     bool            hasIntersection(const struct baseline *b1,  const struct baseline *b2);
 
@@ -51,6 +49,6 @@ namespace geometry
 
     struct coords getIntersection(const struct vect *v1, const struct vect *v2);
 
-    struct coords  _getCoordsOfCorner(const struct obstacle *obst, const Corner corner);
+    struct coords  getCoordsOfCorner(const struct obstacle *obst, const Corner corner);
 
 }

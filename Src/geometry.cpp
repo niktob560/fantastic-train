@@ -9,9 +9,8 @@ namespace geometry
     struct vect createVect(const struct coords *c, const COORDS_DATATYPE angle)
     {
         struct vect ret;
-        ret.c  = static_cast<struct coords*>(malloc(sizeof(struct coords)));
-        ret.c->x = c->x;
-        ret.c->y = c->y;
+        ret.c.x = c->x;
+        ret.c.y = c->y;
         ret.dx = static_cast<COORDS_DATATYPE>(FIELD_MAX_LEN * 10.0 / tan(angle / 180.0 * PI));
         ret.dy = static_cast<COORDS_DATATYPE>(ret.dx * tan(angle / 180.0 * PI));
         ret.dx = static_cast<COORDS_DATATYPE>(abs(ret.dx));
@@ -28,9 +27,8 @@ namespace geometry
     struct vect createVect(const struct coords *start, const struct coords *end)
     {
         struct vect ret;
-        ret.c = static_cast<struct coords*>(malloc(sizeof(struct coords)));
-        ret.c->x = start->x;
-        ret.c->y = start->y;
+        ret.c.x = start->x;
+        ret.c.y = start->y;
         ret.dx = static_cast<COORDS_DATATYPE>(end->x - start->x);
         ret.dy = static_cast<COORDS_DATATYPE>(end->y - start->y);
         return ret;
@@ -39,9 +37,8 @@ namespace geometry
     struct vect createVect(const struct obstacle *obst, const Corner corner, const COORDS_DATATYPE angle)
     {
         struct vect ret;
-        struct coords *c = getCoordsOfCorner(obst, corner);
-        ret = createVect(c, angle);
-        free(c);
+        struct coords c = getCoordsOfCorner(obst, corner);
+        ret = createVect(&c, angle);
         return ret;
     }
 
@@ -90,7 +87,7 @@ namespace geometry
             {
                 if(rootObst->corners[j]->i == p->i)
                 {
-                    return _getCoordsOfCorner(rootObst, bases::cornerFromNum(j));
+                    return getCoordsOfCorner(rootObst, bases::cornerFromNum(j));
                 }
             }
             rootObst = NULL;
@@ -110,7 +107,7 @@ namespace geometry
                 else
                     break;
             }
-            return _getCoordsOfCorner(rootObst, bases::cornerFromNum(corner));
+            return getCoordsOfCorner(rootObst, bases::cornerFromNum(corner));
         }
         else
         {
@@ -129,28 +126,28 @@ namespace geometry
         nobst.a = static_cast<COORDS_DATATYPE>(nobst.a - 2);
         nobst.b = static_cast<COORDS_DATATYPE>(nobst.b - 2);
 
-        c0 = *getCoordsOfCorner(&nobst, Corner::LEFT_TOP);
-        c1 = *getCoordsOfCorner(&nobst, Corner::LEFT_BOTTOM);
+        c0 = getCoordsOfCorner(&nobst, Corner::LEFT_TOP);
+        c1 = getCoordsOfCorner(&nobst, Corner::LEFT_BOTTOM);
         struct vect v0 = createVect(&c0, &c1);
         if(hasIntersection(&v0, v))
             return true;
 
 
-        c0 = *getCoordsOfCorner(&nobst, Corner::RIGHT_TOP);
-        c1 = *getCoordsOfCorner(&nobst, Corner::RIGHT_BOTTOM);
+        c0 = getCoordsOfCorner(&nobst, Corner::RIGHT_TOP);
+        c1 = getCoordsOfCorner(&nobst, Corner::RIGHT_BOTTOM);
         v0 = createVect(&c0, &c1);
         if(hasIntersection(&v0, v))
             return true;
 
-        c0 = *getCoordsOfCorner(&nobst, Corner::RIGHT_BOTTOM);
-        c1 = *getCoordsOfCorner(&nobst, Corner::LEFT_BOTTOM);
+        c0 = getCoordsOfCorner(&nobst, Corner::RIGHT_BOTTOM);
+        c1 = getCoordsOfCorner(&nobst, Corner::LEFT_BOTTOM);
         v0 = createVect(&c0, &c1);
         if(hasIntersection(&v0, v))
             return true;
 
 
-        c0 = *getCoordsOfCorner(&nobst, Corner::RIGHT_TOP);
-        c1 = *getCoordsOfCorner(&nobst, Corner::LEFT_TOP);
+        c0 = getCoordsOfCorner(&nobst, Corner::RIGHT_TOP);
+        c1 = getCoordsOfCorner(&nobst, Corner::LEFT_TOP);
         v0 = createVect(&c0, &c1);
         if(hasIntersection(&v0, v))
             return true;
@@ -198,7 +195,7 @@ namespace geometry
 
     bool isCoDirectional(const struct vect *v, const struct coords *c)
     {
-        return (sgn(v->dx) == sgn(c->x - v->c->x) && sgn(v->dy) == sgn(c->y - v->c->y));
+        return (sgn(v->dx) == sgn(c->x - v->c.x) && sgn(v->dy) == sgn(c->y - v->c.y));
     }
 
     bool hasIntersection(const struct vect *v1, const struct vect *v2)
@@ -207,26 +204,26 @@ namespace geometry
                         dy1, dy2, dy3;
         uint8_t samesign;
 
-        dx1 = static_cast<COORDS_DATATYPE>(v2->c->x - v1->c->x);
+        dx1 = static_cast<COORDS_DATATYPE>(v2->c.x - v1->c.x);
         dx2 = v1->dx;
-        dx3 = static_cast<COORDS_DATATYPE>(v2->c->x + v2->dx - v1->c->x);
+        dx3 = static_cast<COORDS_DATATYPE>(v2->c.x + v2->dx - v1->c.x);
 
-        dy1 = static_cast<COORDS_DATATYPE>(v2->c->y - v1->c->y);
+        dy1 = static_cast<COORDS_DATATYPE>(v2->c.y - v1->c.y);
         dy2 = v1->dy;
-        dy3 = static_cast<COORDS_DATATYPE>(v2->c->y + v2->dy - v1->c->y);
+        dy3 = static_cast<COORDS_DATATYPE>(v2->c.y + v2->dy - v1->c.y);
 
         samesign = static_cast<uint8_t>((dx1 * dy2) > (dy1 * dx2) ? 1 : 0);
         samesign = static_cast<uint8_t>(samesign | (((dx3 * dy2) > (dy3 * dx2) ? 1 : 0) << 1));
 
         samesign = static_cast<uint8_t>((samesign & 1) == ((samesign >> 1) & 1) ? 1 : 0);
 
-        dx1 = static_cast<COORDS_DATATYPE>(v1->c->x - v2->c->x);
+        dx1 = static_cast<COORDS_DATATYPE>(v1->c.x - v2->c.x);
         dx2 = v2->dx;
-        dx3 = static_cast<COORDS_DATATYPE>(v1->c->x + v1->dx - v2->c->x);
+        dx3 = static_cast<COORDS_DATATYPE>(v1->c.x + v1->dx - v2->c.x);
 
-        dy1 = static_cast<COORDS_DATATYPE>(v1->c->y - v2->c->y);
+        dy1 = static_cast<COORDS_DATATYPE>(v1->c.y - v2->c.y);
         dy2 = v2->dy;
-        dy3 = static_cast<COORDS_DATATYPE>(v1->c->y + v1->dy - v2->c->y);
+        dy3 = static_cast<COORDS_DATATYPE>(v1->c.y + v1->dy - v2->c.y);
         
         samesign = static_cast<uint8_t>(samesign | (((dx1 * dy2) > (dy1 * dx2) ? 1 : 0) << 1));
         samesign = static_cast<uint8_t>(samesign | (((dx3 * dy2) > (dy3 * dx2) ? 1 : 0) << 2));
@@ -250,7 +247,7 @@ namespace geometry
     struct coords   getIntersection(const struct obstacle *obst, const struct vect *v)
     {
         struct vect nv = *v;
-        struct coords nz = *nv.c, ne = *nv.c;
+        struct coords nz = nv.c, ne = nv.c;
         ne.x = static_cast<COORDS_DATATYPE>(ne.x + v->dx);
         ne.y = static_cast<COORDS_DATATYPE>(ne.y + v->dy);
         nz = nz.rotate(obst->c, static_cast<float>((obst->rot * M_PI) / 90.0f));
@@ -258,7 +255,7 @@ namespace geometry
         nv = createVect(&nz, &ne);
 
         struct coords tgt, inter1, inter2;
-        tgt = {static_cast<COORDS_DATATYPE>(nv.dx + nv.c->x), static_cast<COORDS_DATATYPE>(nv.dy + nv.c->y)};
+        tgt = {static_cast<COORDS_DATATYPE>(nv.dx + nv.c.x), static_cast<COORDS_DATATYPE>(nv.dy + nv.c.y)};
 
 
 
@@ -277,7 +274,7 @@ namespace geometry
         inter1 = getIntersection(&b1, &b2); //intersection between left side and vector line
         if(isDotInside(&inter1, obst))      //check if dot is inside or on edge of obstacle
         {
-            l1 = getLen(nv.c, &inter1);     //get len from beginning of vector to intersection with obstacle
+            l1 = getLen(&nv.c, &inter1);     //get len from beginning of vector to intersection with obstacle
             if(!(isCoDirectional(v, &inter1) && l1 <= lv))  //if intersection is not located on vector
             {
                 l1 = 0; 
@@ -295,7 +292,7 @@ namespace geometry
         inter2 = getIntersection(&b1, &b2);
         if(isDotInside(&inter2, obst))
         {
-            l2 = getLen(nv.c, &inter2);
+            l2 = getLen(&nv.c, &inter2);
             if(!(isCoDirectional(&nv, &inter2) && l2 <= lv))
             {
                 inter2 = {0, 0};
@@ -326,7 +323,7 @@ namespace geometry
         inter2 = getIntersection(&b1, &b2);
         if(isDotInside(&inter2, obst))
         {
-            l2 = getLen(nv.c, &inter2);
+            l2 = getLen(&nv.c, &inter2);
             if(!(isCoDirectional(&nv, &inter2) && l2 <= lv))
             {
                 inter2 = {0, 0};
@@ -357,7 +354,7 @@ namespace geometry
         inter2 = getIntersection(&b1, &b2);
         if(isDotInside(&inter2, obst))
         {
-            l2 = getLen(nv.c, &inter2);
+            l2 = getLen(&nv.c, &inter2);
             if(!(isCoDirectional(&nv, &inter2) && l2 <= lv))
             {
                 inter2 = {0, 0};
@@ -405,9 +402,9 @@ namespace geometry
         ret.k = (static_cast<float>(v->dy) / static_cast<float>(v->dx));
 
         if(v->dx != 0)
-            ret.b = static_cast<COORDS_DATATYPE>(v->c->y - v->c->x * ret.k);
+            ret.b = static_cast<COORDS_DATATYPE>(v->c.y - v->c.x * ret.k);
         else
-            ret.b = v->c->x;
+            ret.b = v->c.x;
 
         return ret;
     }
@@ -428,40 +425,7 @@ namespace geometry
 
     #define CONST 1
 
-    struct coords*  getCoordsOfCorner(const struct obstacle *obst, const Corner corner)
-    {
-        struct coords *ret = static_cast<struct coords*>(malloc(sizeof(struct coords)));
-        switch (corner) {
-            case Corner::RIGHT_TOP:
-            {
-                ret->x = static_cast<COORDS_DATATYPE>(obst->c->x - CONST - (obst->a / 2));
-                ret->y = static_cast<COORDS_DATATYPE>(obst->c->y - CONST - (obst->b / 2));
-                break;
-            }
-            case Corner::RIGHT_BOTTOM:
-            {
-                ret->x = static_cast<COORDS_DATATYPE>(obst->c->x - CONST - (obst->a / 2));
-                ret->y = static_cast<COORDS_DATATYPE>(obst->c->y + CONST + (obst->b / 2));
-                break;
-            }
-            case Corner::LEFT_TOP:
-            {
-                ret->x = static_cast<COORDS_DATATYPE>(obst->c->x + CONST + (obst->a / 2));
-                ret->y = static_cast<COORDS_DATATYPE>(obst->c->y - CONST - (obst->b / 2));
-                break;
-            }
-            case Corner::LEFT_BOTTOM:
-            {
-                ret->x = static_cast<COORDS_DATATYPE>(obst->c->x + CONST + (obst->a / 2));
-                ret->y = static_cast<COORDS_DATATYPE>(obst->c->y + CONST + (obst->b / 2));
-                break;
-            }
-        }
-        *ret = ret->rotate(obst->c, static_cast<float>((obst->rot * M_PI) / 90.0f));
-        return ret;
-    }
-
-    struct coords  _getCoordsOfCorner(const struct obstacle *obst, const Corner corner)
+    struct coords  getCoordsOfCorner(const struct obstacle *obst, const Corner corner)
     {
         struct coords ret;
         switch (corner) {

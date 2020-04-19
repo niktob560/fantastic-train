@@ -4,16 +4,16 @@ namespace bases
 {
     using namespace graphbases;
 
-	struct graphbases::graphPoint **graph;
-	struct bases::obstacle *obstacles;
+	struct graphbases::graphPoint graph[200];
+	struct bases::obstacle obstacles[50];
 
 	struct graphbases::coords	startway,
 								endway;
-	size_t *ways;
+	size_t 	ways[200];
 
-	size_t numOfObstacles = 0;
-	size_t graphSize = 0;
-	size_t calculatedPoints = 0;
+	size_t 	numOfObstacles = 0;
+	size_t 	graphSize = 0;
+	size_t 	calculatedPoints = 0;
 	size_t 	target = 0,
 			home = 1;
 
@@ -34,17 +34,9 @@ namespace bases
 		ret.rot  = rotation;
 		for(uint8_t i = 0; i < 4; i++)
 		{
-			// ret.corners[i] = (struct graphbases::graphPoint*)malloc(sizeof(struct graphbases::graphPoint));
-			// graph[graphSize] = ret.corners[i];
-			// graphSize++;
-			graph[graphSize] = static_cast<struct graphbases::graphPoint*>(malloc(sizeof(struct graphbases::graphPoint)));
-			ret.corners[i] = graph[graphSize];
+			ret.corners[i] = &graph[graphSize];
 			ret.corners[i]->i = graphSize;
 			graphSize++;
-			
-			// struct coords *c = geometry::getCoordsOfCorner(&ret, cornerFromNum(i));
-			// ret.corners[i]->c = *c;
-			// free(c);
 		}
 
 		return ret;
@@ -71,25 +63,32 @@ namespace bases
 
     void            addTarget(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end)
     {
-		// if(start->numOfTargets > 10 && end->numOfTargets > 10)
-		// 	return;
-
         if(start == end) 
             return;
         
         for(size_t i = 0; i < start->numOfTargets; i++)
             if(start->targets[i] == end)
+			{
                 return;
+			}
             
         for(size_t i = 0; i < end->numOfTargets; i++)
             if(end->targets[i] == start)
+			{
                 return;
+			}
             
 
-        start->targets = static_cast<struct graphbases::graphPoint**>(realloc(start->targets, (++(start->numOfTargets)) * sizeof(struct graphbases::graphPoint*)));
-        start->targets[start->numOfTargets - 1] = end;
+		if(start->numOfTargets < 10)
+		{
+        	start->targets[start->numOfTargets] = end;
+			start->numOfTargets++;
+		}
 
-        end->targets = static_cast<struct graphbases::graphPoint**>(realloc(end->targets, (++(end->numOfTargets)) * sizeof(struct graphbases::graphPoint*)));
-        end->targets[end->numOfTargets - 1] = start;
+		if(end->numOfTargets < 10)
+		{
+        	end->targets[end->numOfTargets] = start;
+			end->numOfTargets++;
+		}
     }
 }

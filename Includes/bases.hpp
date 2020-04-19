@@ -73,25 +73,25 @@ namespace bases
 
     struct vect
     {
-        struct graphbases::coords      *c = NULL;
-        COORDS_DATATYPE     dx = 0,
-                            dy = 0;
+        struct graphbases::coords   c = {0, 0};
+        COORDS_DATATYPE             dx = 0,
+                                    dy = 0;
 
         constexpr struct graphbases::coords getLastCoords()
         {
-            return {static_cast<COORDS_DATATYPE>(c->x + dx), static_cast<COORDS_DATATYPE>(c->y + dy)};
+            return {static_cast<COORDS_DATATYPE>(c.x + dx), static_cast<COORDS_DATATYPE>(c.y + dy)};
         }
     };
 
 
-    extern struct graphbases::graphPoint **graph;
-    extern struct bases::obstacle *obstacles;
+    extern struct graphbases::graphPoint graph[];
+    extern struct bases::obstacle obstacles[];
     extern size_t numOfObstacles;
     extern size_t calculatedPoints;
 
     extern struct graphbases::coords	startway,
                                         endway;
-    extern size_t *ways;
+    extern size_t ways[];
 
     extern size_t numOfObstacles;
     extern size_t graphSize;

@@ -117,7 +117,7 @@ void drawWay(size_t pointNum, size_t target)
 	while(curr != target)
 	{
 		glSetColor(WAY_COLOR);
-		drawLine(graph[curr], graph[ways[curr]]);
+		drawLine(&graph[curr], &graph[ways[curr]]);
 		curr = ways[curr];
 	}
 }
@@ -127,14 +127,14 @@ void drawDots()
 	for(size_t i = 0; i < graphSize; i++)
 	{
 		glSetColor(DATA_EXTRA_COLOR);
-		drawCircleFilled(geometry::getCoordsOfPoint(graph[i]).x, geometry::getCoordsOfPoint(graph[i]).y, 3, 10);
+		drawCircleFilled(geometry::getCoordsOfPoint(&graph[i]).x, geometry::getCoordsOfPoint(&graph[i]).y, 3, 10);
 		glSetColor(DATA_COLOR);
 		std::wstring str = L"";
 		for(size_t k = 0; k < numOfObstacles; k++)
 		{
 			for(int j = 0; j < 4; j++)
 			{
-				if(obstacles[k].corners[j]->i == graph[i]->i)
+				if(obstacles[k].corners[j]->i == graph[i].i)
 				{
 					str = to_wstring(j);
 					k = numOfObstacles;
@@ -142,7 +142,7 @@ void drawDots()
 				}
 			}
 		}
-		drawText((str), 12, geometry::getCoordsOfPoint(graph[i]).x, geometry::getCoordsOfPoint(graph[i]).y);
+		drawText((str), 12, geometry::getCoordsOfPoint(&graph[i]).x, geometry::getCoordsOfPoint(&graph[i]).y);
 	}
 }
 
@@ -161,7 +161,7 @@ void renderScene(void)
 		for(size_t i = 0; i < graphSize; i++)
 		{
 			glLineWidth(1);
-			drawEdges(graph[i]);
+			drawEdges(&graph[i]);
 		}
 
 		glLineWidth(5);
@@ -169,7 +169,7 @@ void renderScene(void)
 		drawWay(home, target);
 
 		glSetColor(DATA_EXTRA_COLOR);
-		drawText(to_wstring(static_cast<unsigned int>(graph[home]->weight)), 14, 10, 10);
+		drawText(to_wstring(static_cast<unsigned int>(graph[home].weight)), 14, 10, 10);
 
 		drawDots();
 
@@ -229,11 +229,9 @@ void timf(int value)				// Timer function
 
 int main(int argc, char **argv)
 {
-	numOfObstacles = 50;
+	// numOfObstacles = 50;
 	size_t iter = 0;
 	graphSize = 2;
-	graph = static_cast<struct graphPoint**>(malloc((200) * sizeof(struct graphPoint*)));
-	obstacles = static_cast<struct bases::obstacle*>(malloc(sizeof(struct bases::obstacle) * numOfObstacles));
 	obstacles[iter++] = bases::createObstacle(-5, 1020 / 2, 10, 1020);
 	obstacles[iter++] = bases::createObstacle(1020, 1020 / 2, 10, 1020);
 	obstacles[iter++] = bases::createObstacle(1020 / 2, -5, 1020, 10);
@@ -260,30 +258,21 @@ int main(int argc, char **argv)
 	numOfObstacles = iter;
 
 
-	struct graphPoint *p = static_cast<struct graphPoint*>(malloc(sizeof(struct graphPoint)));
-
-	p->i = 0;
-	graph[0] = p;
-	struct graphPoint *p2 = static_cast<struct graphPoint*>(malloc(sizeof(struct graphPoint)));
-
-	p2->i = 1;
-	graph[1] = p2;
-
-	for(size_t i = 0; i < graphSize; i++)
-		graph[i]->weight = INF;
 		
-	graph[target]->weight = 0;
+	graph[target].weight = 0;
+	graph[target].i = static_cast<uint16_t>(target);
+
+	graph[home].i = home;
 	
 
-	ways = static_cast<size_t*>(malloc(graphSize * sizeof(size_t)));
 	for(size_t i = 0; i < graphSize; i++)
 		ways[i] = target;
 
 	geometry::targetCoords = {500, 1000};
-	geometry::homeCoords = {20, 20};
+	geometry::homeCoords = {30, 30};
 
 
-	grapher::initPoint(p);
+	grapher::initPoint(&graph[home]);
 	pathfinder::calculateWay(target);
 	
 
@@ -301,16 +290,16 @@ int main(int argc, char **argv)
 
 	int W = 0;
 	for(size_t i = 0; i < graphSize; i++)
-		if(geometry::getCoordsOfPoint(graph[i]).x > W)
-			W = geometry::getCoordsOfPoint(graph[i]).x;
+		if(geometry::getCoordsOfPoint(&graph[i]).x > W)
+			W = geometry::getCoordsOfPoint(&graph[i]).x;
 	for(size_t i = 0; i < numOfObstacles; i++)
 		if(obstacles[i].c->x + obstacles[i].a > W)
 			W = obstacles[i].c->x + obstacles[i].a;
 
 	int H = 0;
 	for(size_t i = 0; i < graphSize; i++)
-		if(geometry::getCoordsOfPoint(graph[i]).y > H)
-			H = geometry::getCoordsOfPoint(graph[i]).y;
+		if(geometry::getCoordsOfPoint(&graph[i]).y > H)
+			H = geometry::getCoordsOfPoint(&graph[i]).y;
 	
 	for(size_t i = 0; i < numOfObstacles; i++)
 		if(obstacles[i].c->y + obstacles[i].b > H)

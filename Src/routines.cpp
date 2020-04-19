@@ -114,8 +114,6 @@ void drawText(std::wstring text, unsigned int size, int x, int y)
 	if(!hack_italic_font.Error())
 	{
 		glPushMatrix();
-		//const wchar_t * tarr = (wchar_t*)malloc(text.length());
-		//wstrcpy(tarr, text);
 		hack_italic_font.FaceSize(size);
 		glRasterPos2f(static_cast<GLfloat>(x), static_cast<GLfloat>(y));//TODO: refactor
 		hack_italic_font.Render(text.c_str());

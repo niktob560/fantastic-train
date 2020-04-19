@@ -9,7 +9,7 @@ namespace pathfinder
     bool hasUncalculatedPoints()
     {
         for(size_t i = 0; i < graphSize; i++)
-            if(!graph[i]->calculated)
+            if(!graph[i].calculated)
                 return true;
         return false;
     }
@@ -20,37 +20,37 @@ namespace pathfinder
         struct graphPoint * pp = 0;
         for(size_t i = 0; i < graphSize; i++)
         {
-            if(!graph[i]->calculated && graph[i]->weight <= w)
+            if(!graph[i].calculated && graph[i].weight <= w)
             {
-                pp = graph[i];
+                pp = &graph[i];
                 w = pp->weight;
             }
         }
         return pp;
     }
 
-    void calculateWay(size_t index) 
+    void calculateWay(size_t index)
     {
-        if(graph[index] == NULL || graph[index]->calculated)    //Если точки не существует либо она уже обработана
+        if(index >= graphSize || graph[index].calculated)    //Если точки не существует либо она уже обработана
             return;                                             //                  завершить
 
-        graph[index]->calculated = true;                        //Отметить как обработанную
+        graph[index].calculated = true;                        //Отметить как обработанную
         
-        if(graph[index]->numOfTargets == 0)                     //Если целей нет то завершить
+        if(graph[index].numOfTargets == 0)                     //Если целей нет то завершить
             return;
 
         struct graphPoint * watch;
         uint16_t w;
 
-        for(size_t i = 0; i < graph[index]->numOfTargets; i++)  //Итерируемся по всем целям точки
+        for(size_t i = 0; i < graph[index].numOfTargets; i++)  //Итерируемся по всем целям точки
         {
-            watch = graph[index]->targets[i];                   //Текущая цель
+            watch = graph[index].targets[i];                   //Текущая цель
             if(!watch->calculated)
             {
-                w = getWayPrice(graph[index], watch);               //Цена пути от текущей точки до цели
-                if(graph[index]->weight + w < watch->weight)        //Если полученная цена меньше чем имеющаяся
+                w = getWayPrice(&graph[index], watch);               //Цена пути от текущей точки до цели
+                if(graph[index].weight + w < watch->weight)        //Если полученная цена меньше чем имеющаяся
                 {
-                    watch->weight = static_cast<uint16_t>(w + graph[index]->weight);       //Установим новую цену
+                    watch->weight = static_cast<uint16_t>(w + graph[index].weight);       //Установим новую цену
                     ways[watch->i] = index;                         //Запишем об этом в вектор путей
                 }
             }
