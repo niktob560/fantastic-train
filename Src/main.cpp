@@ -243,9 +243,9 @@ int main(int argc, char **argv)
 	obstacles[iter++] = bases::createObstacle(80, 330, 50, 40, 		static_cast<uint8_t>(60));
 	obstacles[iter++] = bases::createObstacle(120, 340, 50, 49, 	static_cast<uint8_t>(120));
 	obstacles[iter++] = bases::createObstacle(60, 400, 30, 32, 		static_cast<uint8_t>(250));
-	obstacles[iter++] = bases::createObstacle(710, 400, 200, 100, 	static_cast<uint8_t>(34));
-	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, 	static_cast<uint8_t>(80));
-	obstacles[iter++] = bases::createObstacle(910, 500, 200, 100, 	static_cast<uint8_t>(70));
+	obstacles[iter++] = bases::createObstacle(710, 500, 200, 100, 	static_cast<uint8_t>(34));
+	obstacles[iter++] = bases::createObstacle(910, 400, 200, 100, 	static_cast<uint8_t>(80));
+	obstacles[iter++] = bases::createObstacle(920, 500, 200, 100, 	static_cast<uint8_t>(70));
 	obstacles[iter++] = bases::createObstacle(910, 100, 150, 100, 	static_cast<uint8_t>(60));
 	obstacles[iter++] = bases::createObstacle(110, 500, 200, 100, 	static_cast<uint8_t>(50));
 	obstacles[iter++] = bases::createObstacle(10, 600, 200, 100, 	static_cast<uint8_t>(40));
@@ -253,7 +253,7 @@ int main(int argc, char **argv)
 	obstacles[iter++] = bases::createObstacle(650, 300, 200, 100, 	static_cast<uint8_t>(30));
 	obstacles[iter++] = bases::createObstacle(350, 700, 200, 100, 	static_cast<uint8_t>(20));
 	obstacles[iter++] = bases::createObstacle(150, 600, 200, 100, 	static_cast<uint8_t>(10));
-	obstacles[iter++] = bases::createObstacle(550, 550, 200, 100, 	static_cast<uint8_t>(40));
+	obstacles[iter++] = bases::createObstacle(550, 550, 200, 100, 	static_cast<uint8_t>(10));
 	obstacles[iter++] = bases::createObstacle(750, 550, 200, 100, 	static_cast<uint8_t>(120));
 	numOfObstacles = iter;
 

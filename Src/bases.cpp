@@ -60,25 +60,29 @@ namespace bases
             return;
         
         for(size_t i = 0; i < start->numOfTargets; i++)
+		{
             if(start->targets[i] == end)
 			{
                 return;
 			}
+		}
             
         for(size_t i = 0; i < end->numOfTargets; i++)
+		{
             if(end->targets[i] == start)
 			{
                 return;
 			}
+		}
             
 
-		if(start->numOfTargets < 10)
+		if(start->numOfTargets < sizeof(*graphbases::graphPoint::targets))
 		{
         	start->targets[start->numOfTargets] = end;
 			start->numOfTargets++;
 		}
 
-		if(end->numOfTargets < 10)
+		if(end->numOfTargets < sizeof(*graphbases::graphPoint::targets))
 		{
         	end->targets[end->numOfTargets] = start;
 			end->numOfTargets++;
