@@ -1,19 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include <stdio.h>      // standard input / output functions
-#include <stdlib.h>
-#include <string.h>     // string function definitions
-#include <unistd.h>     // UNIX standard function definitions
-#include <fcntl.h>      // File control definitions
-#include <errno.h>      // Error number definitions
-#include <termios.h>    // POSIX terminal control definitions
-#include <signal.h>
-#include <GL/glew.h>
-#include <GL/glut.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <FTGL/ftgl.h>
-#include <FTGL/FTGLPixmapFont.h>
+#include <stdio.h>
 
 #include "routines.hpp"
 #include "fantastic-train.hpp"
@@ -43,19 +30,6 @@ void drawLine(struct coords *start, struct coords *end)
 {
 	drawLine(start->x, start->y, end->x, end->y);
 }
-
-// struct obstacle* getRootObstacle(struct graphPoint *p)
-// {
-// 	for(size_t i = 0; i < fantastictrain::getNumOfObstacles(); i++)
-// 	{
-// 		for(size_t j = 0; j < 4; j++)
-// 		{
-// 			if(obstacles[i].corners[j]->i == p->i)
-// 				return &obstacles[i];
-// 		}
-// 	}
-// 	return NULL;
-// }
 
 
 void drawLine(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end)
@@ -146,7 +120,7 @@ void renderScene(void)
 			drawEdges(&bases::graph[i]);
 		}
 
-		glLineWidth(5);
+		glLineWidth(3);
 		glSetColor(WAY_COLOR);
 		drawWay(1, 0);
 
@@ -250,6 +224,23 @@ int main(int argc, char **argv)
 	cout << endl;
 
 
+	int W = 0;
+	for(size_t i = 0; i < fantastictrain::getGraphSize(); i++)
+		if(geometry::getCoordsOfPoint(&bases::graph[i]).x > W)
+			W = geometry::getCoordsOfPoint(&bases::graph[i]).x;
+	for(size_t i = 0; i < fantastictrain::getNumOfObstacles(); i++)
+		if(bases::obstacles[i].c.x + bases::obstacles[i].a > W)
+			W = bases::obstacles[i].c.x + bases::obstacles[i].a;
+
+	int H = 0;
+	for(size_t i = 0; i < fantastictrain::getGraphSize(); i++)
+		if(geometry::getCoordsOfPoint(&bases::graph[i]).y > H)
+			H = geometry::getCoordsOfPoint(&bases::graph[i]).y;
+	
+	for(size_t i = 0; i < fantastictrain::getNumOfObstacles(); i++)
+		if(bases::obstacles[i].c.y + bases::obstacles[i].b > H)
+			W = bases::obstacles[i].c.y + bases::obstacles[i].b;
+
 
  	cout << "glut init\n";
 	glutInit(&argc, argv);
@@ -257,6 +248,7 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutCreateWindow("floating");
 	cout << "reshape\n";
+	glutReshapeWindow(W - 20, H - 10);
 	glutReshapeFunc(reshape);
 	cout << "dispfunc\n";
 	glutDisplayFunc(renderScene);

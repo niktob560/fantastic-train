@@ -1,12 +1,8 @@
 #pragma once
 
-#include <GL/glew.h>
 #include <GL/glut.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
 #include <string>
 #include <FTGL/ftgl.h>
-#include <FTGL/FTGLPixmapFont.h>
 
 #include "math.hpp"
 
