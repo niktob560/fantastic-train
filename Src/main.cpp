@@ -15,14 +15,8 @@
 #include <FTGL/ftgl.h>
 #include <FTGL/FTGLPixmapFont.h>
 
-#include "bases.hpp"
 #include "routines.hpp"
-#include "grapher.hpp"
-#include "geometry.hpp"
-#include "pathfinder.hpp"
-
-#include "manager.hpp"
-
+#include "fantastic-train.hpp"
 
 #define GL_TIMER_DELAY	400
 #define RETURN_CODE_OK 0

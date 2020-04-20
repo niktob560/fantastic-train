@@ -16,15 +16,63 @@ find_library(FTGL_LIBRARY ftgl)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Og -std=gnu++11 -g -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wuninitialized -Wno-write-strings -Wcast-align -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wduplicated-branches -Wduplicated-cond -Wextra-semi -Wfloat-equal -Wlogical-op -Wnon-virtual-dtor -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo -Werror -IInclude -Wall -Wextra -Wpedantic -pedantic-errors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -fno-devirtualize -fno-use-cxa-atexit")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Og -std=gnu++11 -g -Wparentheses -Wsequence-point -Wreturn-type -Wswitch -Wuninitialized -Wno-write-strings -Wcast-align -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wduplicated-branches -Wduplicated-cond -Wextra-semi -Wfloat-equal -Wlogical-op -Wnon-virtual-dtor -Wold-style-cast -Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo -Werror -IInclude -Wall -Wextra -Wpedantic -pedantic-errors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -flto -fno-devirtualize -fno-use-cxa-atexit")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Og")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wparentheses")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wsequence-point")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wreturn-type")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wswitch")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wuninitialized")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-write-strings")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wcast-align")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wcast-qual")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wconversion")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wctor-dtor-privacy")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wduplicated-branches")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wduplicated-cond")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra-semi")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfloat-equal")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wlogical-op")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wnon-virtual-dtor")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wold-style-cast")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Woverloaded-virtual")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wredundant-decls")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wsign-conversion")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wsign-promo")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wpedantic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic-errors")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffunction-sections")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdata-sections")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-threadsafe-statics")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MMD")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -flto")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-devirtualize")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-use-cxa-atexit")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -IIncludes")
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
-add_executable(main Src/main.cpp Src/bases.cpp Src/routines.cpp Src/math.cpp Src/geometry.cpp Src/grapher.cpp Src/pathfinder.cpp)
+set(LIB_SRCS Src/bases.cpp Src/math.cpp Src/geometry.cpp Src/grapher.cpp Src/pathfinder.cpp)
+set(BIN_SRCS ${LIB_SRCS} Src/main.cpp Src/routines.cpp)
+
+add_library(fantastic-train SHARED ${LIB_SRCS})
+
+add_executable(main ${BIN_SRCS})
 
 target_link_libraries(main ${PTHREAD_LIBRARY} ${GL_LIBRARY} ${GLU_LIBRARY} ${GLUT_LIBRARY} ${X11_LIBRARY} ${PNG_LIBRARY} ${FTGL_LIBRARY})
 
-
-
 set_target_properties(main PROPERTIES
-      IMPORTED_LOCATION ~/Documents/C++/waypointmanager/Build/libwaypointmanager.so
+      IMPORTED_LOCATION waypointmanager/Build/libwaypointmanager.so
 )
+
+
+set_target_properties(fantastic-train PROPERTIES
+      IMPORTED_LOCATION waypointmanager/Build/libwaypointmanager.so
+)
+
