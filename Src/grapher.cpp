@@ -19,24 +19,24 @@ namespace grapher
 			currP = &graph[i];
 			c2 = geometry::getCoordsOfPoint(currP);
 			v = geometry::createVect(&c1, &c2);
-			//TODO: cleanup
-			if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v) && !geometry::isDotInside(&c1) && !geometry::isDotInside(&c2))
+
+			if((v.dx != 0 || v.dy != 0) && !geometry::hasIntersections(&v))
 			{
-				bool state = false;
+				bool wannaInitThisPoint = false;
 				if(p->numOfTargets == 0) 
 				{
-					state = true;
+					wannaInitThisPoint = true;
 					calculatedPoints++;
 				}
 
 				if(currP->numOfTargets == 0)
 				{
-					state = true;
+					wannaInitThisPoint = true;
 					calculatedPoints++;
 				}
 
 				bases::addTarget(p, currP);
-				if(state)
+				if(wannaInitThisPoint)
 					initPoint(currP);
 			}
 		}
