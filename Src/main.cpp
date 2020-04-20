@@ -230,7 +230,7 @@ void timf(int value)				// Timer function
 int main(int argc, char **argv)
 {
 	// numOfObstacles = 50;
-	size_t iter = 0;
+	uint8_t iter = 0;
 	graphSize = 2;
 	obstacles[iter++] = bases::createObstacle(-5, 1020 / 2, 10, 1020);
 	obstacles[iter++] = bases::createObstacle(1020, 1020 / 2, 10, 1020);

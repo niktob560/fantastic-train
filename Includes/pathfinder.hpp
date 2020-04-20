@@ -10,7 +10,7 @@ namespace pathfinder
 
     struct graphbases::graphPoint* getMinTarget();
 
-    void calculateWay(size_t index);
+    void calculateWay(uint8_t index);
 
     uint16_t getWayPrice(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end);
 

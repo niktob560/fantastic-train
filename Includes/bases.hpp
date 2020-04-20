@@ -84,21 +84,28 @@ namespace bases
     };
 
 
+
+
+
+
     extern struct graphbases::graphPoint graph[];
     extern struct bases::obstacle obstacles[];
-    extern size_t numOfObstacles;
-    extern size_t calculatedPoints;
 
     extern struct graphbases::coords	startway,
                                         endway;
-    extern size_t ways[];
+    extern uint8_t ways[];
 
-    extern size_t numOfObstacles;
-    extern size_t graphSize;
-    extern size_t calculatedPoints;
+    extern uint8_t numOfObstacles;
+    extern uint8_t graphSize;
+    extern uint8_t calculatedPoints;
 
-    extern size_t 	target,
-                    home;
+	const uint8_t	target		= 0,
+					home 		= 1;
+
+
+
+
+
 
     template<typename T>
     T max(T t1, T t2)

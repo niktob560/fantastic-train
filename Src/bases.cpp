@@ -9,13 +9,11 @@ namespace bases
 
 	struct graphbases::coords	startway,
 								endway;
-	size_t 	ways[200];
+	uint8_t	ways[200];
 
-	size_t 	numOfObstacles = 0;
-	size_t 	graphSize = 0;
-	size_t 	calculatedPoints = 0;
-	size_t 	target = 0,
-			home = 1;
+	uint8_t	numOfObstacles 		= 0;
+	uint8_t	graphSize 			= 0;
+	uint8_t	calculatedPoints 	= 0;
 
 
     struct obstacle createObstacle(const COORDS_DATATYPE x, const COORDS_DATATYPE y, const COORDS_DATATYPE a, const COORDS_DATATYPE b, const uint8_t rotation)

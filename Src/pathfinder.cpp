@@ -29,7 +29,7 @@ namespace pathfinder
         return pp;
     }
 
-    void calculateWay(size_t index)
+    void calculateWay(uint8_t index)
     {
         if(index >= graphSize || graph[index].calculated)    //Если точки не существует либо она уже обработана
             return;                                             //                  завершить
