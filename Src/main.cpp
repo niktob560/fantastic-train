@@ -27,22 +27,10 @@
 #define BG_COLOR	0x1C2639
 #define DATA_EXTRA_COLOR 0xDC322F
 
-using graphbases::array;
-using graphbases::coords;
-using bases::obstacle;
-using bases::graph;
-using bases::ways;
-using bases::graphSize;
-using bases::numOfObstacles;
-using bases::obstacles;
-using bases::home;
-using bases::target;
-using bases::startway;
-using bases::endway;
-using graphbases::graphPoint;
 
 using namespace std;
 
+using graphbases::coords;
 
 bool terminated = false;
 
@@ -56,21 +44,21 @@ void drawLine(struct coords *start, struct coords *end)
 	drawLine(start->x, start->y, end->x, end->y);
 }
 
-struct obstacle* getRootObstacle(struct graphPoint *p)
-{
-	for(size_t i = 0; i < numOfObstacles; i++)
-	{
-		for(size_t j = 0; j < 4; j++)
-		{
-			if(obstacles[i].corners[j]->i == p->i)
-				return &obstacles[i];
-		}
-	}
-	return NULL;
-}
+// struct obstacle* getRootObstacle(struct graphPoint *p)
+// {
+// 	for(size_t i = 0; i < fantastictrain::getNumOfObstacles(); i++)
+// 	{
+// 		for(size_t j = 0; j < 4; j++)
+// 		{
+// 			if(obstacles[i].corners[j]->i == p->i)
+// 				return &obstacles[i];
+// 		}
+// 	}
+// 	return NULL;
+// }
 
 
-void drawLine(struct graphPoint *start, struct graphPoint *end)
+void drawLine(struct graphbases::graphPoint *start, struct graphbases::graphPoint *end)
 {
 	struct coords 	c1 = geometry::getCoordsOfPoint(start), 
 					c2 = geometry::getCoordsOfPoint(end);
@@ -81,7 +69,7 @@ void drawLine(struct graphPoint *start, struct graphPoint *end)
 
 
 
-void drawEdges(struct graphPoint *p)
+void drawEdges(struct graphbases::graphPoint *p)
 {
 	if(p == NULL || p->numOfTargets == 0) 
 	{
@@ -98,7 +86,7 @@ void drawEdges(struct graphPoint *p)
 
 
 
-void drawObstacle(const struct obstacle *o)
+void drawObstacle(const struct bases::obstacle *o)
 {
 	glSetColor(OBST_COLOR);
 	drawRect(o->c.x, o->c.y, o->a, o->b, static_cast<float>((o->rot * M_PI) / 90.0));
@@ -111,32 +99,32 @@ void drawWay(size_t pointNum, size_t target)
 	while(curr != target)
 	{
 		glSetColor(WAY_COLOR);
-		drawLine(&graph[curr], &graph[ways[curr]]);
-		curr = ways[curr];
+		drawLine(&bases::graph[curr], &bases::graph[fantastictrain::getWaysVector()[curr]]);
+		curr = fantastictrain::getWaysVector()[curr];
 	}
 }
 
 void drawDots()
 {
-	for(size_t i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < fantastictrain::getGraphSize(); i++)
 	{
 		glSetColor(DATA_EXTRA_COLOR);
-		drawCircleFilled(geometry::getCoordsOfPoint(&graph[i]).x, geometry::getCoordsOfPoint(&graph[i]).y, 3, 10);
+		drawCircleFilled(geometry::getCoordsOfPoint(&bases::graph[i]).x, geometry::getCoordsOfPoint(&bases::graph[i]).y, 3, 10);
 		glSetColor(DATA_COLOR);
 		std::wstring str = L"";
-		for(size_t k = 0; k < numOfObstacles; k++)
+		for(size_t k = 0; k < fantastictrain::getNumOfObstacles(); k++)
 		{
 			for(int j = 0; j < 4; j++)
 			{
-				if(obstacles[k].corners[j]->i == graph[i].i)
+				if(bases::obstacles[k].corners[j]->i == bases::graph[i].i)
 				{
 					str = to_wstring(j);
-					k = numOfObstacles;
+					k = fantastictrain::getNumOfObstacles();
 					break;
 				}
 			}
 		}
-		drawText((str), 12, geometry::getCoordsOfPoint(&graph[i]).x, geometry::getCoordsOfPoint(&graph[i]).y);
+		drawText((str), 12, geometry::getCoordsOfPoint(&bases::graph[i]).x, geometry::getCoordsOfPoint(&bases::graph[i]).y);
 	}
 }
 
@@ -146,24 +134,24 @@ void renderScene(void)
 	glClear(GL_COLOR_BUFFER_BIT);
 		glSetColor(BG_COLOR);
 		drawRect(static_cast<float>(glutGet(GLUT_SCREEN_WIDTH) / 2.0), static_cast<float>(glutGet(GLUT_SCREEN_HEIGHT) / 2.0), static_cast<float>(glutGet(GLUT_SCREEN_WIDTH)), static_cast<float>(glutGet(GLUT_SCREEN_HEIGHT)));
-		for(size_t i = 0; i < numOfObstacles; i++)
+		for(size_t i = 0; i < fantastictrain::getNumOfObstacles(); i++)
 		{
-			drawObstacle(&obstacles[i]);
+			drawObstacle(&bases::obstacles[i]);
 			glSetColor(DATA_COLOR);
-			drawText(to_wstring(i), 12, obstacles[i].c.x, obstacles[i].c.y);
+			drawText(to_wstring(i), 12, bases::obstacles[i].c.x, bases::obstacles[i].c.y);
 		}
-		for(size_t i = 0; i < graphSize; i++)
+		for(size_t i = 0; i < fantastictrain::getGraphSize(); i++)
 		{
 			glLineWidth(1);
-			drawEdges(&graph[i]);
+			drawEdges(&bases::graph[i]);
 		}
 
 		glLineWidth(5);
 		glSetColor(WAY_COLOR);
-		drawWay(home, target);
+		drawWay(1, 0);
 
 		glSetColor(DATA_EXTRA_COLOR);
-		drawText(to_wstring(static_cast<unsigned int>(graph[home].weight)), 14, 10, 10);
+		drawText(to_wstring(static_cast<unsigned int>(bases::graph[1].weight)), 14, 10, 10);
 
 		drawDots();
 
@@ -219,87 +207,49 @@ void timf(int value)				// Timer function
 }
 
 
-
-
 int main(int argc, char **argv)
 {
-	// numOfObstacles = 50;
-	uint8_t iter = 0;
-	graphSize = 2;
-	obstacles[iter++] = bases::createObstacle(-5, 1020 / 2, 10, 1020);
-	obstacles[iter++] = bases::createObstacle(1020, 1020 / 2, 10, 1020);
-	obstacles[iter++] = bases::createObstacle(1020 / 2, -5, 1020, 10);
-	obstacles[iter++] = bases::createObstacle(1020 / 2, 1020, 1020, 10);
+	fantastictrain::init();
 
-	obstacles[iter++] = bases::createObstacle(100, 100, 100, 100, 	static_cast<uint8_t>(34));
-	obstacles[iter++] = bases::createObstacle(310, 350, 200, 300, 	static_cast<uint8_t>(20));
-	obstacles[iter++] = bases::createObstacle(280, 580, 20, 20, 	static_cast<uint8_t>(40));
-	obstacles[iter++] = bases::createObstacle(80, 330, 50, 40, 		static_cast<uint8_t>(60));
-	obstacles[iter++] = bases::createObstacle(120, 340, 50, 49, 	static_cast<uint8_t>(120));
-	obstacles[iter++] = bases::createObstacle(60, 400, 30, 32, 		static_cast<uint8_t>(250));
-	obstacles[iter++] = bases::createObstacle(710, 500, 200, 100, 	static_cast<uint8_t>(34));
-	obstacles[iter++] = bases::createObstacle(910, 400, 200, 100, 	static_cast<uint8_t>(80));
-	obstacles[iter++] = bases::createObstacle(920, 500, 200, 100, 	static_cast<uint8_t>(70));
-	obstacles[iter++] = bases::createObstacle(910, 100, 150, 100, 	static_cast<uint8_t>(60));
-	obstacles[iter++] = bases::createObstacle(110, 500, 200, 100, 	static_cast<uint8_t>(50));
-	obstacles[iter++] = bases::createObstacle(10, 600, 200, 100, 	static_cast<uint8_t>(40));
-	obstacles[iter++] = bases::createObstacle(500, 400, 200, 100, 	static_cast<uint8_t>(40));
-	obstacles[iter++] = bases::createObstacle(650, 300, 200, 100, 	static_cast<uint8_t>(30));
-	obstacles[iter++] = bases::createObstacle(350, 700, 200, 100, 	static_cast<uint8_t>(20));
-	obstacles[iter++] = bases::createObstacle(150, 600, 200, 100, 	static_cast<uint8_t>(10));
-	obstacles[iter++] = bases::createObstacle(550, 550, 200, 100, 	static_cast<uint8_t>(10));
-	obstacles[iter++] = bases::createObstacle(750, 550, 200, 100, 	static_cast<uint8_t>(120));
-	numOfObstacles = iter;
+	fantastictrain::addObstacle({-5, 1020 / 2}, 	10, 	1020, 	0);
+	fantastictrain::addObstacle({1020, 1020 / 2}, 	10, 	1020, 	0);
+	fantastictrain::addObstacle({1020 / 2, -5}, 	1020, 	10, 	0);
+	fantastictrain::addObstacle({1020 / 2, 1020}, 	1020, 	10, 	0);
 
+	fantastictrain::addObstacle({100, 100}, 100, 100, 34);
+	fantastictrain::addObstacle({310, 350}, 200, 300, 20);
+	fantastictrain::addObstacle({280, 580}, 20 , 20 , 40);
+	fantastictrain::addObstacle({80	, 330}, 50 , 40 , 60);
+	fantastictrain::addObstacle({120, 340}, 50 , 49 , 120);
+	fantastictrain::addObstacle({60	, 400}, 30 , 32 , 250);
+	fantastictrain::addObstacle({710, 500}, 200, 100, 34);
+	fantastictrain::addObstacle({910, 400}, 200, 100, 80);
+	fantastictrain::addObstacle({920, 500}, 200, 100, 70);
+	fantastictrain::addObstacle({910, 100}, 150, 100, 60);
+	fantastictrain::addObstacle({110, 500}, 200, 100, 50);
+	fantastictrain::addObstacle({10	, 600}, 200, 100, 40);
+	fantastictrain::addObstacle({500, 400}, 200, 100, 40);
+	fantastictrain::addObstacle({650, 300}, 200, 100, 30);
+	fantastictrain::addObstacle({350, 700}, 200, 100, 20);
+	fantastictrain::addObstacle({150, 600}, 200, 100, 10);
+	fantastictrain::addObstacle({550, 550}, 200, 100, 10);
+	fantastictrain::addObstacle({750, 550}, 200, 100, 120);
 
-		
-	graph[target].weight = 0;
-	graph[target].i = static_cast<uint16_t>(target);
+	fantastictrain::setTargetCoords({500, 1000});
+	fantastictrain::setHomeCoords({30, 30});
 
-	graph[home].i = home;
-	
+	fantastictrain::run();
 
-	for(size_t i = 0; i < graphSize; i++)
-		ways[i] = target;
-
-	geometry::targetCoords = {500, 1000};
-	geometry::homeCoords = {30, 30};
-
-
-	grapher::initPoint(&graph[home]);
-	pathfinder::calculateWay(target);
-	
 
 	cout << endl;
-	for(size_t i = 0; i < graphSize; i++)
+	for(size_t i = 0; i < fantastictrain::getGraphSize(); i++)
 		cout << setw(3) << i;
 	cout << endl;
-	for(size_t i = 0; i < graphSize; i++)
-		cout << setw(3) << ways[i];
+	for(size_t i = 0; i < fantastictrain::getGraphSize(); i++)
+		cout << setw(3) << static_cast<int>(fantastictrain::getWaysVector()[i]);
 	cout << endl;
 
 
-	// exit(0);
-
-
-	int W = 0;
-	for(size_t i = 0; i < graphSize; i++)
-		if(geometry::getCoordsOfPoint(&graph[i]).x > W)
-			W = geometry::getCoordsOfPoint(&graph[i]).x;
-	for(size_t i = 0; i < numOfObstacles; i++)
-		if(obstacles[i].c.x + obstacles[i].a > W)
-			W = obstacles[i].c.x + obstacles[i].a;
-
-	int H = 0;
-	for(size_t i = 0; i < graphSize; i++)
-		if(geometry::getCoordsOfPoint(&graph[i]).y > H)
-			H = geometry::getCoordsOfPoint(&graph[i]).y;
-	
-	for(size_t i = 0; i < numOfObstacles; i++)
-		if(obstacles[i].c.y + obstacles[i].b > H)
-			W = obstacles[i].c.y + obstacles[i].b;
-
-	
 
  	cout << "glut init\n";
 	glutInit(&argc, argv);
@@ -307,7 +257,6 @@ int main(int argc, char **argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutCreateWindow("floating");
 	cout << "reshape\n";
-	glutReshapeWindow(W - 20, H - 10);
 	glutReshapeFunc(reshape);
 	cout << "dispfunc\n";
 	glutDisplayFunc(renderScene);

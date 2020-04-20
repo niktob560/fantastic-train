@@ -57,7 +57,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-use-cxa-atexit")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -IIncludes")
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
-set(LIB_SRCS Src/bases.cpp Src/math.cpp Src/geometry.cpp Src/grapher.cpp Src/pathfinder.cpp)
+set(LIB_SRCS Src/bases.cpp Src/math.cpp Src/geometry.cpp Src/grapher.cpp Src/pathfinder.cpp Src/fantastic-train.cpp)
 set(BIN_SRCS ${LIB_SRCS} Src/main.cpp Src/routines.cpp)
 
 add_library(fantastic-train SHARED ${LIB_SRCS})
