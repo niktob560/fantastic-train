@@ -1,7 +1,5 @@
 #pragma once
 
-#include <unistd.h>
-#include <stdint.h>
 #include "bases.hpp"
 #include "geometry.hpp"
 

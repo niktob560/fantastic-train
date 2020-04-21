@@ -1,7 +1,3 @@
-#include <iostream>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdint.h>
 #include "math.hpp"
 #include "graphbases.hpp"
 #include "geometry.hpp"

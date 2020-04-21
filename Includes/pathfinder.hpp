@@ -1,3 +1,5 @@
+#pragma once
+
 #include "bases.hpp"
 #include "math.hpp"
 
