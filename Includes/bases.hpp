@@ -54,11 +54,11 @@ namespace bases
 
     struct obstacle
     {
-        struct graphbases::coords      c = {0, 0};
-        struct graphbases::graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
+        struct graphbases::coords       c = {0, 0};
         COORDS_DATATYPE                 a = 0, 
                                         b = 0; 
         uint8_t                         rot = 0;
+        struct graphbases::graphPoint  *corners[4] = {NULL, NULL, NULL, NULL};
     };
 
     struct baseline

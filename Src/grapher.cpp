@@ -13,9 +13,9 @@ namespace grapher
 		struct coords 	c1 = geometry::getCoordsOfPoint(p), 
 						c2;
 		struct vect v;
-		struct graphbases::graphPoint *currP = 0x00;
 		for(size_t i = 0; i < graphSize; i++)
 		{
+			struct graphbases::graphPoint *currP = 0x00;
 			currP = &graph[i];
 			c2 = geometry::getCoordsOfPoint(currP);
 			v = geometry::createVect(&c1, &c2);

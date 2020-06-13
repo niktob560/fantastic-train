@@ -17,7 +17,7 @@ namespace pathfinder
     struct graphPoint* getMinTarget()
     {
         uint16_t w = INF;
-        struct graphPoint * pp = 0;
+        struct graphPoint * pp = &graph[0];
         for(size_t i = 0; i < graphSize; i++)
         {
             if(!graph[i].calculated && graph[i].weight <= w)
