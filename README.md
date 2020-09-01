@@ -2,6 +2,12 @@
 Library for searching shortest way in a field of obstacles using Dijkstra's algorithm
   
 ## How to add this thing to your CMake project:
+* Install dependences:
+  * FTGL (optional)
+  * GLUT (optional)
+  * freetype2 (optional)
+  * Cmake
+  * JetBrains Mono TTF (optional)
 * Clone project
   ``` 
   $ git clone https://github.com/niktob560/fantastic-train 
@@ -31,4 +37,9 @@ Library for searching shortest way in a field of obstacles using Dijkstra's algo
   * ``add_library(libfantastic-train SHARED IMPORTED)``
   * ``add_dependencies(libfantastic-train /path/to/thing/Build/libfantastic-train.so)``
   * ``target_link_libraries(target libfantastic-train.so)``
+* Use ``Build/libfantastic-train.so``
 * Be awesome
+## Example monitor:
+* Example code in main.cpp
+* Build with ``$ make`` in ``Build`` dir
+* Start ``main`` binary in ``Build`` dir
