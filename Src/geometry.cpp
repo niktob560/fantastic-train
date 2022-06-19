@@ -90,6 +90,7 @@ namespace geometry
                     return getCoordsOfCorner(rootObst, bases::cornerFromNum(j));
                 }
             }
+	    struct obstacle *oldRootObst = rootObst;
             rootObst = NULL;
 
             for(size_t i = 0; i < numOfObstacles; i++)
@@ -107,6 +108,9 @@ namespace geometry
                 else
                     break;
             }
+	    if (rootObst == NULL) {
+		rootObst = oldRootObst;
+	    }
             return getCoordsOfCorner(rootObst, bases::cornerFromNum(corner));
         }
         else
