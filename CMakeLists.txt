@@ -56,6 +56,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -flto")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-devirtualize")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-use-cxa-atexit")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -IIncludes")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I/usr/include/freetype2")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fanalyzer")
 set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
